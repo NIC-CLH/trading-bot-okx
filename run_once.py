@@ -21,6 +21,12 @@ import position_manager as pm
 import scanner
 import alertes
 
+# Supprime toutes les alertes intermédiaires — on envoie un seul résumé à la fin
+alertes.send = lambda *a, **kw: None
+alertes.alerte_opportunite_enrichie = lambda *a, **kw: None
+alertes.alerte_portefeuille = lambda *a, **kw: None
+alertes.alerte_risque = lambda *a, **kw: None
+
 now = datetime.now(timezone.utc)
 print(f"\n{'='*55}")
 print(f"  CYCLE {now.strftime('%d/%m/%Y %H:%M UTC')}")
@@ -99,5 +105,76 @@ if now.hour == 7:
         print(f"Erreur rapport : {e}")
 
 print(f"\n{'='*55}")
-print(f"  Cycle terminé.")
+print(f"  Cycle terminé — envoi résumé Telegram")
 print(f"{'='*55}\n")
+
+# ── Résumé unique envoyé sur Telegram ─────────────────────────────────────
+import requests as _req, os as _os
+
+def _send_final(msg):
+    token = _os.getenv("TELEGRAM_TOKEN")
+    chat_id = _os.getenv("TELEGRAM_CHAT_ID")
+    if token and chat_id:
+        _req.post(
+            f"https://api.telegram.org/bot{token}/sendMessage",
+            json={"chat_id": chat_id, "text": msg, "parse_mode": "Markdown"},
+            timeout=10,
+        )
+
+try:
+    balances_final = okx.get_balances()
+    usdc_final = balances_final.get("USDC", 0) + balances_final.get("USDT", 0)
+    positions_final = {k: v for k, v in balances_final.items() if k not in ("USDC", "USDT")}
+
+    # Valeur totale
+    portfolio_final = usdc_final
+    pos_lines = []
+    for ticker, qty in positions_final.items():
+        prix = okx.get_price_usdc(ticker) or 0
+        valeur = qty * prix
+        portfolio_final += valeur
+
+        # P&L
+        entry = pm._get_entry_price(ticker)
+        if entry and prix:
+            pnl_pct = (prix - entry) / entry * 100
+            pnl_emoji = "🟢" if pnl_pct >= 0 else "🔴"
+            pos_lines.append(f"{pnl_emoji} *{ticker}* `${prix:.4f}` — P&L `{pnl_pct:+.1f}%`")
+        else:
+            pos_lines.append(f"⚪ *{ticker}* `${prix:.4f}`")
+
+    # Décisions prises ce cycle
+    actions_taken = pm_result.get("actions", []) if "pm_result" in dir() else []
+    decisions_lines = []
+    for a in actions_taken:
+        emoji = "💰" if "SELL" in a["decision"] else "📈"
+        decisions_lines.append(f"{emoji} {a['ticker']} — {a['raison']}")
+
+    # Nouveaux ordres
+    signals_taken = signals if "signals" in dir() else []
+    for s in signals_taken:
+        decisions_lines.append(f"🛒 Achat *{s['ticker']}* `${s.get('prix', 0):.4f}` score `{s['score']:+.2f}`")
+
+    # Construction du message
+    msg_lines = [
+        f"📊 *Rapport {now.strftime('%d/%m %H:%M')} UTC*\n",
+        f"💼 Portfolio : `${portfolio_final:.2f}`",
+        f"💵 USDC libre : `${usdc_final:.2f}`\n",
+    ]
+
+    if pos_lines:
+        msg_lines.append("*Positions :*")
+        msg_lines.extend(pos_lines)
+        msg_lines.append("")
+
+    if decisions_lines:
+        msg_lines.append("*Décisions :*")
+        msg_lines.extend(decisions_lines)
+    else:
+        msg_lines.append("*Décisions :* aucune action — positions maintenues")
+
+    _send_final("\n".join(msg_lines))
+    print("Résumé Telegram envoyé.")
+
+except Exception as e:
+    print(f"Erreur résumé final : {e}")
