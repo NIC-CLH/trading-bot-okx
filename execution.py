@@ -100,7 +100,7 @@ def execute_signal(signal: dict, portfolio_value: float) -> bool:
         logger.warning(f"{ticker} : stop/target/prix manquant — ordre annulé")
         return False
 
-    if abs(score) < 2.0:
+    if abs(score) < 1.5:
         logger.info(f"{ticker} : score {score:+.2f} insuffisant — ordre annulé")
         return False
 

@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 
 # Seuil alerte Telegram (score composite 4 dimensions)
 SIGNAL_THRESHOLD = 1.5      # Alerte envoyée
-AUTO_EXECUTE_THRESHOLD = 2.0  # Ordre automatique placé
+AUTO_EXECUTE_THRESHOLD = 1.5  # Ordre automatique placé
 
 # Watchlist prioritaire (actifs à fort potentiel)
 WATCHLIST_EXTRA = [
