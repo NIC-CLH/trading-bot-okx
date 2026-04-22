@@ -154,8 +154,10 @@ try:
         elif a["decision"] == "PARTIAL_SELL":
             decisions_lines.append(f"🟡 Vente partielle *{a['ticker']}* 50% {valeur_str} {pnl_str} — {a['raison']}")
 
-    # Nouveaux achats
-    signals_taken = signals if "signals" in dir() else []
+    # Nouveaux achats — uniquement si l'ordre a vraiment été exécuté
+    # (signals retourne seulement les ordres confirmés par OKX)
+    signals_taken = [s for s in (signals if "signals" in dir() else [])
+                     if s.get("ordre_execute", False)]
     for s in signals_taken:
         decisions_lines.append(
             f"🛒 Achat *{s['ticker']}* `${s.get('taille_usd', 0):.0f}` "

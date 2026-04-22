@@ -180,6 +180,7 @@ _Vous pouvez annuler manuellement sur OKX si besoin._"""
 
         alertes.send(msg)
         logger.info(f"Ordre OKX {ordre_id} exécuté avec succès")
+        signal["ordre_execute"] = True  # Flag pour le rapport final
         return True
 
     except Exception as e:
