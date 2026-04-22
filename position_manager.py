@@ -79,7 +79,26 @@ def get_open_positions() -> list[dict]:
 
 
 def _get_entry_price(ticker: str) -> float | None:
-    """Récupère le prix moyen d'entrée depuis la base SQLite."""
+    """
+    Récupère le prix moyen d'entrée depuis l'historique OKX (fills récents).
+    Fallback sur SQLite local si disponible.
+    """
+    # 1. Essai via OKX fills (fonctionne sur GitHub Actions)
+    try:
+        data = okx._get("/api/v5/trade/fills", {
+            "instId": f"{ticker.upper()}-USDC",
+            "limit": "20",
+        })
+        if data:
+            buys = [f for f in data if f.get("side") == "buy"]
+            if buys:
+                total_qty = sum(float(f["fillSz"]) for f in buys)
+                total_cost = sum(float(f["fillSz"]) * float(f["fillPx"]) for f in buys)
+                return total_cost / total_qty if total_qty > 0 else None
+    except Exception:
+        pass
+
+    # 2. Fallback SQLite local
     try:
         conn = sqlite3.connect(config.DB_PATH)
         cursor = conn.cursor()
