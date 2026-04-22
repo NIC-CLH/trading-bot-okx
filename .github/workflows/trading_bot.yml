@@ -1,10 +1,11 @@
 name: Trading Bot OKX
 
 on:
-  schedule:
-    - cron: "0 */4 * * *"   # Scan toutes les 4 heures
-    - cron: "0 7 * * *"      # Rapport quotidien à 7h UTC
-  workflow_dispatch:           # Lancement manuel possible depuis GitHub
+  # Cron GitHub désactivé — trop peu fiable (dérive jusqu'à 2h)
+  # Déclenchement via cron-job.org → workflow_dispatch toutes les 4h exactes
+  # schedule:
+  #   - cron: "0 */4 * * *"
+  workflow_dispatch:           # Déclenché par cron-job.org (ou manuel GitHub)
 
 jobs:
   scan:
