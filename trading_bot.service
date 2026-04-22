@@ -1,0 +1,18 @@
+[Unit]
+Description=Bot de trading OKX
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=30
+User=root
+WorkingDirectory=/opt/trading_bot
+Environment=PYTHONIOENCODING=utf-8
+ExecStart=/opt/trading_bot/venv/bin/python3 scheduler.py
+StandardOutput=append:/var/log/trading_bot.log
+StandardError=append:/var/log/trading_bot_error.log
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,27 @@
+# Sécurité — ne JAMAIS publier ces fichiers
+.env
+*.db
+*.sqlite
+snapshot.json
+
+# Logs
+*.log
+portfolio.log
+scheduler_out.log
+scheduler_err.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Fichiers de test et debug
+test_*.py
+debug_*.py
+place_orders.py
+
+# OS
+.DS_Store
+Thumbs.db
