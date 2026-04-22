@@ -124,6 +124,37 @@ def get_all_prices_usdt(tickers: list[str]) -> dict[str, float]:
     return prices
 
 
+def get_ask_price(ticker: str) -> float | None:
+    """Retourne le meilleur ask (prix vendeur) depuis le carnet d'ordres."""
+    for quote in ("USDC", "USDT"):
+        try:
+            data = _get("/api/v5/market/books", {
+                "instId": f"{ticker.upper()}-{quote}",
+                "sz": "1",
+            })
+            if data and data[0].get("asks"):
+                return float(data[0]["asks"][0][0])
+        except Exception:
+            continue
+    # Fallback au prix last si carnet indisponible
+    return get_price_usdc(ticker)
+
+
+def get_bid_price(ticker: str) -> float | None:
+    """Retourne le meilleur bid (prix acheteur) depuis le carnet d'ordres."""
+    for quote in ("USDC", "USDT"):
+        try:
+            data = _get("/api/v5/market/books", {
+                "instId": f"{ticker.upper()}-{quote}",
+                "sz": "1",
+            })
+            if data and data[0].get("bids"):
+                return float(data[0]["bids"][0][0])
+        except Exception:
+            continue
+    return get_price_usdc(ticker)
+
+
 # ─── OHLCV ────────────────────────────────────────────────────────────────────
 
 def get_ohlcv(ticker: str, days: int = 90) -> pd.DataFrame:
@@ -203,61 +234,106 @@ def place_order(
     take_profit: float = None,
 ) -> dict:
     """
-    Passe un ordre Spot market sur OKX, puis place les ordres algo TP/SL séparément.
-    OKX spot ne supporte pas le TP/SL inline — il faut 2 appels :
-      1. /api/v5/trade/order  → exécution immédiate
-      2. /api/v5/trade/order-algo → ordre conditionnel sur la position résultante
+    Passe un ordre Spot sur OKX avec stratégie limit intelligente.
+
+    Stratégie d'exécution :
+    - ACHAT : limite à ask + 0.3% → évite l'annulation slippage 5% OKX sur paires peu liquides
+    - VENTE : limite à bid - 0.2% → garantit le remplissage rapide en sortie
+    - Si le carnet est indisponible : fallback market
+
+    Puis place les ordres algo TP/SL séparément (OKX spot ne supporte pas l'inline).
     """
     inst_id = f"{ticker.upper()}-{QUOTE_CCY}"  # USDC sur compte EEA
 
-    # ── Étape 1 : ordre market ────────────────────────────────────────────────
+    # ── Étape 1 : calcul du prix limite et de la quantité ─────────────────────
+    fill_price = None  # Prix utilisé pour les calculs (TP/SL algo + rapport)
+    use_limit = True
+
+    if side == "buy":
+        ask = get_ask_price(ticker)
+        if ask:
+            fill_price = round(ask * 1.003, 8)  # +0.3% au-dessus de l'ask
+        else:
+            use_limit = False
+
+    elif side == "sell":
+        bid = get_bid_price(ticker)
+        if bid:
+            fill_price = round(bid * 0.998, 8)  # -0.2% en dessous du bid
+        else:
+            use_limit = False
+
+    # Convertir montant USDC → quantité si nécessaire
+    qty_computed = None
+    if usdt_amount and fill_price:
+        qty_computed = round(usdt_amount / fill_price, 8)
+    elif quantity:
+        qty_computed = round(quantity, 8)
+
+    # ── Étape 2 : construction du corps de l'ordre ────────────────────────────
     body = {
         "instId": inst_id,
         "tdMode": "cash",
         "side": side,
-        "ordType": order_type,
     }
 
-    if side == "buy" and usdt_amount:
-        body["tgtCcy"] = "quote_ccy"
-        body["sz"] = str(round(usdt_amount, 2))
-    elif quantity:
-        body["sz"] = str(round(quantity, 8))
+    if use_limit and fill_price and qty_computed:
+        body["ordType"] = "limit"
+        body["px"] = str(fill_price)
+        body["sz"] = str(qty_computed)
+        logger.info(
+            f"Ordre LIMIT {side} {ticker} : {qty_computed} @ ${fill_price} "
+            f"({'ask+0.3%' if side == 'buy' else 'bid-0.2%'})"
+        )
+    else:
+        # Fallback market
+        body["ordType"] = "market"
+        if side == "buy" and usdt_amount:
+            body["tgtCcy"] = "quote_ccy"
+            body["sz"] = str(round(usdt_amount, 2))
+        elif qty_computed:
+            body["sz"] = str(qty_computed)
+        logger.info(f"Ordre MARKET {side} {ticker} (carnet indisponible)")
 
     result = _post("/api/v5/trade/order", body)
-    logger.info(f"Ordre OKX market placé : {side} {ticker} — {result}")
+    logger.info(f"Ordre OKX placé : {side} {ticker} — {result}")
     order_result = result[0] if result else {}
 
-    # ── Étape 2 : algo TP/SL (ordre conditionnel post-entrée) ────────────────
+    # Enrichir le résultat avec le prix d'entrée estimé
+    if fill_price:
+        order_result["fill_price_estimate"] = fill_price
+    if qty_computed:
+        order_result["qty_estimate"] = qty_computed
+
+    # ── Étape 3 : algo TP/SL (ordre conditionnel post-entrée) ─────────────────
     if (stop_loss or take_profit) and order_result.get("ordId"):
         try:
-            algo_body = {
-                "instId": inst_id,
-                "tdMode": "cash",
-                "side": "sell" if side == "buy" else "buy",
-                "ordType": "oco",  # One-Cancels-Other : TP + SL simultanés
-            }
+            # Quantité pour l'algo : on connaît qty_computed depuis l'étape 1
+            qty_algo = qty_computed
+            if not qty_algo and usdt_amount:
+                # Dernier recours : estimation par prix actuel
+                price_now = get_price_usdc(ticker)
+                qty_algo = round(usdt_amount / price_now, 8) if price_now else None
 
-            # Récupérer la quantité achetée
-            if usdt_amount and quantity is None:
-                price_now = get_price_usdt(ticker)
-                if price_now:
-                    qty_bought = round(usdt_amount / price_now, 8)
-                    algo_body["sz"] = str(qty_bought)
-            elif quantity:
-                algo_body["sz"] = str(round(quantity, 8))
+            if qty_algo:
+                algo_body = {
+                    "instId": inst_id,
+                    "tdMode": "cash",
+                    "side": "sell" if side == "buy" else "buy",
+                    "ordType": "oco",
+                    "sz": str(qty_algo),
+                }
 
-            if take_profit:
-                algo_body["tpTriggerPx"] = str(round(take_profit, 6))
-                algo_body["tpOrdPx"] = "-1"
-                algo_body["tpTriggerPxType"] = "last"
+                if take_profit:
+                    algo_body["tpTriggerPx"] = str(round(take_profit, 6))
+                    algo_body["tpOrdPx"] = "-1"
+                    algo_body["tpTriggerPxType"] = "last"
 
-            if stop_loss:
-                algo_body["slTriggerPx"] = str(round(stop_loss, 6))
-                algo_body["slOrdPx"] = "-1"
-                algo_body["slTriggerPxType"] = "last"
+                if stop_loss:
+                    algo_body["slTriggerPx"] = str(round(stop_loss, 6))
+                    algo_body["slOrdPx"] = "-1"
+                    algo_body["slTriggerPxType"] = "last"
 
-            if "sz" in algo_body:
                 algo_result = _post("/api/v5/trade/order-algo", algo_body)
                 logger.info(f"Algo TP/SL OKX : {ticker} — {algo_result}")
                 order_result["algoId"] = algo_result[0].get("algoId", "") if algo_result else ""
