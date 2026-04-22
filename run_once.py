@@ -147,13 +147,20 @@ try:
     actions_taken = pm_result.get("actions", []) if "pm_result" in dir() else []
     decisions_lines = []
     for a in actions_taken:
-        emoji = "💰" if "SELL" in a["decision"] else "📈"
-        decisions_lines.append(f"{emoji} {a['ticker']} — {a['raison']}")
+        valeur_str = f"`${a['valeur']:.2f}`" if a.get("valeur") else ""
+        pnl_str = f"P&L `{a['pnl_pct']:+.1f}%`" if a.get("pnl_pct") is not None else ""
+        if a["decision"] == "FULL_SELL":
+            decisions_lines.append(f"💰 Vente *{a['ticker']}* {valeur_str} {pnl_str} — {a['raison']}")
+        elif a["decision"] == "PARTIAL_SELL":
+            decisions_lines.append(f"🟡 Vente partielle *{a['ticker']}* 50% {valeur_str} {pnl_str} — {a['raison']}")
 
-    # Nouveaux ordres
+    # Nouveaux achats
     signals_taken = signals if "signals" in dir() else []
     for s in signals_taken:
-        decisions_lines.append(f"🛒 Achat *{s['ticker']}* `${s.get('prix', 0):.4f}` score `{s['score']:+.2f}`")
+        decisions_lines.append(
+            f"🛒 Achat *{s['ticker']}* `${s.get('taille_usd', 0):.0f}` "
+            f"@ `${s.get('prix', 0):.4f}` — score `{s['score']:+.2f}`"
+        )
 
     # Construction du message
     msg_lines = [
