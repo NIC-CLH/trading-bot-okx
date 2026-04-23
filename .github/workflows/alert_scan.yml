@@ -2,13 +2,20 @@ name: Alert Scanner (30min)
 
 on:
   # Déclenché par cron-job.org toutes les 30 minutes
-  # (pas de cron GitHub — trop peu fiable)
   workflow_dispatch:
+
+# Évite que deux scans d'alertes se chevauchent
+concurrency:
+  group: alert-scanner
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   alert:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 8  # Scan rapide — 8 min max
 
     steps:
       - name: Checkout code
@@ -21,18 +28,27 @@ jobs:
           cache: "pip"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Create .env from secrets
-        run: |
-          echo "OKX_API_KEY=${{ secrets.OKX_API_KEY }}" >> .env
-          echo "OKX_SECRET=${{ secrets.OKX_SECRET }}" >> .env
-          echo "OKX_PASSPHRASE=${{ secrets.OKX_PASSPHRASE }}" >> .env
-          echo "TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }}" >> .env
-          echo "TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}" >> .env
-          echo "CRYPTOPANIC_TOKEN=${{ secrets.CRYPTOPANIC_TOKEN }}" >> .env
+        run: pip install -q -r requirements.txt
 
       - name: Run alert scanner
         run: python alert_scanner.py
         env:
+          OKX_API_KEY: ${{ secrets.OKX_API_KEY }}
+          OKX_SECRET: ${{ secrets.OKX_SECRET }}
+          OKX_PASSPHRASE: ${{ secrets.OKX_PASSPHRASE }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          CRYPTOPANIC_TOKEN: ${{ secrets.CRYPTOPANIC_TOKEN }}
           PYTHONIOENCODING: utf-8
+
+      # Alerte silencieuse si le scanner plante (pas de spam — on ne notifie qu'une fois)
+      - name: Notify on failure
+        if: failure()
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
+            -d "chat_id=$TELEGRAM_CHAT_ID" \
+            -d "text=⚠️ Alert scanner en erreur — vérifier GitHub Actions" \
+            -d "parse_mode=Markdown"
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}

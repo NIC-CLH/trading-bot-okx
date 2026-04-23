@@ -1,16 +1,23 @@
 name: Trading Bot OKX
 
 on:
-  # Cron GitHub désactivé — trop peu fiable (dérive jusqu'à 2h)
-  # Déclenchement via cron-job.org → workflow_dispatch toutes les 4h exactes
-  # schedule:
-  #   - cron: "0 */4 * * *"
-  workflow_dispatch:           # Déclenché par cron-job.org (ou manuel GitHub)
+  # Déclenché par cron-job.org toutes les 4h via workflow_dispatch
+  # (cron natif GitHub désactivé — dérive jusqu'à 2h)
+  workflow_dispatch:
+
+# Évite que deux cycles se chevauchent — annule le précédent si déjà en cours
+concurrency:
+  group: trading-bot-main
+  cancel-in-progress: true
+
+# Permissions minimales (lecture seule du code)
+permissions:
+  contents: read
 
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 15  # Le cycle complet ne doit pas dépasser 15 min
 
     steps:
       - name: Checkout code
@@ -20,20 +27,31 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: "pip"
+          cache: "pip"  # Cache pip — économise ~60s par run
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Create .env from secrets
-        run: |
-          echo "OKX_API_KEY=${{ secrets.OKX_API_KEY }}" >> .env
-          echo "OKX_SECRET=${{ secrets.OKX_SECRET }}" >> .env
-          echo "OKX_PASSPHRASE=${{ secrets.OKX_PASSPHRASE }}" >> .env
-          echo "TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }}" >> .env
-          echo "TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}" >> .env
+        run: pip install -q -r requirements.txt
 
       - name: Run market scan
         run: python run_once.py
         env:
+          # Secrets passés directement en variables d'env (jamais écrits sur disque)
+          OKX_API_KEY: ${{ secrets.OKX_API_KEY }}
+          OKX_SECRET: ${{ secrets.OKX_SECRET }}
+          OKX_PASSPHRASE: ${{ secrets.OKX_PASSPHRASE }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          CRYPTOPANIC_TOKEN: ${{ secrets.CRYPTOPANIC_TOKEN }}
           PYTHONIOENCODING: utf-8
+
+      # Alerte Telegram si le bot plante complètement
+      - name: Notify on failure
+        if: failure()
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
+            -d "chat_id=$TELEGRAM_CHAT_ID" \
+            -d "text=⚠️ *Bot OKX — ERREUR cycle 4h*%0AWorkflow ID : ${{ github.run_id }}%0AVoir : https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            -d "parse_mode=Markdown"
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
