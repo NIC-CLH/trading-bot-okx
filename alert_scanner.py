@@ -206,6 +206,87 @@ _Analyse l'impact sur ton portefeuille et agis si nécessaire._"""
     return alerts
 
 
+# ── 3. Suivi XRP Binance ──────────────────────────────────────────────────────
+
+def scan_xrp_binance():
+    """
+    Analyse XRP toutes les 30 min et envoie une recommandation claire
+    pour la position manuelle sur Binance.
+    Envoyé uniquement si le signal a changé ou est fort (évite le spam).
+    """
+    try:
+        ohlcv = okx.get_all_ohlcv(["XRP"], days=60)
+        tech_results = ts.run(ohlcv)
+        tech = tech_results.get("XRP", {})
+
+        if not tech or "erreur" in tech:
+            return None
+
+        sig = tech.get("signal", {})
+        score = sig.get("score", 0)
+        verdict = sig.get("verdict", "")
+        prix = tech.get("prix_actuel", 0)
+        stop = tech.get("stop_proche")
+        target = tech.get("target_proche")
+        atr = tech.get("atr_14", 0)
+
+        if not stop and atr:
+            stop = round(prix - atr * 2, 6)
+        if not target and stop:
+            target = round(prix + abs(prix - stop) * 2, 6)
+
+        # Recommandation selon le score
+        if score >= 2.0:
+            action = "🟢 RENFORCER"
+            conseil = "Signal très fort — opportunité d'achat sur Binance"
+        elif score >= 1.0:
+            action = "🟢 CONSERVER / ACCUMULER"
+            conseil = "Momentum positif — garder ta position, possibilité de renforcer"
+        elif score >= -0.5:
+            action = "🟡 CONSERVER"
+            conseil = "Signal neutre — rien à faire, surveille"
+        elif score >= -1.0:
+            action = "🟠 ALLÉGER"
+            conseil = "Signal qui se dégrade — pense à vendre 30-50% sur Binance"
+        else:
+            action = "🔴 VENDRE"
+            conseil = "Signal baissier — coupe ta position sur Binance"
+
+        # N'envoie que si signal fort ou dégradation (évite spam toutes les 30min)
+        cache_key = f"xrp_score_{int(score * 2)}"  # Change si score change de 0.5
+        if _is_cooldown(cache_key) and abs(score) < 1.5:
+            return None  # Signal neutre déjà envoyé récemment → silence
+
+        rr = abs(target - prix) / abs(prix - stop) if (stop and target and stop != prix) else 0
+        signaux = sig.get("signaux", [])[:3]
+        signaux_txt = "\n".join(f"  • {s}" for s in signaux) if signaux else ""
+
+        msg = f"""📊 *XRP — Suivi Binance*
+
+{action}
+_{conseil}_
+
+💰 Prix actuel : `${prix:.4f}`
+📈 Score : `{score:+.2f} / 3.0` — {verdict}
+
+🛡 Zone de stop : `${stop:.4f}`
+🎯 Objectif : `${target:.4f}`
+⚖️ R/R : `{rr:.1f}:1`
+
+{signaux_txt}
+
+_Position sur Binance — action manuelle requise_"""
+
+        _send_telegram(msg)
+        _set_cooldown(cache_key)
+        logger.info(f"XRP Binance update : score={score:+.2f} → {action}")
+        return {"score": score, "action": action, "prix": prix}
+
+    except Exception as e:
+        logger.error(f"Erreur analyse XRP : {e}")
+        return None
+
+
 # ── Point d'entrée ─────────────────────────────────────────────────────────────
 
 def run():
@@ -214,14 +295,15 @@ def run():
 
     signal_alerts = scan_extreme_signals()
     news_alerts = scan_breaking_news()
+    xrp_update = scan_xrp_binance()
 
     total = len(signal_alerts) + len(news_alerts)
     logger.info(f"Alert scanner terminé — {total} alerte(s) envoyée(s)")
 
-    if total == 0:
+    if total == 0 and not xrp_update:
         logger.info("Aucune alerte — marché calme")
 
-    return {"signals": signal_alerts, "news": news_alerts}
+    return {"signals": signal_alerts, "news": news_alerts, "xrp": xrp_update}
 
 
 if __name__ == "__main__":
