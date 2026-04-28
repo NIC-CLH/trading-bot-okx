@@ -28,7 +28,8 @@ AUTO_EXECUTE_THRESHOLD = 1.5  # Ordre automatique placé
 
 # Watchlist prioritaire (actifs à fort potentiel)
 WATCHLIST_EXTRA = [
-    "SOL", "INJ", "SUI", "TIA", "JTO",
+    "BTC", "ETH", "XRP", "SOL", "BNB",   # Top market cap — priorité absolue
+    "INJ", "SUI", "TIA", "JTO",
     "ARB", "OP", "AVAX", "DOT",
     "LINK", "AAVE", "UNI", "NEAR", "APT",
     "ATOM", "DYDX", "SEI", "STX", "WIF",

@@ -26,14 +26,19 @@ import config
 logger = logging.getLogger(__name__)
 
 # Paramètres de gestion
-STOP_SIGNAL_EXIT = -1.5       # Score technique → sortie défensive
-HARD_SIGNAL_EXIT = -2.0       # Score technique → sortie urgente
-PARTIAL_PROFIT_PCT = 0.20     # +20% → prise de profit partielle (50%)
-TRAILING_STOP_TRIGGER = 0.15  # +15% → active le trailing stop
-TRAILING_STOP_DISTANCE = 0.07 # Trailing stop à 7% sous le plus haut
+STOP_SIGNAL_EXIT = -1.0       # Score technique → sortie défensive (abaissé de -1.5)
+HARD_SIGNAL_EXIT = -1.8       # Score technique → sortie urgente (abaissé de -2.0)
+PARTIAL_PROFIT_PCT = 0.15     # +15% → prise de profit partielle (50%)
+TRAILING_STOP_TRIGGER = 0.12  # +12% → active le trailing stop
+TRAILING_STOP_DISTANCE = 0.06 # Trailing stop à 6% sous le plus haut
 REINFORCE_SCORE = 2.5         # Score → renforcement possible
 MAX_POSITIONS = 4
 MIN_USDC_RESERVE_PCT = 0.05   # Garder 5% en USDC (frais + opportunités)
+
+# Stop loss en prix — indépendant du score technique
+HARD_PRICE_STOP_PCT = -0.10   # -10% depuis entrée → sortie automatique (stop loss dur)
+SOFT_PRICE_STOP_PCT = -0.07   # -7% + score négatif → sortie défensive
+MAX_HOLDING_DAYS = 10         # Position perdante depuis > 10 jours → sortie
 
 
 def get_open_positions() -> list[dict]:
@@ -144,38 +149,46 @@ def evaluate_position(pos: dict, tech: dict) -> dict:
     raison = ""
     urgence = False
 
-    # ── Sortie urgente : signal très baissier ──────────────────────────────
-    if score <= HARD_SIGNAL_EXIT:
+    # ── PRIORITÉ 1 : Stop loss dur en prix (-10%) ──────────────────────────
+    # Indépendant du score technique — coupe toujours une perte trop lourde
+    if entree and pnl_pct <= HARD_PRICE_STOP_PCT * 100:
+        decision = "FULL_SELL"
+        raison = f"Stop loss prix déclenché ({pnl_pct:.1f}%) — perte maximale atteinte"
+        urgence = True
+
+    # ── PRIORITÉ 2 : Stop défensif prix (-7%) + score négatif ─────────────
+    elif entree and pnl_pct <= SOFT_PRICE_STOP_PCT * 100 and score < 0:
+        decision = "FULL_SELL"
+        raison = f"Stop défensif ({pnl_pct:.1f}% + score {score:+.2f}) — signal et prix convergent baissiers"
+        urgence = True
+
+    # ── PRIORITÉ 3 : Sortie urgente signal très baissier ──────────────────
+    elif score <= HARD_SIGNAL_EXIT:
         decision = "FULL_SELL"
         raison = f"Signal très baissier (score {score:+.2f}) — sortie immédiate"
         urgence = True
 
-    # ── Sortie défensive : signal retourné négatif ─────────────────────────
-    elif score <= STOP_SIGNAL_EXIT and pnl_pct < 5:
+    # ── PRIORITÉ 4 : Sortie défensive signal négatif ──────────────────────
+    elif score <= STOP_SIGNAL_EXIT and pnl_pct < 3:
         decision = "FULL_SELL"
         raison = f"Signal retourné négatif (score {score:+.2f}) — position marginale"
 
-    # ── Prise de profit partielle : +20% ──────────────────────────────────
+    # ── PRIORITÉ 5 : Prise de profit partielle : +15% ─────────────────────
     elif pnl_pct >= PARTIAL_PROFIT_PCT * 100:
         if score > 0:
-            decision = "PARTIAL_SELL"  # Garde 50%, vend 50%
+            decision = "PARTIAL_SELL"
             raison = f"Prise de profit partielle (+{pnl_pct:.1f}%) — momentum encore positif"
         else:
             decision = "FULL_SELL"
             raison = f"Prise de profit totale (+{pnl_pct:.1f}%) — momentum s'essoufle"
 
-    # ── Trailing stop activé : +15% de gain ────────────────────────────────
+    # ── PRIORITÉ 6 : Trailing stop activé : +12% de gain ──────────────────
     elif pnl_pct >= TRAILING_STOP_TRIGGER * 100 and entree:
         plus_haut = _get_highest_price_since_entry(ticker, entree)
         trailing_stop = plus_haut * (1 - TRAILING_STOP_DISTANCE)
         if prix < trailing_stop:
             decision = "FULL_SELL"
             raison = f"Trailing stop déclenché (${prix:.4f} < ${trailing_stop:.4f})"
-
-    # ── Position hors de contrôle : sans prix d'entrée ─────────────────────
-    elif entree is None and score < 0:
-        decision = "HOLD"  # Prudence si on ne connaît pas l'entrée
-        raison = "Prix d'entrée inconnu — surveillance"
 
     # ── HOLD par défaut ────────────────────────────────────────────────────
     if decision == "HOLD":
