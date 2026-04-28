@@ -235,27 +235,47 @@ def scan_xrp_binance():
         if not target and stop:
             target = round(prix + abs(prix - stop) * 2, 6)
 
-        # Recommandation selon le score
+        # Recommandation selon le score + instructions de rachat
+        rachat_txt = ""
         if score >= 2.0:
-            action = "🟢 RENFORCER"
-            conseil = "Signal très fort — opportunité d'achat sur Binance"
+            action = "🟢 ACHETER / RENFORCER"
+            conseil = "Signal très fort — opportunité d'entrée sur Binance"
+            rachat_txt = ""
         elif score >= 1.0:
-            action = "🟢 CONSERVER / ACCUMULER"
-            conseil = "Momentum positif — garder ta position, possibilité de renforcer"
+            action = "🟢 CONSERVER / RACHETER"
+            conseil = "Momentum positif — si tu avais allégé, c'est le moment de reprendre"
+            rachat_txt = (
+                f"\n💡 *Niveau de rachat* : autour de `${prix:.4f}`"
+                f"\n   Stop si ça repasse sous `${stop:.4f}`"
+            )
         elif score >= -0.5:
-            action = "🟡 CONSERVER"
-            conseil = "Signal neutre — rien à faire, surveille"
+            action = "🟡 ATTENDRE"
+            conseil = "Signal neutre — ne rien faire, attends une direction claire"
+            rachat_txt = (
+                f"\n💡 *Racheter si* : score repasse au-dessus de +1.0"
+                f"\n   Surveille le niveau `${target:.4f}` comme résistance clé"
+            )
         elif score >= -1.0:
-            action = "🟠 ALLÉGER"
-            conseil = "Signal qui se dégrade — pense à vendre 30-50% sur Binance"
+            action = "🟠 ALLÉGER 30-50%"
+            conseil = "Signal qui se dégrade — sécurise une partie"
+            rachat_txt = (
+                f"\n♻️ *Quand racheter* : attends que le score repasse > +1.0"
+                f"\n   Zone de rachat visée : `${stop:.4f}` — `${round(prix * 0.97, 4):.4f}`"
+                f"\n   Tu recevras une alerte 🟢 dès que le signal se retourne"
+            )
         else:
             action = "🔴 VENDRE"
-            conseil = "Signal baissier — coupe ta position sur Binance"
+            conseil = "Signal clairement baissier — coupe ta position"
+            rachat_txt = (
+                f"\n♻️ *Quand racheter* : attends un signal > +1.5 ET que le prix"
+                f" repasse au-dessus de `${round(prix * 1.05, 4):.4f}`"
+                f"\n   Tu recevras une alerte 🟢 automatiquement"
+            )
 
-        # N'envoie que si signal fort ou dégradation (évite spam toutes les 30min)
-        cache_key = f"xrp_score_{int(score * 2)}"  # Change si score change de 0.5
+        # N'envoie que si le signal change de zone (évite spam toutes les 30min)
+        cache_key = f"xrp_zone_{int(score * 2)}"  # Change si score change de 0.5
         if _is_cooldown(cache_key) and abs(score) < 1.5:
-            return None  # Signal neutre déjà envoyé récemment → silence
+            return None
 
         rr = abs(target - prix) / abs(prix - stop) if (stop and target and stop != prix) else 0
         signaux = sig.get("signaux", [])[:3]
@@ -272,10 +292,11 @@ _{conseil}_
 🛡 Zone de stop : `${stop:.4f}`
 🎯 Objectif : `${target:.4f}`
 ⚖️ R/R : `{rr:.1f}:1`
+{rachat_txt}
 
 {signaux_txt}
 
-_Position sur Binance — action manuelle requise_"""
+_Action manuelle sur Binance — alerte automatique au prochain retournement_"""
 
         _send_telegram(msg)
         _set_cooldown(cache_key)
