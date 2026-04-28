@@ -11,6 +11,8 @@ import logging
 import time
 from datetime import datetime
 
+import pandas as pd
+
 import okx_client as okx
 import technical_signals as ts
 import news_sentiment as ns
@@ -18,6 +20,9 @@ import market_microstructure as mm
 import onchain
 import coinglass_data as cg
 import macro_context as macro
+import regime_detector as rd
+import volume_profile as vp
+import ml_scorer as ml
 import alertes
 import config
 import execution
@@ -207,9 +212,12 @@ def run_scan(portfolio_value: float) -> list[dict]:
     }
     logger.info(f"Candidats après pré-filtre technique : {len(candidates)}")
 
-    # Contexte macro — calculé UNE SEULE FOIS pour tout le cycle (DXY/DVOL global)
+    # Contexte global — calculé UNE SEULE FOIS pour tout le cycle
     macro_data = macro.analyze()
     logger.info(f"Macro : {macro_data['verdict']} (score {macro_data['score']:+.2f})")
+
+    ml_status = ml.get_model_status()
+    logger.info(f"ML : {'actif' if ml_status['model_trained'] else f'en collecte ({ml_status[\"n_labeled_trades\"]}/{50} trades)'}")
 
     # Analyse complète uniquement sur les candidats (économie d'API calls)
     actionable = []
@@ -231,6 +239,13 @@ def run_scan(portfolio_value: float) -> list[dict]:
         # 5. Macro context (DXY + DVOL + Google Trends) — ticker-specific pour Trends
         macro_ticker = macro.analyze(ticker)
 
+        # 6. Régime de marché (HMM + GARCH + ruptures)
+        df_ticker = ohlcv_data.get(ticker, pd.DataFrame())
+        regime_data = rd.analyze(df_ticker)
+
+        # 7. Volume Profile (POC, VAH, VAL, HVN/LVN)
+        vp_data = vp.analyze(df_ticker)
+
         score_final = compute_final_score(
             score_tech,
             fundamental["score_global"],
@@ -240,10 +255,29 @@ def run_scan(portfolio_value: float) -> list[dict]:
             macro_ticker["score"],
         )
 
+        # Appliquer le multiplicateur de régime sur le score final
+        position_multiplier = regime_data.get("position_multiplier", 1.0)
+
+        # Score ML si disponible (remplace le score manuel après 50 trades)
+        temp_payload = {
+            "score": score_final, "score_tech": score_tech,
+            "score_news": fundamental["score_global"],
+            "score_ms": microstructure["score"], "score_oc": onchain_data["score"],
+            "score_cg": coinglass_data["score"], "score_macro": macro_ticker["score"],
+            "dxy": macro_ticker.get("dxy", 104), "dvol": macro_ticker.get("dvol", 65),
+            "ls_ratio": coinglass_data.get("ls_ratio", 1.0),
+            "oi_change_4h_pct": coinglass_data.get("oi_change_4h_pct", 0),
+        }
+        ml_result = ml.predict_score(temp_payload, regime_data, vp_data)
+        if ml_result["ml_active"]:
+            score_final = ml_result["score_ml"]
+
         logger.info(
             f"{ticker} | Tech:{score_tech:+.2f} News:{fundamental['score_global']:+.2f} "
             f"MS:{microstructure['score']:+.2f} OC:{onchain_data['score']:+.2f} "
             f"CG:{coinglass_data['score']:+.2f} Macro:{macro_ticker['score']:+.2f} "
+            f"Régime:{regime_data['regime']} Vol:{regime_data['vol_regime']} "
+            f"VP:{vp_data['score']:+.2f} PosMult:{position_multiplier} "
             f"→ FINAL:{score_final:+.2f}"
         )
 
@@ -264,15 +298,34 @@ def run_scan(portfolio_value: float) -> list[dict]:
             ticker, tech, fundamental, microstructure, onchain_data,
             coinglass_data, macro_ticker, portfolio_value
         )
+        # Enrichir le payload avec régime, VP, ML
+        payload["regime"] = regime_data.get("regime", "sideways")
+        payload["regime_context"] = regime_data.get("regime_context", "")
+        payload["position_multiplier"] = position_multiplier
+        payload["vol_regime"] = regime_data.get("vol_regime", "normal")
+        payload["vol_annualized"] = regime_data.get("vol_annualized", 80)
+        payload["vp_poc"] = vp_data.get("poc")
+        payload["vp_vah"] = vp_data.get("vah")
+        payload["vp_val"] = vp_data.get("val")
+        payload["vp_score"] = vp_data.get("score", 0)
+        payload["ml_active"] = ml_result.get("ml_active", False)
+        payload["ml_confidence"] = ml_result.get("ml_confidence", 0)
+        payload["score"] = score_final  # Score final (ML ou manuel)
+
+        # Enregistrer pour l'entraînement ML futur
+        ml.save_signal_for_training(payload, regime_data, vp_data)
+
         actionable.append(payload)
 
-        # Alerte Telegram enrichie (4 dimensions)
+        # Alerte Telegram enrichie
         alertes.alerte_opportunite_enrichie(payload)
         _alerted_cache[ticker] = time.time()
         logger.info(f"Alerte envoyée : {ticker} score_final={score_final:+.2f}")
 
-        # Exécution autonome uniquement si score très fort ET fondamentaux OK
+        # Exécution autonome — taille ajustée par position_multiplier
         if score_final >= AUTO_EXECUTE_THRESHOLD and fundamental["trade_autorise"]:
+            # Réduire la taille si volatilité élevée ou régime incertain
+            payload["taille_usd"] = payload["taille_usd"] * position_multiplier
             execution.execute_signal(payload, portfolio_value)
 
         time.sleep(1)  # anti-flood Telegram + API
