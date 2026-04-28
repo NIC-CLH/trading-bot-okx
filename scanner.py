@@ -16,6 +16,8 @@ import technical_signals as ts
 import news_sentiment as ns
 import market_microstructure as mm
 import onchain
+import coinglass_data as cg
+import macro_context as macro
 import alertes
 import config
 import execution
@@ -69,17 +71,22 @@ def compute_final_score(
     score_news: float,
     score_ms: float,
     score_oc: float,
+    score_cg: float = 0.0,
+    score_macro: float = 0.0,
 ) -> float:
     """
-    Score composite final pondéré — 4 dimensions.
-    Technique (50%) + News/Fondamental (20%) + Microstructure (20%) + On-Chain (10%)
+    Score composite final pondéré — 6 dimensions.
+    Technique (40%) + News (15%) + Microstructure (15%) + On-Chain (10%)
+    + Coinglass/Liquidations (10%) + Macro DXY/DVOL (10%)
     Résultat clampé à [-3.0, +3.0]
     """
     score = (
-        score_tech * 0.50
-        + score_news * 0.20
-        + score_ms  * 0.20
-        + score_oc  * 0.10
+        score_tech  * 0.40
+        + score_news  * 0.15
+        + score_ms    * 0.15
+        + score_oc    * 0.10
+        + score_cg    * 0.10
+        + score_macro * 0.10
     )
     return round(max(-3.0, min(3.0, score)), 2)
 
@@ -90,15 +97,19 @@ def build_signal_payload(
     fundamental: dict,
     microstructure: dict,
     onchain_data: dict,
+    coinglass: dict,
+    macro: dict,
     portfolio_value: float,
     max_pct: float = 0.20,
 ) -> dict:
-    """Construit le payload complet (4 dimensions d'analyse) pour un signal."""
+    """Construit le payload complet (6 dimensions d'analyse) pour un signal."""
     sig = tech.get("signal", {})
     score_tech = sig.get("score", 0)
     score_news = fundamental.get("score_global", 0)
     score_ms = microstructure.get("score", 0)
     score_oc = onchain_data.get("score", 0)
+    score_cg = coinglass.get("score", 0)
+    score_macro = macro.get("score", 0)
 
     prix = tech.get("prix_actuel", 0)
     stop = tech.get("stop_proche")
@@ -114,12 +125,16 @@ def build_signal_payload(
     rr = abs(target - prix) / abs(prix - stop) if (stop and target and stop != prix) else 2.0
 
     taille_usd = portfolio_value * max_pct
-    score_final = compute_final_score(score_tech, score_news, score_ms, score_oc)
+    score_final = compute_final_score(
+        score_tech, score_news, score_ms, score_oc, score_cg, score_macro
+    )
 
     # Assemblage des raisons depuis toutes les sources
-    raisons = list(sig.get("signaux", []))[:5]
+    raisons = list(sig.get("signaux", []))[:4]
     ms_signals = microstructure.get("signals", [])
     oc_signals = onchain_data.get("signals", [])
+    cg_signals = coinglass.get("signals", [])
+    macro_signals = macro.get("signals", [])
 
     # Indicateurs clés pour l'alerte
     ichi = tech.get("ichimoku", {})
@@ -132,10 +147,14 @@ def build_signal_payload(
         "score_news": score_news,
         "score_ms": score_ms,
         "score_oc": score_oc,
+        "score_cg": score_cg,
+        "score_macro": score_macro,
         "verdict": sig.get("verdict", ""),
         "verdict_news": fundamental.get("verdict", ""),
         "verdict_ms": microstructure.get("verdict", ""),
         "verdict_oc": onchain_data.get("verdict", ""),
+        "verdict_cg": coinglass.get("verdict", ""),
+        "verdict_macro": macro.get("verdict", ""),
         "prix": prix,
         "stop": round(stop, 6) if stop else None,
         "target": round(target, 6) if target else None,
@@ -144,11 +163,16 @@ def build_signal_payload(
         "raisons": raisons,
         "ms_signals": ms_signals,
         "oc_signals": oc_signals,
+        "cg_signals": cg_signals,
+        "macro_signals": macro_signals,
         "news_signals": fundamental.get("news_signals", []),
         "fear_greed": fundamental.get("fear_greed", {}),
         "ichimoku": ichi,
         "fibonacci": fib,
         "funding_rate": microstructure.get("funding", {}).get("rate"),
+        "dvol": macro.get("dvol"),
+        "dxy": macro.get("dxy"),
+        "ls_ratio": coinglass.get("ls_ratio"),
         "trade_autorise": fundamental.get("trade_autorise", False),
         "source": "OKX Spot",
     }
@@ -183,6 +207,10 @@ def run_scan(portfolio_value: float) -> list[dict]:
     }
     logger.info(f"Candidats après pré-filtre technique : {len(candidates)}")
 
+    # Contexte macro — calculé UNE SEULE FOIS pour tout le cycle (DXY/DVOL global)
+    macro_data = macro.analyze()
+    logger.info(f"Macro : {macro_data['verdict']} (score {macro_data['score']:+.2f})")
+
     # Analyse complète uniquement sur les candidats (économie d'API calls)
     actionable = []
     for ticker, tech in candidates.items():
@@ -197,12 +225,25 @@ def run_scan(portfolio_value: float) -> list[dict]:
         # 3. On-chain (CoinGecko, DefiLlama TVL)
         onchain_data = onchain.analyze(ticker)
 
-        score_final = compute_final_score(score_tech, fundamental["score_global"],
-                                          microstructure["score"], onchain_data["score"])
+        # 4. Liquidations + OI + L/S ratio (Coinglass)
+        coinglass_data = cg.analyze(ticker)
+
+        # 5. Macro context (DXY + DVOL + Google Trends) — ticker-specific pour Trends
+        macro_ticker = macro.analyze(ticker)
+
+        score_final = compute_final_score(
+            score_tech,
+            fundamental["score_global"],
+            microstructure["score"],
+            onchain_data["score"],
+            coinglass_data["score"],
+            macro_ticker["score"],
+        )
 
         logger.info(
             f"{ticker} | Tech:{score_tech:+.2f} News:{fundamental['score_global']:+.2f} "
             f"MS:{microstructure['score']:+.2f} OC:{onchain_data['score']:+.2f} "
+            f"CG:{coinglass_data['score']:+.2f} Macro:{macro_ticker['score']:+.2f} "
             f"→ FINAL:{score_final:+.2f}"
         )
 
@@ -220,7 +261,8 @@ def run_scan(portfolio_value: float) -> list[dict]:
             continue
 
         payload = build_signal_payload(
-            ticker, tech, fundamental, microstructure, onchain_data, portfolio_value
+            ticker, tech, fundamental, microstructure, onchain_data,
+            coinglass_data, macro_ticker, portfolio_value
         )
         actionable.append(payload)
 
