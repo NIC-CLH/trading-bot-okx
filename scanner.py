@@ -217,7 +217,8 @@ def run_scan(portfolio_value: float) -> list[dict]:
     logger.info(f"Macro : {macro_data['verdict']} (score {macro_data['score']:+.2f})")
 
     ml_status = ml.get_model_status()
-    logger.info(f"ML : {'actif' if ml_status['model_trained'] else f'en collecte ({ml_status[\"n_labeled_trades\"]}/{50} trades)'}")
+    ml_info = "actif" if ml_status["model_trained"] else f"en collecte ({ml_status['n_labeled_trades']}/50 trades)"
+    logger.info(f"ML : {ml_info}")
 
     # Analyse complète uniquement sur les candidats (économie d'API calls)
     actionable = []
