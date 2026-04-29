@@ -362,16 +362,71 @@ _Analyse l'impact sur ton portefeuille et agis si nécessaire._"""
     return alerts
 
 
+# ── Traduction des signaux techniques en français simple ─────────────────────
+
+def _traduire_signaux(signaux_bruts: list) -> list:
+    """Convertit les signaux techniques en phrases compréhensibles."""
+    traductions = {
+        "EMA 8>21>55>200 alignées haussière": "Toutes les tendances sont orientées à la hausse",
+        "EMA 8<21<55<200 alignées baissière": "Toutes les tendances sont orientées à la baisse",
+        "EMA partiellement haussière": "La tendance court terme est haussière",
+        "Golden Cross EMA8/EMA21": "Signal d'achat déclenché sur le court terme",
+        "Death Cross EMA8/EMA21": "Signal de vente déclenché sur le court terme",
+        "RSI survendu": "XRP est trop bas techniquement — rebond probable",
+        "RSI suracheté": "XRP est trop haut techniquement — prudence",
+        "StochRSI survendu": "XRP est en zone de survente — potentiel rebond",
+        "StochRSI suracheté": "XRP est en zone de surachat",
+        "StochRSI croisement haussier": "Les indicateurs court terme viennent de se retourner à la hausse",
+        "MACD croisement haussier": "Le momentum vient de basculer à la hausse",
+        "MACD croisement baissier": "Le momentum vient de basculer à la baisse",
+        "OBV haussier (accumulation)": "Les acheteurs sont actifs — le volume confirme la hausse",
+        "Supertrend retournement HAUSSIER": "Signal d'entrée technique fort confirmé",
+        "Supertrend retournement BAISSIER": "Signal de sortie technique confirmé",
+        "Bollinger Squeeze": "Une forte variation de prix est imminente",
+        "CVD divergence HAUSSIÈRE": "Des acheteurs importants accumulent discrètement",
+        "CVD divergence BAISSIÈRE": "Des vendeurs importants se déchargent discrètement",
+        "Donchian BREAKOUT haussier": "XRP vient de casser une résistance majeure",
+        "Donchian BREAKDOWN baissier": "XRP vient de casser un support majeur",
+        "Elder Ray BUY": "La dynamique acheteur est clairement dominante",
+        "Elder Ray SELL": "La dynamique vendeur est clairement dominante",
+        "ADX": "La tendance est forte et confirmée",
+        "Volume": "Le volume confirme le mouvement",
+        "Prix sous bande BB inférieure": "XRP est en survente extrême — rebond possible",
+        "Prix au-dessus de la Value Area": "XRP est au-dessus de sa zone de valeur — breakout",
+        "Prix en dessous de la Value Area": "XRP est sous sa zone de valeur — pression baissière",
+    }
+
+    resultat = []
+    for s in signaux_bruts:
+        traduit = None
+        for cle, traduction in traductions.items():
+            if cle.lower() in s.lower():
+                traduit = traduction
+                break
+        if traduit and traduit not in resultat:
+            resultat.append(traduit)
+        elif not traduit:
+            # Garder les signaux non reconnus mais nettoyer le jargon
+            s_clean = s.replace("📈", "").replace("📉", "").replace("🌟", "").strip()
+            # Supprimer les termes trop techniques
+            mots_a_supprimer = ["EMA", "RSI", "MACD", "ADX", "OBV", "ATR", "BB", "SAR", "CCI"]
+            if not any(m in s_clean for m in mots_a_supprimer):
+                resultat.append(s_clean)
+
+    return resultat[:3]
+
+
 # ── 3. Suivi XRP Binance ──────────────────────────────────────────────────────
 
 def scan_xrp_binance():
     """
-    Analyse XRP et envoie une alerte UNIQUEMENT si quelque chose d'actionnable :
-      - Score >= 2.0 (signal d'achat fort) → BUY
-      - Score <= -1.0 (signal de vente) → ALLÉGER ou VENDRE
-      - Prix a bougé de plus de 4% depuis l'ouverture journalière (mouvement brusque)
+    Analyse XRP et envoie une alerte UNIQUEMENT si quelque chose d'actionnable.
+    Message en français simple — zéro jargon technique ni mention de "score".
 
-    SILENCE si score entre -1.0 et +2.0 (zone d'attente) — rien à faire.
+    Déclenche uniquement si :
+    - Signal d'achat fort (score >= 2.0)
+    - Signal de vente (score <= -1.0)
+    - Mouvement de prix brusque > 4% sur la journée
     """
     try:
         ohlcv = okx.get_all_ohlcv(["XRP"], days=60)
@@ -383,7 +438,6 @@ def scan_xrp_binance():
 
         sig = tech.get("signal", {})
         score = sig.get("score", 0)
-        verdict = sig.get("verdict", "")
         prix = tech.get("prix_actuel", 0)
         stop = tech.get("stop_proche")
         target = tech.get("target_proche")
@@ -394,79 +448,95 @@ def scan_xrp_binance():
         if not target and stop:
             target = round(prix + abs(prix - stop) * 2, 6)
 
-        # ── Détection mouvement de prix brusque (intraday) ─────────────────
+        # ── Détection mouvement de prix brusque ────────────────────────────
         price_move_pct = 0.0
         is_price_spike = False
         try:
             df_xrp = ohlcv.get("XRP")
             if df_xrp is not None and len(df_xrp) >= 2:
-                open_price = float(df_xrp["open"].iloc[-1])   # Ouverture bougie actuelle
+                open_price = float(df_xrp["open"].iloc[-1])
                 if open_price > 0:
                     price_move_pct = (prix - open_price) / open_price * 100
                     is_price_spike = abs(price_move_pct) >= XRP_PRICE_MOVE_PCT
         except Exception:
             pass
 
-        # ── Décision d'envoyer ou non ───────────────────────────────────────
-        is_buy_signal  = score >= XRP_BUY_THRESHOLD    # >= +2.0
-        is_sell_signal = score <= XRP_SELL_THRESHOLD   # <= -1.0
-        actionnable = is_buy_signal or is_sell_signal or is_price_spike
+        is_buy_signal  = score >= XRP_BUY_THRESHOLD
+        is_sell_signal = score <= XRP_SELL_THRESHOLD
+        actionnable    = is_buy_signal or is_sell_signal or is_price_spike
 
         if not actionnable:
-            logger.info(
-                f"XRP : score={score:+.2f} | prix_move={price_move_pct:+.1f}% "
-                f"→ zone neutre, pas d'alerte"
-            )
+            logger.info(f"XRP neutre (score={score:+.2f}) — silence")
             return None
 
-        # ── Construction du message ──────────────────────────────────────────
-        if is_buy_signal:
-            action = "🟢 ACHETER / RENFORCER"
-            conseil = "Signal technique fort — opportunité d'entrée sur Binance"
-            rachat_txt = ""
-        elif score >= -0.5:  # Légèrement négatif mais spike de prix
-            action = "⚠️ MOUVEMENT BRUSQUE — SURVEILLER"
-            conseil = f"Prix a bougé de {price_move_pct:+.1f}% sur la bougie — score encore neutre"
-            rachat_txt = f"\n💡 Pas encore de signal clair — attends confirmation"
-        elif score >= -1.0 or (is_price_spike and not is_sell_signal):
-            action = "🟠 ALLÉGER 30-50%"
-            conseil = "Signal qui se dégrade — sécurise une partie de ta position"
-            rachat_txt = (
-                f"\n♻️ *Zone de rachat* : `${stop:.4f}` — `${round(prix * 0.97, 4):.4f}`"
-                f"\n   Tu recevras une alerte 🟢 quand le score remonte au-dessus de +2.0"
-            )
+        # ── Raisons en français simple ─────────────────────────────────────
+        signaux_bruts = sig.get("signaux", [])
+        raisons = _traduire_signaux(signaux_bruts)
+
+        # ── Calcul gain/risque ─────────────────────────────────────────────
+        if stop and target and stop != prix:
+            risque_pct  = abs(prix - stop) / prix * 100
+            gain_pct    = abs(target - prix) / prix * 100
+            rr          = gain_pct / risque_pct if risque_pct else 0
         else:
-            action = "🔴 VENDRE — SORTIR"
-            conseil = "Signal clairement baissier — coupe ta position XRP sur Binance"
-            rachat_txt = (
-                f"\n♻️ *Racheter si* : score XRP remonte > +2.0"
-                f"\n   ET prix au-dessus de `${round(prix * 1.05, 4):.4f}`"
-                f"\n   Tu recevras une alerte automatique"
+            risque_pct = gain_pct = rr = 0
+
+        # ── Message selon la situation ─────────────────────────────────────
+        if is_buy_signal:
+            titre   = "🟢 XRP — ACHETER sur Binance"
+            intro   = "Les indicateurs sont tous alignés à la hausse."
+            suite   = ""
+            conseil = (
+                f"Entre entre `${prix:.4f}` et `${round(prix * 1.01, 4):.4f}`\n"
+                f"🛡 Coupe si ça passe sous `${stop:.4f}` (−{risque_pct:.1f}%)\n"
+                f"🎯 Objectif `${target:.4f}` (+{gain_pct:.1f}%)"
             )
 
-        rr = abs(target - prix) / abs(prix - stop) if (stop and target and stop != prix) else 0
-        signaux = sig.get("signaux", [])[:3]
-        signaux_txt = "\n".join(f"  • {s}" for s in signaux) if signaux else ""
+        elif is_price_spike and not is_sell_signal:
+            direction = "hausse" if price_move_pct > 0 else "baisse"
+            titre   = f"⚡ XRP — Mouvement brusque ({price_move_pct:+.1f}%)"
+            intro   = f"XRP vient de bouger de {abs(price_move_pct):.1f}% en peu de temps."
+            suite   = "Les indicateurs ne donnent pas encore de direction claire — surveille avant d'agir."
+            conseil = f"💰 Prix actuel : `${prix:.4f}`"
 
-        spike_txt = f"\n⚡ Mouvement intraday : `{price_move_pct:+.1f}%`" if is_price_spike else ""
+        elif score >= XRP_SELL_THRESHOLD and is_price_spike:
+            titre   = "🟠 XRP — Alléger 30 à 50%"
+            intro   = f"Le prix chute ({price_move_pct:+.1f}%) et les indicateurs se dégradent."
+            suite   = "Sécurise une partie de ta position."
+            conseil = (
+                f"Vends 30 à 50% autour de `${prix:.4f}`\n"
+                f"♻️ Zone de rachat : autour de `${stop:.4f}` si ça se stabilise\n"
+                f"Tu recevras une alerte automatique quand ça repart à la hausse"
+            )
 
-        msg = (
-            f"📊 *XRP — Alerte Binance*\n\n"
-            f"{action}\n"
-            f"_{conseil}_\n\n"
-            f"💰 Prix : `${prix:.4f}`{spike_txt}\n"
-            f"📈 Score : `{score:+.2f} / 3.0` — {verdict}\n\n"
-            f"🛡 Stop : `${stop:.4f}`\n"
-            f"🎯 Target : `${target:.4f}`\n"
-            f"⚖️ R/R : `{rr:.1f}:1`\n"
-            f"{rachat_txt}\n\n"
-            f"{signaux_txt}\n"
-            f"_Action manuelle sur Binance_"
-        )
+        else:  # sell signal clair
+            titre   = "🔴 XRP — VENDRE sur Binance"
+            intro   = "Les indicateurs montrent une dégradation claire du XRP."
+            suite   = "Coupe ta position avant que ça empire."
+            conseil = (
+                f"Vends autour de `${prix:.4f}`\n"
+                f"♻️ Rachète si XRP remonte au-dessus de `${round(prix * 1.05, 4):.4f}`\n"
+                f"Tu recevras une alerte automatique dès que les signaux se retournent"
+            )
+
+        # ── Construction du message final ──────────────────────────────────
+        raisons_txt = "\n".join(f"  • {r}" for r in raisons) if raisons else ""
+
+        msg = f"*{titre}*\n\n"
+        msg += f"_{intro}_\n"
+        if suite:
+            msg += f"_{suite}_\n"
+        msg += f"\n💰 Prix : `${prix:.4f}`"
+        if is_price_spike:
+            msg += f" ({price_move_pct:+.1f}% aujourd'hui)"
+        msg += f"\n\n{conseil}\n"
+        if raisons_txt:
+            msg += f"\n*Pourquoi :*\n{raisons_txt}\n"
+        msg += "\n_Action manuelle sur Binance_"
 
         _send_telegram(msg)
-        logger.info(f"XRP alerte envoyée : score={score:+.2f} → {action}")
-        return {"score": score, "action": action, "prix": prix}
+        logger.info(f"XRP alerte envoyée (score={score:+.2f})")
+        return {"score": score, "action": titre, "prix": prix}
 
     except Exception as e:
         logger.error(f"Erreur analyse XRP : {e}")
