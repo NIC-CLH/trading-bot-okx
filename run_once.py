@@ -21,8 +21,9 @@ import position_manager as pm
 import scanner
 import alertes
 
-# Supprime toutes les alertes intermédiaires — on envoie un seul résumé à la fin
-alertes.send = lambda *a, **kw: None
+# Supprime les alertes intermédiaires bruyantes — on envoie un résumé à la fin
+# EXCEPTION : alertes.send reste actif pour les ventes urgentes (stop loss)
+# et les alertes de danger de position_manager
 alertes.alerte_opportunite_enrichie = lambda *a, **kw: None
 alertes.alerte_portefeuille = lambda *a, **kw: None
 alertes.alerte_risque = lambda *a, **kw: None
@@ -164,26 +165,32 @@ try:
             f"@ `${s.get('prix', 0):.4f}` — score `{s['score']:+.2f}`"
         )
 
-    # Construction du message
-    msg_lines = [
-        f"📊 *Rapport {now.strftime('%d/%m %H:%M')} UTC*\n",
-        f"💼 Portfolio : `${portfolio_final:.2f}`",
-        f"💵 USDC libre : `${usdc_final:.2f}`\n",
-    ]
+    # ── Envoyer uniquement si quelque chose s'est passé OU rapport 7h ──────
+    has_activity = bool(decisions_lines)
+    is_daily_report = (now.hour == 7)
 
-    if pos_lines:
-        msg_lines.append("*Positions :*")
-        msg_lines.extend(pos_lines)
-        msg_lines.append("")
+    if has_activity or is_daily_report:
+        msg_lines = [
+            f"📊 *{'Rapport quotidien' if is_daily_report else 'Cycle'} {now.strftime('%d/%m %H:%M')} UTC*\n",
+            f"💼 Portfolio : `${portfolio_final:.2f}`",
+            f"💵 USDC libre : `${usdc_final:.2f}`\n",
+        ]
 
-    if decisions_lines:
-        msg_lines.append("*Décisions :*")
-        msg_lines.extend(decisions_lines)
+        if pos_lines:
+            msg_lines.append("*Positions :*")
+            msg_lines.extend(pos_lines)
+            msg_lines.append("")
+
+        if decisions_lines:
+            msg_lines.append("*Actions exécutées :*")
+            msg_lines.extend(decisions_lines)
+        elif is_daily_report:
+            msg_lines.append("_Aucune action ce cycle — positions maintenues_")
+
+        _send_final("\n".join(msg_lines))
+        print("Résumé Telegram envoyé.")
     else:
-        msg_lines.append("*Décisions :* aucune action — positions maintenues")
-
-    _send_final("\n".join(msg_lines))
-    print("Résumé Telegram envoyé.")
+        print("Aucune activité ce cycle — pas de notification Telegram.")
 
 except Exception as e:
     print(f"Erreur résumé final : {e}")

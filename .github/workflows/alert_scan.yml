@@ -4,10 +4,12 @@ on:
   # Déclenché par cron-job.org toutes les 30 minutes
   workflow_dispatch:
 
-# Évite que deux scans d'alertes se chevauchent
+# cancel-in-progress: false → les runs se mettent en file d'attente au lieu
+# d'être annulés. Un run annulé = "failure" = email GitHub parasite.
+# Le scanner est stateless donc l'ordre n'importe pas.
 concurrency:
   group: alert-scanner
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 permissions:
   contents: read
@@ -43,7 +45,8 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           PYTHONIOENCODING: utf-8
 
-      # Alerte silencieuse si le scanner plante (pas de spam — on ne notifie qu'une fois)
+      # Notification Telegram uniquement si le scanner plante vraiment
+      # (pas sur les annulations — if: failure() n'est pas déclenché par cancelled)
       - name: Notify on failure
         if: failure()
         run: |
