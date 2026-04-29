@@ -108,14 +108,34 @@ def execute_signal(signal: dict, portfolio_value: float) -> bool:
         logger.info(f"{ticker} : fondamentaux négatifs (score_news={score_news:+.2f}) — ordre bloqué")
         return False
 
-    # Taille de position
-    max_trade = get_max_trade_size(portfolio_value)
+    # ── Forcer le stop à max -4% du prix d'entrée ────────────────────────────
+    # Les signaux techniques peuvent produire des stops très larges (ATR-based).
+    # On plafonne à -4% pour rester cohérent avec la stratégie rotation rapide.
+    MAX_STOP_DISTANCE_PCT = 0.04
+    if score > 0:  # achat — stop en dessous
+        min_stop = prix * (1 - MAX_STOP_DISTANCE_PCT)
+        stop = max(stop, min_stop)   # on garde le stop le plus haut (le moins risqué)
+    else:          # vente short — stop au dessus
+        max_stop = prix * (1 + MAX_STOP_DISTANCE_PCT)
+        stop = min(stop, max_stop)
+
+    # Recalculer le target pour maintenir R/R >= 1.5
+    risque = abs(prix - stop)
+    target_min = prix + risque * 1.5 if score > 0 else prix - risque * 1.5
+    if score > 0:
+        target = max(target, target_min)
+    else:
+        target = min(target, target_min)
+
+    # ── Budget ───────────────────────────────────────────────────────────────
     usdt_available = get_usdt_balance()
 
     if usdt_available < 10:
-        alertes.send(f"⚠️ Budget USDT/USDC insuffisant : ${usdt_available:.2f} disponible")
+        # Pas d'alerte Telegram — juste un log (évite le spam quand budget épuisé)
+        logger.info(f"{ticker} : budget insuffisant (${usdt_available:.2f}) — ignoré")
         return False
 
+    max_trade = get_max_trade_size(portfolio_value)
     trade_size_usdt = min(max_trade, usdt_available * 0.95)  # garde 5% pour frais
 
     if trade_size_usdt < 5:
