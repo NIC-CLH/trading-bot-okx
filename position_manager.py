@@ -20,6 +20,7 @@ from datetime import datetime, timezone
 
 import okx_client as okx
 import technical_signals as ts
+import regime_detector as rd
 import alertes
 import config
 
@@ -130,10 +131,65 @@ def _get_highest_price_since_entry(ticker: str, entry_price: float) -> float:
         return entry_price
 
 
-def evaluate_position(pos: dict, tech: dict) -> dict:
+def _get_regime_adjusted_thresholds(regime_data: dict) -> dict:
+    """
+    Ajuste les seuils de sortie selon le régime de marché (HMM + GARCH).
+
+    En régime BEAR : on sort plus tôt (seuils relevés vers 0).
+    Volatilité extrême : stop prix plus serré, profit pris plus vite.
+    """
+    regime = regime_data.get("regime", "sideways")
+    vol_regime = regime_data.get("vol_regime", "normal")
+    recent_break = regime_data.get("recent_break", False)
+
+    # Seuils de base
+    hard_signal = HARD_SIGNAL_EXIT    # -1.8
+    soft_signal = STOP_SIGNAL_EXIT    # -1.0
+    hard_price = HARD_PRICE_STOP_PCT  # -10%
+    soft_price = SOFT_PRICE_STOP_PCT  # -7%
+    partial_profit = PARTIAL_PROFIT_PCT  # +15%
+    trailing_trigger = TRAILING_STOP_TRIGGER  # +12%
+
+    # Régime BEAR : sortir plus rapidement des positions longues
+    if regime == "bear":
+        hard_signal = -1.2   # Seuil d'urgence relevé
+        soft_signal = -0.6   # Sortie défensive plus tôt
+        hard_price = -0.07   # Stop dur réduit à -7%
+        soft_price = -0.04   # Stop défensif réduit à -4%
+        partial_profit = 0.08  # Prendre profit dès +8% en bear
+        trailing_trigger = 0.07
+        logger.debug("Régime BEAR : seuils de sortie resserrés")
+
+    # Volatilité élevée ou extrême : encore plus conservateur
+    if vol_regime in ("elevated", "extreme"):
+        hard_price = min(hard_price, -0.06)
+        soft_price = min(soft_price, -0.03)
+        partial_profit = min(partial_profit, 0.10)
+        trailing_trigger = min(trailing_trigger, 0.08)
+        logger.debug(f"Volatilité {vol_regime} : stops resserrés")
+
+    # Rupture structurelle récente : prudence accrue
+    if recent_break:
+        soft_signal = min(soft_signal, -0.5)
+        logger.debug("Rupture structurelle récente : sortie défensive abaissée")
+
+    return {
+        "hard_signal": hard_signal,
+        "soft_signal": soft_signal,
+        "hard_price_pct": hard_price * 100,
+        "soft_price_pct": soft_price * 100,
+        "partial_profit_pct": partial_profit * 100,
+        "trailing_trigger_pct": trailing_trigger * 100,
+    }
+
+
+def evaluate_position(pos: dict, tech: dict, regime_data: dict = None) -> dict:
     """
     Évalue une position et retourne la décision de gestion.
     Décisions : HOLD | PARTIAL_SELL | FULL_SELL | REINFORCE | TRAILING_STOP
+
+    regime_data : optionnel, output de regime_detector.analyze()
+    Quand fourni, les seuils s'adaptent au régime HMM + volatilité GARCH.
     """
     ticker = pos["ticker"]
     prix = pos["prix_actuel"]
@@ -145,54 +201,59 @@ def evaluate_position(pos: dict, tech: dict) -> dict:
     score = sig.get("score", 0)
     verdict = sig.get("verdict", "")
 
+    # Ajustement des seuils selon le régime
+    regime_info = regime_data or {}
+    t = _get_regime_adjusted_thresholds(regime_info)
+    regime_name = regime_info.get("regime", "sideways")
+    regime_suffix = f" [régime {regime_name}]" if regime_data else ""
+
     decision = "HOLD"
     raison = ""
     urgence = False
 
-    # ── PRIORITÉ 1 : Stop loss dur en prix (-10%) ──────────────────────────
-    # Indépendant du score technique — coupe toujours une perte trop lourde
-    if entree and pnl_pct <= HARD_PRICE_STOP_PCT * 100:
+    # ── PRIORITÉ 1 : Stop loss dur en prix ────────────────────────────────
+    if entree and pnl_pct <= t["hard_price_pct"]:
         decision = "FULL_SELL"
-        raison = f"Stop loss prix déclenché ({pnl_pct:.1f}%) — perte maximale atteinte"
+        raison = f"Stop loss prix ({pnl_pct:.1f}%){regime_suffix}"
         urgence = True
 
-    # ── PRIORITÉ 2 : Stop défensif prix (-7%) + score négatif ─────────────
-    elif entree and pnl_pct <= SOFT_PRICE_STOP_PCT * 100 and score < 0:
+    # ── PRIORITÉ 2 : Stop défensif prix + score négatif ───────────────────
+    elif entree and pnl_pct <= t["soft_price_pct"] and score < 0:
         decision = "FULL_SELL"
-        raison = f"Stop défensif ({pnl_pct:.1f}% + score {score:+.2f}) — signal et prix convergent baissiers"
+        raison = f"Stop défensif ({pnl_pct:.1f}% + score {score:+.2f}){regime_suffix}"
         urgence = True
 
-    # ── PRIORITÉ 3 : Sortie urgente signal très baissier ──────────────────
-    elif score <= HARD_SIGNAL_EXIT:
+    # ── PRIORITÉ 3 : Signal très baissier ─────────────────────────────────
+    elif score <= t["hard_signal"]:
         decision = "FULL_SELL"
-        raison = f"Signal très baissier (score {score:+.2f}) — sortie immédiate"
+        raison = f"Signal très baissier (score {score:+.2f}){regime_suffix}"
         urgence = True
 
     # ── PRIORITÉ 4 : Sortie défensive signal négatif ──────────────────────
-    elif score <= STOP_SIGNAL_EXIT and pnl_pct < 3:
+    elif score <= t["soft_signal"] and pnl_pct < 3:
         decision = "FULL_SELL"
-        raison = f"Signal retourné négatif (score {score:+.2f}) — position marginale"
+        raison = f"Signal négatif (score {score:+.2f}) + position marginale{regime_suffix}"
 
-    # ── PRIORITÉ 5 : Prise de profit partielle : +15% ─────────────────────
-    elif pnl_pct >= PARTIAL_PROFIT_PCT * 100:
+    # ── PRIORITÉ 5 : Prise de profit ──────────────────────────────────────
+    elif pnl_pct >= t["partial_profit_pct"]:
         if score > 0:
             decision = "PARTIAL_SELL"
-            raison = f"Prise de profit partielle (+{pnl_pct:.1f}%) — momentum encore positif"
+            raison = f"Prise de profit partielle (+{pnl_pct:.1f}%){regime_suffix}"
         else:
             decision = "FULL_SELL"
-            raison = f"Prise de profit totale (+{pnl_pct:.1f}%) — momentum s'essoufle"
+            raison = f"Prise de profit totale (+{pnl_pct:.1f}%) — momentum s'essoufle{regime_suffix}"
 
-    # ── PRIORITÉ 6 : Trailing stop activé : +12% de gain ──────────────────
-    elif pnl_pct >= TRAILING_STOP_TRIGGER * 100 and entree:
+    # ── PRIORITÉ 6 : Trailing stop ────────────────────────────────────────
+    elif pnl_pct >= t["trailing_trigger_pct"] and entree:
         plus_haut = _get_highest_price_since_entry(ticker, entree)
         trailing_stop = plus_haut * (1 - TRAILING_STOP_DISTANCE)
         if prix < trailing_stop:
             decision = "FULL_SELL"
-            raison = f"Trailing stop déclenché (${prix:.4f} < ${trailing_stop:.4f})"
+            raison = f"Trailing stop (${prix:.4f} < ${trailing_stop:.4f}){regime_suffix}"
 
     # ── HOLD par défaut ────────────────────────────────────────────────────
     if decision == "HOLD":
-        raison = f"Signal {score:+.2f} — {verdict}"
+        raison = f"Signal {score:+.2f} — {verdict}{regime_suffix}"
 
     return {
         "ticker": ticker,
@@ -204,6 +265,7 @@ def evaluate_position(pos: dict, tech: dict) -> dict:
         "pnl_usd": pos.get("pnl_usd"),
         "valeur": valeur,
         "qty": pos["qty"],
+        "regime": regime_name,
     }
 
 
@@ -284,6 +346,18 @@ def run(portfolio_value: float, ohlcv_data: dict = None) -> dict:
         ohlcv_data = okx.get_all_ohlcv(tickers, days=90)
 
     tech_results = ts.run(ohlcv_data)
+
+    # Régime de marché par ticker — une seule passe GARCH/HMM
+    regime_results = {}
+    for ticker in [p["ticker"] for p in positions]:
+        df_ticker = ohlcv_data.get(ticker)
+        if df_ticker is not None and not df_ticker.empty:
+            try:
+                regime_results[ticker] = rd.analyze(df_ticker)
+            except Exception as e:
+                logger.warning(f"Régime {ticker} : {e}")
+                regime_results[ticker] = {}
+
     actions = []
 
     # Résumé des positions → Telegram toutes les 4h
@@ -294,9 +368,11 @@ def run(portfolio_value: float, ohlcv_data: dict = None) -> dict:
         emoji = "🟢" if (pos['pnl_pct'] or 0) > 0 else "🔴"
         tech = tech_results.get(ticker, {})
         score = tech.get("signal", {}).get("score", 0) if tech else 0
+        reg = regime_results.get(ticker, {})
+        reg_icon = {"bull": "📈", "bear": "📉", "sideways": "↔️"}.get(reg.get("regime", ""), "")
         lines.append(
             f"{emoji} *{ticker}* `${pos['prix_actuel']:.4f}` "
-            f"P&L: `{pnl_str}` Score: `{score:+.2f}`"
+            f"P&L: `{pnl_str}` Score: `{score:+.2f}` {reg_icon}"
         )
     alertes.send("\n".join(lines))
 
@@ -304,15 +380,17 @@ def run(portfolio_value: float, ohlcv_data: dict = None) -> dict:
     for pos in positions:
         ticker = pos["ticker"]
         tech = tech_results.get(ticker, {})
+        regime_data = regime_results.get(ticker, {})
 
         if not tech or "erreur" in tech:
             logger.warning(f"{ticker} : pas de données techniques")
             continue
 
-        decision = evaluate_position(pos, tech)
+        decision = evaluate_position(pos, tech, regime_data)
         logger.info(
             f"{ticker} | P&L {decision['pnl_pct']:+.1f}% | "
-            f"Score {decision['score']:+.2f} | → {decision['decision']}"
+            f"Score {decision['score']:+.2f} | Régime {decision.get('regime','?')} | "
+            f"→ {decision['decision']}"
         )
 
         if decision["decision"] != "HOLD":

@@ -632,6 +632,242 @@ def compute_parabolic_sar(df: pd.DataFrame, af_start: float = 0.02, af_max: floa
     }
 
 
+# ─── CVD — Cumulative Volume Delta ───────────────────────────────────────────
+
+def compute_cvd(df: pd.DataFrame, window: int = 20) -> dict:
+    """
+    Cumulative Volume Delta — différence entre volume acheteur et vendeur.
+
+    Logique : sur chaque bougie, on estime la pression acheteuse/vendeuse
+    selon la position du close dans le range high-low.
+    CVD haussier qui diverge avec le prix → accumulation institutionnelle.
+    CVD baissier qui diverge avec le prix → distribution discrète.
+    """
+    if "volume" not in df.columns or df.empty or len(df) < 5:
+        return {"score": 0.0, "trend": "neutre", "divergence": False, "signals": []}
+
+    high = df["high"] if "high" in df.columns else df["close"]
+    low = df["low"] if "low" in df.columns else df["close"]
+    close = df["close"]
+    volume = df["volume"]
+
+    range_hl = (high - low).replace(0, np.nan)
+    buy_ratio = (close - low) / range_hl
+    buy_ratio = buy_ratio.fillna(0.5)
+
+    delta = volume * buy_ratio - volume * (1 - buy_ratio)
+    cvd = delta.cumsum()
+
+    cvd_tail = cvd.tail(window)
+    price_tail = close.tail(window)
+
+    if len(cvd_tail) < 5:
+        return {"score": 0.0, "trend": "neutre", "divergence": False, "signals": []}
+
+    cvd_slope = float(np.polyfit(np.arange(len(cvd_tail)), cvd_tail.values, 1)[0])
+    price_slope = float(np.polyfit(np.arange(len(price_tail)), price_tail.values, 1)[0])
+
+    divergence_bullish = price_slope < 0 and cvd_slope > 0  # Accumulation cachée
+    divergence_bearish = price_slope > 0 and cvd_slope < 0  # Distribution cachée
+
+    score = 0.0
+    signals = []
+
+    if cvd_slope > 0 and price_slope > 0:
+        score += 0.5
+        signals.append("CVD haussier — pression acheteuse confirmée")
+    elif cvd_slope < 0 and price_slope < 0:
+        score -= 0.5
+        signals.append("CVD baissier — pression vendeuse confirmée")
+
+    if divergence_bullish:
+        score += 0.8
+        signals.append("🔺 CVD divergence HAUSSIÈRE — accumulation institutionnelle")
+    elif divergence_bearish:
+        score -= 0.8
+        signals.append("🔻 CVD divergence BAISSIÈRE — distribution discrète")
+
+    trend = "haussier" if cvd_slope > 0 else ("baissier" if cvd_slope < 0 else "neutre")
+
+    return {
+        "score": round(max(-1.5, min(1.5, score)), 2),
+        "trend": trend,
+        "divergence": divergence_bullish or divergence_bearish,
+        "divergence_type": "bullish" if divergence_bullish else ("bearish" if divergence_bearish else "none"),
+        "signals": signals,
+    }
+
+
+# ─── Keltner Channel ──────────────────────────────────────────────────────────
+
+def compute_keltner(df: pd.DataFrame, period: int = 20, multiplier: float = 2.0) -> dict:
+    """
+    Keltner Channel — EMA(20) ± 2×ATR(10).
+
+    Squeeze Pro : quand les Bollinger Bands sont INSIDE les Keltner
+    → compression extrême, explosion de volatilité imminente.
+    Prix au-dessus Keltner haut = momentum très fort.
+    """
+    if df.empty or len(df) < period + 1:
+        return {"score": 0.0, "squeeze_pro": False, "signals": []}
+
+    close = df["close"]
+    atr = compute_atr(df, period=10)
+    ema = close.ewm(span=period, adjust=False).mean()
+
+    kc_upper = ema + multiplier * atr
+    kc_lower = ema - multiplier * atr
+    bb = compute_bollinger(close, period=period)
+
+    kc_up_val = float(kc_upper.iloc[-1])
+    kc_lo_val = float(kc_lower.iloc[-1])
+    bb_up_val = float(bb["upper"].iloc[-1]) if not bb["upper"].empty else kc_up_val
+    bb_lo_val = float(bb["lower"].iloc[-1]) if not bb["lower"].empty else kc_lo_val
+    price = float(close.iloc[-1])
+
+    squeeze_pro = bb_up_val < kc_up_val and bb_lo_val > kc_lo_val
+
+    score = 0.0
+    signals = []
+
+    if price > kc_up_val:
+        score += 0.6
+        signals.append("Prix au-dessus du Keltner haut — momentum fort")
+    elif price < kc_lo_val:
+        score -= 0.6
+        signals.append("Prix sous le Keltner bas — pression vendeuse forte")
+    else:
+        pct_pos = (price - kc_lo_val) / (kc_up_val - kc_lo_val + 1e-10)
+        score += 0.2 if pct_pos > 0.7 else (-0.2 if pct_pos < 0.3 else 0.0)
+
+    if squeeze_pro:
+        signals.append("💥 Keltner Squeeze PRO — BB dans Keltner, explosion imminente")
+
+    return {
+        "score": round(max(-1.0, min(1.0, score)), 2),
+        "upper": round(kc_up_val, 4),
+        "lower": round(kc_lo_val, 4),
+        "squeeze_pro": squeeze_pro,
+        "signals": signals,
+    }
+
+
+# ─── Elder Ray Index ──────────────────────────────────────────────────────────
+
+def compute_elder_ray(df: pd.DataFrame, period: int = 13) -> dict:
+    """
+    Elder Ray Index — Bull Power et Bear Power.
+
+    Outil institutionnel (Alexander Elder) :
+    - Bull Power = High - EMA(13) → force des acheteurs
+    - Bear Power = Low - EMA(13) → force des vendeurs
+
+    Achat optimal : EMA en hausse + Bear Power négatif mais remontant.
+    Vente optimale : EMA en baisse + Bull Power positif mais redescendant.
+    """
+    if df.empty or len(df) < period + 5:
+        return {"score": 0.0, "bull_power": 0, "bear_power": 0, "signals": []}
+
+    high = df["high"] if "high" in df.columns else df["close"]
+    low = df["low"] if "low" in df.columns else df["close"]
+    close = df["close"]
+
+    ema = close.ewm(span=period, adjust=False).mean()
+    bull_power = high - ema
+    bear_power = low - ema
+
+    bp_val = float(bull_power.iloc[-1])
+    br_val = float(bear_power.iloc[-1])
+    bp_prev = float(bull_power.iloc[-2]) if len(bull_power) >= 2 else bp_val
+    br_prev = float(bear_power.iloc[-2]) if len(bear_power) >= 2 else br_val
+    ema_rising = float(ema.iloc[-1]) > float(ema.iloc[-2]) if len(ema) >= 2 else True
+
+    score = 0.0
+    signals = []
+
+    if ema_rising and br_val < 0 and br_val > br_prev:
+        score += 0.7
+        signals.append(f"Elder Ray BUY — EMA↑ + Bear Power remonte ({br_val:+.4f})")
+    elif ema_rising and bp_val > 0:
+        score += 0.4
+        signals.append(f"Elder Ray haussier — Bull Power positif ({bp_val:+.4f})")
+    elif not ema_rising and bp_val > 0 and bp_val < bp_prev:
+        score -= 0.7
+        signals.append(f"Elder Ray SELL — EMA↓ + Bull Power redescend ({bp_val:+.4f})")
+    elif not ema_rising and br_val < 0:
+        score -= 0.4
+        signals.append(f"Elder Ray baissier — Bear Power négatif ({br_val:+.4f})")
+
+    return {
+        "score": round(max(-1.0, min(1.0, score)), 2),
+        "bull_power": round(bp_val, 6),
+        "bear_power": round(br_val, 6),
+        "ema_rising": ema_rising,
+        "signals": signals,
+    }
+
+
+# ─── Donchian Channel ─────────────────────────────────────────────────────────
+
+def compute_donchian(df: pd.DataFrame, period: int = 20) -> dict:
+    """
+    Donchian Channel — highest high / lowest low sur N périodes.
+
+    Stratégie Turtle Traders (hedge funds) : achat au breakout 20j.
+    - Breakout haussier = prix dépasse le plus haut des 20 dernières bougies
+    - Breakdown baissier = prix casse le plus bas des 20 dernières bougies
+    Signal fort quand confirmé par volume et ADX > 25.
+    """
+    if df.empty or len(df) < period:
+        return {"score": 0.0, "breakout": None, "signals": []}
+
+    high = df["high"] if "high" in df.columns else df["close"]
+    low = df["low"] if "low" in df.columns else df["close"]
+    close = df["close"]
+
+    upper = high.rolling(period).max()
+    lower = low.rolling(period).min()
+    middle = (upper + lower) / 2
+
+    up_val = float(upper.iloc[-1])
+    lo_val = float(lower.iloc[-1])
+    mid_val = float(middle.iloc[-1])
+    price = float(close.iloc[-1])
+    prev_price = float(close.iloc[-2]) if len(close) >= 2 else price
+
+    channel_width = up_val - lo_val
+    pct_pos = (price - lo_val) / (channel_width + 1e-10)
+
+    breakout_up = prev_price < up_val and price >= up_val
+    breakout_down = prev_price > lo_val and price <= lo_val
+
+    score = 0.0
+    signals = []
+
+    if breakout_up:
+        score += 1.0
+        signals.append(f"🚀 Donchian BREAKOUT haussier ({period}j) — signal Turtle fort")
+    elif breakout_down:
+        score -= 1.0
+        signals.append(f"🔻 Donchian BREAKDOWN baissier ({period}j)")
+    elif pct_pos > 0.8:
+        score += 0.4
+        signals.append(f"Prix en zone haute Donchian ({period}j) — momentum haussier")
+    elif pct_pos < 0.2:
+        score -= 0.4
+        signals.append(f"Prix en zone basse Donchian ({period}j) — momentum baissier")
+
+    return {
+        "score": round(max(-1.5, min(1.5, score)), 2),
+        "upper": round(up_val, 4),
+        "lower": round(lo_val, 4),
+        "middle": round(mid_val, 4),
+        "pct_position": round(pct_pos, 2),
+        "breakout": "up" if breakout_up else ("down" if breakout_down else None),
+        "signals": signals,
+    }
+
+
 # ─── Support / Résistance (Pivots fractaux) ───────────────────────────────────
 
 def detect_pivot_levels(
@@ -905,6 +1141,37 @@ def compute_signal_score(df: pd.DataFrame) -> dict:
         score += fib["score"] * 0.3
         signaux.append(fib["signal"])
 
+    # ── CVD (Cumulative Volume Delta) ──
+    cvd_data = compute_cvd(df)
+    detail["cvd"] = {"trend": cvd_data["trend"], "divergence": cvd_data["divergence"]}
+    if cvd_data["score"] != 0:
+        score += cvd_data["score"] * 0.35
+        signaux.extend(cvd_data.get("signals", [])[:1])
+
+    # ── Keltner Channel ──
+    kelt = compute_keltner(df)
+    detail["keltner"] = {"squeeze_pro": kelt["squeeze_pro"]}
+    if kelt["score"] != 0:
+        score += kelt["score"] * 0.25
+    if kelt["squeeze_pro"]:
+        signaux.extend(kelt.get("signals", [])[:1])
+
+    # ── Elder Ray ──
+    elder = compute_elder_ray(df)
+    detail["elder_ray"] = {"bull_power": elder["bull_power"], "bear_power": elder["bear_power"]}
+    if elder["score"] != 0:
+        score += elder["score"] * 0.25
+        signaux.extend(elder.get("signals", [])[:1])
+
+    # ── Donchian Channel ──
+    don = compute_donchian(df)
+    detail["donchian"] = {"breakout": don["breakout"], "pct_pos": don["pct_position"]}
+    if don["breakout"]:
+        score += don["score"] * 0.5   # Breakout = signal fort, poids renforcé
+        signaux.extend(don.get("signals", [])[:1])
+    elif don["score"] != 0:
+        score += don["score"] * 0.2
+
     # ── Application du coefficient ADX (filtre régime) ──
     score *= adx_confidence
 
@@ -972,6 +1239,9 @@ def analyze_asset(ticker: str, df: pd.DataFrame) -> dict:
     # Niveaux Fibonacci
     fib = compute_fibonacci(df)
     ichi = compute_ichimoku(df)
+    cvd = compute_cvd(df)
+    don = compute_donchian(df)
+    elder = compute_elder_ray(df)
 
     return {
         "ticker": ticker,
@@ -985,6 +1255,9 @@ def analyze_asset(ticker: str, df: pd.DataFrame) -> dict:
         "niveaux": pivot_levels,
         "fibonacci": fib,
         "ichimoku": ichi,
+        "cvd": cvd,
+        "donchian": don,
+        "elder_ray": elder,
         "signal": signal,
     }
 

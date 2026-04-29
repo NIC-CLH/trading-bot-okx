@@ -1,14 +1,20 @@
 """
 Module News & Sentiment — enrichit les signaux techniques avec :
-- Actualités récentes par actif (RSS CoinDesk, Cointelegraph)
+- Actualités récentes par actif (RSS CoinDesk, Cointelegraph, Decrypt)
+- Finnhub Crypto News (NLP pro — 60 req/min gratuit)
+- CryptoPanic sentiment agrégé
 - Fear & Greed Index
 - BTC Dominance
 - Score fondamental : -2 (très négatif) à +2 (très positif)
 
 Un signal technique ne part en ordre que si le score fondamental >= 0.
+
+Variables d'environnement requises :
+  FINNHUB_API_KEY  — https://finnhub.io (gratuit, 60 req/min)
 """
 
 import logging
+import os
 import re
 import time
 import xml.etree.ElementTree as ET
@@ -17,6 +23,8 @@ from datetime import datetime, timedelta, timezone
 import requests
 
 logger = logging.getLogger(__name__)
+
+FINNHUB_API_KEY = os.getenv("FINNHUB_API_KEY", "")
 
 # Sources RSS crypto
 RSS_FEEDS = [
@@ -39,6 +47,143 @@ POSITIVE_KEYWORDS = [
     "mainnet", "milestone", "growth", "expansion", "invest", "fund",
     "listing", "rally", "breakout", "accumulate", "whale", "tokenization",
 ]
+
+
+# ─── Finnhub Crypto News + Sentiment ────────────────────────────────────────
+
+# Correspondance ticker → symbole Finnhub (format Binance/Coinbase)
+_FINNHUB_SYMBOLS = {
+    "BTC": "BINANCE:BTCUSDT", "ETH": "BINANCE:ETHUSDT",
+    "XRP": "BINANCE:XRPUSDT", "SOL": "BINANCE:SOLUSDT",
+    "BNB": "BINANCE:BNBUSDT", "ADA": "BINANCE:ADAUSDT",
+    "AVAX": "BINANCE:AVAXUSDT", "DOT": "BINANCE:DOTUSDT",
+    "LINK": "BINANCE:LINKUSDT", "MATIC": "BINANCE:MATICUSDT",
+    "UNI": "BINANCE:UNIUSDT", "AAVE": "BINANCE:AAVEUSDT",
+    "NEAR": "BINANCE:NEARUSDT", "ARB": "BINANCE:ARBUSDT",
+    "OP": "BINANCE:OPUSDT", "INJ": "BINANCE:INJUSDT",
+    "SUI": "BINANCE:SUIUSDT", "APT": "BINANCE:APTUSDT",
+    "ATOM": "BINANCE:ATOMUSDT", "DYDX": "BINANCE:DYDXUSDT",
+}
+
+
+def fetch_finnhub_news(ticker: str, max_age_hours: int = 24) -> tuple[float, list[str]]:
+    """
+    Récupère les actualités crypto depuis Finnhub et retourne un score NLP.
+
+    Finnhub analyse les nouvelles en temps réel (NLP sur +1000 sources).
+    Endpoint gratuit : 60 req/min.
+
+    Returns : (score -1.0 à +1.0, liste de signaux)
+    """
+    if not FINNHUB_API_KEY:
+        return 0.0, []
+
+    symbol = _FINNHUB_SYMBOLS.get(ticker.upper(), f"BINANCE:{ticker.upper()}USDT")
+    now = datetime.now(timezone.utc)
+    cutoff = now - timedelta(hours=max_age_hours)
+
+    try:
+        # News crypto par symbole
+        resp = requests.get(
+            "https://finnhub.io/api/v1/company-news",
+            params={
+                "symbol": symbol,
+                "from": cutoff.strftime("%Y-%m-%d"),
+                "to": now.strftime("%Y-%m-%d"),
+                "token": FINNHUB_API_KEY,
+            },
+            timeout=8,
+        )
+        if resp.status_code != 200:
+            logger.debug(f"Finnhub news {ticker} : HTTP {resp.status_code}")
+            return 0.0, []
+
+        articles = resp.json()
+        if not isinstance(articles, list):
+            return 0.0, []
+
+        # Filtrer les articles récents
+        recent = []
+        for a in articles:
+            ts_article = a.get("datetime", 0)
+            if ts_article and ts_article >= cutoff.timestamp():
+                recent.append(a)
+
+        if not recent:
+            return 0.0, []
+
+        # Score basé sur sentiment NLP via mots-clés (Finnhub ne donne pas le score direct sur le plan gratuit)
+        score, signals = score_articles([{
+            "title": a.get("headline", ""),
+            "description": a.get("summary", "")[:200],
+        } for a in recent[:8]])
+
+        # Normaliser à [-1.0, +1.0]
+        score_normalized = max(-1.0, min(1.0, score / 2.0))
+        if recent:
+            signals.insert(0, f"Finnhub: {len(recent)} articles ({max_age_hours}h)")
+
+        logger.debug(f"Finnhub {ticker} : {len(recent)} articles, score={score_normalized:+.2f}")
+        return score_normalized, signals
+
+    except Exception as e:
+        logger.debug(f"Finnhub {ticker} : {e}")
+        return 0.0, []
+
+
+def fetch_cryptopanic_sentiment(ticker: str) -> tuple[float, list[str]]:
+    """
+    CryptoPanic — agrège les nouvelles crypto avec votes communautaires.
+    API publique gratuite sans clé (rate limit léger).
+
+    Returns : (score -1.0 à +1.0, signaux)
+    """
+    try:
+        resp = requests.get(
+            "https://cryptopanic.com/api/v1/posts/",
+            params={
+                "auth_token": os.getenv("CRYPTOPANIC_TOKEN", ""),
+                "currencies": ticker.upper(),
+                "filter": "hot",
+                "public": "true",
+            },
+            timeout=8,
+            headers={"User-Agent": "Mozilla/5.0"},
+        )
+        if resp.status_code != 200:
+            return 0.0, []
+
+        data = resp.json()
+        results = data.get("results", [])[:10]
+        if not results:
+            return 0.0, []
+
+        score = 0.0
+        signals = []
+
+        for post in results:
+            sentiment = post.get("votes", {})
+            bullish = sentiment.get("bullish", 0) or 0
+            bearish = sentiment.get("bearish", 0) or 0
+            important = sentiment.get("important", 0) or 0
+            total = bullish + bearish + 1  # Éviter division par zéro
+
+            if total > 5:  # Seulement si suffisamment de votes
+                ratio = (bullish - bearish) / total
+                weight = min(1.0, (bullish + bearish) / 20)  # Plus de votes = plus de poids
+                score += ratio * weight
+
+                if ratio > 0.3 and important > 2:
+                    signals.append(f"🔺 CryptoPanic hot: {post.get('title', '')[:70]}")
+                elif ratio < -0.3 and important > 2:
+                    signals.append(f"🔻 CryptoPanic bearish: {post.get('title', '')[:70]}")
+
+        score = round(max(-1.0, min(1.0, score)), 2)
+        return score, signals[:3]
+
+    except Exception as e:
+        logger.debug(f"CryptoPanic {ticker} : {e}")
+        return 0.0, []
 
 
 # ─── RSS News ────────────────────────────────────────────────────────────────
@@ -203,21 +348,65 @@ def fetch_btc_dominance() -> dict:
 def analyze(ticker: str) -> dict:
     """
     Analyse fondamentale complète pour un ticker.
+
+    Sources :
+    - RSS (CoinDesk, Cointelegraph, Decrypt) — 40%
+    - Finnhub NLP pro — 20% (si FINNHUB_API_KEY disponible)
+    - CryptoPanic sentiment communautaire — 10% (si CRYPTOPANIC_TOKEN disponible)
+    - Fear & Greed Index — 15%
+    - BTC Dominance — 15%
+
     Retourne un score global et les détails.
     """
     logger.info(f"Analyse fondamentale : {ticker}")
 
-    # News
+    # 1. RSS classique
     articles = fetch_rss_news(ticker)
-    news_score, news_signals = score_articles(articles)
+    rss_score, rss_signals = score_articles(articles)
 
-    # Macro
+    # 2. Finnhub NLP
+    finnhub_score, finnhub_signals = fetch_finnhub_news(ticker)
+    has_finnhub = FINNHUB_API_KEY != ""
+
+    # 3. CryptoPanic
+    cp_score, cp_signals = fetch_cryptopanic_sentiment(ticker)
+    has_cryptopanic = bool(os.getenv("CRYPTOPANIC_TOKEN", ""))
+
+    # 4. Fear & Greed
     fg = fetch_fear_greed()
+
+    # 5. BTC Dominance
     btc_dom = fetch_btc_dominance()
 
-    # Score global = news (60%) + Fear&Greed (20%) + BTC Dominance (20%)
-    global_score = (news_score * 0.6) + (fg["score"] * 0.2) + (btc_dom["score"] * 0.2)
+    # Pondération dynamique selon les sources disponibles
+    if has_finnhub and has_cryptopanic:
+        # Toutes sources disponibles
+        news_combined = (rss_score * 0.40 + finnhub_score * 0.20 + cp_score * 0.10)
+        fg_weight = 0.15
+        dom_weight = 0.15
+    elif has_finnhub:
+        news_combined = (rss_score * 0.50 + finnhub_score * 0.25)
+        fg_weight = 0.15
+        dom_weight = 0.10
+    elif has_cryptopanic:
+        news_combined = (rss_score * 0.50 + cp_score * 0.15)
+        fg_weight = 0.20
+        dom_weight = 0.15
+    else:
+        # Fallback RSS seul
+        news_combined = rss_score * 0.60
+        fg_weight = 0.20
+        dom_weight = 0.20
+
+    global_score = news_combined + fg["score"] * fg_weight + btc_dom["score"] * dom_weight
     global_score = round(max(-2.0, min(2.0, global_score)), 2)
+
+    # Signaux agrégés
+    all_signals = rss_signals[:3]
+    if finnhub_signals:
+        all_signals.extend(finnhub_signals[:2])
+    if cp_signals:
+        all_signals.extend(cp_signals[:1])
 
     # Verdict
     if global_score >= 1.0:
@@ -233,9 +422,11 @@ def analyze(ticker: str) -> dict:
         "ticker": ticker,
         "score_global": global_score,
         "verdict": verdict,
-        "news_score": news_score,
+        "news_score": rss_score,
+        "finnhub_score": finnhub_score,
+        "cryptopanic_score": cp_score,
         "news_count": len(articles),
-        "news_signals": news_signals,
+        "news_signals": all_signals,
         "fear_greed": fg,
         "btc_dominance": btc_dom,
         "trade_autorise": global_score >= 0.0,

@@ -177,63 +177,130 @@ def get_training_data() -> tuple:
 
 
 def train_model():
-    """Entraîne le modèle XGBoost sur les données historiques."""
+    """
+    Entraîne un ensemble XGBoost + LightGBM — sélectionne le meilleur en CV.
+
+    L'ensemble est plus robuste qu'un seul modèle sur des marchés changeants.
+    Sauvegarde le modèle avec la meilleure accuracy walk-forward.
+    """
+    X, y = get_training_data()
+
+    if X is None or len(X) < MIN_SAMPLES_TO_TRAIN:
+        logger.info(f"Pas assez de données ({len(X) if X is not None else 0}/{MIN_SAMPLES_TO_TRAIN})")
+        return False
+
+    logger.info(f"Entraînement ensemble ML sur {len(X)} trades...")
+
+    from sklearn.model_selection import cross_val_score
+
+    best_model = None
+    best_score = 0.0
+    best_name = ""
+
+    # ── XGBoost ──
     try:
         import xgboost as xgb
-        from sklearn.model_selection import cross_val_score
-
-        X, y = get_training_data()
-
-        if X is None or len(X) < MIN_SAMPLES_TO_TRAIN:
-            logger.info(f"Pas assez de données pour entraîner ({len(X) if X is not None else 0}/{MIN_SAMPLES_TO_TRAIN})")
-            return False
-
-        logger.info(f"Entraînement XGBoost sur {len(X)} trades...")
-
-        model = xgb.XGBClassifier(
-            n_estimators=100,
-            max_depth=4,
-            learning_rate=0.1,
-            subsample=0.8,
-            colsample_bytree=0.8,
-            eval_metric="logloss",
-            random_state=42,
-            verbosity=0,
+        xgb_model = xgb.XGBClassifier(
+            n_estimators=150, max_depth=4, learning_rate=0.08,
+            subsample=0.8, colsample_bytree=0.8,
+            eval_metric="logloss", random_state=42, verbosity=0,
         )
-
-        # Walk-forward cross-validation (respecte l'ordre temporel)
-        scores = cross_val_score(model, X, y, cv=5, scoring="accuracy")
-        logger.info(f"XGBoost CV accuracy : {scores.mean():.2%} ± {scores.std():.2%}")
-
-        # Entraîner sur toutes les données
-        model.fit(X, y)
-        model.save_model(MODEL_PATH)
-        logger.info(f"Modèle XGBoost sauvegardé → {MODEL_PATH}")
-
-        # Feature importance
-        importance = dict(zip(FEATURE_NAMES, model.feature_importances_))
-        top_features = sorted(importance.items(), key=lambda x: x[1], reverse=True)[:5]
-        logger.info(f"Top features : {top_features}")
-
-        return True
-
+        sc = cross_val_score(xgb_model, X, y, cv=5, scoring="accuracy")
+        logger.info(f"XGBoost CV : {sc.mean():.2%} ± {sc.std():.2%}")
+        if sc.mean() > best_score:
+            best_score = sc.mean()
+            best_model = xgb_model
+            best_name = "XGBoost"
     except ImportError:
-        logger.warning("xgboost non installé — scoring manuel uniquement")
-        return False
+        logger.warning("xgboost non installé")
     except Exception as e:
-        logger.error(f"Erreur entraînement XGBoost : {e}")
+        logger.warning(f"XGBoost erreur : {e}")
+
+    # ── LightGBM ──
+    try:
+        import lightgbm as lgb
+        lgb_model = lgb.LGBMClassifier(
+            n_estimators=150, max_depth=4, learning_rate=0.08,
+            subsample=0.8, colsample_bytree=0.8,
+            random_state=42, verbosity=-1,
+        )
+        sc = cross_val_score(lgb_model, X, y, cv=5, scoring="accuracy")
+        logger.info(f"LightGBM CV : {sc.mean():.2%} ± {sc.std():.2%}")
+        if sc.mean() > best_score:
+            best_score = sc.mean()
+            best_model = lgb_model
+            best_name = "LightGBM"
+    except ImportError:
+        logger.warning("lightgbm non installé")
+    except Exception as e:
+        logger.warning(f"LightGBM erreur : {e}")
+
+    if best_model is None:
+        logger.error("Aucun modèle ML disponible (xgboost et lightgbm manquants)")
         return False
+
+    # Entraîner le meilleur sur toutes les données
+    best_model.fit(X, y)
+    logger.info(f"Meilleur modèle : {best_name} (CV {best_score:.2%})")
+
+    # Sauvegarde
+    if best_name == "XGBoost":
+        best_model.save_model(MODEL_PATH)
+        with open(MODEL_PATH + ".meta", "w") as f:
+            f.write("XGBoost")
+    else:
+        import pickle
+        lgb_path = MODEL_PATH.replace(".json", "_lgb.pkl")
+        with open(lgb_path, "wb") as f:
+            pickle.dump(best_model, f)
+        with open(MODEL_PATH + ".meta", "w") as f:
+            f.write("LightGBM")
+
+    # Feature importance
+    importance = dict(zip(FEATURE_NAMES, best_model.feature_importances_))
+    top = sorted(importance.items(), key=lambda x: x[1], reverse=True)[:5]
+    logger.info(f"Top features : {top}")
+    return True
+
+
+def _load_model():
+    """Charge le modèle ML actif (XGBoost ou LightGBM)."""
+    meta_path = MODEL_PATH + ".meta"
+    model_type = "XGBoost"  # défaut
+
+    if Path(meta_path).exists():
+        with open(meta_path) as f:
+            model_type = f.read().strip()
+
+    if model_type == "LightGBM":
+        import pickle
+        lgb_path = MODEL_PATH.replace(".json", "_lgb.pkl")
+        if Path(lgb_path).exists():
+            with open(lgb_path, "rb") as f:
+                return pickle.load(f), "LightGBM"
+
+    # XGBoost par défaut
+    if Path(MODEL_PATH).exists():
+        import xgboost as xgb
+        model = xgb.XGBClassifier()
+        model.load_model(MODEL_PATH)
+        return model, "XGBoost"
+
+    return None, None
 
 
 def predict_score(signal: dict, regime: dict = None, vp: dict = None) -> dict:
     """
-    Prédit le score via XGBoost si le modèle est disponible.
+    Prédit le score via le meilleur modèle ML disponible (XGBoost ou LightGBM).
     Fallback sur le score manuel sinon.
 
     Returns : score ML (-3 à +3) + confiance + source
     """
-    # Vérifier si le modèle existe
-    if not Path(MODEL_PATH).exists():
+    meta_path = MODEL_PATH + ".meta"
+    lgb_path = MODEL_PATH.replace(".json", "_lgb.pkl")
+    model_exists = Path(MODEL_PATH).exists() or Path(lgb_path).exists()
+
+    if not model_exists:
         return {
             "score_ml": signal.get("score", 0),
             "ml_confidence": 0.0,
@@ -242,35 +309,35 @@ def predict_score(signal: dict, regime: dict = None, vp: dict = None) -> dict:
         }
 
     try:
-        import xgboost as xgb
-
-        model = xgb.XGBClassifier()
-        model.load_model(MODEL_PATH)
+        model, model_name = _load_model()
+        if model is None:
+            raise ValueError("Modèle introuvable")
 
         features = build_feature_vector(signal, regime, vp)
         X = np.array([features])
 
-        # Probabilité d'être un trade profitable
         proba = model.predict_proba(X)[0]
-        prob_win = float(proba[1])  # Probabilité de gain
+        prob_win = float(proba[1])
 
-        # Convertir en score [-3, +3]
         # prob=0.5 → score=0, prob=1.0 → score=+3, prob=0.0 → score=-3
         score_ml = (prob_win - 0.5) * 6
         score_ml = round(max(-3.0, min(3.0, score_ml)), 2)
 
-        # Conserver le signe du score technique (direction)
+        # Respecter le signe directionnel du signal technique
         score_tech = signal.get("score_tech", 0)
         if score_tech < 0 and score_ml > 0:
-            score_ml = -abs(score_ml)  # ML confirme le côté directionnel
+            score_ml = -abs(score_ml)
 
-        logger.info(f"ML score={score_ml:+.2f} (prob_win={prob_win:.2%}) vs manuel={signal.get('score', 0):+.2f}")
+        logger.info(
+            f"ML ({model_name}) score={score_ml:+.2f} "
+            f"(prob_win={prob_win:.2%}) vs manuel={signal.get('score', 0):+.2f}"
+        )
 
         return {
             "score_ml": score_ml,
             "ml_confidence": prob_win,
             "ml_active": True,
-            "source": "xgboost",
+            "source": model_name.lower(),
         }
 
     except Exception as e:
