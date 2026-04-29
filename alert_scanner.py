@@ -96,18 +96,37 @@ def scan_and_execute_signals() -> list[dict]:
         logger.error(f"Erreur balance OKX : {e}")
         return []
 
-    if usdc_available < 10:
-        logger.info(f"USDC insuffisant (${usdc_available:.2f}) — pas de trade")
-        return []
-
     # Fear & Greed global — vérification rapide une seule fois
     try:
         fg_resp = requests.get("https://api.alternative.me/fng/?limit=1", timeout=6)
         fg_value = int(fg_resp.json()["data"][0]["value"])
-        fg_extreme_greed = fg_value >= 85   # Ne pas acheter en euphorie totale
-        fg_extreme_fear  = fg_value <= 15   # Ne pas vendre en panique totale
+        fg_extreme_greed = fg_value >= 85
+        fg_extreme_fear  = fg_value <= 15
     except Exception:
+        fg_value = 50
         fg_extreme_greed = fg_extreme_fear = False
+
+    # Si peu de USDC, analyser les positions pour une rotation éventuelle
+    # On calcule le score actuel de chaque position ouverte maintenant,
+    # pour pouvoir identifier la plus faible si besoin
+    positions_scores = {}
+    positions_pnl = {}
+    if usdc_available < 10 and open_positions:
+        pos_ohlcv = okx.get_all_ohlcv(list(open_positions), days=60)
+        pos_tech = ts.run(pos_ohlcv)
+        for pos_ticker in open_positions:
+            pt = pos_tech.get(pos_ticker, {})
+            positions_scores[pos_ticker] = pt.get("signal", {}).get("score", 0)
+            # P&L approximatif via prix actuel vs prix d'entrée
+            try:
+                from position_manager import _get_entry_price
+                entry = _get_entry_price(pos_ticker)
+                prix_actuel = okx.get_price_usdc(pos_ticker) or 0
+                qty = balances.get(pos_ticker, 0)
+                pnl = (prix_actuel - entry) / entry * 100 if entry and entry > 0 else 0
+                positions_pnl[pos_ticker] = {"pnl": pnl, "qty": qty, "prix": prix_actuel}
+            except Exception:
+                positions_pnl[pos_ticker] = {"pnl": 0, "qty": 0, "prix": 0}
 
     for ticker, tech in tech_results.items():
         if "erreur" in tech:
@@ -156,7 +175,82 @@ def scan_and_execute_signals() -> list[dict]:
             logger.info(f"{ticker} : R/R {rr:.1f} insuffisant — trade ignoré")
             continue
 
-        # Construire le signal pour execution.execute_signal()
+        # ── Rotation si pas assez de USDC ──────────────────────────────────
+        # Si USDC < 10$, chercher la position la plus faible à vendre
+        usdc_pour_trade = usdc_available
+        rotation_faite = False
+
+        if usdc_available < 10 and positions_scores:
+            # Trouver la position la plus faible :
+            # Priorité 1 : score le plus bas (position qui se dégrade)
+            # Priorité 2 : P&L le plus négatif (position perdante)
+            candidat_rotation = min(
+                positions_scores.items(),
+                key=lambda x: (x[1], positions_pnl.get(x[0], {}).get("pnl", 0))
+            )
+            pos_faible, score_faible = candidat_rotation
+            pnl_faible = positions_pnl.get(pos_faible, {}).get("pnl", 0)
+
+            # Ne vendre que si la position faible est clairement inférieure
+            # au nouveau signal (écart de score >= 1.5 points)
+            ecart_score = score - score_faible
+            pos_perdante = pnl_faible < -3.0   # En perte de plus de 3%
+            pos_neutre   = score_faible < 0.5  # Signal faible ou négatif
+
+            if ecart_score >= 1.5 and (pos_perdante or pos_neutre):
+                qty_vendre = positions_pnl[pos_faible]["qty"]
+                prix_faible = positions_pnl[pos_faible]["prix"]
+                valeur_faible = qty_vendre * prix_faible
+
+                logger.info(
+                    f"Rotation : vente {pos_faible} (score={score_faible:+.2f}, "
+                    f"PnL={pnl_faible:+.1f}%) pour financer {ticker} (score={score:+.2f})"
+                )
+
+                try:
+                    okx.place_order(
+                        ticker=pos_faible,
+                        side="sell",
+                        quantity=qty_vendre * 0.999,
+                        order_type="market",
+                    )
+                    # Notifier la rotation
+                    pnl_emoji = "🟢" if pnl_faible >= 0 else "🔴"
+                    _send_telegram(
+                        f"🔄 *Rotation de position*\n\n"
+                        f"{pnl_emoji} Vente *{pos_faible}* "
+                        f"(score `{score_faible:+.2f}`, PnL `{pnl_faible:+.1f}%`)\n"
+                        f"→ Pour financer *{ticker}* (score `{score:+.2f}`)\n\n"
+                        f"_Le signal sur {ticker} est nettement supérieur_"
+                    )
+                    usdc_pour_trade = valeur_faible * 0.997  # Après frais estimés
+                    rotation_faite = True
+                    open_positions.discard(pos_faible)
+                    # Laisser le temps à l'ordre de se remplir
+                    import time; time.sleep(3)
+                except Exception as e:
+                    logger.error(f"Échec vente rotation {pos_faible} : {e}")
+                    continue  # Si la vente échoue, on n'achète pas
+
+            else:
+                logger.info(
+                    f"Pas de rotation : {pos_faible} score={score_faible:+.2f} "
+                    f"PnL={pnl_faible:+.1f}% — pas assez dégradé vs {ticker}"
+                )
+                continue  # Pas de USDC et pas de rotation possible → skip
+
+        # ── Exécution du trade ──────────────────────────────────────────────
+        # Recalculer le portfolio_value après rotation éventuelle
+        pv = portfolio_value if not rotation_faite else (
+            portfolio_value - positions_pnl.get(
+                min(positions_scores, key=lambda x: positions_scores[x], default=""),
+                {}
+            ).get("qty", 0) * positions_pnl.get(
+                min(positions_scores, key=lambda x: positions_scores[x], default=""),
+                {}
+            ).get("prix", 0) + usdc_pour_trade
+        )
+
         signal = {
             "ticker": ticker,
             "score": score,
@@ -166,21 +260,23 @@ def scan_and_execute_signals() -> list[dict]:
             "stop": stop,
             "target": target,
             "rr": rr,
-            "taille_usd": portfolio_value * 0.20,
-            "verdict_news": "Non vérifié (signal rapide 30min)",
-            "trade_autorise": True,   # Fondamentaux non bloquants = on laisse passer
+            "taille_usd": pv * 0.20,
+            "verdict_news": "Rotation" if rotation_faite else "Signal rapide 30min",
+            "trade_autorise": True,
             "source": "OKX Scanner 30min",
         }
 
         logger.info(
-            f"Exécution signal 30min : {ticker} score={score:+.2f} "
-            f"prix={prix:.4f} stop={stop:.4f} target={target:.4f}"
+            f"Exécution {'(après rotation) ' if rotation_faite else ''}"
+            f"{ticker} score={score:+.2f} prix={prix:.4f}"
         )
 
-        success = execution.execute_signal(signal, portfolio_value)
+        success = execution.execute_signal(signal, pv)
         if success:
-            executed.append({"ticker": ticker, "score": score, "prix": prix})
+            executed.append({"ticker": ticker, "score": score, "prix": prix, "rotation": rotation_faite})
             _sent_this_run.add(cache_key)
+            # Mettre à jour le USDC disponible pour les trades suivants
+            usdc_available = execution.get_usdt_balance()
 
     return executed
 
