@@ -22,6 +22,8 @@ import requests
 
 import okx_client as okx
 import technical_signals as ts
+import news_sentiment as ns
+import execution
 
 logger = logging.getLogger(__name__)
 
@@ -63,37 +65,79 @@ def _send_telegram(msg: str):
         logger.error(f"Telegram send error: {e}")
 
 
-# ── 1. Scan signaux techniques extrêmes ───────────────────────────────────────
+# ── 1. Scan + exécution automatique des signaux forts ────────────────────────
 
-def scan_extreme_signals() -> list[dict]:
+def scan_and_execute_signals() -> list[dict]:
     """
-    Scanne les signaux très forts (score >= 2.5 ou <= -2.5).
-    Seuil élevé intentionnellement — ces alertes doivent être rares.
+    Scanne les signaux forts (score >= 2.5) et EXÉCUTE directement les trades.
+    Pas d'alerte inutile — le bot agit, et tu reçois une confirmation d'ordre.
+
+    Vérifications avant exécution :
+    - Pas de position déjà ouverte sur ce ticker
+    - Fondamentaux pas franchement négatifs (Fear & Greed rapide)
+    - Budget USDC suffisant (géré par execution.execute_signal)
     """
-    alerts = []
+    executed = []
 
     ohlcv = okx.get_all_ohlcv(WATCH_TICKERS, days=60)
     tech_results = ts.run(ohlcv)
 
+    # Récupérer les positions actuelles (pour éviter de doubler)
+    try:
+        balances = okx.get_balances()
+        stables = {"USDC", "USDT", "BUSD", "DAI"}
+        open_positions = {t for t, q in balances.items() if t not in stables and q > 0}
+        usdc_available = balances.get("USDC", 0) + balances.get("USDT", 0)
+        portfolio_value = usdc_available + sum(
+            (okx.get_price_usdc(t) or 0) * q
+            for t, q in balances.items() if t not in stables
+        )
+    except Exception as e:
+        logger.error(f"Erreur balance OKX : {e}")
+        return []
+
+    if usdc_available < 10:
+        logger.info(f"USDC insuffisant (${usdc_available:.2f}) — pas de trade")
+        return []
+
+    # Fear & Greed global — vérification rapide une seule fois
+    try:
+        fg_resp = requests.get("https://api.alternative.me/fng/?limit=1", timeout=6)
+        fg_value = int(fg_resp.json()["data"][0]["value"])
+        fg_extreme_greed = fg_value >= 85   # Ne pas acheter en euphorie totale
+        fg_extreme_fear  = fg_value <= 15   # Ne pas vendre en panique totale
+    except Exception:
+        fg_extreme_greed = fg_extreme_fear = False
+
     for ticker, tech in tech_results.items():
         if "erreur" in tech:
+            continue
+        if ticker == "XRP":   # XRP est sur Binance, pas OKX
             continue
 
         score = tech.get("signal", {}).get("score", 0)
         if abs(score) < SIGNAL_ALERT_THRESHOLD:
             continue
 
-        # Éviter le doublon avec l'alerte XRP dédiée
-        if ticker == "XRP":
-            continue
-
-        # Éviter d'envoyer deux fois dans le même run
-        cache_key = f"extreme_{ticker}"
+        # Pas de doublon dans ce run
+        cache_key = f"exec_{ticker}"
         if cache_key in _sent_this_run:
             continue
 
+        # Pas de position déjà ouverte sur ce ticker
+        if ticker in open_positions:
+            logger.info(f"{ticker} : position déjà ouverte — trade ignoré")
+            continue
+
+        # Blocage si Fear & Greed extrême dans la mauvaise direction
+        if score > 0 and fg_extreme_greed:
+            logger.info(f"{ticker} : Fear&Greed {fg_value} (euphorie) — achat bloqué")
+            continue
+        if score < 0 and fg_extreme_fear:
+            logger.info(f"{ticker} : Fear&Greed {fg_value} (panique) — vente bloquée")
+            continue
+
         prix = tech.get("prix_actuel", 0)
-        verdict = tech.get("signal", {}).get("verdict", "")
         stop = tech.get("stop_proche")
         target = tech.get("target_proche")
         atr = tech.get("atr_14", 0)
@@ -103,30 +147,42 @@ def scan_extreme_signals() -> list[dict]:
         if not target and stop:
             target = round(prix + abs(prix - stop) * 2, 6)
 
-        rr = abs(target - prix) / abs(prix - stop) if (stop and target and stop != prix) else 2.0
-        direction = "📈 OPPORTUNITÉ HAUSSIÈRE" if score > 0 else "📉 SIGNAL BAISSIER"
-        intensite = "🔥🔥🔥" if abs(score) >= 2.8 else "🔥🔥"
+        if not stop or not target or not prix:
+            continue
 
-        signaux = tech.get("signal", {}).get("signaux", [])[:3]
-        signaux_txt = "\n".join(f"  • {s}" for s in signaux) if signaux else ""
+        # Vérifier R/R minimum (>= 1.5:1)
+        rr = abs(target - prix) / abs(prix - stop) if stop != prix else 0
+        if rr < 1.5:
+            logger.info(f"{ticker} : R/R {rr:.1f} insuffisant — trade ignoré")
+            continue
 
-        msg = (
-            f"{intensite} *SIGNAL FORT — {ticker}*\n"
-            f"{direction}\n\n"
-            f"💰 Prix : `${prix:.4f}`\n"
-            f"📊 Score : `{score:+.2f} / 3.0` — {verdict}\n\n"
-            f"🛡 Stop : `${stop:.4f}`\n"
-            f"🎯 Target : `${target:.4f}`\n"
-            f"⚖️ R/R : `{rr:.1f}:1`\n\n"
-            f"{signaux_txt}"
+        # Construire le signal pour execution.execute_signal()
+        signal = {
+            "ticker": ticker,
+            "score": score,
+            "score_tech": score,
+            "score_news": 0.0,
+            "prix": prix,
+            "stop": stop,
+            "target": target,
+            "rr": rr,
+            "taille_usd": portfolio_value * 0.20,
+            "verdict_news": "Non vérifié (signal rapide 30min)",
+            "trade_autorise": True,   # Fondamentaux non bloquants = on laisse passer
+            "source": "OKX Scanner 30min",
+        }
+
+        logger.info(
+            f"Exécution signal 30min : {ticker} score={score:+.2f} "
+            f"prix={prix:.4f} stop={stop:.4f} target={target:.4f}"
         )
 
-        alerts.append({"ticker": ticker, "score": score})
-        _send_telegram(msg)
-        _sent_this_run.add(cache_key)
-        logger.info(f"Alerte signal extrême : {ticker} score={score:+.2f}")
+        success = execution.execute_signal(signal, portfolio_value)
+        if success:
+            executed.append({"ticker": ticker, "score": score, "prix": prix})
+            _sent_this_run.add(cache_key)
 
-    return alerts
+    return executed
 
 
 # ── 2. Breaking news CryptoPanic ──────────────────────────────────────────────
@@ -327,17 +383,23 @@ def run():
     now = datetime.now(timezone.utc)
     logger.info(f"Alert scanner démarré — {now.strftime('%d/%m/%Y %H:%M UTC')}")
 
-    signal_alerts = scan_extreme_signals()
+    # Exécution directe (pas d'alerte inutile — le bot agit)
+    trades_executed = scan_and_execute_signals()
+
+    # Breaking news importantes uniquement
     news_alerts = scan_breaking_news()
+
+    # XRP Binance — alerte manuelle uniquement (pas de trading auto possible)
     xrp_update = scan_xrp_binance()
 
-    total = len(signal_alerts) + len(news_alerts)
-    logger.info(f"Alert scanner terminé — {total} alerte(s) envoyée(s)")
+    logger.info(
+        f"Alert scanner terminé — "
+        f"{len(trades_executed)} trade(s) exécuté(s), "
+        f"{len(news_alerts)} news, "
+        f"XRP: {'mis à jour' if xrp_update else 'neutre'}"
+    )
 
-    if total == 0 and not xrp_update:
-        logger.info("Aucune alerte — marché calme")
-
-    return {"signals": signal_alerts, "news": news_alerts, "xrp": xrp_update}
+    return {"trades": trades_executed, "news": news_alerts, "xrp": xrp_update}
 
 
 if __name__ == "__main__":
