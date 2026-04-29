@@ -49,10 +49,24 @@ except Exception as e:
     usdc = 100
     portfolio_value = 100
 
-# ── Étape 1 : Gestion des positions existantes ────────────────────────────
-print("─── GESTION POSITIONS ───")
+# ── Étape 1 : Scan nouvelles opportunités (AVANT gestion positions) ───────
+# On scanne d'abord pour avoir les scores des nouveaux signaux disponibles
+# → le position_manager peut les utiliser pour décider des rotations
+print("─── SCAN OPPORTUNITÉS ───")
+new_signal_scores = {}
+signals = []
 try:
-    pm_result = pm.run(portfolio_value)
+    signals = scanner.run_scan(portfolio_value=usdc)
+    print(f"{len(signals)} signal(s) actionnable(s)")
+    # Extraire les scores pour la rotation active
+    new_signal_scores = {s["ticker"]: s["score"] for s in signals}
+except Exception as e:
+    print(f"Erreur scan : {e}")
+
+# ── Étape 2 : Gestion des positions — avec rotation si meilleur signal ────
+print("\n─── GESTION POSITIONS ───")
+try:
+    pm_result = pm.run(portfolio_value, new_signal_scores=new_signal_scores)
     actions = pm_result.get("actions", [])
     if actions:
         print(f"{len(actions)} action(s) exécutée(s) sur les positions")
@@ -61,23 +75,13 @@ try:
 except Exception as e:
     print(f"Erreur gestion positions : {e}")
 
-# ── Étape 2 : Recalculer la balance après les ventes éventuelles ──────────
+# ── Étape 3 : Recalculer la balance après ventes et achats ────────────────
 try:
     balances = okx.get_balances()
     usdc = balances.get("USDC", 0) + balances.get("USDT", 0)
     nb_positions = len([k for k in balances if k not in ("USDC", "USDT")])
 except Exception:
     pass
-
-# ── Étape 3 : Scan nouvelles opportunités ─────────────────────────────────
-print("\n─── SCAN OPPORTUNITÉS ───")
-try:
-    # On scanne toujours, même si peu de USDC libre
-    # (le scanner vérifie la balance avant de placer des ordres)
-    signals = scanner.run_scan(portfolio_value=usdc)
-    print(f"{len(signals)} signal(s) actionnable(s)")
-except Exception as e:
-    print(f"Erreur scan : {e}")
 
 # ── Rapport quotidien à 7h UTC ─────────────────────────────────────────────
 if now.hour == 7:
