@@ -106,27 +106,30 @@ def scan_and_execute_signals() -> list[dict]:
         fg_value = 50
         fg_extreme_greed = fg_extreme_fear = False
 
-    # Si peu de USDC, analyser les positions pour une rotation éventuelle
-    # On calcule le score actuel de chaque position ouverte maintenant,
-    # pour pouvoir identifier la plus faible si besoin
+    # Toujours calculer les scores des positions ouvertes dès le départ.
+    # Même si on a assez de USDC maintenant, on peut en manquer après
+    # le premier trade — la rotation doit rester possible à tout moment.
     positions_scores = {}
     positions_pnl = {}
-    if usdc_available < 10 and open_positions:
-        pos_ohlcv = okx.get_all_ohlcv(list(open_positions), days=60)
-        pos_tech = ts.run(pos_ohlcv)
-        for pos_ticker in open_positions:
-            pt = pos_tech.get(pos_ticker, {})
-            positions_scores[pos_ticker] = pt.get("signal", {}).get("score", 0)
-            # P&L approximatif via prix actuel vs prix d'entrée
-            try:
-                from position_manager import _get_entry_price
-                entry = _get_entry_price(pos_ticker)
-                prix_actuel = okx.get_price_usdc(pos_ticker) or 0
-                qty = balances.get(pos_ticker, 0)
-                pnl = (prix_actuel - entry) / entry * 100 if entry and entry > 0 else 0
-                positions_pnl[pos_ticker] = {"pnl": pnl, "qty": qty, "prix": prix_actuel}
-            except Exception:
-                positions_pnl[pos_ticker] = {"pnl": 0, "qty": 0, "prix": 0}
+    if open_positions:
+        try:
+            pos_ohlcv = okx.get_all_ohlcv(list(open_positions), days=60)
+            pos_tech = ts.run(pos_ohlcv)
+            for pos_ticker in open_positions:
+                pt = pos_tech.get(pos_ticker, {})
+                positions_scores[pos_ticker] = pt.get("signal", {}).get("score", 0)
+                try:
+                    from position_manager import _get_entry_price
+                    entry = _get_entry_price(pos_ticker)
+                    prix_actuel = okx.get_price_usdc(pos_ticker) or 0
+                    qty = balances.get(pos_ticker, 0)
+                    pnl = (prix_actuel - entry) / entry * 100 if entry and entry > 0 else 0
+                    positions_pnl[pos_ticker] = {"pnl": pnl, "qty": qty, "prix": prix_actuel}
+                except Exception:
+                    positions_pnl[pos_ticker] = {"pnl": 0, "qty": 0, "prix": 0}
+            logger.info(f"Scores positions : { {t: f'{s:+.2f}' for t, s in positions_scores.items()} }")
+        except Exception as e:
+            logger.warning(f"Erreur calcul scores positions : {e}")
 
     for ticker, tech in tech_results.items():
         if "erreur" in tech:
