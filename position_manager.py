@@ -359,22 +359,7 @@ def run(portfolio_value: float, ohlcv_data: dict = None) -> dict:
                 regime_results[ticker] = {}
 
     actions = []
-
-    # Résumé des positions → Telegram toutes les 4h
-    lines = ["📦 *Positions ouvertes*\n"]
-    for pos in positions:
-        ticker = pos["ticker"]
-        pnl_str = f"{pos['pnl_pct']:+.1f}%" if pos['pnl_pct'] is not None else "N/A"
-        emoji = "🟢" if (pos['pnl_pct'] or 0) > 0 else "🔴"
-        tech = tech_results.get(ticker, {})
-        score = tech.get("signal", {}).get("score", 0) if tech else 0
-        reg = regime_results.get(ticker, {})
-        reg_icon = {"bull": "📈", "bear": "📉", "sideways": "↔️"}.get(reg.get("regime", ""), "")
-        lines.append(
-            f"{emoji} *{ticker}* `${pos['prix_actuel']:.4f}` "
-            f"P&L: `{pnl_str}` Score: `{score:+.2f}` {reg_icon}"
-        )
-    alertes.send("\n".join(lines))
+    danger_lines = []  # Positions en zone de danger (pas encore au stop)
 
     # Évaluation et exécution des décisions
     for pos in positions:
@@ -387,14 +372,44 @@ def run(portfolio_value: float, ohlcv_data: dict = None) -> dict:
             continue
 
         decision = evaluate_position(pos, tech, regime_data)
+        pnl = decision["pnl_pct"] or 0
+        score = decision["score"]
+
         logger.info(
-            f"{ticker} | P&L {decision['pnl_pct']:+.1f}% | "
-            f"Score {decision['score']:+.2f} | Régime {decision.get('regime','?')} | "
+            f"{ticker} | P&L {pnl:+.1f}% | "
+            f"Score {score:+.2f} | Régime {decision.get('regime','?')} | "
             f"→ {decision['decision']}"
         )
 
         if decision["decision"] != "HOLD":
+            # Alerte envoyée dans execute_decision (vente) — on loggue seulement
             execute_decision(decision, portfolio_value)
             actions.append(decision)
+        else:
+            # Détecter les positions en zone de danger sans stop déclenché
+            # (entre -5% et -10%, ou score proche du seuil de sortie)
+            is_near_danger = (
+                pos["prix_entree"] is not None
+                and pnl <= -5.0
+                and pnl > HARD_PRICE_STOP_PCT * 100
+            ) or (score <= -0.6 and pnl < 0)
+
+            if is_near_danger:
+                emoji = "🔴" if pnl < -7 else "🟠"
+                reg = regime_results.get(ticker, {})
+                reg_icon = {"bull": "📈", "bear": "📉", "sideways": "↔️"}.get(
+                    reg.get("regime", ""), ""
+                )
+                danger_lines.append(
+                    f"{emoji} *{ticker}* `${pos['prix_actuel']:.4f}` "
+                    f"P&L: `{pnl:+.1f}%` Score: `{score:+.2f}` {reg_icon}"
+                )
+
+    # Envoyer un résumé UNIQUEMENT si des positions sont en danger
+    if danger_lines:
+        msg = "⚠️ *Positions à surveiller*\n\n" + "\n".join(danger_lines)
+        msg += "\n\n_Le bot gère automatiquement les stops — vérifie si tu veux intervenir manuellement._"
+        alertes.send(msg)
+        logger.info(f"{len(danger_lines)} position(s) en zone de danger signalée(s)")
 
     return {"positions": positions, "actions": actions}

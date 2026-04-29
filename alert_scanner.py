@@ -1,15 +1,21 @@
 """
 Scanner d'alertes temps-réel — tourne toutes les 30 min.
-N'exécute AUCUN ordre — envoie uniquement des alertes Telegram si :
-  1. Signal technique extrême détecté (score_tech >= 2.5 ou <= -2.5)
-  2. Breaking news avec fort impact (votes élevés sur CryptoPanic)
+N'exécute AUCUN ordre — silencieux par défaut.
 
-Séparé du run_once.py pour ne pas surcharger le cycle principal.
+RÈGLE ANTI-SPAM : aucune notification si rien d'actionnable.
+Une alerte est envoyée UNIQUEMENT si :
+  1. Signal technique EXTRÊME détecté (score >= 2.5 ou <= -2.5) — rare
+  2. Breaking news majeure (votes CryptoPanic >= 20, age <= 45min)
+  3. XRP : uniquement si score FORT (>= 2.0 BUY ou <= -1.0 SELL)
+     ou si le prix a bougé de plus de 4% dans les 2 dernières heures
+
+Note sur le cooldown : GitHub Actions repart de zéro à chaque run.
+Le cache in-memory ne persiste PAS entre les runs.
+On utilise donc des seuils stricts (score fort) plutôt que des cooldowns.
 """
 
 import logging
 import os
-import time
 from datetime import datetime, timezone
 
 import requests
@@ -20,11 +26,15 @@ import technical_signals as ts
 logger = logging.getLogger(__name__)
 
 # ── Seuils ────────────────────────────────────────────────────────────────────
-SIGNAL_ALERT_THRESHOLD = 2.5      # Score technique très fort (sur 3.0 max)
-NEWS_VOTES_THRESHOLD   = 20       # Nb de votes CryptoPanic pour breaking news
-NEWS_MAX_AGE_MINUTES   = 45       # Ignorer les news plus vieilles que ça
+SIGNAL_ALERT_THRESHOLD = 2.5      # Score très fort → alerte tous tickers
+NEWS_VOTES_THRESHOLD   = 20       # Votes CryptoPanic minimum
+NEWS_MAX_AGE_MINUTES   = 45       # Ignorer les news trop vieilles
 
-# Actifs surveillés en priorité (les plus liquides + watchlist)
+# XRP : seuils stricts — pas d'alerte en zone neutre
+XRP_BUY_THRESHOLD  =  2.0   # >= 2.0 → "ACHETER / RENFORCER"
+XRP_SELL_THRESHOLD = -1.0   # <= -1.0 → "ALLÉGER / VENDRE"
+XRP_PRICE_MOVE_PCT =  4.0   # Alerte aussi si prix bouge > 4% sur la session
+
 WATCH_TICKERS = [
     "BTC", "ETH", "SOL", "BNB", "XRP",
     "AVAX", "LINK", "NEAR", "INJ", "TIA",
@@ -32,9 +42,8 @@ WATCH_TICKERS = [
     "DOT", "ATOM", "UNI", "DYDX", "ENA",
 ]
 
-# Cooldown anti-spam par ticker (en secondes)
-_alert_cache: dict[str, float] = {}
-COOLDOWN_SECONDS = 4 * 3600  # 4h entre deux alertes pour le même ticker
+# Cache in-run uniquement (évite d'envoyer 2x la même alerte dans un même run)
+_sent_this_run: set = set()
 
 
 def _send_telegram(msg: str):
@@ -54,19 +63,13 @@ def _send_telegram(msg: str):
         logger.error(f"Telegram send error: {e}")
 
 
-def _is_cooldown(ticker: str) -> bool:
-    last = _alert_cache.get(ticker, 0)
-    return (time.time() - last) < COOLDOWN_SECONDS
-
-
-def _set_cooldown(ticker: str):
-    _alert_cache[ticker] = time.time()
-
-
 # ── 1. Scan signaux techniques extrêmes ───────────────────────────────────────
 
 def scan_extreme_signals() -> list[dict]:
-    """Scanne les signaux techniques très forts sur les tickers prioritaires."""
+    """
+    Scanne les signaux très forts (score >= 2.5 ou <= -2.5).
+    Seuil élevé intentionnellement — ces alertes doivent être rares.
+    """
     alerts = []
 
     ohlcv = okx.get_all_ohlcv(WATCH_TICKERS, days=60)
@@ -80,7 +83,13 @@ def scan_extreme_signals() -> list[dict]:
         if abs(score) < SIGNAL_ALERT_THRESHOLD:
             continue
 
-        if _is_cooldown(ticker):
+        # Éviter le doublon avec l'alerte XRP dédiée
+        if ticker == "XRP":
+            continue
+
+        # Éviter d'envoyer deux fois dans le même run
+        cache_key = f"extreme_{ticker}"
+        if cache_key in _sent_this_run:
             continue
 
         prix = tech.get("prix_actuel", 0)
@@ -96,30 +105,25 @@ def scan_extreme_signals() -> list[dict]:
 
         rr = abs(target - prix) / abs(prix - stop) if (stop and target and stop != prix) else 2.0
         direction = "📈 OPPORTUNITÉ HAUSSIÈRE" if score > 0 else "📉 SIGNAL BAISSIER"
-        intensite = "🔥🔥🔥" if abs(score) >= 2.8 else "🔥🔥" if abs(score) >= 2.5 else "🔥"
+        intensite = "🔥🔥🔥" if abs(score) >= 2.8 else "🔥🔥"
 
-        signaux = tech.get("signal", {}).get("signaux", [])[:4]
+        signaux = tech.get("signal", {}).get("signaux", [])[:3]
         signaux_txt = "\n".join(f"  • {s}" for s in signaux) if signaux else ""
 
-        msg = f"""{intensite} *SIGNAL FORT — {ticker}*
-{direction}
+        msg = (
+            f"{intensite} *SIGNAL FORT — {ticker}*\n"
+            f"{direction}\n\n"
+            f"💰 Prix : `${prix:.4f}`\n"
+            f"📊 Score : `{score:+.2f} / 3.0` — {verdict}\n\n"
+            f"🛡 Stop : `${stop:.4f}`\n"
+            f"🎯 Target : `${target:.4f}`\n"
+            f"⚖️ R/R : `{rr:.1f}:1`\n\n"
+            f"{signaux_txt}"
+        )
 
-💰 Prix : `${prix:.4f}`
-📊 Score technique : `{score:+.2f} / 3.0`
-📝 {verdict}
-
-🛡 Stop-loss : `${stop:.4f}`
-🎯 Objectif : `${target:.4f}`
-⚖️ R/R : `{rr:.1f}:1`
-
-*Signaux détectés :*
-{signaux_txt}
-
-_Ce cycle de scan ne trade pas automatiquement — le prochain cycle 4h évaluera l'ordre._"""
-
-        alerts.append({"ticker": ticker, "score": score, "msg": msg})
+        alerts.append({"ticker": ticker, "score": score})
         _send_telegram(msg)
-        _set_cooldown(ticker)
+        _sent_this_run.add(cache_key)
         logger.info(f"Alerte signal extrême : {ticker} score={score:+.2f}")
 
     return alerts
@@ -178,9 +182,9 @@ def scan_breaking_news() -> list[dict]:
             is_positive = any(w in title_lower for w in pos_words)
             emoji = "🚨" if is_negative else "🚀" if is_positive else "📰"
 
-            # Cooldown par titre (évite les doublons)
+            # Éviter le doublon dans le même run
             cache_key = f"news_{hash(title) % 100000}"
-            if _is_cooldown(cache_key):
+            if cache_key in _sent_this_run:
                 continue
 
             msg = f"""{emoji} *BREAKING NEWS CRYPTO*
@@ -195,9 +199,9 @@ def scan_breaking_news() -> list[dict]:
 
 _Analyse l'impact sur ton portefeuille et agis si nécessaire._"""
 
-            alerts.append({"title": title, "votes": total_votes, "msg": msg})
+            alerts.append({"title": title, "votes": total_votes})
             _send_telegram(msg)
-            _set_cooldown(cache_key)
+            _sent_this_run.add(cache_key)
             logger.info(f"Breaking news alertée : {title[:60]} ({total_votes} votes)")
 
     except Exception as e:
@@ -210,9 +214,12 @@ _Analyse l'impact sur ton portefeuille et agis si nécessaire._"""
 
 def scan_xrp_binance():
     """
-    Analyse XRP toutes les 30 min et envoie une recommandation claire
-    pour la position manuelle sur Binance.
-    Envoyé uniquement si le signal a changé ou est fort (évite le spam).
+    Analyse XRP et envoie une alerte UNIQUEMENT si quelque chose d'actionnable :
+      - Score >= 2.0 (signal d'achat fort) → BUY
+      - Score <= -1.0 (signal de vente) → ALLÉGER ou VENDRE
+      - Prix a bougé de plus de 4% depuis l'ouverture journalière (mouvement brusque)
+
+    SILENCE si score entre -1.0 et +2.0 (zone d'attente) — rien à faire.
     """
     try:
         ohlcv = okx.get_all_ohlcv(["XRP"], days=60)
@@ -235,72 +242,78 @@ def scan_xrp_binance():
         if not target and stop:
             target = round(prix + abs(prix - stop) * 2, 6)
 
-        # Recommandation selon le score + instructions de rachat
-        rachat_txt = ""
-        if score >= 2.0:
+        # ── Détection mouvement de prix brusque (intraday) ─────────────────
+        price_move_pct = 0.0
+        is_price_spike = False
+        try:
+            df_xrp = ohlcv.get("XRP")
+            if df_xrp is not None and len(df_xrp) >= 2:
+                open_price = float(df_xrp["open"].iloc[-1])   # Ouverture bougie actuelle
+                if open_price > 0:
+                    price_move_pct = (prix - open_price) / open_price * 100
+                    is_price_spike = abs(price_move_pct) >= XRP_PRICE_MOVE_PCT
+        except Exception:
+            pass
+
+        # ── Décision d'envoyer ou non ───────────────────────────────────────
+        is_buy_signal  = score >= XRP_BUY_THRESHOLD    # >= +2.0
+        is_sell_signal = score <= XRP_SELL_THRESHOLD   # <= -1.0
+        actionnable = is_buy_signal or is_sell_signal or is_price_spike
+
+        if not actionnable:
+            logger.info(
+                f"XRP : score={score:+.2f} | prix_move={price_move_pct:+.1f}% "
+                f"→ zone neutre, pas d'alerte"
+            )
+            return None
+
+        # ── Construction du message ──────────────────────────────────────────
+        if is_buy_signal:
             action = "🟢 ACHETER / RENFORCER"
-            conseil = "Signal très fort — opportunité d'entrée sur Binance"
+            conseil = "Signal technique fort — opportunité d'entrée sur Binance"
             rachat_txt = ""
-        elif score >= 1.0:
-            action = "🟢 CONSERVER / RACHETER"
-            conseil = "Momentum positif — si tu avais allégé, c'est le moment de reprendre"
-            rachat_txt = (
-                f"\n💡 *Niveau de rachat* : autour de `${prix:.4f}`"
-                f"\n   Stop si ça repasse sous `${stop:.4f}`"
-            )
-        elif score >= -0.5:
-            action = "🟡 ATTENDRE"
-            conseil = "Signal neutre — ne rien faire, attends une direction claire"
-            rachat_txt = (
-                f"\n💡 *Racheter si* : score repasse au-dessus de +1.0"
-                f"\n   Surveille le niveau `${target:.4f}` comme résistance clé"
-            )
-        elif score >= -1.0:
+        elif score >= -0.5:  # Légèrement négatif mais spike de prix
+            action = "⚠️ MOUVEMENT BRUSQUE — SURVEILLER"
+            conseil = f"Prix a bougé de {price_move_pct:+.1f}% sur la bougie — score encore neutre"
+            rachat_txt = f"\n💡 Pas encore de signal clair — attends confirmation"
+        elif score >= -1.0 or (is_price_spike and not is_sell_signal):
             action = "🟠 ALLÉGER 30-50%"
-            conseil = "Signal qui se dégrade — sécurise une partie"
+            conseil = "Signal qui se dégrade — sécurise une partie de ta position"
             rachat_txt = (
-                f"\n♻️ *Quand racheter* : attends que le score repasse > +1.0"
-                f"\n   Zone de rachat visée : `${stop:.4f}` — `${round(prix * 0.97, 4):.4f}`"
-                f"\n   Tu recevras une alerte 🟢 dès que le signal se retourne"
+                f"\n♻️ *Zone de rachat* : `${stop:.4f}` — `${round(prix * 0.97, 4):.4f}`"
+                f"\n   Tu recevras une alerte 🟢 quand le score remonte au-dessus de +2.0"
             )
         else:
-            action = "🔴 VENDRE"
-            conseil = "Signal clairement baissier — coupe ta position"
+            action = "🔴 VENDRE — SORTIR"
+            conseil = "Signal clairement baissier — coupe ta position XRP sur Binance"
             rachat_txt = (
-                f"\n♻️ *Quand racheter* : attends un signal > +1.5 ET que le prix"
-                f" repasse au-dessus de `${round(prix * 1.05, 4):.4f}`"
-                f"\n   Tu recevras une alerte 🟢 automatiquement"
+                f"\n♻️ *Racheter si* : score XRP remonte > +2.0"
+                f"\n   ET prix au-dessus de `${round(prix * 1.05, 4):.4f}`"
+                f"\n   Tu recevras une alerte automatique"
             )
-
-        # N'envoie que si le signal change de zone (évite spam toutes les 30min)
-        cache_key = f"xrp_zone_{int(score * 2)}"  # Change si score change de 0.5
-        if _is_cooldown(cache_key) and abs(score) < 1.5:
-            return None
 
         rr = abs(target - prix) / abs(prix - stop) if (stop and target and stop != prix) else 0
         signaux = sig.get("signaux", [])[:3]
         signaux_txt = "\n".join(f"  • {s}" for s in signaux) if signaux else ""
 
-        msg = f"""📊 *XRP — Suivi Binance*
+        spike_txt = f"\n⚡ Mouvement intraday : `{price_move_pct:+.1f}%`" if is_price_spike else ""
 
-{action}
-_{conseil}_
-
-💰 Prix actuel : `${prix:.4f}`
-📈 Score : `{score:+.2f} / 3.0` — {verdict}
-
-🛡 Zone de stop : `${stop:.4f}`
-🎯 Objectif : `${target:.4f}`
-⚖️ R/R : `{rr:.1f}:1`
-{rachat_txt}
-
-{signaux_txt}
-
-_Action manuelle sur Binance — alerte automatique au prochain retournement_"""
+        msg = (
+            f"📊 *XRP — Alerte Binance*\n\n"
+            f"{action}\n"
+            f"_{conseil}_\n\n"
+            f"💰 Prix : `${prix:.4f}`{spike_txt}\n"
+            f"📈 Score : `{score:+.2f} / 3.0` — {verdict}\n\n"
+            f"🛡 Stop : `${stop:.4f}`\n"
+            f"🎯 Target : `${target:.4f}`\n"
+            f"⚖️ R/R : `{rr:.1f}:1`\n"
+            f"{rachat_txt}\n\n"
+            f"{signaux_txt}\n"
+            f"_Action manuelle sur Binance_"
+        )
 
         _send_telegram(msg)
-        _set_cooldown(cache_key)
-        logger.info(f"XRP Binance update : score={score:+.2f} → {action}")
+        logger.info(f"XRP alerte envoyée : score={score:+.2f} → {action}")
         return {"score": score, "action": action, "prix": prix}
 
     except Exception as e:
