@@ -32,10 +32,11 @@ SIGNAL_ALERT_THRESHOLD = 2.5      # Score très fort → alerte tous tickers
 NEWS_VOTES_THRESHOLD   = 20       # Votes CryptoPanic minimum
 NEWS_MAX_AGE_MINUTES   = 45       # Ignorer les news trop vieilles
 
-# XRP : seuils stricts — pas d'alerte en zone neutre
-XRP_BUY_THRESHOLD  =  2.0   # >= 2.0 → "ACHETER / RENFORCER"
-XRP_SELL_THRESHOLD = -1.0   # <= -1.0 → "ALLÉGER / VENDRE"
-XRP_PRICE_MOVE_PCT =  4.0   # Alerte aussi si prix bouge > 4% sur la session
+# XRP : seuils stricts — analyse toutes les 2h uniquement
+XRP_BUY_THRESHOLD  =  2.0   # >= 2.0 → "ACHETER"
+XRP_SELL_THRESHOLD = -2.0   # <= -2.0 → "VENDRE" (signal très fort requis)
+XRP_PRICE_MOVE_PCT =  4.0   # Alerte aussi si prix bouge > 4% sur la journée
+XRP_ANALYSIS_INTERVAL_H = 2 # N'analyser XRP que toutes les 2h (heures paires UTC)
 
 WATCH_TICKERS = [
     "BTC", "ETH", "SOL", "BNB", "XRP",
@@ -366,55 +367,57 @@ _Analyse l'impact sur ton portefeuille et agis si nécessaire._"""
 
 
 # ── Traduction des signaux techniques en français simple ─────────────────────
+# Chaque signal est taggé : "bull" (haussier), "bear" (baissier), "neutral"
+# On filtre pour ne montrer QUE les raisons cohérentes avec la direction.
 
-def _traduire_signaux(signaux_bruts: list) -> list:
-    """Convertit les signaux techniques en phrases compréhensibles."""
-    traductions = {
-        "EMA 8>21>55>200 alignées haussière": "Toutes les tendances sont orientées à la hausse",
-        "EMA 8<21<55<200 alignées baissière": "Toutes les tendances sont orientées à la baisse",
-        "EMA partiellement haussière": "La tendance court terme est haussière",
-        "Golden Cross EMA8/EMA21": "Signal d'achat déclenché sur le court terme",
-        "Death Cross EMA8/EMA21": "Signal de vente déclenché sur le court terme",
-        "RSI survendu": "XRP est trop bas techniquement — rebond probable",
-        "RSI suracheté": "XRP est trop haut techniquement — prudence",
-        "StochRSI survendu": "XRP est en zone de survente — potentiel rebond",
-        "StochRSI suracheté": "XRP est en zone de surachat",
-        "StochRSI croisement haussier": "Les indicateurs court terme viennent de se retourner à la hausse",
-        "MACD croisement haussier": "Le momentum vient de basculer à la hausse",
-        "MACD croisement baissier": "Le momentum vient de basculer à la baisse",
-        "OBV haussier (accumulation)": "Les acheteurs sont actifs — le volume confirme la hausse",
-        "Supertrend retournement HAUSSIER": "Signal d'entrée technique fort confirmé",
-        "Supertrend retournement BAISSIER": "Signal de sortie technique confirmé",
-        "Bollinger Squeeze": "Une forte variation de prix est imminente",
-        "CVD divergence HAUSSIÈRE": "Des acheteurs importants accumulent discrètement",
-        "CVD divergence BAISSIÈRE": "Des vendeurs importants se déchargent discrètement",
-        "Donchian BREAKOUT haussier": "XRP vient de casser une résistance majeure",
-        "Donchian BREAKDOWN baissier": "XRP vient de casser un support majeur",
-        "Elder Ray BUY": "La dynamique acheteur est clairement dominante",
-        "Elder Ray SELL": "La dynamique vendeur est clairement dominante",
-        "ADX": "La tendance est forte et confirmée",
-        "Volume": "Le volume confirme le mouvement",
-        "Prix sous bande BB inférieure": "XRP est en survente extrême — rebond possible",
-        "Prix au-dessus de la Value Area": "XRP est au-dessus de sa zone de valeur — breakout",
-        "Prix en dessous de la Value Area": "XRP est sous sa zone de valeur — pression baissière",
-    }
+_SIGNAL_MAP = [
+    # (mot-clé,                          traduction,                                           direction)
+    ("EMA 8>21>55>200 alignées haussière","Toutes les tendances sont orientées à la hausse",    "bull"),
+    ("EMA 8<21<55<200 alignées baissière","Toutes les tendances sont orientées à la baisse",    "bear"),
+    ("EMA partiellement haussière",       "La tendance court terme est haussière",               "bull"),
+    ("Golden Cross",                      "Signal d'achat déclenché",                            "bull"),
+    ("Death Cross",                       "Signal de vente déclenché",                           "bear"),
+    ("RSI survendu",                      "Les vendeurs s'épuisent — pression baissière faiblit","bear"),
+    ("RSI suracheté",                     "XRP est en surachat — risque de retournement",        "bear"),
+    ("StochRSI survendu",                 "Les oscillateurs touchent un plancher",               "bear"),
+    ("StochRSI suracheté",                "Les oscillateurs sont en zone de retournement",       "bear"),
+    ("StochRSI croisement haussier",      "Les oscillateurs court terme se retournent à la hausse","bull"),
+    ("MACD croisement haussier",          "Le momentum bascule à la hausse",                    "bull"),
+    ("MACD croisement baissier",          "Le momentum bascule à la baisse",                    "bear"),
+    ("OBV haussier",                      "Le volume confirme la hausse",                        "bull"),
+    ("Supertrend retournement HAUSSIER",  "Signal d'entrée technique fort",                     "bull"),
+    ("Supertrend retournement BAISSIER",  "Signal de sortie technique fort",                    "bear"),
+    ("Bollinger Squeeze",                 "Une forte variation de prix est imminente",           "neutral"),
+    ("CVD divergence HAUSSIÈRE",          "Des acheteurs importants accumulent discrètement",   "bull"),
+    ("CVD divergence BAISSIÈRE",          "Des vendeurs importants se déchargent discrètement", "bear"),
+    ("Donchian BREAKOUT haussier",        "XRP vient de casser une résistance majeure",         "bull"),
+    ("Donchian BREAKDOWN baissier",       "XRP vient de casser un support majeur",              "bear"),
+    ("Elder Ray BUY",                     "La dynamique acheteur est dominante",                 "bull"),
+    ("Elder Ray SELL",                    "La dynamique vendeur est dominante",                  "bear"),
+    ("ADX",                               "La tendance est forte et confirmée",                  "neutral"),
+    ("Prix sous bande BB inférieure",     "XRP est en survente extrême",                         "bear"),
+    ("Prix au-dessus de la Value Area",   "XRP est au-dessus de sa zone de valeur — breakout",  "bull"),
+    ("Prix en dessous de la Value Area",  "XRP est sous sa zone de valeur — pression baissière","bear"),
+    ("Ichimoku",                          "Les indicateurs de tendance sont en zone d'indécision","neutral"),
+    ("Volume",                            "Le volume confirme le mouvement",                     "neutral"),
+]
 
+
+def _traduire_signaux(signaux_bruts: list, direction: str = "neutral") -> list:
+    """
+    Convertit les signaux techniques en phrases compréhensibles.
+    Ne garde QUE les raisons cohérentes avec la direction (bull/bear/neutral).
+    Évite d'afficher "rebond probable" dans une alerte de vente, etc.
+    """
+    allowed = {direction, "neutral"}
     resultat = []
+
     for s in signaux_bruts:
-        traduit = None
-        for cle, traduction in traductions.items():
+        for cle, traduction, tag in _SIGNAL_MAP:
             if cle.lower() in s.lower():
-                traduit = traduction
-                break
-        if traduit and traduit not in resultat:
-            resultat.append(traduit)
-        elif not traduit:
-            # Garder les signaux non reconnus mais nettoyer le jargon
-            s_clean = s.replace("📈", "").replace("📉", "").replace("🌟", "").strip()
-            # Supprimer les termes trop techniques
-            mots_a_supprimer = ["EMA", "RSI", "MACD", "ADX", "OBV", "ATR", "BB", "SAR", "CCI"]
-            if not any(m in s_clean for m in mots_a_supprimer):
-                resultat.append(s_clean)
+                if tag in allowed and traduction not in resultat:
+                    resultat.append(traduction)
+                break  # signal reconnu, passer au suivant
 
     return resultat[:3]
 
@@ -423,14 +426,20 @@ def _traduire_signaux(signaux_bruts: list) -> list:
 
 def scan_xrp_binance():
     """
-    Analyse XRP et envoie une alerte UNIQUEMENT si quelque chose d'actionnable.
-    Message en français simple — zéro jargon technique ni mention de "score".
+    Analyse XRP toutes les 2h (heures paires UTC) — pas à chaque run de 30min.
+    Envoie une alerte uniquement si signal fort ou mouvement de prix brusque.
 
-    Déclenche uniquement si :
-    - Signal d'achat fort (score >= 2.0)
-    - Signal de vente (score <= -1.0)
-    - Mouvement de prix brusque > 4% sur la journée
+    Seuils :
+    - Achat  : score >= 2.0  (signal fort haussier)
+    - Vente  : score <= -2.0 (signal fort baissier — pas juste une correction)
+    - Spike  : prix bouge > 4% sur la journée (urgence, toujours alerté)
     """
+    now = datetime.now(timezone.utc)
+
+    # Verrou 2h : n'analyser qu'aux heures paires (0h, 2h, 4h... UTC)
+    # Exception : toujours analyser si spike de prix détecté (géré plus bas)
+    is_analysis_hour = (now.hour % XRP_ANALYSIS_INTERVAL_H == 0)
+
     try:
         ohlcv = okx.get_all_ohlcv(["XRP"], days=60)
         tech_results = ts.run(ohlcv)
@@ -472,9 +481,22 @@ def scan_xrp_binance():
             logger.info(f"XRP neutre (score={score:+.2f}) — silence")
             return None
 
-        # ── Raisons en français simple ─────────────────────────────────────
+        # ── Verrou 2h : bloquer les alertes hors des heures d'analyse ────────
+        # Les spikes de prix (urgence) passent toujours.
+        # Les signaux normaux ne sont envoyés qu'aux heures paires UTC.
+        if not is_price_spike and not is_analysis_hour:
+            logger.info(
+                f"XRP signal détecté (score={score:+.2f}) mais hors fenêtre 2h "
+                f"(heure UTC actuelle : {now.hour}h) — ignoré"
+            )
+            return None
+
+        # ── Direction pour filtrer les raisons ────────────────────────────
+        signal_direction = "bull" if is_buy_signal else "bear"
+
+        # ── Raisons en français simple (cohérentes avec la direction) ─────
         signaux_bruts = sig.get("signaux", [])
-        raisons = _traduire_signaux(signaux_bruts)
+        raisons = _traduire_signaux(signaux_bruts, direction=signal_direction)
 
         # ── Calcul gain/risque ─────────────────────────────────────────────
         if stop and target and stop != prix:
