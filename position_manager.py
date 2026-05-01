@@ -1,20 +1,18 @@
 """
-Gestionnaire de positions — stratégie rotation rapide.
+Gestionnaire de positions — stratégie exits fixes.
 
-Objectif : faire grossir le portfolio le plus vite possible en
-bondissant de signal en signal, prise de profit en prise de profit.
+Philosophie : une fois en position, le bot est SOURD aux signaux.
+On ne sort QUE sur trois événements prédéfinis à l'entrée :
+  1. Stop fixe    : -7% du prix d'entrée (absorbe le bruit crypto normal)
+  2. Objectif fixe: +12% du prix d'entrée (prise de profit partielle à +7%)
+  3. Temps max    : 7 jours — si ni stop ni objectif → on sort et on passe à autre chose
 
-Règles :
-  - Stop dur   : -4%  → sortie immédiate, sans condition
-  - Stop souple: -2%  + score négatif → sortie défensive
-  - Profit rapide : +5% → vendre 50% (laisser courir)
-               +8% → sortir complètement si momentum s'essouffle
-  - Time stop  : 36h sans atteindre +1% → rotation vers mieux
-  - Rotation active : si meilleur signal disponible (écart >= 1.2)
-    ET position stagnante (<2% gain) → on switche
+Ce qui est SUPPRIMÉ :
+  - Sorties basées sur le score technique (whipsawing)
+  - Rotations actives (vendre X pour acheter Y)
+  - Trailing stop complexe
 
-Frais OKX : 0.1% par trade → 0.2% aller-retour.
-Chaque trade doit viser +1% net minimum pour être rentable.
+Seul le stop dur en prix et le temps décident de la sortie.
 """
 
 import logging
@@ -24,42 +22,23 @@ from datetime import datetime, timezone
 
 import okx_client as okx
 import technical_signals as ts
-import regime_detector as rd
 import alertes
 import config
 
 logger = logging.getLogger(__name__)
 
-# ── Stratégie agressive ───────────────────────────────────────────────────────
-HARD_PRICE_STOP_PCT    = -0.04   # -4%  → coupe automatiquement, sans condition
-SOFT_PRICE_STOP_PCT    = -0.02   # -2%  + score négatif → sortie défensive
-PARTIAL_PROFIT_PCT     =  0.05   # +5%  → prendre 50% des gains
-FULL_PROFIT_PCT        =  0.08   # +8%  → sortir totalement si momentum faible
-TRAILING_STOP_TRIGGER  =  0.05   # +5%  → activer le trailing stop
-TRAILING_STOP_DISTANCE =  0.02   # 2%   trailing (court, pour garder les gains)
-STOP_SIGNAL_EXIT       = -0.8    # Score → sortie défensive (était -1.0)
-HARD_SIGNAL_EXIT       = -1.5    # Score → sortie urgente (était -1.8)
-
-# Time stop — position stagnante
-MAX_HOLDING_HOURS      = 36      # 36h max sans progresser
-STAGNANT_PCT_THRESHOLD =  1.0   # Si P&L < +1% après 24h → candidat rotation
-
-# Rotation active
-ROTATION_SCORE_GAP     =  1.2   # Écart score pour justifier une rotation
-ROTATION_MAX_PNL       =  3.0   # Ne pas tourner si position déjà à +3% ou plus
-
-# Frais
-FEE_ROUND_TRIP_PCT     =  0.20  # 0.1% × 2 = 0.2% aller-retour OKX
-MIN_NET_GAIN_PCT       =  1.0   # Gain net minimum pour qu'un trade vaille le coup
-
-MAX_POSITIONS = 4
-MIN_USDC_RESERVE_PCT = 0.05
+# ── Paramètres fixes — ne pas toucher sans réflexion ─────────────────────────
+STOP_LOSS_PCT        = -0.07   # -7%  → sortie automatique, sans condition
+PARTIAL_PROFIT_PCT   =  0.07   # +7%  → vendre 50%, laisser courir
+FULL_PROFIT_PCT      =  0.12   # +12% → sortie complète
+MAX_HOLDING_DAYS     =  7      # 7 jours max en position, quelle que soit la situation
+MAX_POSITIONS        =  4
 
 
-# ── Données d'entrée ──────────────────────────────────────────────────────────
+# ── Données de position ───────────────────────────────────────────────────────
 
 def get_open_positions() -> list[dict]:
-    """Retourne les positions ouvertes avec P&L et timestamp d'entrée."""
+    """Retourne les positions ouvertes avec P&L et durée depuis l'entrée."""
     try:
         balances = okx.get_balances()
     except Exception as e:
@@ -77,17 +56,16 @@ def get_open_positions() -> list[dict]:
         if not prix_actuel:
             continue
 
-        valeur = qty * prix_actuel
-        entry_info = _get_entry_info(ticker)
+        entry_info  = _get_entry_info(ticker)
         prix_entree = entry_info.get("price")
         entry_ts    = entry_info.get("time")
 
         pnl_pct = ((prix_actuel - prix_entree) / prix_entree * 100) if prix_entree else None
         pnl_usd = (prix_actuel - prix_entree) * qty if prix_entree else None
 
-        hours_held = None
+        days_held = None
         if entry_ts:
-            hours_held = (time_module.time() - entry_ts) / 3600
+            days_held = (time_module.time() - entry_ts) / 86400
 
         positions.append({
             "ticker":      ticker,
@@ -95,8 +73,8 @@ def get_open_positions() -> list[dict]:
             "prix_actuel": prix_actuel,
             "prix_entree": prix_entree,
             "entry_ts":    entry_ts,
-            "hours_held":  hours_held,
-            "valeur_usd":  valeur,
+            "days_held":   days_held,
+            "valeur_usd":  qty * prix_actuel,
             "pnl_pct":     pnl_pct,
             "pnl_usd":     pnl_usd,
         })
@@ -105,8 +83,7 @@ def get_open_positions() -> list[dict]:
 
 
 def _get_entry_info(ticker: str) -> dict:
-    """Prix d'entrée + timestamp depuis les fills OKX."""
-    # 1. OKX fills API
+    """Prix d'entrée + timestamp depuis les fills OKX, fallback SQLite."""
     try:
         data = okx._get("/api/v5/trade/fills", {
             "instId": f"{ticker.upper()}-USDC",
@@ -124,7 +101,6 @@ def _get_entry_info(ticker: str) -> dict:
     except Exception:
         pass
 
-    # 2. Fallback SQLite
     try:
         conn = sqlite3.connect(config.DB_PATH)
         cursor = conn.cursor()
@@ -138,7 +114,6 @@ def _get_entry_info(ticker: str) -> dict:
         if row and row[0]:
             entry_ts = None
             try:
-                from datetime import datetime
                 dt = datetime.fromisoformat(row[1])
                 entry_ts = dt.timestamp()
             except Exception:
@@ -150,238 +125,88 @@ def _get_entry_info(ticker: str) -> dict:
     return {"price": None, "time": None}
 
 
-# Alias pour compatibilité
+# Alias compatibilité
 def _get_entry_price(ticker: str) -> float | None:
     return _get_entry_info(ticker).get("price")
 
 
-def _get_highest_price_since_entry(ticker: str, entry_price: float) -> float:
-    """Prix le plus haut depuis l'entrée (pour trailing stop)."""
-    try:
-        df = okx.get_ohlcv(ticker, days=10)
-        if df.empty:
-            return entry_price
-        return max(float(df["high"].max()), entry_price)
-    except Exception:
-        return entry_price
-
-
-def _get_regime_adjusted_thresholds(regime_data: dict) -> dict:
-    """
-    Ajuste les seuils selon le régime HMM + volatilité GARCH.
-    En BEAR ou volatilité extrême : encore plus agressif sur les stops.
-    """
-    regime    = regime_data.get("regime", "sideways")
-    vol_regime = regime_data.get("vol_regime", "normal")
-    recent_break = regime_data.get("recent_break", False)
-
-    hard_signal     = HARD_SIGNAL_EXIT
-    soft_signal     = STOP_SIGNAL_EXIT
-    hard_price      = HARD_PRICE_STOP_PCT
-    soft_price      = SOFT_PRICE_STOP_PCT
-    partial_profit  = PARTIAL_PROFIT_PCT
-    full_profit     = FULL_PROFIT_PCT
-    trailing_trigger = TRAILING_STOP_TRIGGER
-
-    if regime == "bear":
-        hard_signal     = -1.0
-        soft_signal     = -0.5
-        hard_price      = -0.03   # -3% en régime bear
-        soft_price      = -0.015
-        partial_profit  = 0.03    # Prendre profit dès +3%
-        full_profit     = 0.05    # Sortir complètement dès +5%
-        trailing_trigger = 0.03
-
-    if vol_regime in ("elevated", "extreme"):
-        hard_price       = min(hard_price, -0.03)
-        soft_price       = min(soft_price, -0.015)
-        partial_profit   = min(partial_profit, 0.04)
-        trailing_trigger = min(trailing_trigger, 0.03)
-
-    if recent_break:
-        soft_signal = min(soft_signal, -0.4)
-
-    return {
-        "hard_signal":       hard_signal,
-        "soft_signal":       soft_signal,
-        "hard_price_pct":    hard_price * 100,
-        "soft_price_pct":    soft_price * 100,
-        "partial_profit_pct": partial_profit * 100,
-        "full_profit_pct":   full_profit * 100,
-        "trailing_trigger_pct": trailing_trigger * 100,
-    }
-
-
 # ── Évaluation ────────────────────────────────────────────────────────────────
 
-def evaluate_position(pos: dict, tech: dict, regime_data: dict = None) -> dict:
+def evaluate_position(pos: dict) -> dict:
     """
-    Évalue une position et retourne la décision.
-    Décisions : HOLD | PARTIAL_SELL | FULL_SELL | TRAILING_STOP
+    Évalue une position avec la règle des exits fixes.
+    Ignore complètement le score technique — seuls le prix et le temps comptent.
+
+    Décisions : HOLD | PARTIAL_SELL | FULL_SELL
     """
     ticker    = pos["ticker"]
     prix      = pos["prix_actuel"]
     entree    = pos["prix_entree"]
     pnl_pct   = pos.get("pnl_pct") or 0
+    days_held = pos.get("days_held")
     valeur    = pos["valeur_usd"]
-    hours_held = pos.get("hours_held")
-
-    sig     = tech.get("signal", {})
-    score   = sig.get("score", 0)
-    verdict = sig.get("verdict", "")
-
-    t = _get_regime_adjusted_thresholds(regime_data or {})
-    regime_name = (regime_data or {}).get("regime", "sideways")
-    reg_suffix  = f" [{regime_name}]" if regime_data else ""
 
     decision = "HOLD"
     raison   = ""
     urgence  = False
 
-    # ── P1 : Stop dur en prix (-4%) ──────────────────────────────────────────
-    if entree and pnl_pct <= t["hard_price_pct"]:
+    # ── P1 : Stop dur -7% ────────────────────────────────────────────────────
+    if entree and pnl_pct <= STOP_LOSS_PCT * 100:
         decision = "FULL_SELL"
-        raison   = f"Stop dur ({pnl_pct:.1f}%){reg_suffix}"
+        raison   = f"Stop -7% déclenché ({pnl_pct:.1f}%)"
         urgence  = True
 
-    # ── P2 : Stop souple (-2% + score négatif) ───────────────────────────────
-    elif entree and pnl_pct <= t["soft_price_pct"] and score < 0:
+    # ── P2 : Time stop — 7 jours sans atteindre l'objectif ──────────────────
+    elif days_held and days_held >= MAX_HOLDING_DAYS and pnl_pct < FULL_PROFIT_PCT * 100:
         decision = "FULL_SELL"
-        raison   = f"Stop souple ({pnl_pct:.1f}% + score {score:+.2f}){reg_suffix}"
-        urgence  = True
+        raison   = f"7 jours écoulés (P&L {pnl_pct:+.1f}%) — on libère le capital"
 
-    # ── P3 : Signal très baissier ────────────────────────────────────────────
-    elif score <= t["hard_signal"]:
+    # ── P3 : Objectif +12% atteint → sortie complète ─────────────────────────
+    elif pnl_pct >= FULL_PROFIT_PCT * 100:
         decision = "FULL_SELL"
-        raison   = f"Signal fort baissier (score {score:+.2f}){reg_suffix}"
-        urgence  = True
+        raison   = f"Objectif +12% atteint ({pnl_pct:+.1f}%) 🎯"
 
-    # ── P4 : Sortie défensive (score négatif + position marginale) ────────────
-    elif score <= t["soft_signal"] and pnl_pct < 2:
-        decision = "FULL_SELL"
-        raison   = f"Signal négatif ({score:+.2f}) + gain insuffisant{reg_suffix}"
-
-    # ── P5 : Time stop (36h sans progresser) ─────────────────────────────────
-    elif hours_held and hours_held >= MAX_HOLDING_HOURS and pnl_pct < STAGNANT_PCT_THRESHOLD:
-        decision = "FULL_SELL"
-        raison   = f"Stagnation {hours_held:.0f}h (P&L {pnl_pct:+.1f}%) — rotation"
-
-    # ── P6 : Prise de profit totale (+8% + momentum faible) ──────────────────
-    elif pnl_pct >= t["full_profit_pct"] and score <= 0.5:
-        decision = "FULL_SELL"
-        raison   = f"Profit sécurisé (+{pnl_pct:.1f}%) — momentum s'essouffle{reg_suffix}"
-
-    # ── P7 : Prise de profit partielle (+5%) ─────────────────────────────────
-    elif pnl_pct >= t["partial_profit_pct"] and score > 0:
+    # ── P4 : +7% atteint → prendre la moitié des gains ──────────────────────
+    elif pnl_pct >= PARTIAL_PROFIT_PCT * 100:
         decision = "PARTIAL_SELL"
-        raison   = f"Prise de profit partielle (+{pnl_pct:.1f}%){reg_suffix}"
-
-    # ── P8 : Trailing stop ───────────────────────────────────────────────────
-    elif pnl_pct >= t["trailing_trigger_pct"] and entree:
-        plus_haut = _get_highest_price_since_entry(ticker, entree)
-        trailing_stop = plus_haut * (1 - TRAILING_STOP_DISTANCE)
-        if prix < trailing_stop:
-            decision = "FULL_SELL"
-            raison   = f"Trailing stop (${prix:.4f} < ${trailing_stop:.4f}){reg_suffix}"
+        raison   = f"Mi-chemin +7% ({pnl_pct:+.1f}%) — sécuriser 50%"
 
     if decision == "HOLD":
-        raison = f"Signal {score:+.2f} — {verdict}{reg_suffix}"
+        days_str = f"{days_held:.1f}j" if days_held else "?"
+        raison = f"En cours ({pnl_pct:+.1f}% | {days_str} / 7j)"
 
     return {
         "ticker":    ticker,
         "decision":  decision,
         "raison":    raison,
         "urgence":   urgence,
-        "score":     score,
         "pnl_pct":   pnl_pct,
         "pnl_usd":   pos.get("pnl_usd"),
         "valeur":    valeur,
         "qty":       pos["qty"],
-        "hours_held": hours_held,
-        "regime":    regime_name,
+        "days_held": days_held,
     }
-
-
-# ── Rotation active ────────────────────────────────────────────────────────────
-
-def find_rotation_candidates(positions: list[dict], tech_results_positions: dict,
-                              new_signals: dict) -> list[dict]:
-    """
-    Compare les positions actuelles aux nouveaux signaux.
-    Retourne les couples (position_à_vendre, ticker_à_acheter) justifiant une rotation.
-
-    Conditions pour rotater :
-    - Écart de score >= ROTATION_SCORE_GAP (1.2 points)
-    - Position actuelle : P&L < ROTATION_MAX_PNL (pas de gain déjà important à couper)
-    - Nouveau signal : score >= 1.5 (signal fort)
-    - Gain attendu après frais > MIN_NET_GAIN_PCT
-    """
-    rotations = []
-
-    for pos in positions:
-        ticker     = pos["ticker"]
-        pnl_pct    = pos.get("pnl_pct") or 0
-        score_pos  = tech_results_positions.get(ticker, {}).get("signal", {}).get("score", 0)
-
-        # Ne pas toucher une position déjà bien en profit
-        if pnl_pct >= ROTATION_MAX_PNL:
-            continue
-
-        # Trouver le meilleur signal disponible (pas déjà en position)
-        pos_tickers = {p["ticker"] for p in positions}
-        for new_ticker, new_score in new_signals.items():
-            if new_ticker in pos_tickers:
-                continue
-            if new_score < 1.5:
-                continue
-
-            ecart = new_score - score_pos
-            if ecart >= ROTATION_SCORE_GAP:
-                # Vérifier rentabilité nette : gain attendu - frais aller-retour
-                gain_attendu_pct = new_score * 1.5   # approximation : score 2.0 → ~3% espéré
-                net_apres_frais  = gain_attendu_pct - FEE_ROUND_TRIP_PCT * 2  # exit + entry
-                if net_apres_frais >= MIN_NET_GAIN_PCT:
-                    rotations.append({
-                        "sell_ticker":  ticker,
-                        "sell_score":   score_pos,
-                        "sell_pnl":     pnl_pct,
-                        "buy_ticker":   new_ticker,
-                        "buy_score":    new_score,
-                        "ecart":        ecart,
-                        "net_gain_est": net_apres_frais,
-                    })
-                    break  # Une rotation par position max
-
-    # Trier par écart décroissant (rotation la plus rentable en premier)
-    rotations.sort(key=lambda x: x["ecart"], reverse=True)
-    return rotations
 
 
 # ── Exécution ──────────────────────────────────────────────────────────────────
 
 def execute_decision(decision: dict, portfolio_value: float) -> bool:
-    """Exécute la décision de gestion sur OKX."""
     ticker = decision["ticker"]
     action = decision["decision"]
     qty    = decision["qty"]
 
     if action == "FULL_SELL":
         try:
-            result = okx.place_order(
-                ticker=ticker,
-                side="sell",
-                quantity=qty * 0.999,
-                order_type="market",
-            )
+            result   = okx.place_order(ticker=ticker, side="sell",
+                                        quantity=qty * 0.999, order_type="market")
             ordre_id = result.get("ordId", "?")
             pnl_str  = f"{decision['pnl_pct']:+.1f}%" if decision["pnl_pct"] is not None else "N/A"
-            emoji    = "🟢" if (decision["pnl_pct"] or 0) > 0 else "🔴"
-            hours    = f" ({decision['hours_held']:.0f}h)" if decision.get("hours_held") else ""
+            emoji    = "🟢" if (decision["pnl_pct"] or 0) >= 0 else "🔴"
+            days_str = f"{decision['days_held']:.1f}j" if decision.get("days_held") else ""
 
             alertes.send(
-                f"{emoji} *VENTE {ticker}*{hours} (OKX)\n"
+                f"{emoji} *VENTE {ticker}*{f' ({days_str})' if days_str else ''}\n"
                 f"Raison : {decision['raison']}\n"
-                f"Quantité : `{qty:.4f} {ticker}`\n"
                 f"Valeur : `${decision['valeur']:.2f}`\n"
                 f"P&L : `{pnl_str}`\n"
                 f"ID : `{ordre_id}`"
@@ -390,23 +215,19 @@ def execute_decision(decision: dict, portfolio_value: float) -> bool:
             return True
         except Exception as e:
             logger.error(f"Erreur vente {ticker} : {e}")
-            alertes.send(f"❌ Échec vente {ticker} : {str(e)[:100]}")
+            alertes.send(f"❌ Échec vente {ticker} : {str(e)[:120]}")
             return False
 
     elif action == "PARTIAL_SELL":
         qty_sell = qty * 0.50
         try:
-            result = okx.place_order(
-                ticker=ticker,
-                side="sell",
-                quantity=qty_sell * 0.999,
-                order_type="market",
-            )
+            result   = okx.place_order(ticker=ticker, side="sell",
+                                        quantity=qty_sell * 0.999, order_type="market")
             ordre_id = result.get("ordId", "?")
             alertes.send(
                 f"🟡 *VENTE PARTIELLE {ticker}* (50%)\n"
                 f"Raison : {decision['raison']}\n"
-                f"Quantité : `{qty_sell:.4f} {ticker}`\n"
+                f"Valeur : `${decision['valeur'] * 0.5:.2f}`\n"
                 f"P&L : `{decision['pnl_pct']:+.1f}%`\n"
                 f"ID : `{ordre_id}`"
             )
@@ -419,127 +240,75 @@ def execute_decision(decision: dict, portfolio_value: float) -> bool:
     return False  # HOLD
 
 
-# ── Point d'entrée principal ──────────────────────────────────────────────────
+# ── Filtre BTC 50MA ────────────────────────────────────────────────────────────
 
-def run(portfolio_value: float, ohlcv_data: dict = None,
-        new_signal_scores: dict = None) -> dict:
+def is_btc_uptrend() -> bool:
+    """
+    Vérifie que BTC est au-dessus de sa moyenne mobile 50 jours.
+    Si non → marché potentiellement baissier → on n'achète rien.
+    """
+    try:
+        df = okx.get_ohlcv("BTC", days=60)
+        if df.empty or len(df) < 50:
+            logger.warning("BTC 50MA : données insuffisantes — filtre désactivé")
+            return True  # Par défaut, on laisse passer
+        ma50  = df["close"].rolling(50).mean().iloc[-1]
+        price = df["close"].iloc[-1]
+        uptrend = price > ma50
+        logger.info(
+            f"BTC 50MA : prix ${price:,.0f} {'>' if uptrend else '<'} MA50 ${ma50:,.0f} "
+            f"→ {'✅ achat autorisé' if uptrend else '🚫 marché baissier — achats bloqués'}"
+        )
+        return uptrend
+    except Exception as e:
+        logger.warning(f"BTC 50MA check échoué : {e} — filtre désactivé")
+        return True
+
+
+# ── Point d'entrée ────────────────────────────────────────────────────────────
+
+def run(portfolio_value: float, **kwargs) -> dict:
     """
     Gestion complète des positions toutes les 4h.
-
-    new_signal_scores : dict {ticker: score} des meilleurs signaux détectés
-                        ce cycle — utilisé pour la rotation active.
+    Sorties basées uniquement sur stops/objectifs/temps fixes.
     """
-    logger.info("Gestion des positions (stratégie rotation rapide)...")
+    logger.info("Gestion des positions (exits fixes : -7% / +12% / 7j)...")
 
     positions = get_open_positions()
     if not positions:
         logger.info("Aucune position ouverte.")
-        return {"positions": [], "actions": []}
-
-    # Données techniques
-    tickers = [p["ticker"] for p in positions]
-    if ohlcv_data is None:
-        ohlcv_data = okx.get_all_ohlcv(tickers, days=60)
-    tech_results = ts.run(ohlcv_data)
-
-    # Régime de marché
-    regime_results = {}
-    for ticker in tickers:
-        df_ticker = ohlcv_data.get(ticker)
-        if df_ticker is not None and not df_ticker.empty:
-            try:
-                regime_results[ticker] = rd.analyze(df_ticker)
-            except Exception as e:
-                logger.warning(f"Régime {ticker} : {e}")
-                regime_results[ticker] = {}
+        return {"positions": [], "actions": [], "btc_uptrend": is_btc_uptrend()}
 
     actions      = []
     danger_lines = []
-    sold_tickers = set()
 
-    # ── Évaluation individuelle de chaque position ────────────────────────────
     for pos in positions:
-        ticker     = pos["ticker"]
-        tech       = tech_results.get(ticker, {})
-        regime_data = regime_results.get(ticker, {})
-
-        if not tech or "erreur" in tech:
-            logger.warning(f"{ticker} : pas de données techniques")
-            continue
-
-        decision = evaluate_position(pos, tech, regime_data)
-        pnl  = decision["pnl_pct"] or 0
-        score = decision["score"]
-        held  = f"{decision['hours_held']:.0f}h" if decision.get("hours_held") else "?"
+        decision  = evaluate_position(pos)
+        pnl       = decision["pnl_pct"] or 0
+        days      = f"{decision['days_held']:.1f}j" if decision.get("days_held") else "?"
 
         logger.info(
-            f"{ticker} | P&L {pnl:+.1f}% | Score {score:+.2f} | "
-            f"Tenu {held} | Régime {decision.get('regime','?')} | "
-            f"→ {decision['decision']}"
+            f"{pos['ticker']} | P&L {pnl:+.1f}% | {days} | → {decision['decision']}"
         )
 
         if decision["decision"] != "HOLD":
             success = execute_decision(decision, portfolio_value)
             if success:
                 actions.append(decision)
-                sold_tickers.add(ticker)
         else:
-            # Zone de danger sans stop déclenché
-            is_danger = (
-                pos["prix_entree"] is not None
-                and (pnl <= -2.5 or (score <= -0.5 and pnl < 0))
-            )
-            if is_danger:
-                emoji = "🔴" if pnl < -3 else "🟠"
-                reg_icon = {"bull": "📈", "bear": "📉", "sideways": "↔️"}.get(
-                    regime_results.get(ticker, {}).get("regime", ""), ""
-                )
+            # Alerte danger si proche du stop (-5%) sans l'avoir déclenché
+            if pnl <= -5.0:
+                emoji = "🔴" if pnl < -6 else "🟠"
                 danger_lines.append(
-                    f"{emoji} *{ticker}* `${pos['prix_actuel']:.4f}` "
-                    f"P&L `{pnl:+.1f}%` Score `{score:+.2f}` {reg_icon}"
+                    f"{emoji} *{pos['ticker']}* `${pos['prix_actuel']:.4f}` "
+                    f"P&L `{pnl:+.1f}%` — stop à -7%"
                 )
 
-    # ── Rotation active ────────────────────────────────────────────────────────
-    if new_signal_scores:
-        positions_restantes = [p for p in positions if p["ticker"] not in sold_tickers]
-        if positions_restantes:
-            rotations = find_rotation_candidates(
-                positions_restantes, tech_results, new_signal_scores
-            )
-            for rot in rotations:
-                sell_t = rot["sell_ticker"]
-                buy_t  = rot["buy_ticker"]
-                logger.info(
-                    f"Rotation : vendre {sell_t} (score {rot['sell_score']:+.2f}, "
-                    f"P&L {rot['sell_pnl']:+.1f}%) → acheter {buy_t} "
-                    f"(score {rot['buy_score']:+.2f}, écart {rot['ecart']:+.2f})"
-                )
-                # Trouver la position à vendre
-                pos_a_vendre = next((p for p in positions_restantes if p["ticker"] == sell_t), None)
-                if not pos_a_vendre:
-                    continue
-                rot_decision = {
-                    "ticker":    sell_t,
-                    "decision":  "FULL_SELL",
-                    "raison":    f"Rotation → {buy_t} (écart score {rot['ecart']:+.2f})",
-                    "urgence":   False,
-                    "score":     rot["sell_score"],
-                    "pnl_pct":   rot["sell_pnl"],
-                    "pnl_usd":   pos_a_vendre.get("pnl_usd"),
-                    "valeur":    pos_a_vendre["valeur_usd"],
-                    "qty":       pos_a_vendre["qty"],
-                    "hours_held": pos_a_vendre.get("hours_held"),
-                    "regime":    regime_results.get(sell_t, {}).get("regime", "sideways"),
-                }
-                success = execute_decision(rot_decision, portfolio_value)
-                if success:
-                    actions.append(rot_decision)
-                    sold_tickers.add(sell_t)
-
-    # ── Alertes danger ────────────────────────────────────────────────────────
     if danger_lines:
-        msg  = "⚠️ *Positions à surveiller*\n\n" + "\n".join(danger_lines)
-        msg += "\n\n_Stop automatique déclenche à -4% — surveille si tu veux intervenir avant._"
-        alertes.send(msg)
+        alertes.send(
+            "⚠️ *Positions proches du stop*\n\n"
+            + "\n".join(danger_lines)
+            + "\n\n_Stop automatique à -7% — surveille si tu veux couper avant._"
+        )
 
     return {"positions": positions, "actions": actions}

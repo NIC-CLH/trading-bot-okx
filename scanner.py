@@ -190,6 +190,17 @@ def run_scan(portfolio_value: float) -> list[dict]:
     """
     logger.info("Démarrage du scan de marché OKX...")
 
+    # ── Filtre BTC 50MA : n'acheter que dans un marché haussier ──────────────
+    from position_manager import is_btc_uptrend
+    if not is_btc_uptrend():
+        logger.info("BTC sous sa MA50 — marché baissier — scan annulé (pas d'achats)")
+        alertes.send(
+            "🚫 *Scan annulé — BTC en dessous de sa moyenne 50 jours*\n"
+            "_Le bot n'achète pas en marché baissier. Il reprendra automatiquement "
+            "quand BTC repassera au-dessus._"
+        )
+        return []
+
     # Univers : top 50 OKX + watchlist
     top_tickers = get_top_volume_tickers(n=50)
     universe = list(set(top_tickers + WATCHLIST_EXTRA) - EXCLUDE)

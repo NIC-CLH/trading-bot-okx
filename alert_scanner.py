@@ -80,6 +80,12 @@ def scan_and_execute_signals() -> list[dict]:
     """
     executed = []
 
+    # Filtre BTC 50MA — pas d'achat en marché baissier
+    from position_manager import is_btc_uptrend
+    if not is_btc_uptrend():
+        logger.info("BTC sous MA50 — achats bloqués ce cycle")
+        return []
+
     ohlcv = okx.get_all_ohlcv(WATCH_TICKERS, days=60)
     tech_results = ts.run(ohlcv)
 
