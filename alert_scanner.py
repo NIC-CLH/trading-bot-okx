@@ -188,81 +188,90 @@ def scan_and_execute_signals() -> list[dict]:
             logger.info(f"{ticker} : R/R {rr:.1f} insuffisant — trade ignoré")
             continue
 
-        # ── Rotation si pas assez de USDC ──────────────────────────────────
-        # Si USDC < 10$, chercher la position la plus faible à vendre
+        # ── Rotation partielle si pas assez de USDC ────────────────────────
         usdc_pour_trade = usdc_available
-        rotation_faite = False
+        rotation_faite  = False
+        besoin_usdc     = portfolio_value * 0.20  # 20% du portfolio = taille cible
 
         if usdc_available < 10 and positions_scores:
-            # Trouver la position la plus faible :
-            # Priorité 1 : score le plus bas (position qui se dégrade)
-            # Priorité 2 : P&L le plus négatif (position perdante)
-            candidat_rotation = min(
+            # Trouver la position la plus faible (score le plus bas)
+            pos_faible, score_faible = min(
                 positions_scores.items(),
                 key=lambda x: (x[1], positions_pnl.get(x[0], {}).get("pnl", 0))
             )
-            pos_faible, score_faible = candidat_rotation
-            pnl_faible = positions_pnl.get(pos_faible, {}).get("pnl", 0)
+            pnl_faible    = positions_pnl.get(pos_faible, {}).get("pnl", 0)
+            qty_faible    = positions_pnl.get(pos_faible, {}).get("qty", 0)
+            prix_faible   = positions_pnl.get(pos_faible, {}).get("prix", 0)
+            valeur_faible = qty_faible * prix_faible
 
-            # Ne vendre que si la position faible est clairement inférieure
-            # au nouveau signal (écart de score >= 1.5 points)
             ecart_score = score - score_faible
-            pos_perdante = pnl_faible < -3.0   # En perte de plus de 3%
-            pos_neutre   = score_faible < 0.5  # Signal faible ou négatif
 
-            if ecart_score >= 1.5 and (pos_perdante or pos_neutre):
-                qty_vendre = positions_pnl[pos_faible]["qty"]
-                prix_faible = positions_pnl[pos_faible]["prix"]
-                valeur_faible = qty_vendre * prix_faible
-
+            if ecart_score < 1.2:
                 logger.info(
-                    f"Rotation : vente {pos_faible} (score={score_faible:+.2f}, "
-                    f"PnL={pnl_faible:+.1f}%) pour financer {ticker} (score={score:+.2f})"
+                    f"Rotation impossible : écart score trop faible "
+                    f"({ticker} {score:+.2f} vs {pos_faible} {score_faible:+.2f})"
                 )
+                continue
 
-                try:
-                    okx.place_order(
-                        ticker=pos_faible,
-                        side="sell",
-                        quantity=qty_vendre * 0.999,
-                        order_type="market",
-                    )
-                    # Notifier la rotation
-                    pnl_emoji = "🟢" if pnl_faible >= 0 else "🔴"
-                    _send_telegram(
-                        f"🔄 *Rotation de position*\n\n"
-                        f"{pnl_emoji} Vente *{pos_faible}* "
-                        f"(score `{score_faible:+.2f}`, PnL `{pnl_faible:+.1f}%`)\n"
-                        f"→ Pour financer *{ticker}* (score `{score:+.2f}`)\n\n"
-                        f"_Le signal sur {ticker} est nettement supérieur_"
-                    )
-                    usdc_pour_trade = valeur_faible * 0.997  # Après frais estimés
-                    rotation_faite = True
+            # ── Calcul du % à vendre : entre 10% et 100% selon l'écart ────
+            # ecart 1.2 → vendre ~15%  (signal légèrement supérieur)
+            # ecart 2.0 → vendre ~55%  (signal nettement supérieur)
+            # ecart 3.0 → vendre 100%  (signal écrasant)
+            pct_vente = min(1.0, max(0.10, (ecart_score - 1.2) / 1.8))
+
+            # Ne vendre que ce dont on a besoin — pas plus
+            usdc_libere_max = valeur_faible * pct_vente
+            if usdc_libere_max < besoin_usdc:
+                # On peut vendre plus si la position est perdante ou neutre
+                if pnl_faible < -3.0 or score_faible < 0.5:
+                    pct_vente = min(1.0, besoin_usdc / valeur_faible)
+                    usdc_libere_max = valeur_faible * pct_vente
+
+            qty_a_vendre  = qty_faible * pct_vente
+            usdc_estime   = usdc_libere_max * 0.997  # après frais
+
+            if usdc_estime < 5:
+                logger.info(f"Rotation : montant libéré trop faible (${usdc_estime:.2f}) — ignoré")
+                continue
+
+            logger.info(
+                f"Rotation {pct_vente*100:.0f}% de {pos_faible} "
+                f"(score {score_faible:+.2f}, PnL {pnl_faible:+.1f}%) "
+                f"→ libère ~${usdc_estime:.0f} pour {ticker} (score {score:+.2f})"
+            )
+
+            try:
+                import time as _time
+                okx.place_order(
+                    ticker=pos_faible,
+                    side="sell",
+                    quantity=qty_a_vendre * 0.999,
+                    order_type="market",
+                )
+                pnl_emoji = "🟢" if pnl_faible >= 0 else "🔴"
+                action_txt = "Vente totale" if pct_vente >= 0.99 else f"Vente partielle {pct_vente*100:.0f}%"
+                _send_telegram(
+                    f"🔄 *Rotation — {action_txt} {pos_faible}*\n\n"
+                    f"{pnl_emoji} *{pos_faible}* `{pct_vente*100:.0f}%` vendu "
+                    f"(PnL `{pnl_faible:+.1f}%`)\n"
+                    f"💰 USDC libéré : `~${usdc_estime:.0f}`\n"
+                    f"→ Achat *{ticker}* (signal `{score:+.2f}` vs `{score_faible:+.2f}`)"
+                )
+                usdc_pour_trade = usdc_estime
+                rotation_faite  = True
+                if pct_vente >= 0.99:
                     open_positions.discard(pos_faible)
-                    # Laisser le temps à l'ordre de se remplir
-                    import time; time.sleep(3)
-                except Exception as e:
-                    logger.error(f"Échec vente rotation {pos_faible} : {e}")
-                    continue  # Si la vente échoue, on n'achète pas
+                _time.sleep(3)  # laisser l'ordre se remplir
+            except Exception as e:
+                logger.error(f"Échec rotation {pos_faible} : {e}")
+                continue
 
-            else:
-                logger.info(
-                    f"Pas de rotation : {pos_faible} score={score_faible:+.2f} "
-                    f"PnL={pnl_faible:+.1f}% — pas assez dégradé vs {ticker}"
-                )
-                continue  # Pas de USDC et pas de rotation possible → skip
+        elif usdc_available < 10:
+            logger.info(f"{ticker} : pas de USDC et aucune position à rotater — ignoré")
+            continue
 
         # ── Exécution du trade ──────────────────────────────────────────────
-        # Recalculer le portfolio_value après rotation éventuelle
-        pv = portfolio_value if not rotation_faite else (
-            portfolio_value - positions_pnl.get(
-                min(positions_scores, key=lambda x: positions_scores[x], default=""),
-                {}
-            ).get("qty", 0) * positions_pnl.get(
-                min(positions_scores, key=lambda x: positions_scores[x], default=""),
-                {}
-            ).get("prix", 0) + usdc_pour_trade
-        )
+        pv = portfolio_value
 
         signal = {
             "ticker": ticker,
