@@ -72,7 +72,15 @@ def _post(path: str, body: dict) -> dict:
     data = resp.json()
     if data.get("code") != "0":
         raise Exception(f"OKX API error : {data.get('msg')} (code {data.get('code')})")
-    return data.get("data", [])
+    results = data.get("data", [])
+    # Vérifier le sCode au niveau de l'ordre individuel
+    if results and isinstance(results, list):
+        first = results[0]
+        s_code = str(first.get("sCode", "0"))
+        if s_code != "0":
+            s_msg = first.get("sMsg", "Unknown order error")
+            raise Exception(f"OKX order failed : {s_msg} (sCode {s_code})")
+    return results
 
 
 # ─── Balances ─────────────────────────────────────────────────────────────────
@@ -245,23 +253,42 @@ def place_order(
     """
     inst_id = f"{ticker.upper()}-{QUOTE_CCY}"  # USDC sur compte EEA
 
-    # ── Étape 1 : calcul du prix limite et de la quantité ─────────────────────
-    fill_price = None  # Prix utilisé pour les calculs (TP/SL algo + rapport)
+    # ── Vérifier qu'il n'y a pas déjà un ordre ouvert pour ce ticker ─────────
+    # Évite le "All operations failed" quand on essaie de vendre une position
+    # déjà en cours de liquidation (ordre limit non rempli).
+    try:
+        pending = _get("/api/v5/trade/orders-pending", {
+            "instId": inst_id,
+            "instType": "SPOT",
+        })
+        if pending:
+            same_side = [o for o in pending if o.get("side") == side]
+            if same_side:
+                existing_id = same_side[0].get("ordId", "?")
+                logger.info(
+                    f"{ticker} : ordre {side} déjà en attente (ID {existing_id}) — ignoré"
+                )
+                return {"ordId": existing_id, "status": "already_pending"}
+    except Exception as e:
+        logger.debug(f"Check ordres en attente {ticker} : {e}")
+
+    # ── Étape 1 : calcul du prix et de la quantité ────────────────────────────
+    fill_price = None
     use_limit = True
 
     if side == "buy":
+        # Achat : ordre limit à ask + 0.3% pour garantir le remplissage
         ask = get_ask_price(ticker)
         if ask:
-            fill_price = round(ask * 1.003, 8)  # +0.3% au-dessus de l'ask
+            fill_price = round(ask * 1.003, 8)
         else:
             use_limit = False
-
-    elif side == "sell":
-        bid = get_bid_price(ticker)
-        if bid:
-            fill_price = round(bid * 0.998, 8)  # -0.2% en dessous du bid
-        else:
-            use_limit = False
+    else:
+        # Vente : TOUJOURS market pour exécution immédiate et certaine.
+        # Les ordres limit de vente peuvent rester en attente si le marché
+        # baisse, ce qui cause des tentatives de double-vente aux cycles suivants.
+        use_limit = False
+        fill_price = get_price_usdc(ticker)  # Pour estimation seulement
 
     # Convertir montant USDC → quantité si nécessaire
     qty_computed = None
@@ -269,6 +296,14 @@ def place_order(
         qty_computed = round(usdt_amount / fill_price, 8)
     elif quantity:
         qty_computed = round(quantity, 8)
+
+    # ── Vérification montant minimum (~$1 pour OKX EEA) ──────────────────────
+    if qty_computed and fill_price:
+        notional = qty_computed * fill_price
+        if notional < 1.0:
+            raise Exception(
+                f"Ordre trop petit : ${notional:.2f} (minimum $1) — ignoré"
+            )
 
     # ── Étape 2 : construction du corps de l'ordre ────────────────────────────
     body = {
@@ -281,19 +316,16 @@ def place_order(
         body["ordType"] = "limit"
         body["px"] = str(fill_price)
         body["sz"] = str(qty_computed)
-        logger.info(
-            f"Ordre LIMIT {side} {ticker} : {qty_computed} @ ${fill_price} "
-            f"({'ask+0.3%' if side == 'buy' else 'bid-0.2%'})"
-        )
+        logger.info(f"Ordre LIMIT buy {ticker} : {qty_computed} @ ${fill_price} (ask+0.3%)")
     else:
-        # Fallback market
+        # Market : ventes + fallback achats sans carnet
         body["ordType"] = "market"
         if side == "buy" and usdt_amount:
             body["tgtCcy"] = "quote_ccy"
             body["sz"] = str(round(usdt_amount, 2))
         elif qty_computed:
             body["sz"] = str(qty_computed)
-        logger.info(f"Ordre MARKET {side} {ticker} (carnet indisponible)")
+        logger.info(f"Ordre MARKET {side} {ticker} : {qty_computed}")
 
     result = _post("/api/v5/trade/order", body)
     logger.info(f"Ordre OKX placé : {side} {ticker} — {result}")
