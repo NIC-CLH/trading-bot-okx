@@ -219,14 +219,60 @@ def get_all_ohlcv(tickers: list[str], days: int = 90) -> dict[str, pd.DataFrame]
 
 # ─── Ordres ───────────────────────────────────────────────────────────────────
 
-def get_available_pairs() -> list[str]:
-    """Liste tous les tickers avec paire USDT disponibles sur OKX Spot."""
+def get_available_pairs(min_volume_usdc: float = 500_000) -> list[str]:
+    """
+    Retourne TOUS les tickers tradables sur OKX EEA en USDC,
+    triés par volume 24h décroissant, avec un filtre de liquidité minimum.
+
+    min_volume_usdc : volume 24h minimum en USDC (défaut 500k$)
+                      Élimine les tokens trop illiquides pour être tradés.
+    """
     try:
-        data = _get("/api/v5/public/instruments", {"instType": "SPOT"})
-        return [
-            d["baseCcy"] for d in data
-            if d.get("quoteCcy") == "USDT" and d.get("state") == "live"
+        # Récupérer tous les instruments SPOT disponibles
+        instruments = _get("/api/v5/public/instruments", {"instType": "SPOT"})
+
+        # Filtrer : paires USDC (ce qu'on trade réellement sur EEA) + actives
+        usdc_pairs = {
+            d["baseCcy"] for d in instruments
+            if d.get("quoteCcy") == "USDC" and d.get("state") == "live"
+        }
+
+        if not usdc_pairs:
+            # Fallback USDT si aucune paire USDC trouvée
+            usdc_pairs = {
+                d["baseCcy"] for d in instruments
+                if d.get("quoteCcy") == "USDT" and d.get("state") == "live"
+            }
+
+        # Récupérer les volumes 24h pour trier et filtrer
+        tickers_data = _get("/api/v5/market/tickers", {"instType": "SPOT"})
+
+        volumes = {}
+        for t in tickers_data:
+            inst_id = t.get("instId", "")
+            # Accepter USDC ou USDT pour le volume
+            for quote in ("-USDC", "-USDT"):
+                if inst_id.endswith(quote):
+                    base = inst_id[: -len(quote)]
+                    if base in usdc_pairs:
+                        vol = float(t.get("volCcy24h", 0) or 0)
+                        if base not in volumes or vol > volumes[base]:
+                            volumes[base] = vol
+                    break
+
+        # Filtrer par volume minimum et trier par volume décroissant
+        filtered = [
+            ticker for ticker, vol in volumes.items()
+            if vol >= min_volume_usdc
         ]
+        filtered.sort(key=lambda t: volumes.get(t, 0), reverse=True)
+
+        logger.info(
+            f"OKX EEA : {len(usdc_pairs)} paires USDC disponibles, "
+            f"{len(filtered)} avec volume > ${min_volume_usdc/1e6:.1f}M"
+        )
+        return filtered
+
     except Exception as e:
         logger.error(f"Erreur get_available_pairs : {e}")
         return []

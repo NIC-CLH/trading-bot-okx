@@ -38,12 +38,10 @@ XRP_SELL_THRESHOLD = -2.0   # <= -2.0 → "VENDRE" (signal très fort requis)
 XRP_PRICE_MOVE_PCT =  4.0   # Alerte aussi si prix bouge > 4% sur la journée
 XRP_ANALYSIS_INTERVAL_H = 2 # N'analyser XRP que toutes les 2h (heures paires UTC)
 
-WATCH_TICKERS = [
-    "BTC", "ETH", "SOL", "BNB", "XRP",
-    "AVAX", "LINK", "NEAR", "INJ", "TIA",
-    "ARB", "OP", "SUI", "APT", "AAVE",
-    "DOT", "ATOM", "UNI", "DYDX", "ENA",
-]
+STABLES_EXCLUDE = {
+    "USDT", "USDC", "BUSD", "DAI", "FDUSD", "TUSD", "USDP",
+    "WBTC", "WETH", "STETH", "BETH", "BBTC",
+}
 
 # Cache in-run uniquement (évite d'envoyer 2x la même alerte dans un même run)
 _sent_this_run: set = set()
@@ -86,7 +84,12 @@ def scan_and_execute_signals() -> list[dict]:
         logger.info("BTC sous MA50 — achats bloqués ce cycle")
         return []
 
-    ohlcv = okx.get_all_ohlcv(WATCH_TICKERS, days=60)
+    # Univers complet OKX EEA — tout ce qui est disponible et liquide
+    universe = [t for t in okx.get_available_pairs(min_volume_usdc=500_000)
+                if t not in STABLES_EXCLUDE and t != "XRP"]
+    logger.info(f"Alert scanner — univers : {len(universe)} actifs")
+
+    ohlcv = okx.get_all_ohlcv(universe, days=60)
     tech_results = ts.run(ohlcv)
 
     # Récupérer les positions actuelles (pour éviter de doubler)

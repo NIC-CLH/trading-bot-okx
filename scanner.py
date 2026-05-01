@@ -1,10 +1,9 @@
 """
-Scanner de marché — analyse les meilleures opportunités sur OKX
-et déclenche des alertes Telegram uniquement sur signaux forts.
-Validation fondamentale (news + Fear&Greed + BTC dominance) requise.
+Scanner de marché — analyse TOUTES les opportunités disponibles sur OKX EEA.
 
-Univers scanné : top 50 paires USDT OKX + watchlist manuelle.
-Seuil d'alerte : score composite >= 2.0 ou <= -2.0.
+Univers scanné : toutes les paires USDC avec volume > 500k$/jour.
+Triées par volume décroissant — les plus liquides analysées en premier.
+Seuil d'alerte : score composite >= 1.5.
 """
 
 import logging
@@ -33,36 +32,34 @@ logger = logging.getLogger(__name__)
 SIGNAL_THRESHOLD = 1.5      # Alerte envoyée
 AUTO_EXECUTE_THRESHOLD = 1.5  # Ordre automatique placé
 
-# Watchlist prioritaire (actifs à fort potentiel)
-WATCHLIST_EXTRA = [
-    "BTC", "ETH", "XRP", "SOL", "BNB",   # Top market cap — priorité absolue
-    "INJ", "SUI", "TIA", "JTO",
-    "ARB", "OP", "AVAX", "DOT",
-    "LINK", "AAVE", "UNI", "NEAR", "APT",
-    "ATOM", "DYDX", "SEI", "STX", "WIF",
-    "PENDLE", "ENA", "EIGEN", "W",
-]
-
-# Actifs à exclure
+# Actifs à exclure (stablecoins + wrapped tokens)
 EXCLUDE = {
-    "USDT", "USDC", "BUSD", "DAI", "FDUSD", "TUSD",
-    "WBTC", "WETH", "STETH", "BETH",
+    "USDT", "USDC", "BUSD", "DAI", "FDUSD", "TUSD", "USDP",
+    "WBTC", "WETH", "STETH", "BETH", "BBTC",
 }
+
+# Volume minimum 24h en USDC pour être scanné
+# 500k$ = token suffisamment liquide pour entrer/sortir sans slippage
+MIN_VOLUME_USDC = 500_000
 
 # Cooldown anti-doublon (ticker -> timestamp dernier signal)
 _alerted_cache: dict[str, float] = {}
 ALERT_COOLDOWN_HOURS = 6
 
 
-def get_top_volume_tickers(n: int = 50) -> list[str]:
-    """Retourne les N tickers USDT avec le plus grand volume 24h sur OKX."""
+def get_universe() -> list[str]:
+    """
+    Retourne TOUS les actifs disponibles sur OKX EEA avec volume suffisant,
+    triés par volume décroissant (les plus importants analysés en premier).
+    Pas de limite arbitraire — on scanne tout ce qui est disponible.
+    """
     try:
-        pairs = okx.get_available_pairs()
-        # On prend les N premiers (OKX les retourne triés par popularité approximative)
-        tickers = [t for t in pairs if t not in EXCLUDE][:n]
-        return tickers
+        pairs = okx.get_available_pairs(min_volume_usdc=MIN_VOLUME_USDC)
+        universe = [t for t in pairs if t not in EXCLUDE]
+        logger.info(f"Univers OKX EEA : {len(universe)} actifs (volume > ${MIN_VOLUME_USDC/1e6:.1f}M/j)")
+        return universe
     except Exception as e:
-        logger.error(f"Erreur get_available_pairs OKX : {e}")
+        logger.error(f"Erreur get_universe : {e}")
         return []
 
 
@@ -201,9 +198,11 @@ def run_scan(portfolio_value: float) -> list[dict]:
         )
         return []
 
-    # Univers : top 50 OKX + watchlist
-    top_tickers = get_top_volume_tickers(n=50)
-    universe = list(set(top_tickers + WATCHLIST_EXTRA) - EXCLUDE)
+    # Univers complet : tout ce qui est disponible sur OKX EEA
+    universe = get_universe()
+    if not universe:
+        logger.error("Univers vide — abandon du scan")
+        return []
     logger.info(f"Univers scanné : {len(universe)} actifs")
 
     # OHLCV depuis OKX
