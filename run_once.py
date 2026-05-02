@@ -62,19 +62,28 @@ try:
 except Exception as e:
     print(f"Erreur gestion positions : {e}")
 
-# ── Étape 2 : Recalculer la balance après ventes ─────────────────────────
+# ── Étape 2 : Recalculer balance + valeur totale après ventes ────────────
 try:
     balances = okx.get_balances()
     usdc = balances.get("USDC", 0) + balances.get("USDT", 0)
     nb_positions = len([k for k in balances if k not in ("USDC", "USDT")])
+    positions_apres = {k: v for k, v in balances.items() if k not in ("USDC", "USDT")}
+    # Recalcul du portfolio total (positions liquidées → USDC monté)
+    portfolio_value = usdc + sum(
+        (okx.get_price_usdc(t) or 0) * q for t, q in positions_apres.items()
+    )
+    print(f"Portfolio mis à jour : ${portfolio_value:.2f} (USDC libre : ${usdc:.2f})")
 except Exception:
     pass
 
 # ── Étape 3 : Scan nouvelles opportunités ────────────────────────────────
+# On passe la valeur TOTALE du portefeuille (positions + USDC), pas seulement USDC.
+# Cela garantit que la taille des trades est proportionnelle à la richesse réelle,
+# plafonnée par le USDC effectivement disponible dans execution.py.
 print("\n─── SCAN OPPORTUNITÉS ───")
 signals = []
 try:
-    signals = scanner.run_scan(portfolio_value=usdc)
+    signals = scanner.run_scan(portfolio_value=portfolio_value)
     print(f"{len(signals)} signal(s) actionnable(s)")
 except Exception as e:
     print(f"Erreur scan : {e}")

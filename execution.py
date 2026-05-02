@@ -17,6 +17,14 @@ logger = logging.getLogger(__name__)
 BUDGET_PCT = 0.95       # 95% du capital peut être investi (5% gardé pour frais)
 MAX_TRADE_PCT = 0.25    # Max 25% du capital par position (4 positions max)
 
+# Multiplicateurs de conviction selon la force du signal
+# Signal fort → position plus grosse dans la limite du budget
+CONVICTION_MULTIPLIERS = {
+    2.5: 1.25,   # Score >= 2.5 : +25% (signal exceptionnel)
+    2.0: 1.0,    # Score >= 2.0 : taille normale
+    1.5: 0.75,   # Score >= 1.5 : -25% (signal limite)
+}
+
 
 def get_trading_budget(portfolio_value: float) -> float:
     return portfolio_value * BUDGET_PCT
@@ -128,6 +136,10 @@ def execute_signal(signal: dict, portfolio_value: float) -> bool:
         target = min(target, target_min)
 
     # ── Budget ───────────────────────────────────────────────────────────────
+    # portfolio_value = valeur totale du portefeuille (positions + USDC)
+    # La taille max est 25% du TOTAL, plafonnée par le USDC réellement disponible.
+    # Avant : max_trade = usdc * 25% → trop petit quand capital en positions.
+    # Après : max_trade = portfolio_total * 25%, cap par usdc dispo.
     usdt_available = get_usdt_balance()
 
     if usdt_available < 10:
@@ -135,12 +147,29 @@ def execute_signal(signal: dict, portfolio_value: float) -> bool:
         logger.info(f"{ticker} : budget insuffisant (${usdt_available:.2f}) — ignoré")
         return False
 
-    max_trade = get_max_trade_size(portfolio_value)
-    trade_size_usdt = min(max_trade, usdt_available * 0.95)  # garde 5% pour frais
+    # Taille de base selon le portfolio total
+    max_trade_base = get_max_trade_size(portfolio_value)
+
+    # Multiplicateur de conviction : signal fort = position plus grosse
+    score_abs = abs(score)
+    conviction = 0.75  # défaut pour score faible
+    for threshold, mult in sorted(CONVICTION_MULTIPLIERS.items(), reverse=True):
+        if score_abs >= threshold:
+            conviction = mult
+            break
+
+    max_trade = max_trade_base * conviction
+    trade_size_usdt = min(max_trade, usdt_available * 0.95)  # cap par USDC dispo
 
     if trade_size_usdt < 5:
         logger.warning(f"Trade trop petit : ${trade_size_usdt:.2f} — ignoré")
         return False
+
+    logger.info(
+        f"{ticker} : portfolio=${portfolio_value:.0f} | max_trade=${max_trade:.0f} "
+        f"(conviction x{conviction}) | usdc_dispo=${usdt_available:.0f} "
+        f"→ taille finale=${trade_size_usdt:.0f}"
+    )
 
     quantite = trade_size_usdt / prix
     side = "buy" if score > 0 else "sell"

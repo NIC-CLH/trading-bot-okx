@@ -230,7 +230,9 @@ def run_scan(portfolio_value: float) -> list[dict]:
     ml_info = "actif" if ml_status["model_trained"] else f"en collecte ({ml_status['n_labeled_trades']}/50 trades)"
     logger.info(f"ML : {ml_info}")
 
-    # Analyse complète uniquement sur les candidats (économie d'API calls)
+    # ── Phase 1 : Analyser tous les candidats, collecter les payloads ────────
+    # On NE exécute PAS encore — on veut d'abord connaître tous les scores
+    # pour financer les meilleurs signaux en priorité.
     actionable = []
     for ticker, tech in candidates.items():
         score_tech = tech.get("signal", {}).get("score", 0)
@@ -322,24 +324,36 @@ def run_scan(portfolio_value: float) -> list[dict]:
         payload["ml_active"] = ml_result.get("ml_active", False)
         payload["ml_confidence"] = ml_result.get("ml_confidence", 0)
         payload["score"] = score_final  # Score final (ML ou manuel)
+        payload["trade_autorise"] = fundamental.get("trade_autorise", False)
 
         # Enregistrer pour l'entraînement ML futur
         ml.save_signal_for_training(payload, regime_data, vp_data)
 
         actionable.append(payload)
 
-        # Alerte Telegram enrichie
+        # Alerte Telegram enrichie (immédiate — indépendante de l'exécution)
         alertes.alerte_opportunite_enrichie(payload)
         _alerted_cache[ticker] = time.time()
-        logger.info(f"Alerte envoyée : {ticker} score_final={score_final:+.2f}")
+        logger.info(f"Signal collecté : {ticker} score_final={score_final:+.2f}")
 
-        # Exécution autonome — taille ajustée par position_multiplier
-        if score_final >= AUTO_EXECUTE_THRESHOLD and fundamental["trade_autorise"]:
-            # Réduire la taille si volatilité élevée ou régime incertain
-            payload["taille_usd"] = payload["taille_usd"] * position_multiplier
+        time.sleep(1)  # anti-flood API
+
+    # ── Phase 2 : Trier par score décroissant ────────────────────────────────
+    # CRITIQUE : le signal le plus fort est financé en priorité.
+    # Sans ce tri, un signal faible traité en premier vide le budget USDC
+    # et prive le meilleur signal de capital (bug BIO/TRX du 1er mai).
+    actionable.sort(key=lambda p: p["score"], reverse=True)
+
+    if actionable:
+        ordre = " > ".join(f"{p['ticker']}({p['score']:+.2f})" for p in actionable)
+        logger.info(f"Ordre d'execution par conviction : {ordre}")
+
+    # ── Phase 3 : Exécuter dans l'ordre (meilleur score = premier servi) ─────
+    for payload in actionable:
+        if payload["score"] >= AUTO_EXECUTE_THRESHOLD and payload.get("trade_autorise"):
+            # Ajuster la taille selon régime (volatilité haute = position réduite)
+            payload["taille_usd"] = payload["taille_usd"] * payload.get("position_multiplier", 1.0)
             execution.execute_signal(payload, portfolio_value)
-
-        time.sleep(1)  # anti-flood Telegram + API
 
     if not actionable:
         logger.info("Aucun signal actionnable détecté.")
