@@ -150,16 +150,26 @@ def evaluate_position(pos: dict) -> dict:
     raison   = ""
     urgence  = False
 
+    # ── P0 : Prix d'entrée inconnu — on ne peut pas monitorer → vente sécurité
+    # Cas typique : position ancienne achetée avant le système actuel.
+    # Sans prix d'entrée, impossible de savoir si on perd ou gagne → on sort.
+    if not entree:
+        decision = "FULL_SELL"
+        raison   = "Prix d'entrée introuvable — vente de sécurité (exposition inconnue)"
+        urgence  = True
+
     # ── P1 : Stop dur -7% ────────────────────────────────────────────────────
-    if entree and pnl_pct <= STOP_LOSS_PCT * 100:
+    elif pnl_pct <= STOP_LOSS_PCT * 100:
         decision = "FULL_SELL"
         raison   = f"Stop -7% déclenché ({pnl_pct:.1f}%)"
         urgence  = True
 
     # ── P2 : Time stop — 7 jours sans atteindre l'objectif ──────────────────
-    elif days_held and days_held >= MAX_HOLDING_DAYS and pnl_pct < FULL_PROFIT_PCT * 100:
+    elif (days_held is None or days_held >= MAX_HOLDING_DAYS) and pnl_pct < FULL_PROFIT_PCT * 100:
+        # days_held None = timestamp inconnu = position ancienne → on libère aussi
+        raison_temps = f"{days_held:.0f}j" if days_held else "durée inconnue"
         decision = "FULL_SELL"
-        raison   = f"7 jours écoulés (P&L {pnl_pct:+.1f}%) — on libère le capital"
+        raison   = f"Time stop ({raison_temps}) — P&L {pnl_pct:+.1f}% — on libère le capital"
 
     # ── P3 : Objectif +12% atteint → sortie complète ─────────────────────────
     elif pnl_pct >= FULL_PROFIT_PCT * 100:
