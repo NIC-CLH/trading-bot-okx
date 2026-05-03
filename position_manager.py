@@ -5,12 +5,13 @@ Philosophie : une fois en position, le bot est SOURD aux signaux.
 On ne sort QUE sur trois événements prédéfinis à l'entrée :
   1. Stop fixe    : -7% du prix d'entrée (absorbe le bruit crypto normal)
   2. Objectif fixe: +12% du prix d'entrée (prise de profit partielle à +7%)
-  3. Temps max    : 7 jours — si ni stop ni objectif → on sort et on passe à autre chose
+  3. Temps max    : 7 jours CONFIRMÉS — si ni stop ni objectif → on sort
 
 Ce qui est SUPPRIMÉ :
   - Sorties basées sur le score technique (whipsawing)
   - Rotations actives (vendre X pour acheter Y)
   - Trailing stop complexe
+  - Vente automatique si prix d'entrée inconnu (trop dangereux)
 
 Seul le stop dur en prix et le temps décident de la sortie.
 """
@@ -33,6 +34,7 @@ PARTIAL_PROFIT_PCT   =  0.07   # +7%  → vendre 50%, laisser courir
 FULL_PROFIT_PCT      =  0.12   # +12% → sortie complète
 MAX_HOLDING_DAYS     =  7      # 7 jours max en position, quelle que soit la situation
 MAX_POSITIONS        =  4
+MIN_POSITION_VALUE   =  3.0    # ignorer les poussières < $3 (restes de vieux trades)
 
 
 # ── Données de position ───────────────────────────────────────────────────────
@@ -56,6 +58,12 @@ def get_open_positions() -> list[dict]:
         if not prix_actuel:
             continue
 
+        # Filtrer les poussières — trop petit pour être géré ou vendu
+        valeur_usd = qty * prix_actuel
+        if valeur_usd < MIN_POSITION_VALUE:
+            logger.debug(f"{ticker} ignoré (poussière ${valeur_usd:.2f} < ${MIN_POSITION_VALUE})")
+            continue
+
         entry_info  = _get_entry_info(ticker)
         prix_entree = entry_info.get("price")
         entry_ts    = entry_info.get("time")
@@ -74,7 +82,7 @@ def get_open_positions() -> list[dict]:
             "prix_entree": prix_entree,
             "entry_ts":    entry_ts,
             "days_held":   days_held,
-            "valeur_usd":  qty * prix_actuel,
+            "valeur_usd":  valeur_usd,
             "pnl_pct":     pnl_pct,
             "pnl_usd":     pnl_usd,
         })
@@ -138,6 +146,17 @@ def evaluate_position(pos: dict) -> dict:
     Ignore complètement le score technique — seuls le prix et le temps comptent.
 
     Décisions : HOLD | PARTIAL_SELL | FULL_SELL
+
+    Règles d'exit (par priorité) :
+      P1 — Stop dur -7%       : sortie immédiate si perte connue >= 7%
+      P2 — Time stop 7j       : sortie si durée CONFIRMÉE >= 7 jours
+      P3 — Objectif +12%      : sortie complète sur profit cible
+      P4 — Mi-chemin +7%      : vente partielle 50%
+
+    NOTE : si le prix d'entrée est inconnu, on NE vend PAS automatiquement.
+    On logue un avertissement et on maintient (HOLD). L'utilisateur gère manuellement
+    les positions achetées avant le système. Le time stop P2 ne se déclenche
+    que si le timestamp est CONNU (days_held != None).
     """
     ticker    = pos["ticker"]
     prix      = pos["prix_actuel"]
@@ -150,26 +169,30 @@ def evaluate_position(pos: dict) -> dict:
     raison   = ""
     urgence  = False
 
-    # ── P0 : Prix d'entrée inconnu — on ne peut pas monitorer → vente sécurité
-    # Cas typique : position ancienne achetée avant le système actuel.
-    # Sans prix d'entrée, impossible de savoir si on perd ou gagne → on sort.
+    # ── Prix d'entrée inconnu : avertissement, pas de vente automatique ──────
+    # Raison : vendre automatiquement des positions sans historique connu
+    # peut liquider des positions rentables achetées avant le système actuel.
+    # Le bot logue un warning — l'utilisateur décide manuellement.
     if not entree:
-        decision = "FULL_SELL"
-        raison   = "Prix d'entrée introuvable — vente de sécurité (exposition inconnue)"
-        urgence  = True
+        logger.warning(
+            f"{ticker} | Prix d'entrée introuvable — HOLD conservateur "
+            f"(valeur ${valeur:.2f}, durée {'%.1fj' % days_held if days_held else 'inconnue'})"
+        )
+        # On continue avec pnl_pct=0 : le stop ne se déclenchera pas,
+        # mais le time stop CONFIRMÉ (P2) peut toujours s'appliquer.
 
-    # ── P1 : Stop dur -7% ────────────────────────────────────────────────────
-    elif pnl_pct <= STOP_LOSS_PCT * 100:
+    # ── P1 : Stop dur -7% (seulement si on connaît le prix d'entrée) ─────────
+    if entree and pnl_pct <= STOP_LOSS_PCT * 100:
         decision = "FULL_SELL"
         raison   = f"Stop -7% déclenché ({pnl_pct:.1f}%)"
         urgence  = True
 
-    # ── P2 : Time stop — 7 jours sans atteindre l'objectif ──────────────────
-    elif (days_held is None or days_held >= MAX_HOLDING_DAYS) and pnl_pct < FULL_PROFIT_PCT * 100:
-        # days_held None = timestamp inconnu = position ancienne → on libère aussi
-        raison_temps = f"{days_held:.0f}j" if days_held else "durée inconnue"
+    # ── P2 : Time stop — 7 jours CONFIRMÉS uniquement ────────────────────────
+    # days_held=None = timestamp inconnu = on ne sait pas depuis combien de temps
+    # → on NE vend PAS sur incertitude (risque de liquider une position rentable)
+    elif days_held is not None and days_held >= MAX_HOLDING_DAYS and pnl_pct < FULL_PROFIT_PCT * 100:
         decision = "FULL_SELL"
-        raison   = f"Time stop ({raison_temps}) — P&L {pnl_pct:+.1f}% — on libère le capital"
+        raison   = f"Time stop ({days_held:.0f}j) — P&L {pnl_pct:+.1f}% — on libère le capital"
 
     # ── P3 : Objectif +12% atteint → sortie complète ─────────────────────────
     elif pnl_pct >= FULL_PROFIT_PCT * 100:
@@ -183,7 +206,8 @@ def evaluate_position(pos: dict) -> dict:
 
     if decision == "HOLD":
         days_str = f"{days_held:.1f}j" if days_held else "?"
-        raison = f"En cours ({pnl_pct:+.1f}% | {days_str} / 7j)"
+        entree_str = f"entree=${entree:.4f} " if entree else "entree=? "
+        raison = f"En cours ({entree_str}{pnl_pct:+.1f}% | {days_str} / 7j)"
 
     return {
         "ticker":    ticker,
@@ -307,7 +331,7 @@ def run(portfolio_value: float, **kwargs) -> dict:
                 actions.append(decision)
         else:
             # Alerte danger si proche du stop (-5%) sans l'avoir déclenché
-            if pnl <= -5.0:
+            if pnl <= -5.0 and pos.get("prix_entree"):
                 emoji = "🔴" if pnl < -6 else "🟠"
                 danger_lines.append(
                     f"{emoji} *{pos['ticker']}* `${pos['prix_actuel']:.4f}` "
