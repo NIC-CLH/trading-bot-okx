@@ -86,16 +86,41 @@ def _post(path: str, body: dict) -> dict:
 # ─── Balances ─────────────────────────────────────────────────────────────────
 
 def get_balances() -> dict[str, float]:
-    """Retourne les balances spot non nulles {ticker: quantite}."""
+    """
+    Retourne les balances spot {ticker: quantite}.
+    Utilise cashBal (solde total) plutôt que availBal (disponible seulement).
+    Raison : availBal = 0 quand des fonds sont gelés dans un ordre algo OCO
+    (stop-loss/take-profit OKX) → actifs invisibles au bot malgré leur existence.
+    cashBal = solde réel incluant fonds gelés en ordres.
+    """
     data = _get("/api/v5/account/balance")
     balances = {}
     for account in data:
         for detail in account.get("details", []):
-            qty = float(detail.get("availBal", 0))
+            qty = float(detail.get("cashBal", 0))
             if qty > 0:
                 balances[detail["ccy"]] = qty
     logger.info(f"Balances OKX : {balances}")
     return balances
+
+
+def get_avg_entry_price(ticker: str) -> float | None:
+    """
+    Récupère le prix moyen d'entrée OKX (accAvgPx) depuis le compte.
+    Utilisé comme fallback quand les fills historiques ne remontent pas assez loin.
+    OKX calcule ce prix moyen sur l'ensemble de la position actuelle.
+    """
+    try:
+        data = _get("/api/v5/account/balance")
+        for account in data:
+            for detail in account.get("details", []):
+                if detail.get("ccy", "").upper() == ticker.upper():
+                    px = detail.get("accAvgPx", "")
+                    if px and float(px) > 0:
+                        return float(px)
+    except Exception as e:
+        logger.debug(f"accAvgPx {ticker} : {e}")
+    return None
 
 
 # ─── Prix ─────────────────────────────────────────────────────────────────────
@@ -383,41 +408,16 @@ def place_order(
     if qty_computed:
         order_result["qty_estimate"] = qty_computed
 
-    # ── Étape 3 : algo TP/SL (ordre conditionnel post-entrée) ─────────────────
-    if (stop_loss or take_profit) and order_result.get("ordId"):
-        try:
-            # Quantité pour l'algo : on connaît qty_computed depuis l'étape 1
-            qty_algo = qty_computed
-            if not qty_algo and usdt_amount:
-                # Dernier recours : estimation par prix actuel
-                price_now = get_price_usdc(ticker)
-                qty_algo = round(usdt_amount / price_now, 8) if price_now else None
-
-            if qty_algo:
-                algo_body = {
-                    "instId": inst_id,
-                    "tdMode": "cash",
-                    "side": "sell" if side == "buy" else "buy",
-                    "ordType": "oco",
-                    "sz": str(qty_algo),
-                }
-
-                if take_profit:
-                    algo_body["tpTriggerPx"] = str(round(take_profit, 6))
-                    algo_body["tpOrdPx"] = "-1"
-                    algo_body["tpTriggerPxType"] = "last"
-
-                if stop_loss:
-                    algo_body["slTriggerPx"] = str(round(stop_loss, 6))
-                    algo_body["slOrdPx"] = "-1"
-                    algo_body["slTriggerPxType"] = "last"
-
-                algo_result = _post("/api/v5/trade/order-algo", algo_body)
-                logger.info(f"Algo TP/SL OKX : {ticker} — {algo_result}")
-                order_result["algoId"] = algo_result[0].get("algoId", "") if algo_result else ""
-
-        except Exception as e:
-            logger.warning(f"Algo TP/SL {ticker} non placé : {e} (l'ordre principal est exécuté)")
+    # ── Étape 3 : algo TP/SL — SUPPRIMÉ ──────────────────────────────────────
+    # Les ordres OCO OKX ne sont plus utilisés. Raisons :
+    # 1. Ils gèlent les fonds (frozenBal) → availBal = 0 → actifs invisibles au bot
+    # 2. Ils créent un double mécanisme de sortie (OCO + position_manager)
+    #    qui cause "All operations failed" quand les deux essaient de vendre
+    # 3. Le stop OCO (-4%) était incohérent avec le stop position_manager (-7%)
+    # 4. OCO placé avec succès ~1/5 du temps → comportement aléatoire
+    #
+    # position_manager.py gère TOUS les exits : -7% stop / +12% TP / 7j time stop.
+    # C'est la seule source de vérité pour les sorties.
 
     return order_result
 

@@ -130,6 +130,17 @@ def _get_entry_info(ticker: str) -> dict:
     except Exception:
         pass
 
+    # Dernier recours : accAvgPx OKX (prix moyen calculé par OKX sur la position)
+    # Utile pour les positions achetées avant le système ou dont les fills
+    # sont trop anciens pour être retournés par l'API (limite ~3 mois).
+    try:
+        avg_px = okx.get_avg_entry_price(ticker)
+        if avg_px:
+            logger.info(f"{ticker} : prix entrée via accAvgPx OKX = {avg_px:.6f}")
+            return {"price": avg_px, "time": None}
+    except Exception:
+        pass
+
     return {"price": None, "time": None}
 
 
