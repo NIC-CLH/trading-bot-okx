@@ -15,11 +15,20 @@ logging.basicConfig(
     format="%(asctime)s [%(levelname)s] %(message)s",
 )
 
+logger = logging.getLogger(__name__)
+
 import okx_client as okx
 import technical_signals as ts
 import position_manager as pm
 import scanner
 import alertes
+import ruflo_memory as rm
+
+# Mémoire d'apprentissage : charger l'historique JSON dans ruflo au démarrage
+try:
+    rm.seed_ruflo_from_json()
+except Exception as _e:
+    logger.warning(f"ruflo seed ignoré : {_e}")
 
 # Supprime les alertes intermédiaires bruyantes — on envoie un résumé à la fin
 # EXCEPTION : alertes.send reste actif pour les ventes urgentes (stop loss)
@@ -52,6 +61,7 @@ except Exception as e:
 # ── Étape 1 : Gestion des positions existantes ───────────────────────────
 # Sorties fixes uniquement : -7% stop / +12% objectif / 7 jours
 print("─── GESTION POSITIONS ───")
+pm_result = {"actions": []}  # valeur par défaut si pm.run() lève une exception
 try:
     pm_result = pm.run(portfolio_value)
     actions = pm_result.get("actions", [])
@@ -61,6 +71,11 @@ try:
         print("Positions maintenues (stops/objectifs non atteints)")
 except Exception as e:
     print(f"Erreur gestion positions : {e}")
+
+# Attendre que les ordres de vente soient settlés sur OKX
+# (les ordres market prennent 2-5s pour apparaître dans les balances)
+import time as _time
+_time.sleep(5)
 
 # ── Étape 2 : Recalculer balance + valeur totale après ventes ────────────
 try:
@@ -132,29 +147,30 @@ def _send_final(msg):
         )
 
 try:
+    # Utiliser get_open_positions() pour avoir exactement les mêmes positions
+    # que le gestionnaire voit : filtre poussières < $3, P&L calculé correctement.
+    positions_obj = pm.get_open_positions()
+
     balances_final = okx.get_balances()
     usdc_final = balances_final.get("USDC", 0) + balances_final.get("USDT", 0)
-    positions_final = {k: v for k, v in balances_final.items() if k not in ("USDC", "USDT")}
 
-    # Valeur totale
-    portfolio_final = usdc_final
+    # Valeur totale = USDC + positions filtrées (pas les poussières)
+    portfolio_final = usdc_final + sum(p["valeur_usd"] for p in positions_obj)
+
     pos_lines = []
-    for ticker, qty in positions_final.items():
-        prix = okx.get_price_usdc(ticker) or 0
-        valeur = qty * prix
-        portfolio_final += valeur
-
-        # P&L
-        entry = pm._get_entry_price(ticker)
-        if entry and prix:
-            pnl_pct = (prix - entry) / entry * 100
-            pnl_emoji = "🟢" if pnl_pct >= 0 else "🔴"
-            pos_lines.append(f"{pnl_emoji} *{ticker}* `${prix:.4f}` — P&L `{pnl_pct:+.1f}%`")
+    for p in positions_obj:
+        ticker = p["ticker"]
+        prix   = p["prix_actuel"]
+        pnl    = p.get("pnl_pct")
+        days   = f" {p['days_held']:.0f}j" if p.get("days_held") else ""
+        if pnl is not None:
+            pnl_emoji = "🟢" if pnl >= 0 else "🔴"
+            pos_lines.append(f"{pnl_emoji} *{ticker}* `${prix:.4f}`{days} — P&L `{pnl:+.1f}%`")
         else:
-            pos_lines.append(f"⚪ *{ticker}* `${prix:.4f}`")
+            pos_lines.append(f"⚪ *{ticker}* `${prix:.4f}`{days}")
 
     # Décisions prises ce cycle
-    actions_taken = pm_result.get("actions", []) if "pm_result" in dir() else []
+    actions_taken = pm_result.get("actions", [])
     decisions_lines = []
     for a in actions_taken:
         valeur_str = f"`${a['valeur']:.2f}`" if a.get("valeur") else ""
@@ -166,11 +182,10 @@ try:
 
     # Nouveaux achats — uniquement si l'ordre a vraiment été exécuté
     # (signals retourne seulement les ordres confirmés par OKX)
-    signals_taken = [s for s in (signals if "signals" in dir() else [])
-                     if s.get("ordre_execute", False)]
+    signals_taken = [s for s in signals if s.get("ordre_execute", False)]
     for s in signals_taken:
         decisions_lines.append(
-            f"🛒 Achat *{s['ticker']}* `${s.get('taille_usd', 0):.0f}` "
+            f"🛒 Achat *{s['ticker']}* `${s.get('taille_allouee', s.get('taille_usd', 0)):.0f}` "
             f"@ `${s.get('prix', 0):.4f}` — score `{s['score']:+.2f}`"
         )
 

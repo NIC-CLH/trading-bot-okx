@@ -51,8 +51,12 @@ def get_funding_rate(ticker: str) -> dict:
 
     C'est l'un des meilleurs indicateurs de sentiment à court terme en crypto.
     """
+    # Essaie USDT-SWAP d'abord (standard), puis USDC-SWAP (OKX EEA fallback)
     inst_id = f"{ticker.upper()}-USDT-SWAP"
     data = _get_public("/api/v5/public/funding-rate", {"instId": inst_id})
+    if not data:
+        data = _get_public("/api/v5/public/funding-rate",
+                           {"instId": f"{ticker.upper()}-USDC-SWAP"})
 
     if not data:
         return {"rate": None, "score": 0.0, "signal": "N/A"}
@@ -99,6 +103,9 @@ def get_open_interest(ticker: str) -> dict:
     """
     inst_id = f"{ticker.upper()}-USDT-SWAP"
     data = _get_public("/api/v5/public/open-interest", {"instId": inst_id})
+    if not data:
+        data = _get_public("/api/v5/public/open-interest",
+                           {"instId": f"{ticker.upper()}-USDC-SWAP"})
 
     if not data:
         return {"oi": None, "score": 0.0, "signal": "N/A"}
@@ -221,12 +228,12 @@ def get_liquidation_context(ticker: str) -> dict:
         # Liquidations long récentes
         liq_long = _get_public(
             "/api/v5/public/liquidation-orders",
-            {"instType": "SWAP", "instId": f"{ticker.upper()}-USDT-SWAP",
+            {"instType": "SWAP", "instId": f"{ticker.upper()}-USDT-SWAP",  # fallback USDC-SWAP géré au niveau caller
              "side": "buy", "state": "filled", "limit": "20"}
         )
         liq_short = _get_public(
             "/api/v5/public/liquidation-orders",
-            {"instType": "SWAP", "instId": f"{ticker.upper()}-USDT-SWAP",
+            {"instType": "SWAP", "instId": f"{ticker.upper()}-USDT-SWAP",  # fallback USDC-SWAP géré au niveau caller
              "side": "sell", "state": "filled", "limit": "20"}
         )
 

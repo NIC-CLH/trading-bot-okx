@@ -139,8 +139,11 @@ def update_trade_label(ticker: str, pnl_pct: float):
         cursor.execute("""
             UPDATE ml_signals
             SET label = ?, pnl_pct = ?
-            WHERE ticker = ? AND label IS NULL
-            ORDER BY id DESC LIMIT 1
+            WHERE id = (
+                SELECT id FROM ml_signals
+                WHERE ticker = ? AND label IS NULL
+                ORDER BY id DESC LIMIT 1
+            )
         """, (label, pnl_pct, ticker))
 
         conn.commit()

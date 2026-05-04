@@ -245,7 +245,7 @@ def scan_and_execute_signals() -> list[dict]:
                 okx.place_order(
                     ticker=pos_faible,
                     side="sell",
-                    quantity=qty_a_vendre * 0.999,
+                    quantity=qty_a_vendre,  # 100% — plus de buffer qui laisse du dust
                     order_type="market",
                 )
                 pnl_emoji = "🟢" if pnl_faible >= 0 else "🔴"

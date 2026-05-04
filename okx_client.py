@@ -24,6 +24,12 @@ API_KEY = os.getenv("OKX_API_KEY", "")
 SECRET = os.getenv("OKX_SECRET", "")
 PASSPHRASE = os.getenv("OKX_PASSPHRASE", "")
 
+if not API_KEY or not SECRET or not PASSPHRASE:
+    logger.warning(
+        "OKX credentials manquants ou vides — les appels authentifiés vont échouer. "
+        "Vérifier OKX_API_KEY, OKX_SECRET, OKX_PASSPHRASE dans .env"
+    )
+
 
 # ─── Authentification ─────────────────────────────────────────────────────────
 
@@ -355,11 +361,18 @@ def place_order(
         else:
             use_limit = False
     else:
-        # Vente : TOUJOURS market pour exécution immédiate et certaine.
-        # Les ordres limit de vente peuvent rester en attente si le marché
-        # baisse, ce qui cause des tentatives de double-vente aux cycles suivants.
-        use_limit = False
-        fill_price = get_price_usdc(ticker)  # Pour estimation seulement
+        # Vente : limit à bid - 0.5% pour garantir le remplissage.
+        # OKX EEA annule silencieusement les ordres market (sCode=0 mais state=canceled)
+        # sur certaines paires → les limit légèrement sous le bid remplissent en <2s
+        # et évitent ce problème. Double-vente impossible : le bot vérifie les ordres
+        # en attente avant chaque vente.
+        bid = get_bid_price(ticker)
+        if bid:
+            fill_price = round(bid * 0.995, 8)  # bid - 0.5%
+            use_limit = True
+        else:
+            use_limit = False
+            fill_price = get_price_usdc(ticker)
 
     # Convertir montant USDC → quantité si nécessaire
     qty_computed = None
@@ -387,20 +400,26 @@ def place_order(
         body["ordType"] = "limit"
         body["px"] = str(fill_price)
         body["sz"] = str(qty_computed)
-        logger.info(f"Ordre LIMIT buy {ticker} : {qty_computed} @ ${fill_price} (ask+0.3%)")
+        direction = "ask+0.3%" if side == "buy" else "bid-0.5%"
+        logger.info(f"Ordre LIMIT {side} {ticker} : {qty_computed} @ ${fill_price} ({direction})")
     else:
-        # Market : ventes + fallback achats sans carnet
+        # Market : fallback si carnet indisponible
         body["ordType"] = "market"
         if side == "buy" and usdt_amount:
             body["tgtCcy"] = "quote_ccy"
             body["sz"] = str(round(usdt_amount, 2))
         elif qty_computed:
             body["sz"] = str(qty_computed)
-        logger.info(f"Ordre MARKET {side} {ticker} : {qty_computed}")
+        logger.info(f"Ordre MARKET {side} {ticker} : {qty_computed} [fallback]")
 
     result = _post("/api/v5/trade/order", body)
-    logger.info(f"Ordre OKX placé : {side} {ticker} — {result}")
     order_result = result[0] if result else {}
+    ord_id = order_result.get("ordId", "")
+
+    if not ord_id:
+        raise Exception(f"OKX n'a retourné aucun ordId pour {side} {ticker} — ordre non placé")
+
+    logger.info(f"Ordre OKX place : {side} {ticker} ordId={ord_id}")
 
     # Enrichir le résultat avec le prix d'entrée estimé
     if fill_price:
@@ -425,7 +444,7 @@ def place_order(
 def cancel_order(ticker: str, order_id: str) -> dict:
     """Annule un ordre ouvert."""
     return _post("/api/v5/trade/cancel-order", {
-        "instId": f"{ticker.upper()}-USDT",
+        "instId": f"{ticker.upper()}-USDC",
         "ordId": order_id,
     })
 
@@ -434,5 +453,103 @@ def get_open_orders(ticker: str = None) -> list:
     """Retourne les ordres ouverts."""
     params = {"instType": "SPOT"}
     if ticker:
-        params["instId"] = f"{ticker.upper()}-USDT"
+        params["instId"] = f"{ticker.upper()}-USDC"
     return _get("/api/v5/trade/orders-pending", params)
+
+
+# ─── Conversion poussières ─────────────────────────────────────────────────────
+
+def get_easy_convert_list() -> tuple[list[str], list[str]]:
+    """
+    Retourne (from_ccys, to_ccys) disponibles via OKX Easy Convert.
+    Structure réelle de la réponse OKX EEA :
+      [{"fromData": [{"fromCcy": "NEAR", "fromAmt": "0.15"}, ...], "toCcy": ["BTC", "ETH", "OKB"]}]
+    """
+    try:
+        data = _get("/api/v5/trade/easy-convert-currency-list")
+        from_ccys = []
+        to_ccys = []
+        for item in data:
+            for entry in item.get("fromData", []):
+                ccy = entry.get("fromCcy", "")
+                if ccy and ccy not in ("USDC", "USDT"):
+                    from_ccys.append(ccy)
+            to_ccys.extend(item.get("toCcy", []))
+        return from_ccys, to_ccys
+    except Exception as e:
+        logger.warning(f"easy-convert-currency-list : {e}")
+        return [], []
+
+
+def convert_dust(tickers: list[str], to_ccy: str = "BTC") -> dict:
+    """
+    Convertit des petits actifs via OKX Easy Convert.
+    Fonctionne même en dessous du minimum d'ordre normal ($1).
+
+    OKX EEA supporte uniquement BTC/ETH/OKB comme cible (pas USDC).
+    On cible BTC par défaut car c'est une position existante significative.
+
+    Args:
+        tickers: liste des tickers à convertir
+        to_ccy:  devise cible ("BTC", "ETH" ou "OKB")
+
+    Returns:
+        dict avec "success", "converted", "errors"
+    """
+    if not tickers:
+        return {"success": True, "converted": [], "errors": []}
+
+    # Vérifier lesquels sont éligibles
+    from_ccys, to_ccys = get_easy_convert_list()
+    eligible_set = set(t.upper() for t in from_ccys)
+
+    # Choisir une cible disponible
+    if to_ccy not in to_ccys:
+        to_ccy = to_ccys[0] if to_ccys else "BTC"
+
+    to_convert = [t.upper() for t in tickers if t.upper() in eligible_set]
+    skipped = [t.upper() for t in tickers if t.upper() not in eligible_set]
+
+    if skipped:
+        logger.warning(f"Easy Convert : tickers non éligibles (ignorés) : {skipped}")
+
+    if not to_convert:
+        logger.warning("Easy Convert : aucun ticker éligible trouvé")
+        return {"success": False, "converted": [], "errors": skipped,
+                "message": f"Aucun ticker éligible. Disponibles : {from_ccys}"}
+
+    converted = []
+    errors = []
+
+    # OKX Easy Convert : max 5 tickers par appel
+    chunk_size = 5
+    for i in range(0, len(to_convert), chunk_size):
+        chunk = to_convert[i:i + chunk_size]
+        try:
+            result = _post("/api/v5/trade/easy-convert", {
+                "fromCcy": chunk,
+                "toCcy": to_ccy,
+            })
+            if result:
+                converted.extend(chunk)
+                logger.info(f"Easy Convert réussi : {chunk} → {to_ccy}")
+            else:
+                errors.extend(chunk)
+                logger.warning(f"Easy Convert : réponse vide pour {chunk}")
+        except Exception as e:
+            errors.extend(chunk)
+            logger.error(f"Easy Convert {chunk} : {e}")
+        time.sleep(0.3)
+
+    return {
+        "success": len(converted) > 0,
+        "converted": converted,
+        "errors": errors,
+        "to_ccy": to_ccy,
+    }
+
+
+# Alias pour compatibilité
+def convert_dust_to_usdc(tickers: list[str]) -> dict:
+    """Alias — converti vers BTC (OKX EEA ne supporte pas USDC comme cible Easy Convert)."""
+    return convert_dust(tickers, to_ccy="BTC")

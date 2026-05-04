@@ -76,6 +76,9 @@ Source : {source}
 
 def alerte_opportunite_enrichie(signal: dict):
     """Alerte 4 dimensions : technique + microstructure + on-chain + fondamental."""
+    # Silencer les signaux bloqués — seuls les ordres actionnables méritent une notif
+    if not signal.get("trade_autorise", False):
+        return
     ticker = signal["ticker"]
     score = signal["score"]
     score_tech = signal.get("score_tech", score)

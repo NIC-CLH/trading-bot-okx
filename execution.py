@@ -1,7 +1,9 @@
 """
 Module d'exécution automatique des ordres sur OKX.
-Reçoit un signal, calcule la taille, place l'ordre, notifie Telegram.
-Budget max : 10% du portefeuille total, 20% du budget par trade.
+Reçoit un signal, place l'ordre, notifie Telegram.
+
+Sizing : délégué à capital_allocator.py (score → tier 12%/17%/22% + mémoire ruflo).
+Fallback interne (CONVICTION_MULTIPLIERS) utilisé uniquement si appelé sans scanner.
 """
 
 import logging
@@ -46,48 +48,47 @@ def get_usdt_balance() -> float:
 
 def log_trade(trade: dict, db_path: str = config.DB_PATH):
     """Enregistre chaque trade en base SQLite."""
-    conn = sqlite3.connect(db_path)
-    cursor = conn.cursor()
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS trades (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            timestamp TEXT,
-            exchange TEXT,
-            ticker TEXT,
-            side TEXT,
-            quantite REAL,
-            prix REAL,
-            montant_usdt REAL,
-            stop_loss REAL,
-            take_profit REAL,
-            signal_score REAL,
-            score_news REAL,
-            ordre_id TEXT,
-            statut TEXT
-        )
-    """)
-    cursor.execute("""
-        INSERT INTO trades
-        (timestamp, exchange, ticker, side, quantite, prix, montant_usdt,
-         stop_loss, take_profit, signal_score, score_news, ordre_id, statut)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    """, (
-        datetime.utcnow().isoformat(),
-        "okx",
-        trade.get("ticker"),
-        trade.get("side"),
-        trade.get("quantite"),
-        trade.get("prix"),
-        trade.get("montant_usdt"),
-        trade.get("stop_loss"),
-        trade.get("take_profit"),
-        trade.get("signal_score"),
-        trade.get("score_news", 0),
-        trade.get("ordre_id"),
-        trade.get("statut", "ouvert"),
-    ))
-    conn.commit()
-    conn.close()
+    with sqlite3.connect(db_path) as conn:
+        cursor = conn.cursor()
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS trades (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                timestamp TEXT,
+                exchange TEXT,
+                ticker TEXT,
+                side TEXT,
+                quantite REAL,
+                prix REAL,
+                montant_usdt REAL,
+                stop_loss REAL,
+                take_profit REAL,
+                signal_score REAL,
+                score_news REAL,
+                ordre_id TEXT,
+                statut TEXT
+            )
+        """)
+        cursor.execute("""
+            INSERT INTO trades
+            (timestamp, exchange, ticker, side, quantite, prix, montant_usdt,
+             stop_loss, take_profit, signal_score, score_news, ordre_id, statut)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (
+            datetime.utcnow().isoformat(),
+            "okx",
+            trade.get("ticker"),
+            trade.get("side"),
+            trade.get("quantite"),
+            trade.get("prix"),
+            trade.get("montant_usdt"),
+            trade.get("stop_loss"),
+            trade.get("take_profit"),
+            trade.get("signal_score"),
+            trade.get("score_news", 0),
+            trade.get("ordre_id"),
+            trade.get("statut", "ouvert"),
+        ))
+        conn.commit()
 
 
 def execute_signal(signal: dict, portfolio_value: float) -> bool:
@@ -104,7 +105,7 @@ def execute_signal(signal: dict, portfolio_value: float) -> bool:
     trade_autorise = signal.get("trade_autorise", False)
 
     # Vérifications préalables
-    if not stop or not target or not prix:
+    if stop is None or target is None or not prix:
         logger.warning(f"{ticker} : stop/target/prix manquant — ordre annulé")
         return False
 
@@ -113,7 +114,7 @@ def execute_signal(signal: dict, portfolio_value: float) -> bool:
         return False
 
     if not trade_autorise:
-        logger.info(f"{ticker} : fondamentaux négatifs (score_news={score_news:+.2f}) — ordre bloqué")
+        logger.debug(f"{ticker} : fondamentaux négatifs (score_news={score_news:+.2f}) — ordre bloqué")
         return False
 
     # ── Forcer le stop à max -4% du prix d'entrée ────────────────────────────
@@ -136,40 +137,45 @@ def execute_signal(signal: dict, portfolio_value: float) -> bool:
         target = min(target, target_min)
 
     # ── Budget ───────────────────────────────────────────────────────────────
-    # portfolio_value = valeur totale du portefeuille (positions + USDC)
-    # La taille max est 25% du TOTAL, plafonnée par le USDC réellement disponible.
-    # Avant : max_trade = usdc * 25% → trop petit quand capital en positions.
-    # Après : max_trade = portfolio_total * 25%, cap par usdc dispo.
+    # Si capital_allocator a déjà calculé la taille → la réutiliser directement.
+    # Sinon (appel direct sans scanner) → fallback sur l'ancienne logique conviction.
     usdt_available = get_usdt_balance()
 
-    if usdt_available < 10:
+    if usdt_available < 30:
         # Pas d'alerte Telegram — juste un log (évite le spam quand budget épuisé)
-        logger.info(f"{ticker} : budget insuffisant (${usdt_available:.2f}) — ignoré")
+        logger.info(f"{ticker} : USDC insuffisant (${usdt_available:.2f} < $30) — ignoré")
         return False
 
-    # Taille de base selon le portfolio total
-    max_trade_base = get_max_trade_size(portfolio_value)
+    taille_allouee = signal.get("taille_allouee")  # injectée par scanner/capital_allocator
 
-    # Multiplicateur de conviction : signal fort = position plus grosse
-    score_abs = abs(score)
-    conviction = 0.75  # défaut pour score faible
-    for threshold, mult in sorted(CONVICTION_MULTIPLIERS.items(), reverse=True):
-        if score_abs >= threshold:
-            conviction = mult
-            break
+    if taille_allouee and taille_allouee > 0:
+        # Chemin principal : capital_allocator a fait le travail
+        trade_size_usdt = min(taille_allouee, usdt_available * 0.95)
+        logger.info(
+            f"{ticker} : taille allocateur=${taille_allouee:.0f} "
+            f"| usdc_dispo=${usdt_available:.0f} "
+            f"→ taille finale=${trade_size_usdt:.0f}"
+        )
+    else:
+        # Fallback : ancienne logique par conviction score
+        max_trade_base = get_max_trade_size(portfolio_value)
+        score_abs = abs(score)
+        conviction = 0.75
+        for threshold, mult in sorted(CONVICTION_MULTIPLIERS.items(), reverse=True):
+            if score_abs >= threshold:
+                conviction = mult
+                break
+        max_trade = max_trade_base * conviction
+        trade_size_usdt = min(max_trade, usdt_available * 0.95)
+        logger.info(
+            f"{ticker} : portfolio=${portfolio_value:.0f} | max_trade=${max_trade:.0f} "
+            f"(conviction x{conviction}) | usdc_dispo=${usdt_available:.0f} "
+            f"→ taille finale=${trade_size_usdt:.0f} [fallback]"
+        )
 
-    max_trade = max_trade_base * conviction
-    trade_size_usdt = min(max_trade, usdt_available * 0.95)  # cap par USDC dispo
-
-    if trade_size_usdt < 5:
-        logger.warning(f"Trade trop petit : ${trade_size_usdt:.2f} — ignoré")
+    if trade_size_usdt < 20:
+        logger.warning(f"{ticker} : taille calculée ${trade_size_usdt:.2f} < $20 — ignoré")
         return False
-
-    logger.info(
-        f"{ticker} : portfolio=${portfolio_value:.0f} | max_trade=${max_trade:.0f} "
-        f"(conviction x{conviction}) | usdc_dispo=${usdt_available:.0f} "
-        f"→ taille finale=${trade_size_usdt:.0f}"
-    )
 
     quantite = trade_size_usdt / prix
     side = "buy" if score > 0 else "sell"
@@ -179,6 +185,10 @@ def execute_signal(signal: dict, portfolio_value: float) -> bool:
         f"| SL: ${stop:.4f} | TP: ${target:.4f} | Score: {score:+.2f}"
     )
 
+    # ── Seul l'ordre OKX peut faire échouer l'exécution ────────────────────────
+    # log_trade (SQLite) et alertes.send (Telegram) sont non-bloquants :
+    # leur échec ne doit pas masquer un ordre OKX réussi ni empêcher
+    # signal["ordre_execute"] d'être positionné à True.
     try:
         result = okx.place_order(
             ticker=ticker,
@@ -189,10 +199,21 @@ def execute_signal(signal: dict, portfolio_value: float) -> bool:
             stop_loss=stop,
             take_profit=target,
         )
+    except Exception as e:
+        logger.error(f"Échec ordre OKX {ticker} : {e}")
+        try:
+            alertes.send(f"❌ *Échec ordre {ticker}* (OKX) : {str(e)[:100]}")
+        except Exception:
+            pass
+        return False
 
-        ordre_id = result.get("ordId", "unknown")
+    # Ordre confirmé par OKX — flag positionné immédiatement
+    ordre_id = result.get("ordId", "unknown")
+    signal["ordre_execute"] = True
+    logger.info(f"Ordre OKX {ordre_id} exécuté avec succès")
 
-        # Log SQLite
+    # Log SQLite (non-bloquant)
+    try:
         log_trade({
             "ticker": ticker,
             "side": side,
@@ -206,8 +227,11 @@ def execute_signal(signal: dict, portfolio_value: float) -> bool:
             "ordre_id": ordre_id,
             "statut": "ouvert",
         })
+    except Exception as e:
+        logger.warning(f"log_trade SQLite échoué (ordre quand même exécuté) : {e}")
 
-        # Notification Telegram
+    # Notification Telegram (non-bloquante)
+    try:
         direction = "📈 ACHAT" if side == "buy" else "📉 VENTE"
         rr = abs(target - prix) / abs(prix - stop) if stop != prix else 0
         verdict_news = signal.get("verdict_news", "")
@@ -226,13 +250,8 @@ Montant : `${trade_size_usdt:.2f} USDT`
 📰 Score fondamental : `{score_news:+.2f}` ({verdict_news})
 🆔 Ordre : `{ordre_id}`
 _Vous pouvez annuler manuellement sur OKX si besoin._"""
-
         alertes.send(msg)
-        logger.info(f"Ordre OKX {ordre_id} exécuté avec succès")
-        signal["ordre_execute"] = True  # Flag pour le rapport final
-        return True
+    except Exception:
+        pass
 
-    except Exception as e:
-        logger.error(f"Échec ordre OKX {ticker} : {e}")
-        alertes.send(f"❌ *Échec ordre {ticker}* (OKX) : {str(e)[:100]}")
-        return False
+    return True
