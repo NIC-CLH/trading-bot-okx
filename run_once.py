@@ -5,10 +5,35 @@ Cycle complet : gestion positions → scan nouvelles opportunités.
 import sys
 import io
 import logging
+import traceback
+import os
 from datetime import datetime, timezone
 
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
-sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+# Wrapping stdout/stderr — protégé contre les envs sans .buffer (GitHub Actions pipe)
+try:
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+except AttributeError:
+    pass  # stdout/stderr sans .buffer — on garde les objets tels quels
+
+
+def _telegram_crash(msg: str) -> None:
+    """Envoie une alerte crash sur Telegram (best-effort, sans dépendance externe)."""
+    try:
+        import requests as _r
+        token   = os.getenv("TELEGRAM_TOKEN", "")
+        chat_id = os.getenv("TELEGRAM_CHAT_ID", "")
+        if token and chat_id:
+            _r.post(
+                f"https://api.telegram.org/bot{token}/sendMessage",
+                json={"chat_id": chat_id,
+                      "text": f"💥 *CRASH run_once.py*\n```\n{msg[:3000]}\n```",
+                      "parse_mode": "Markdown"},
+                timeout=8,
+            )
+    except Exception:
+        pass  # Ne pas masquer l'erreur originale
+
 
 logging.basicConfig(
     level=logging.INFO,
@@ -17,13 +42,23 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-import okx_client as okx
-import technical_signals as ts
-import position_manager as pm
-import scanner
-import alertes
-import ruflo_memory as rm
+_CHECKPOINT = "démarrage"  # mis à jour au fil de l'exécution — visible dans les logs
 
+try:
+    _CHECKPOINT = "imports"
+    import okx_client as okx
+    import technical_signals as ts
+    import position_manager as pm
+    import scanner
+    import alertes
+    import ruflo_memory as rm
+except Exception as _import_err:
+    _tb = traceback.format_exc()
+    print(f"[CRASH imports] {_import_err}\n{_tb}", file=sys.stderr)
+    _telegram_crash(f"Import failed: {_import_err}\n{_tb}")
+    sys.exit(1)
+
+_CHECKPOINT = "ruflo_seed"
 # Mémoire d'apprentissage : charger l'historique JSON dans ruflo au démarrage
 try:
     rm.seed_ruflo_from_json()
@@ -42,6 +77,7 @@ print(f"\n{'='*55}")
 print(f"  CYCLE {now.strftime('%d/%m/%Y %H:%M UTC')}")
 print(f"{'='*55}\n")
 
+_CHECKPOINT = "balance_compte"
 # ── Balance et état du compte ──────────────────────────────────────────────
 try:
     balances = okx.get_balances()
@@ -60,6 +96,7 @@ except Exception as e:
 
 # ── Étape 1 : Gestion des positions existantes ───────────────────────────
 # Sorties fixes uniquement : -7% stop / +12% objectif / 7 jours
+_CHECKPOINT = "gestion_positions"
 print("─── GESTION POSITIONS ───")
 pm_result = {"actions": []}  # valeur par défaut si pm.run() lève une exception
 try:
@@ -95,6 +132,7 @@ except Exception:
 # On passe la valeur TOTALE du portefeuille (positions + USDC), pas seulement USDC.
 # Cela garantit que la taille des trades est proportionnelle à la richesse réelle,
 # plafonnée par le USDC effectivement disponible dans execution.py.
+_CHECKPOINT = "scan_opportunites"
 print("\n─── SCAN OPPORTUNITÉS ───")
 signals = []
 try:
@@ -217,4 +255,7 @@ try:
         print("Aucune activité ce cycle — pas de notification Telegram.")
 
 except Exception as e:
-    print(f"Erreur résumé final : {e}")
+    _tb = traceback.format_exc()
+    print(f"Erreur résumé final [checkpoint={_CHECKPOINT}]: {e}\n{_tb}", file=sys.stderr)
+    _telegram_crash(f"Résumé final échoué (checkpoint={_CHECKPOINT}):\n{e}\n{_tb[-1500:]}")
+    # Ne pas sys.exit(1) ici — le cycle s'est quand même exécuté

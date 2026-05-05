@@ -1,0 +1,188 @@
+{
+  "outcomes": [
+    {
+      "type": "trade_outcome",
+      "ticker": "PENDLE",
+      "pnl_pct": 10.06,
+      "days_held": 2.0,
+      "exit_reason": "Historique OKX (seed)",
+      "valeur_usd": 4.63,
+      "outcome": "win",
+      "timestamp": "2026-05-04T08:01:27.045000+00:00"
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ZEN",
+      "pnl_pct": 6.79,
+      "days_held": 1.0,
+      "exit_reason": "Historique OKX (seed)",
+      "valeur_usd": 3.87,
+      "outcome": "win",
+      "timestamp": "2026-05-03T12:01:23.429000+00:00"
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "PNUT",
+      "pnl_pct": -8.93,
+      "days_held": 0.4,
+      "exit_reason": "Historique OKX (seed)",
+      "valeur_usd": 22.46,
+      "outcome": "loss",
+      "timestamp": "2026-05-03T04:01:31.913000+00:00"
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ARB",
+      "pnl_pct": -6.8,
+      "days_held": 3.1,
+      "exit_reason": "Historique OKX (seed)",
+      "valeur_usd": 73.61,
+      "outcome": "loss",
+      "timestamp": "2026-05-03T04:01:30.639000+00:00"
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ORDI",
+      "pnl_pct": -7.7,
+      "days_held": 0.4,
+      "exit_reason": "Historique OKX (seed)",
+      "valeur_usd": 95.89,
+      "outcome": "loss",
+      "timestamp": "2026-05-03T04:01:29.351000+00:00"
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "TIA",
+      "pnl_pct": -7.57,
+      "days_held": 10.2,
+      "exit_reason": "Historique OKX (seed)",
+      "valeur_usd": 141.2,
+      "outcome": "loss",
+      "timestamp": "2026-05-02T18:02:18.084000+00:00"
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "BTC",
+      "pnl_pct": -0.14,
+      "days_held": 10.3,
+      "exit_reason": "Historique OKX (seed)",
+      "valeur_usd": 1.0,
+      "outcome": "loss",
+      "timestamp": "2026-05-02T18:30:00.094000+00:00"
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "BIO",
+      "pnl_pct": 15.55,
+      "days_held": 0.9,
+      "exit_reason": "Historique OKX (seed)",
+      "valeur_usd": 5.93,
+      "outcome": "win",
+      "timestamp": "2026-05-02T08:01:17.316000+00:00"
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ATOM",
+      "pnl_pct": -2.07,
+      "days_held": 1.5,
+      "exit_reason": "Historique OKX (seed)",
+      "valeur_usd": 0.19,
+      "outcome": "loss",
+      "timestamp": "2026-05-01T04:04:41.054000+00:00"
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ETH",
+      "pnl_pct": -2.8,
+      "days_held": 1.6,
+      "exit_reason": "Historique OKX (seed)",
+      "valeur_usd": 11.52,
+      "outcome": "loss",
+      "timestamp": "2026-05-01T00:05:03.862000+00:00"
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "NEAR",
+      "pnl_pct": -7.9,
+      "days_held": 7.2,
+      "exit_reason": "Historique OKX (seed)",
+      "valeur_usd": 1.32,
+      "outcome": "loss",
+      "timestamp": "2026-04-29T16:01:43.499000+00:00"
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "KNC",
+      "pnl_pct": -8.05,
+      "days_held": 1.8,
+      "exit_reason": "Stop -7% déclenché (-8.1%)",
+      "valeur_usd": 88.67,
+      "outcome": "loss",
+      "timestamp": "2026-05-04T15:14:38.449952+00:00"
+    }
+  ],
+  "entries": [],
+  "reflections": [
+    {
+      "lecon_principale": "Objectifs fixes efficaces - sortie à +12% avant momentum épuisé",
+      "signal_fiable": "Régime bull + score composite 2.1 = entrée de qualité validée",
+      "signal_trompeur": "Volatilité 'normal' masquait potentiel de continuation (+15.6% possible)",
+      "regime_optimal": "Bull avec objectifs pré-définis pour sécuriser gains rapides",
+      "recommandation": "hold_longer",
+      "confiance": 0.72,
+      "ticker": "BIO",
+      "pnl_pct": 15.6,
+      "type": "trade_reflection",
+      "timestamp": "2026-05-04T19:16:51.950184+00:00"
+    },
+    {
+      "lecon_principale": "Sortie disciplinée sur objectif rapide = performance solide sur régime bull",
+      "signal_fiable": "Régime bull + volatilité normale = conditions optimales pour scalp court terme",
+      "signal_trompeur": "Score composite 2.1 (faible) n'a pas bloqué le gain - peu prédictif seul",
+      "regime_optimal": "bull avec volatilité normale - ticket gagnant en 3.2j sur objectif serré",
+      "recommandation": "hold_longer",
+      "confiance": 0.72,
+      "ticker": "BIO",
+      "pnl_pct": 15.6,
+      "type": "trade_reflection",
+      "timestamp": "2026-05-04T19:17:15.209762+00:00"
+    },
+    {
+      "lecon_principale": "Éviter entries en régime sideways + haute volatilité avec score faible",
+      "signal_fiable": "Le stop-loss s'est déclenché correctement - protection efficace",
+      "signal_trompeur": "Score composite 1.6 insuffisant pour justifier une entry; régime sideways illusion de stabilité",
+      "regime_optimal": "Attendre rupture claire (breakout/breakdown) hors sideways avant entry",
+      "recommandation": "avoid_regime",
+      "confiance": 0.82,
+      "ticker": "NEAR",
+      "pnl_pct": -7.9,
+      "type": "trade_reflection",
+      "timestamp": "2026-05-04T19:21:39.583485+00:00"
+    },
+    {
+      "lecon_principale": "TP rapide validé mais données régime/volatilité manquantes",
+      "signal_fiable": "Take Profit atteint rapidement (+5.0%) confirme la direction",
+      "signal_trompeur": "Score composite 2.0 bas n'a pas empêché le gain - signal peut être non prédictif",
+      "regime_optimal": "INCONNU - données manquantes (régime et volatilité non fournis)",
+      "recommandation": "avoid_regime",
+      "confiance": 0.35,
+      "ticker": "TEST",
+      "pnl_pct": 5.0,
+      "type": "trade_reflection",
+      "timestamp": "2026-05-04T20:22:06.990943+00:00"
+    },
+    {
+      "lecon_principale": "Sortie prématurée à +5% vs objectif +12% en régime bull stable",
+      "signal_fiable": "Régime bull + volatilité normal = conditions favorables confirmées",
+      "signal_trompeur": "Score composite 2.0 bas n'a pas empêché gain positif en bull",
+      "regime_optimal": "Bull - conditions idéales pour holder plus longtemps",
+      "recommandation": "hold_longer",
+      "confiance": 0.75,
+      "ticker": "TEST_LLM",
+      "pnl_pct": 5.0,
+      "type": "trade_reflection",
+      "timestamp": "2026-05-05T07:50:10.915884+00:00"
+    }
+  ],
+  "_sd_prev_usdt_d": 6.862651004691821
+}

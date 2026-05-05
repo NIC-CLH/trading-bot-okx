@@ -1262,6 +1262,82 @@ def analyze_asset(ticker: str, df: pd.DataFrame) -> dict:
     }
 
 
+def is_weekly_uptrend(df_daily: pd.DataFrame) -> dict:
+    """
+    Détermine si le ticker est en tendance haussière sur le timeframe hebdomadaire.
+
+    Méthode : resample le daily OHLCV en weekly, calcule MA20 weekly.
+
+    Paramètres :
+        df_daily : DataFrame avec colonnes ['open','high','low','close','volume']
+                   index datetime, données daily (90j minimum recommandé)
+
+    Retourne :
+        {
+            "uptrend": bool,          # True si prix > MA20 weekly
+            "ma20_weekly": float,     # valeur de la MA20 weekly
+            "price_weekly": float,    # dernier close weekly
+            "score_adj": float,       # multiplicateur : 1.0 si uptrend, 0.7 si downtrend
+            "verdict": str,
+        }
+
+    Logique :
+    - Resample daily → weekly (W) : open=first, high=max, low=min, close=last, volume=sum
+    - Calculer MA20 sur les closes weekly
+    - Si moins de 20 semaines de données → retourner uptrend=True, score_adj=1.0 (pas bloquant)
+    - Si prix_weekly > ma20_weekly → uptrend=True, score_adj=1.0
+    - Si prix_weekly <= ma20_weekly → uptrend=False, score_adj=0.7
+    - En cas d'erreur → uptrend=True, score_adj=1.0 (pas bloquant)
+    """
+    _default = {
+        "uptrend": True,
+        "ma20_weekly": None,
+        "price_weekly": None,
+        "score_adj": 1.0,
+        "verdict": "données insuffisantes — filtre weekly ignoré",
+    }
+
+    try:
+        if df_daily.empty or "close" not in df_daily.columns:
+            return _default
+
+        # Resample daily → weekly
+        agg = {
+            "open": "first",
+            "high": "max",
+            "low": "min",
+            "close": "last",
+        }
+        if "volume" in df_daily.columns:
+            agg["volume"] = "sum"
+
+        df_weekly = df_daily.resample("W").agg(agg).dropna(subset=["close"])
+
+        if len(df_weekly) < 20:
+            return {**_default, "verdict": f"données insuffisantes ({len(df_weekly)} semaines < 20) — filtre weekly ignoré"}
+
+        ma20 = df_weekly["close"].rolling(20).mean()
+        ma20_val = float(ma20.iloc[-1])
+        price_val = float(df_weekly["close"].iloc[-1])
+
+        if pd.isna(ma20_val):
+            return {**_default, "verdict": "MA20 weekly non calculable — filtre weekly ignoré"}
+
+        uptrend = price_val > ma20_val
+
+        return {
+            "uptrend": uptrend,
+            "ma20_weekly": round(ma20_val, 6),
+            "price_weekly": round(price_val, 6),
+            "score_adj": 1.0 if uptrend else 0.7,
+            "verdict": "Tendance weekly HAUSSIÈRE (prix > MA20 weekly)" if uptrend else "Tendance weekly BAISSIÈRE (prix <= MA20 weekly)",
+        }
+
+    except Exception as e:
+        logger.warning(f"is_weekly_uptrend erreur : {e}")
+        return {**_default, "verdict": f"erreur — filtre weekly ignoré ({e})"}
+
+
 def run(ohlcv_data: dict[str, pd.DataFrame]) -> dict[str, dict]:
     """Analyse technique de tous les actifs."""
     results = {}
