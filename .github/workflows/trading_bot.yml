@@ -44,6 +44,7 @@ jobs:
           CRYPTOPANIC_TOKEN: ${{ secrets.CRYPTOPANIC_TOKEN }}
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           PYTHONIOENCODING: utf-8
 
       # Sauvegarder la mémoire d'apprentissage (trade_memory.json) dans le repo
