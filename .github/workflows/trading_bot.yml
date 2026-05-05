@@ -12,7 +12,7 @@ concurrency:
 
 # Permissions minimales (lecture seule du code)
 permissions:
-  contents: read
+  contents: write  # nécessaire pour commiter trade_memory.json après chaque cycle
 
 jobs:
   scan:
@@ -46,9 +46,22 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           PYTHONIOENCODING: utf-8
 
+      # Sauvegarder la mémoire d'apprentissage (trade_memory.json) dans le repo
+      - name: Persist trade memory
+        if: always()
+        run: |
+          git config user.name "Trading Bot"
+          git config user.email "trading-bot@github-actions"
+          git add trade_memory.json
+          git diff --staged --quiet || git commit -m "chore: update trade memory [skip ci]" && git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       # Alerte Telegram si le bot plante complètement
+      # Note : !cancelled() exclut les annulations par concurrence (double dispatch cron-job.org)
+      # qui déclenchaient des faux positifs Telegram
       - name: Notify on failure
-        if: failure()
+        if: failure() && !cancelled()
         run: |
           curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
             -d "chat_id=$TELEGRAM_CHAT_ID" \
