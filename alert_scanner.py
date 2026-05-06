@@ -84,10 +84,11 @@ def scan_and_execute_signals() -> list[dict]:
         logger.info("BTC sous MA50 — achats bloqués ce cycle")
         return []
 
-    # Univers complet OKX EEA — tout ce qui est disponible et liquide
+    # Top N OKX EEA par volume — cap pour tenir dans le timeout GitHub Actions (14min)
+    # Paires triées par volume décroissant → on garde les plus liquides
     universe = [t for t in okx.get_available_pairs(min_volume_usdc=500_000)
-                if t not in STABLES_EXCLUDE and t != "XRP"]
-    logger.info(f"Alert scanner — univers : {len(universe)} actifs")
+                if t not in STABLES_EXCLUDE and t != "XRP"][:40]
+    logger.info(f"Alert scanner — univers : {len(universe)} actifs (cap=40)")
 
     ohlcv = okx.get_all_ohlcv(universe, days=60)
     tech_results = ts.run(ohlcv)

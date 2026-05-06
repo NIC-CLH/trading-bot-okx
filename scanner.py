@@ -53,6 +53,10 @@ EXCLUDE = {
 # 500k$ = token suffisamment liquide pour entrer/sortir sans slippage
 MIN_VOLUME_USDC = 500_000
 
+# Cap universe — évite les timeouts GitHub Actions (cycle 4h, timeout 20min).
+# Les paires OKX sont triées par volume décroissant → on garde les plus liquides.
+MAX_UNIVERSE = 55
+
 # Cooldown anti-doublon (ticker -> timestamp dernier signal)
 _alerted_cache: dict[str, float] = {}
 ALERT_COOLDOWN_HOURS = 6
@@ -60,14 +64,14 @@ ALERT_COOLDOWN_HOURS = 6
 
 def get_universe() -> list[str]:
     """
-    Retourne TOUS les actifs disponibles sur OKX EEA avec volume suffisant,
-    triés par volume décroissant (les plus importants analysés en premier).
-    Pas de limite arbitraire — on scanne tout ce qui est disponible.
+    Retourne les actifs disponibles sur OKX EEA avec volume suffisant,
+    triés par volume décroissant (les plus liquides en premier).
+    Plafonnés à MAX_UNIVERSE pour tenir dans le timeout GitHub Actions.
     """
     try:
         pairs = okx.get_available_pairs(min_volume_usdc=MIN_VOLUME_USDC)
-        universe = [t for t in pairs if t not in EXCLUDE]
-        logger.info(f"Univers OKX EEA : {len(universe)} actifs (volume > ${MIN_VOLUME_USDC/1e6:.1f}M/j)")
+        universe = [t for t in pairs if t not in EXCLUDE][:MAX_UNIVERSE]
+        logger.info(f"Univers OKX EEA : {len(universe)} actifs (volume > ${MIN_VOLUME_USDC/1e6:.1f}M/j, cap={MAX_UNIVERSE})")
         return universe
     except Exception as e:
         logger.error(f"Erreur get_universe : {e}")

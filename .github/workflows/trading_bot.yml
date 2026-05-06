@@ -17,7 +17,7 @@ permissions:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 15  # Le cycle complet ne doit pas dépasser 15 min
+    timeout-minutes: 20  # Univers plafonné à 55 assets — 20min suffisants
 
     steps:
       - name: Checkout code

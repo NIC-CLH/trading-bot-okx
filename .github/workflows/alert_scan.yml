@@ -17,7 +17,7 @@ permissions:
 jobs:
   alert:
     runs-on: ubuntu-latest
-    timeout-minutes: 8  # Scan rapide — 8 min max
+    timeout-minutes: 14  # Univers plafonné à 40 assets — 14min suffisants
 
     steps:
       - name: Checkout code

@@ -77,8 +77,10 @@ def interpret(ticker: str, news_data: dict, score_context: dict) -> dict:
         score_final   = score_context.get("score", 0)
         regime        = score_context.get("regime", "sideways")
 
-        # Si aucune news disponible, neutre par défaut — pas d'appel LLM
-        if not news_signals and not verdict_news:
+        # Appel LLM seulement si des news CONCRÈTES existent (pas juste un verdict générique).
+        # verdict_news est toujours set par news_sentiment ("FONDAMENTAUX NEUTRES" etc.) —
+        # l'utiliser seul comme gate ferait appeler le LLM pour CHAQUE candidat → timeout.
+        if not news_signals:
             return {**_DEFAULT, "raison": "aucune news disponible"}
 
         news_text = (
