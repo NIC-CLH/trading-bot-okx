@@ -35,7 +35,9 @@ STOP_LOSS_PCT        = -0.07   # -7%  → conservé pour compatibilité (non uti
 ATR_STOP_MULTIPLIER  =  1.5    # stop = prix_entrée - ATR_14 * 1.5
 ATR_STOP_MIN_PCT     =  0.04   # plafond  : jamais plus de -4%  (stop serré)
 ATR_STOP_MAX_PCT     =  0.10   # plancher : jamais moins de -10% (stop large)
-FULL_PROFIT_PCT      =  0.12   # +12% → sortie complète
+FULL_PROFIT_PCT      =  0.12   # +12% → sortie complète (base)
+STRONG_PROFIT_PCT    =  0.20   # +20% → sortie si signal encore fort au moment du target
+STRONG_SCORE_MIN     =  2.0    # score minimum pour étendre le target à +20%
 MAX_HOLDING_DAYS     =  7      # 7 jours max en position, quelle que soit la situation
 MAX_POSITIONS        =  4
 MIN_POSITION_VALUE   =  5.0    # ignorer les poussières < $5 (restes de vieux trades)
@@ -256,22 +258,24 @@ def get_atr_stop(ticker: str, prix_entree: float) -> float:
 
 # ── Évaluation ────────────────────────────────────────────────────────────────
 
-def evaluate_position(pos: dict) -> dict:
+def evaluate_position(pos: dict, score: float | None = None) -> dict:
     """
-    Évalue une position avec la règle des exits fixes.
-    Ignore complètement le score technique — seuls le prix et le temps comptent.
+    Évalue une position avec exits fixes + extension dynamique sur signal fort.
 
     Décisions : HOLD | FULL_SELL
 
     Règles d'exit (par priorité) :
       P1 — Stop ATR dynamique : sortie immédiate si pnl <= stop ATR-based (entre -4% et -10%)
       P2 — Time stop 7j       : sortie si durée CONFIRMÉE >= 7 jours
-      P3 — Objectif +12%      : sortie complète sur profit cible
+      P3 — Objectif dynamique :
+             score >= STRONG_SCORE_MIN (2.0) → target étendu à +20%
+             score <  STRONG_SCORE_MIN       → target fixe +12% (comportement historique)
+
+    Le paramètre `score` est calculé dans run() en batch sur toutes les positions.
+    Si absent (None), P3 retombe sur le comportement +12% fixe.
 
     NOTE : si le prix d'entrée est inconnu, on NE vend PAS automatiquement.
-    On logue un avertissement et on maintient (HOLD). L'utilisateur gère manuellement
-    les positions achetées avant le système. Le time stop P2 ne se déclenche
-    que si le timestamp est CONNU (days_held != None).
+    Le time stop P2 ne se déclenche que si le timestamp est CONNU (days_held != None).
     """
     ticker    = pos["ticker"]
     prix      = pos["prix_actuel"]
@@ -340,6 +344,8 @@ def evaluate_position(pos: dict) -> dict:
         # On continue avec pnl_pct=0 : le stop ne se déclenchera pas.
 
     # ── P1 : Stop ATR dynamique (seulement si on connaît le prix d'entrée) ──────
+    # NOTE : utilise `if` seul (pas elif) pour que P2/P3 puissent s'évaluer
+    # indépendamment. Chaque règle vérifie `decision == "HOLD"` avant d'agir.
     if entree:
         stop_price = get_atr_stop(pos["ticker"], entree)
         stop_pct   = (stop_price - entree) / entree * 100
@@ -349,22 +355,41 @@ def evaluate_position(pos: dict) -> dict:
             urgence  = True
 
     # ── P2 : Time stop — 7 jours CONFIRMÉS uniquement ────────────────────────
-    # Conditions : prix d'entrée CONNU (pas d'orphelin) + timestamp CONNU.
-    # Sans le check `entree`, un orphelin avec days_held connu se ferait vendre
-    # à pnl_pct=0 (valeur par défaut) même si la position est en gain.
-    elif entree and days_held is not None and days_held >= MAX_HOLDING_DAYS and pnl_pct < FULL_PROFIT_PCT * 100:
+    # Conditions : P1 non déclenché + entrée connue + timestamp connu.
+    if (decision == "HOLD"
+            and entree
+            and days_held is not None
+            and days_held >= MAX_HOLDING_DAYS
+            and pnl_pct < FULL_PROFIT_PCT * 100):
         decision = "FULL_SELL"
         raison   = f"Time stop ({days_held:.0f}j) — P&L {pnl_pct:+.1f}% — on libère le capital"
 
-    # ── P3 : Objectif +12% atteint → sortie complète ─────────────────────────
-    elif pnl_pct >= FULL_PROFIT_PCT * 100:
-        decision = "FULL_SELL"
-        raison   = f"Objectif +12% atteint ({pnl_pct:+.1f}%) 🎯"
+    # ── P3 : Objectif atteint → sortie fixe ou étendue selon le signal ──────────
+    if decision == "HOLD" and entree and pnl_pct >= FULL_PROFIT_PCT * 100:
+        if score is not None and score >= STRONG_SCORE_MIN:
+            # Signal encore fort → laisser courir jusqu'au target étendu +20%
+            if pnl_pct < STRONG_PROFIT_PCT * 100:
+                raison = (
+                    f"Target étendu — signal fort ({score:+.2f} >= {STRONG_SCORE_MIN}) "
+                    f"| {pnl_pct:+.1f}% / +{STRONG_PROFIT_PCT*100:.0f}% cible"
+                )
+                # decision reste HOLD
+            else:
+                decision = "FULL_SELL"
+                raison   = (
+                    f"Target étendu +{STRONG_PROFIT_PCT*100:.0f}% atteint "
+                    f"({pnl_pct:+.1f}%) — signal {score:+.2f} 🚀"
+                )
+        else:
+            # Signal faible ou inconnu → sortie classique à +12%
+            score_str = f" (score {score:+.2f})" if score is not None else ""
+            decision  = "FULL_SELL"
+            raison    = f"Objectif +12% atteint ({pnl_pct:+.1f}%){score_str} 🎯"
 
-    if decision == "HOLD":
-        days_str = f"{days_held:.1f}j" if days_held else "?"
+    if decision == "HOLD" and not raison:
+        days_str   = f"{days_held:.1f}j" if days_held else "?"
         entree_str = f"entree=${entree:.4f} " if entree else "entree=? "
-        raison = f"En cours ({entree_str}{pnl_pct:+.1f}% | {days_str} / 7j)"
+        raison     = f"En cours ({entree_str}{pnl_pct:+.1f}% | {days_str} / 7j)"
 
     return {
         "ticker":    ticker,
@@ -539,9 +564,9 @@ def sweep_dust() -> list[str]:
 def run(portfolio_value: float, **kwargs) -> dict:
     """
     Gestion complète des positions toutes les 4h.
-    Sorties basées uniquement sur stops/objectifs/temps fixes.
+    Sorties basées sur stops/objectifs/temps + extension dynamique sur signal fort.
     """
-    logger.info("Gestion des positions (exits fixes : -7% / +12% / 7j)...")
+    logger.info("Gestion des positions (exits : ATR stop / +12% base / +20% si signal fort / 7j)...")
 
     # Nettoyage des poussières en premier (résidus < $3)
     sweep_dust()
@@ -551,11 +576,28 @@ def run(portfolio_value: float, **kwargs) -> dict:
         logger.info("Aucune position ouverte.")
         return {"positions": [], "actions": [], "btc_uptrend": is_btc_uptrend()}
 
+    # ── Calcul des scores techniques pour toutes les positions ────────────────
+    # Permet à evaluate_position() d'étendre le target si signal encore fort.
+    scores_map: dict[str, float] = {}
+    try:
+        tickers_open = [p["ticker"] for p in positions]
+        ohlcv_pos    = okx.get_all_ohlcv(tickers_open, days=90)
+        tech_pos     = ts.run(ohlcv_pos)
+        for ticker, tech in tech_pos.items():
+            scores_map[ticker] = tech.get("signal", {}).get("score", 0.0)
+        logger.info(
+            f"Scores positions : "
+            f"{ {t: f'{s:+.2f}' for t, s in scores_map.items()} }"
+        )
+    except Exception as e:
+        logger.warning(f"Calcul scores positions échoué ({e}) — exits fixes appliqués")
+
     actions      = []
     danger_lines = []
 
     for pos in positions:
-        decision  = evaluate_position(pos)
+        score     = scores_map.get(pos["ticker"])
+        decision  = evaluate_position(pos, score=score)
         pnl       = decision["pnl_pct"] or 0
         days      = f"{decision['days_held']:.1f}j" if decision.get("days_held") else "?"
 
