@@ -592,6 +592,41 @@ def run(portfolio_value: float, **kwargs) -> dict:
     except Exception as e:
         logger.warning(f"Calcul scores positions échoué ({e}) — exits fixes appliqués")
 
+    # ── Auto-registration des entrées manquantes ─────────────────────────────
+    # Pour les positions dont aucune entrée n'est enregistrée (pre-système ou
+    # backfill manqué), on crée une entry "late" avec le score technique actuel.
+    # Non-bloquant — si ruflo_memory est indisponible, on continue.
+    try:
+        import ruflo_memory as rm
+        memory_data = rm._load_json()
+        registered_tickers = {e.get("ticker") for e in memory_data.get("entries", [])}
+
+        for pos in positions:
+            ticker = pos["ticker"]
+            if ticker in registered_tickers:
+                continue
+            if not pos.get("prix_entree"):
+                continue  # orphelin — pas d'entrée enregistrable
+
+            score_tech = scores_map.get(ticker, 0.0)
+            rm.store_trade_entry({
+                "ticker":       ticker,
+                "score":        score_tech,
+                "score_tech":   score_tech,
+                "score_news":   0.0,
+                "score_ms":     0.0,
+                "score_macro":  0.0,
+                "regime":       "bull" if is_btc_uptrend() else "bear",
+                "vol_regime":   "normal",
+                "taille_usd":   pos.get("valeur_usd", 0),
+                "prix":         pos["prix_entree"],
+                "taille_allouee": pos.get("valeur_usd", 0),
+                "late_entry":   True,
+            })
+            logger.info(f"[Memory] Entrée tardive enregistrée : {ticker} score={score_tech:+.2f}")
+    except Exception as _mem_e:
+        logger.debug(f"Auto-registration entrées ignorée : {_mem_e}")
+
     actions      = []
     danger_lines = []
 
