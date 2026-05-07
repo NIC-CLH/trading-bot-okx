@@ -119,9 +119,128 @@
       "valeur_usd": 88.67,
       "outcome": "loss",
       "timestamp": "2026-05-04T15:14:38.449952+00:00"
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "DYDX",
+      "pnl_pct": 13.01,
+      "days_held": 2.8,
+      "exit_reason": "Objectif +12% atteint (+13.0%) (score +1.71) 🎯",
+      "valeur_usd": 100.77,
+      "outcome": "win",
+      "timestamp": "2026-05-07T16:04:19.279832+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.71
     }
   ],
-  "entries": [],
+  "entries": [
+    {
+      "type": "trade_entry",
+      "ticker": "BTC",
+      "score": 2.83,
+      "score_tech": 2.83,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 223.77,
+      "prix": 78783.12758281885,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-07T16:03:27.149524+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ARKM",
+      "score": 2.06,
+      "score_tech": 2.06,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 143.55,
+      "prix": 0.1188954036006389,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-07T16:03:34.117082+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "TRX",
+      "score": 1.55,
+      "score_tech": 1.55,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 114.19,
+      "prix": 0.3274550292898398,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-07T16:03:41.247034+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "DYDX",
+      "score": 1.71,
+      "score_tech": 1.71,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 100.77,
+      "prix": 0.14771,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-07T16:03:48.249387+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ONDO",
+      "score": 1.13,
+      "score_tech": 1.13,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 83.45,
+      "prix": 0.3250884174853074,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-07T16:03:55.147214+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "PENGU",
+      "score": 3,
+      "score_tech": 3,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 11.47,
+      "prix": 0.0101724775452824,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-07T16:04:02.142149+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "PEOPLE",
+      "score": 2.44,
+      "score_tech": 2.44,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 10.45,
+      "prix": 0.0078605799556433,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-07T16:04:09.739120+00:00"
+    }
+  ],
   "reflections": [
     {
       "lecon_principale": "Objectifs fixes efficaces - sortie à +12% avant momentum épuisé",
@@ -182,7 +301,19 @@
       "pnl_pct": 5.0,
       "type": "trade_reflection",
       "timestamp": "2026-05-05T07:50:10.915884+00:00"
+    },
+    {
+      "lecon_principale": "Objectifs fixes + régime bull = sortie disciplinée optimale",
+      "signal_fiable": "Score composite 1.71 en régime bull avec volatilité normale = signal d'entrée fiable",
+      "signal_trompeur": "Aucun - exécution textbook sans signal faux détecté",
+      "regime_optimal": "bull avec volatilité normale",
+      "recommandation": "hold_longer",
+      "confiance": 0.72,
+      "ticker": "DYDX",
+      "pnl_pct": 13.00521291720263,
+      "type": "trade_reflection",
+      "timestamp": "2026-05-07T16:04:29.722918+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.847523863633581
+  "_sd_prev_usdt_d": 6.925788070086977
 }
