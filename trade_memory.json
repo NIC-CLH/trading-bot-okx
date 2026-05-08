@@ -132,6 +132,32 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 1.71
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ARKM",
+      "pnl_pct": 18.2,
+      "days_held": 0,
+      "exit_reason": "Objectif +12% atteint (+18.2%) (score +1.85) 🎯",
+      "valeur_usd": 156.65,
+      "outcome": "win",
+      "timestamp": "2026-05-08T08:04:19.631443+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.06
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ONDO",
+      "pnl_pct": 12.92,
+      "days_held": 3.0,
+      "exit_reason": "Objectif +12% atteint (+12.9%) (score +1.13) 🎯",
+      "valeur_usd": 85.4,
+      "outcome": "win",
+      "timestamp": "2026-05-08T08:04:39.834148+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.13
     }
   ],
   "entries": [
@@ -313,7 +339,31 @@
       "pnl_pct": 13.00521291720263,
       "type": "trade_reflection",
       "timestamp": "2026-05-07T16:04:29.722918+00:00"
+    },
+    {
+      "lecon_principale": "Objectifs conservateurs (+12%) surpassés (+18.2%) en régime bull stable",
+      "signal_fiable": "Régime bull + volatilité normal = conditions optimales pour scalp court-terme",
+      "signal_trompeur": "Score composite 2.06 était suffisant mais marché a offert plus (sous-estimation)",
+      "regime_optimal": "bull avec volatilité normal - parfait pour ARKM",
+      "recommandation": "increase_size",
+      "confiance": 0.82,
+      "ticker": "ARKM",
+      "pnl_pct": 18.20473773070635,
+      "type": "trade_reflection",
+      "timestamp": "2026-05-08T08:04:30.478905+00:00"
+    },
+    {
+      "lecon_principale": "Objectif fixe +12% validé en régime bull - système de sortie efficace",
+      "signal_fiable": "Score composite 1.13 en régime bull avec volatilité normale = bon timing",
+      "signal_trompeur": "Aucun - trade textuellement exécuté selon plan (entrée + objectif atteint)",
+      "regime_optimal": "bull avec volatilité normal - favorable aux gains rapides et prévisibles",
+      "recommandation": "hold_longer",
+      "confiance": 0.75,
+      "ticker": "ONDO",
+      "pnl_pct": 12.92312498847834,
+      "type": "trade_reflection",
+      "timestamp": "2026-05-08T08:04:55.150104+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.943892596472015
+  "_sd_prev_usdt_d": 6.938920550112895
 }
