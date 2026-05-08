@@ -265,6 +265,36 @@
       "prix": 0.0078605799556433,
       "btc_uptrend": true,
       "timestamp": "2026-05-07T16:04:09.739120+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "CHZ",
+      "score": 2.27,
+      "score_tech": 2.27,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 202.79,
+      "prix": 0.04609922896722245,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-08T12:04:34.198590+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "LTC",
+      "score": 2.17,
+      "score_tech": 2.17,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 128.2,
+      "prix": 56.569341012731684,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-08T12:04:41.652433+00:00"
     }
   ],
   "reflections": [
@@ -365,5 +395,5 @@
       "timestamp": "2026-05-08T08:04:55.150104+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.938920550112895
+  "_sd_prev_usdt_d": 6.9027955995382015
 }
