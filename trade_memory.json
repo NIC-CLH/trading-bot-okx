@@ -295,6 +295,21 @@
       "prix": 56.569341012731684,
       "btc_uptrend": true,
       "timestamp": "2026-05-08T12:04:41.652433+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "DOGE",
+      "score": 2.59,
+      "score_tech": 2.59,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 61.48,
+      "prix": 0.11053963963963964,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-10T20:04:22.102857+00:00"
     }
   ],
   "reflections": [
@@ -395,5 +410,5 @@
       "timestamp": "2026-05-08T08:04:55.150104+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.785833023880103
+  "_sd_prev_usdt_d": 6.760465403869431
 }
