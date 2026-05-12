@@ -338,6 +338,21 @@
       "prix": 3.3199563539784283,
       "btc_uptrend": true,
       "timestamp": "2026-05-12T12:05:02.334390+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ADA",
+      "score": 2.44,
+      "score_tech": 2.44,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 45.55,
+      "prix": 0.27063884249345704,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-12T20:04:52.178122+00:00"
     }
   ],
   "reflections": [
@@ -450,5 +465,5 @@
       "timestamp": "2026-05-12T12:05:25.563734+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.882063565449845
+  "_sd_prev_usdt_d": 6.841634659854636
 }
