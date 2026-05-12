@@ -158,6 +158,19 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 1.13
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "CHZ",
+      "pnl_pct": -22.78,
+      "days_held": 0,
+      "exit_reason": "Stop ATR déclenché (-22.8% < -5.5%)",
+      "valeur_usd": 40.66,
+      "outcome": "loss",
+      "timestamp": "2026-05-12T12:05:14.502003+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.27
     }
   ],
   "entries": [
@@ -310,6 +323,21 @@
       "prix": 0.11053963963963964,
       "btc_uptrend": true,
       "timestamp": "2026-05-10T20:04:22.102857+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ICP",
+      "score": 2.73,
+      "score_tech": 2.73,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 150.12,
+      "prix": 3.3199563539784283,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-12T12:05:02.334390+00:00"
     }
   ],
   "reflections": [
@@ -408,7 +436,19 @@
       "pnl_pct": 12.92312498847834,
       "type": "trade_reflection",
       "timestamp": "2026-05-08T08:04:55.150104+00:00"
+    },
+    {
+      "lecon_principale": "Stop ATR insuffisant en régime bull avec score composite faible (2.27)",
+      "signal_fiable": "Le stop ATR a fonctionné comme prévu - il a limité les dégâts à -22.8% vs perte potentielle bien plus grande",
+      "signal_trompeur": "Score composite de 2.27 était trop faible pour justifier une entrée en régime bull. Signal d'entrée manquait de confirmation",
+      "regime_optimal": "Éviter les entrées en régime bull avec score < 3.0. CHZ nécessite des régimes plus stables ou score composite plus élevé",
+      "recommandation": "avoid_regime",
+      "confiance": 0.82,
+      "ticker": "CHZ",
+      "pnl_pct": -22.7815748178556,
+      "type": "trade_reflection",
+      "timestamp": "2026-05-12T12:05:25.563734+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.824120990181784
+  "_sd_prev_usdt_d": 6.839687081763801
 }
