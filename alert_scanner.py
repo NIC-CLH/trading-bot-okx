@@ -41,6 +41,8 @@ XRP_ANALYSIS_INTERVAL_H = 2 # N'analyser XRP que toutes les 2h (heures paires UT
 STABLES_EXCLUDE = {
     "USDT", "USDC", "BUSD", "DAI", "FDUSD", "TUSD", "USDP",
     "WBTC", "WETH", "STETH", "BETH", "BBTC",
+    # Restreints EEA — listés sur OKX mais ordres bloqués (code 1 "All operations failed")
+    "OFC",
 }
 
 # Cache in-run uniquement (évite d'envoyer 2x la même alerte dans un même run)

@@ -47,6 +47,8 @@ AUTO_EXECUTE_THRESHOLD = 1.5  # Ordre automatique placé
 EXCLUDE = {
     "USDT", "USDC", "BUSD", "DAI", "FDUSD", "TUSD", "USDP",
     "WBTC", "WETH", "STETH", "BETH", "BBTC",
+    # Restreints EEA — listés sur OKX mais ordres bloqués (code 1 "All operations failed")
+    "OFC",
 }
 
 # Volume minimum 24h en USDC pour être scanné

@@ -200,11 +200,28 @@ def execute_signal(signal: dict, portfolio_value: float) -> bool:
             take_profit=target,
         )
     except Exception as e:
+        err_str = str(e)
         logger.error(f"Échec ordre OKX {ticker} : {e}")
-        try:
-            alertes.send(f"❌ *Échec ordre {ticker}* (OKX) : {str(e)[:100]}")
-        except Exception:
-            pass
+        # "All operations failed (code 1)" = paire non disponible EEA ou instrument suspendu
+        # → ajouter le ticker à EXCLUDE dans scanner.py et alert_scanner.py
+        if "All operations failed" in err_str or "(code 1)" in err_str:
+            logger.warning(
+                f"{ticker} : 'All operations failed' = paire probablement restreinte EEA. "
+                f"Ajouter '{ticker}' à EXCLUDE dans scanner.py et alert_scanner.py."
+            )
+            try:
+                alertes.send(
+                    f"⚠️ *Ordre {ticker} bloqué* (OKX) : paire probablement restreinte EEA\n"
+                    f"`{err_str[:100]}`\n"
+                    f"_Ajouter '{ticker}' à EXCLUDE pour stopper les tentatives._"
+                )
+            except Exception:
+                pass
+        else:
+            try:
+                alertes.send(f"❌ *Échec ordre {ticker}* (OKX) : {err_str[:100]}")
+            except Exception:
+                pass
         return False
 
     # Ordre confirmé par OKX — flag positionné immédiatement
