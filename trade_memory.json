@@ -171,6 +171,19 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.27
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ICP",
+      "pnl_pct": -11.11,
+      "days_held": 1.8,
+      "exit_reason": "Stop ATR déclenché (-11.1% < -9.3%)",
+      "valeur_usd": 134.53,
+      "outcome": "loss",
+      "timestamp": "2026-05-14T04:05:05.840460+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.73
     }
   ],
   "entries": [
@@ -463,7 +476,19 @@
       "pnl_pct": -22.7815748178556,
       "type": "trade_reflection",
       "timestamp": "2026-05-12T12:05:25.563734+00:00"
+    },
+    {
+      "lecon_principale": "Score composite 2.73 insuffisant en régime bull - risque perte rapide",
+      "signal_fiable": "Stop ATR a fonctionné - protection effective à -11.1%",
+      "signal_trompeur": "Régime bull affiché mais composite très faible = faux signal haussier",
+      "regime_optimal": "Éviter entrées en bull avec score < 3.0",
+      "recommandation": "avoid_regime",
+      "confiance": 0.78,
+      "ticker": "ICP",
+      "pnl_pct": -11.113289291779212,
+      "type": "trade_reflection",
+      "timestamp": "2026-05-14T04:05:16.610743+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.9445350812733775
+  "_sd_prev_usdt_d": 6.960907914638827
 }
