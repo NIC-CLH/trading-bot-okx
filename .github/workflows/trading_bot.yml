@@ -5,10 +5,12 @@ on:
   # (cron natif GitHub désactivé — dérive jusqu'à 2h)
   workflow_dispatch:
 
-# Évite que deux cycles se chevauchent — annule le précédent si déjà en cours
+# cancel-in-progress: false → les runs se mettent en file d'attente au lieu
+# d'être annulés. Un run annulé avant de démarrer = "No jobs were run" = email GitHub parasite.
+# Le timeout 20min garantit qu'un run ne peut pas dépasser le cycle 4h → zéro chevauchement.
 concurrency:
   group: trading-bot-main
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 # Permissions minimales (lecture seule du code)
 permissions:
