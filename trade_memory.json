@@ -184,6 +184,19 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.73
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "PEOPLE",
+      "pnl_pct": -9.64,
+      "days_held": 0,
+      "exit_reason": "Stop ATR déclenché (-9.6% < -9.2%)",
+      "valeur_usd": 9.0,
+      "outcome": "loss",
+      "timestamp": "2026-05-16T08:05:24.973644+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.44
     }
   ],
   "entries": [
@@ -503,7 +516,19 @@
       "pnl_pct": -11.113289291779212,
       "type": "trade_reflection",
       "timestamp": "2026-05-14T04:05:16.610743+00:00"
+    },
+    {
+      "lecon_principale": "Score composite 2.44 insuffisant en régime bull - entrée prématurée",
+      "signal_fiable": "Stop ATR bien calibré - déclenché à -9.6% vs -9.2% attendu",
+      "signal_trompeur": "Régime bull affiché mais score composite très faible indique divergence haussière fragile",
+      "regime_optimal": "Attendre confirmation en régime bull avec score >3.5 minimum",
+      "recommandation": "avoid_regime",
+      "confiance": 0.78,
+      "ticker": "PEOPLE",
+      "pnl_pct": -9.6377107022417,
+      "type": "trade_reflection",
+      "timestamp": "2026-05-16T08:05:35.507375+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.980704538312931
+  "_sd_prev_usdt_d": 7.0518611095010275
 }
