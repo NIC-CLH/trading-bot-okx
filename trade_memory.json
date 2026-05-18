@@ -197,6 +197,32 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.44
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "SOL",
+      "pnl_pct": -6.94,
+      "days_held": 0,
+      "exit_reason": "Stop ATR déclenché (-6.9% < -6.0%)",
+      "valeur_usd": 128.83,
+      "outcome": "loss",
+      "timestamp": "2026-05-18T00:04:46.168590+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.84
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ADA",
+      "pnl_pct": -7.4,
+      "days_held": 0,
+      "exit_reason": "Stop ATR déclenché (-7.4% < -6.9%)",
+      "valeur_usd": 42.13,
+      "outcome": "loss",
+      "timestamp": "2026-05-18T00:04:55.571329+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.44
     }
   ],
   "entries": [
@@ -528,7 +554,31 @@
       "pnl_pct": -9.6377107022417,
       "type": "trade_reflection",
       "timestamp": "2026-05-16T08:05:35.507375+00:00"
+    },
+    {
+      "lecon_principale": "Score composite trop bas (2.84) + régime bull = entrée prématurée",
+      "signal_fiable": "Stop ATR (-6.9%) a bien protégé contre perte majeure",
+      "signal_trompeur": "Régime 'bull' seul insuffisant sans score composite robuste (>3.5)",
+      "regime_optimal": "Bull avec score composite ≥3.5 ou conditions de volatilité haute",
+      "recommandation": "increase_size",
+      "confiance": 0.72,
+      "ticker": "SOL",
+      "pnl_pct": -6.944257784811923,
+      "type": "trade_reflection",
+      "timestamp": "2026-05-18T00:04:51.439270+00:00"
+    },
+    {
+      "lecon_principale": "Score composite 2.44 insuffisant en régime bull - entrée prématurée confirmée",
+      "signal_fiable": "Stop ATR a fonctionné correctement (déclenché à -7.4% vs limite -6.9%)",
+      "signal_trompeur": "Régime bull seul ne suffisait pas - score composite trop bas indiquait faiblesse",
+      "regime_optimal": "bull_avec_score_minimum_3.0",
+      "recommandation": "increase_size",
+      "confiance": 0.72,
+      "ticker": "ADA",
+      "pnl_pct": -7.3969768378465774,
+      "type": "trade_reflection",
+      "timestamp": "2026-05-18T00:05:01.417868+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.0428292160567185
+  "_sd_prev_usdt_d": 7.132349818389941
 }
