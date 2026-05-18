@@ -420,6 +420,21 @@
       "prix": 90.9600684425329,
       "btc_uptrend": true,
       "timestamp": "2026-05-14T08:05:16.400532+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "KAIA",
+      "score": 1.95,
+      "score_tech": 1.95,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 178.65,
+      "prix": 0.05135860971116749,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-18T04:05:22.951989+00:00"
     }
   ],
   "reflections": [
@@ -580,5 +595,5 @@
       "timestamp": "2026-05-18T00:05:01.417868+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.132349818389941
+  "_sd_prev_usdt_d": 7.17212390664619
 }
