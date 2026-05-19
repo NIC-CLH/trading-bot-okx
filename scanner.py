@@ -529,12 +529,15 @@ def run_scan(portfolio_value: float) -> list[dict]:
             usdc_dispo      = execution.get_usdt_balance()
             open_positions  = pm.get_open_positions()
 
-            # ── Limite stricte : MAX_POSITIONS positions simultanées ───────────
-            # Permet la rotation (vendre faible pour acheter fort) mais bloque
-            # toute nouvelle position si le portefeuille est déjà plein ET qu'il
-            # n'y a pas de candidat à la rotation (ex: toutes positions > +10%).
-            nb_positions = len(open_positions)
-            if nb_positions >= pm.MAX_POSITIONS:
+            # ── Cap capital déployé : bloquer si >= 85% du portfolio engagé ───
+            # Un nombre arbitraire de positions n'a pas de sens : c'est le
+            # CAPITAL engagé qui compte. À 85%+, on bloque sauf si une rotation
+            # libère du capital (vendre une position faible pour en financer une
+            # meilleure).
+            total_deployed = sum(p.get("valeur_usd", 0) for p in open_positions)
+            deployed_pct   = total_deployed / portfolio_value if portfolio_value > 0 else 1.0
+            MAX_DEPLOYED_PCT = 0.85
+            if deployed_pct >= MAX_DEPLOYED_PCT:
                 # Vérifier si une rotation est possible avant de bloquer
                 alloc_check = ca.calculate_allocation(
                     ticker=ticker, score=score,
@@ -547,8 +550,9 @@ def run_scan(portfolio_value: float) -> list[dict]:
                 )
                 if not alloc_check.get("rotation_needed"):
                     logger.info(
-                        f"[Phase 3] {ticker} ignoré — limite {pm.MAX_POSITIONS} positions "
-                        f"atteinte ({nb_positions} ouvertes) sans candidat de rotation"
+                        f"[Phase 3] {ticker} ignoré — {deployed_pct:.0%} du portfolio "
+                        f"déjà déployé (${total_deployed:.0f} / ${portfolio_value:.0f}, "
+                        f"max {MAX_DEPLOYED_PCT:.0%}) sans candidat de rotation"
                     )
                     continue
 
