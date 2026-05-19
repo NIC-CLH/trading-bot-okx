@@ -435,6 +435,21 @@
       "prix": 0.05135860971116749,
       "btc_uptrend": true,
       "timestamp": "2026-05-18T04:05:22.951989+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "SPACE",
+      "score": 2.57,
+      "score_tech": 2.57,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 75.59,
+      "prix": 0.008811263864565091,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-19T00:04:48.932861+00:00"
     }
   ],
   "reflections": [
@@ -595,5 +610,5 @@
       "timestamp": "2026-05-18T00:05:01.417868+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.171200601951655
+  "_sd_prev_usdt_d": 7.158410666960996
 }
