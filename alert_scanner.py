@@ -563,22 +563,33 @@ def scan_xrp_binance():
         return None
 
 
-# ── Arrêt d'urgence (30min) ──────────────────────────────────────────────────────
-# Le bot principal vérifie les stops toutes les 4h → un actif peut chuter de -20%
-# avant d'être stoppé. L'alert scanner (30min) ajoute une couche de protection :
-# si une position dépasse le stop ATR, elle est vendue immédiatement.
+# ── Exits d'urgence (30min) ───────────────────────────────────────────────────
+# 3 règles vérifiées à chaque run de 30min (au lieu de 4h pour le cycle principal).
+#
+# P1 — Take profit +12% : vente immédiate si le pic est capté entre deux cycles 4h.
+#      Ex : ICP a atteint +15.8% mais le bot 4h avait raté le pic → perdait à -11%.
+#
+# P2 — Trailing stop     : une fois en profit (peak >= +5%), on protège 50% du gain.
+#      Ex : pic +8% → floor +4%. Si le prix retombe à +4%, on vend. Plus de -7%.
+#      Le pic est persisté dans trade_memory.json entre les runs GitHub Actions.
+#
+# P3 — Stop ATR          : comportement existant, inchangé.
+
+TP_PCT         = 12.0  # Take profit — vente complète
+TRAIL_ACTIVATE = 5.0   # Trailing stop actif dès +5% de gain peak
+TRAIL_RATIO    = 0.50  # Protéger 50% du gain peak (peak +8% → floor +4%)
+
 
 def emergency_stop_check() -> list[str]:
     """
-    Vérifie toutes les positions ouvertes contre leur stop ATR dynamique.
-    Vend immédiatement toute position en dessous de son stop.
-    Appelé toutes les 30min — réduit le gap risk de 4h à 30min.
-
-    Retourne la liste des tickers vendus en urgence.
+    Vérifie toutes les positions ouvertes toutes les 30min.
+    Vend si : TP +12% atteint | trailing stop | stop ATR dépassé.
+    Retourne la liste des tickers vendus.
     """
     sold = []
     try:
         import position_manager as pm
+        import ruflo_memory as rm
 
         positions = pm.get_open_positions()
         if not positions:
@@ -592,56 +603,95 @@ def emergency_stop_check() -> list[str]:
             valeur  = pos.get("valeur_usd", 0)
 
             if not entree or not prix or pnl_pct is None:
-                continue  # orphelin ou données manquantes
+                continue
 
-            # Calcul du stop ATR (même logique que position_manager)
-            stop_price = pm.get_atr_stop(ticker, entree)
-            stop_pct   = (stop_price - entree) / entree * 100
+            # ── Mise à jour du peak ───────────────────────────────────────────
+            try:
+                rm.update_peak_pnl(ticker, pnl_pct)
+                peak_pnl = max(rm.get_peak_pnl(ticker), pnl_pct)
+            except Exception:
+                peak_pnl = pnl_pct
 
-            if pnl_pct <= stop_pct:
-                logger.warning(
-                    f"[URGENCE] {ticker} stop ATR dépassé : "
-                    f"P&L {pnl_pct:.1f}% <= stop {stop_pct:.1f}% — vente immédiate"
+            # ── Décision de vente ─────────────────────────────────────────────
+            sell_reason = None
+            sell_emoji  = "🚨"
+
+            # P1 : Take profit +12% capté en 30min
+            if pnl_pct >= TP_PCT:
+                sell_reason = (
+                    f"Take profit +{TP_PCT:.0f}% atteint ({pnl_pct:+.1f}%) "
+                    f"— capté en 30min 🎯"
+                )
+                sell_emoji = "🎯"
+
+            # P2 : Trailing stop — peak atteint +5% et on revient sous 50% du pic
+            elif peak_pnl >= TRAIL_ACTIVATE:
+                trail_floor = round(peak_pnl * TRAIL_RATIO, 2)
+                if pnl_pct < trail_floor:
+                    sell_reason = (
+                        f"Trailing stop : pic {peak_pnl:+.1f}% → "
+                        f"plancher {trail_floor:+.1f}% | actuel {pnl_pct:+.1f}%"
+                    )
+                    sell_emoji = "📉"
+                else:
+                    logger.info(
+                        f"[Trailing] {ticker} : pic={peak_pnl:+.1f}% "
+                        f"floor={trail_floor:+.1f}% actuel={pnl_pct:+.1f}% → OK"
+                    )
+
+            # P3 : Stop ATR (comportement existant)
+            else:
+                stop_price = pm.get_atr_stop(ticker, entree)
+                stop_pct   = (stop_price - entree) / entree * 100
+                if pnl_pct <= stop_pct:
+                    sell_reason = (
+                        f"Stop ATR {pnl_pct:.1f}% <= {stop_pct:.1f}%"
+                    )
+                    sell_emoji = "🚨"
+
+            if not sell_reason:
+                continue
+
+            # ── Exécution de la vente ─────────────────────────────────────────
+            logger.warning(f"[30min] {ticker} : {sell_reason} — vente immédiate")
+            try:
+                fresh    = okx.get_balances()
+                qty      = fresh.get(ticker.upper(), pos["qty"])
+                if qty <= 0:
+                    continue
+
+                result   = okx.place_order(ticker=ticker, side="sell",
+                                           quantity=qty, order_type="market")
+                ordre_id = result.get("ordId", "?")
+                sold.append(ticker)
+
+                _send_telegram(
+                    f"{sell_emoji} *EXIT 30min — {ticker}*\n"
+                    f"{sell_reason}\n"
+                    f"Valeur : `${valeur:.2f}` | ID : `{ordre_id}`"
                 )
 
+                # Mémoire et nettoyage du peak
                 try:
-                    fresh = okx.get_balances()
-                    qty   = fresh.get(ticker.upper(), pos["qty"])
-                    if qty <= 0:
-                        continue
+                    rm.store_trade_outcome({
+                        "ticker":    ticker,
+                        "pnl_pct":   pnl_pct,
+                        "days_held": pos.get("days_held"),
+                        "raison":    sell_reason,
+                        "valeur":    valeur,
+                        "qty":       qty,
+                    })
+                    rm.clear_peak_pnl(ticker)
+                except Exception:
+                    pass
 
-                    result   = okx.place_order(ticker=ticker, side="sell",
-                                               quantity=qty, order_type="market")
-                    ordre_id = result.get("ordId", "?")
-                    sold.append(ticker)
-
-                    _send_telegram(
-                        f"🚨 *STOP URGENCE {ticker}*\n"
-                        f"P&L `{pnl_pct:+.1f}%` — stop ATR `{stop_pct:.1f}%`\n"
-                        f"Vendu avant le prochain cycle 4h\n"
-                        f"Valeur : `${valeur:.2f}` | ID : `{ordre_id}`"
-                    )
-
-                    # Mémoriser l'outcome
-                    try:
-                        import ruflo_memory as rm
-                        rm.store_trade_outcome({
-                            "ticker":    ticker,
-                            "pnl_pct":   pnl_pct,
-                            "days_held": pos.get("days_held"),
-                            "raison":    f"Stop ATR urgence 30min ({pnl_pct:.1f}% < {stop_pct:.1f}%)",
-                            "valeur":    valeur,
-                            "qty":       qty,
-                        })
-                    except Exception:
-                        pass
-
-                except Exception as e:
-                    logger.error(f"[URGENCE] Vente {ticker} échouée : {e}")
-                    _send_telegram(
-                        f"⚠️ *STOP URGENCE {ticker} ÉCHOUÉ*\n"
-                        f"P&L `{pnl_pct:+.1f}%` — vente manuelle requise !\n`{str(e)[:100]}`"
-                    )
+            except Exception as e:
+                logger.error(f"[30min] Vente {ticker} échouée : {e}")
+                _send_telegram(
+                    f"⚠️ *EXIT {ticker} ÉCHOUÉ*\n"
+                    f"{sell_reason}\n"
+                    f"Vente manuelle requise !\n`{str(e)[:100]}`"
+                )
 
     except Exception as e:
         logger.error(f"emergency_stop_check erreur globale : {e}")

@@ -144,6 +144,32 @@ def _save_json(data: dict):
         logger.error(f"[Memory] Erreur écriture JSON : {e}")
 
 
+# ── Peaks (trailing stop) ─────────────────────────────────────────────────────
+
+def get_peak_pnl(ticker: str) -> float:
+    """Retourne le pic de P&L historique d'une position ouverte (en %)."""
+    return _load_json().get("peaks", {}).get(ticker, 0.0)
+
+
+def update_peak_pnl(ticker: str, pnl_pct: float) -> bool:
+    """Met à jour le peak si pnl_pct dépasse le précédent. Retourne True si mis à jour."""
+    data = _load_json()
+    peaks = data.setdefault("peaks", {})
+    if pnl_pct > peaks.get(ticker, 0.0):
+        peaks[ticker] = round(pnl_pct, 2)
+        _save_json(data)
+        return True
+    return False
+
+
+def clear_peak_pnl(ticker: str):
+    """Supprime le peak d'une position après fermeture."""
+    data = _load_json()
+    if ticker in data.get("peaks", {}):
+        del data["peaks"][ticker]
+        _save_json(data)
+
+
 # ── API publique ──────────────────────────────────────────────────────────────
 
 def seed_ruflo_from_json():
