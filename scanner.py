@@ -37,8 +37,8 @@ import social_radar
 logger = logging.getLogger(__name__)
 
 # Seuil alerte Telegram (score composite 4 dimensions)
-SIGNAL_THRESHOLD = 1.5      # Alerte envoyée
-AUTO_EXECUTE_THRESHOLD = 1.5  # Ordre automatique placé
+SIGNAL_THRESHOLD = 1.5      # Alerte envoyée (inchangé — on veut voir les signaux)
+AUTO_EXECUTE_THRESHOLD = 2.0  # Ordre automatique — relevé 1.5→2.0 (qualité > quantité)
 
 # Rotation et sizing délégués à capital_allocator.py
 # Les seuils ROTATION_SCORE_MIN (2.0) et ROTATION_USDC_RATIO (60%) sont définis là-bas.
@@ -528,6 +528,29 @@ def run_scan(portfolio_value: float) -> list[dict]:
             # ── Capital Allocator : taille + rotation + mémoire ──────────────
             usdc_dispo      = execution.get_usdt_balance()
             open_positions  = pm.get_open_positions()
+
+            # ── Limite stricte : MAX_POSITIONS positions simultanées ───────────
+            # Permet la rotation (vendre faible pour acheter fort) mais bloque
+            # toute nouvelle position si le portefeuille est déjà plein ET qu'il
+            # n'y a pas de candidat à la rotation (ex: toutes positions > +10%).
+            nb_positions = len(open_positions)
+            if nb_positions >= pm.MAX_POSITIONS:
+                # Vérifier si une rotation est possible avant de bloquer
+                alloc_check = ca.calculate_allocation(
+                    ticker=ticker, score=score,
+                    portfolio_value=portfolio_value,
+                    usdc_available=usdc_dispo,
+                    open_positions=open_positions,
+                    context={"score": score,
+                             "regime": payload.get("regime", "unknown"),
+                             "vol_regime": payload.get("vol_regime", "normal")},
+                )
+                if not alloc_check.get("rotation_needed"):
+                    logger.info(
+                        f"[Phase 3] {ticker} ignoré — limite {pm.MAX_POSITIONS} positions "
+                        f"atteinte ({nb_positions} ouvertes) sans candidat de rotation"
+                    )
+                    continue
 
             alloc = ca.calculate_allocation(
                 ticker         = ticker,

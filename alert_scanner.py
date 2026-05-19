@@ -563,11 +563,104 @@ def scan_xrp_binance():
         return None
 
 
+# ── Arrêt d'urgence (30min) ──────────────────────────────────────────────────────
+# Le bot principal vérifie les stops toutes les 4h → un actif peut chuter de -20%
+# avant d'être stoppé. L'alert scanner (30min) ajoute une couche de protection :
+# si une position dépasse le stop ATR, elle est vendue immédiatement.
+
+def emergency_stop_check() -> list[str]:
+    """
+    Vérifie toutes les positions ouvertes contre leur stop ATR dynamique.
+    Vend immédiatement toute position en dessous de son stop.
+    Appelé toutes les 30min — réduit le gap risk de 4h à 30min.
+
+    Retourne la liste des tickers vendus en urgence.
+    """
+    sold = []
+    try:
+        import position_manager as pm
+
+        positions = pm.get_open_positions()
+        if not positions:
+            return []
+
+        for pos in positions:
+            ticker  = pos["ticker"]
+            entree  = pos.get("prix_entree")
+            prix    = pos.get("prix_actuel")
+            pnl_pct = pos.get("pnl_pct")
+            valeur  = pos.get("valeur_usd", 0)
+
+            if not entree or not prix or pnl_pct is None:
+                continue  # orphelin ou données manquantes
+
+            # Calcul du stop ATR (même logique que position_manager)
+            stop_price = pm.get_atr_stop(ticker, entree)
+            stop_pct   = (stop_price - entree) / entree * 100
+
+            if pnl_pct <= stop_pct:
+                logger.warning(
+                    f"[URGENCE] {ticker} stop ATR dépassé : "
+                    f"P&L {pnl_pct:.1f}% <= stop {stop_pct:.1f}% — vente immédiate"
+                )
+
+                try:
+                    fresh = okx.get_balances()
+                    qty   = fresh.get(ticker.upper(), pos["qty"])
+                    if qty <= 0:
+                        continue
+
+                    result   = okx.place_order(ticker=ticker, side="sell",
+                                               quantity=qty, order_type="market")
+                    ordre_id = result.get("ordId", "?")
+                    sold.append(ticker)
+
+                    _send_telegram(
+                        f"🚨 *STOP URGENCE {ticker}*\n"
+                        f"P&L `{pnl_pct:+.1f}%` — stop ATR `{stop_pct:.1f}%`\n"
+                        f"Vendu avant le prochain cycle 4h\n"
+                        f"Valeur : `${valeur:.2f}` | ID : `{ordre_id}`"
+                    )
+
+                    # Mémoriser l'outcome
+                    try:
+                        import ruflo_memory as rm
+                        rm.store_trade_outcome({
+                            "ticker":    ticker,
+                            "pnl_pct":   pnl_pct,
+                            "days_held": pos.get("days_held"),
+                            "raison":    f"Stop ATR urgence 30min ({pnl_pct:.1f}% < {stop_pct:.1f}%)",
+                            "valeur":    valeur,
+                            "qty":       qty,
+                        })
+                    except Exception:
+                        pass
+
+                except Exception as e:
+                    logger.error(f"[URGENCE] Vente {ticker} échouée : {e}")
+                    _send_telegram(
+                        f"⚠️ *STOP URGENCE {ticker} ÉCHOUÉ*\n"
+                        f"P&L `{pnl_pct:+.1f}%` — vente manuelle requise !\n`{str(e)[:100]}`"
+                    )
+
+    except Exception as e:
+        logger.error(f"emergency_stop_check erreur globale : {e}")
+
+    return sold
+
+
 # ── Point d'entrée ─────────────────────────────────────────────────────────────
 
 def run():
     now = datetime.now(timezone.utc)
     logger.info(f"Alert scanner démarré — {now.strftime('%d/%m/%Y %H:%M UTC')}")
+
+    # ── Priorité 1 : arrêts d'urgence (avant tout le reste) ──────────────────
+    # Si une position dépasse son stop ATR, on vend immédiatement sans attendre
+    # le prochain cycle 4h du bot principal.
+    emergency_sold = emergency_stop_check()
+    if emergency_sold:
+        logger.warning(f"Stops d'urgence exécutés : {emergency_sold}")
 
     # Exécution directe (pas d'alerte inutile — le bot agit)
     trades_executed = scan_and_execute_signals()
@@ -580,12 +673,14 @@ def run():
 
     logger.info(
         f"Alert scanner terminé — "
+        f"{len(emergency_sold)} stop(s) urgence, "
         f"{len(trades_executed)} trade(s) exécuté(s), "
         f"{len(news_alerts)} news, "
         f"XRP: {'mis à jour' if xrp_update else 'neutre'}"
     )
 
-    return {"trades": trades_executed, "news": news_alerts, "xrp": xrp_update}
+    return {"trades": trades_executed, "emergency_stops": emergency_sold,
+            "news": news_alerts, "xrp": xrp_update}
 
 
 if __name__ == "__main__":
