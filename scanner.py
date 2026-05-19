@@ -529,32 +529,10 @@ def run_scan(portfolio_value: float) -> list[dict]:
             usdc_dispo      = execution.get_usdt_balance()
             open_positions  = pm.get_open_positions()
 
-            # ── Cap capital déployé : bloquer si >= 85% du portfolio engagé ───
-            # Un nombre arbitraire de positions n'a pas de sens : c'est le
-            # CAPITAL engagé qui compte. À 85%+, on bloque sauf si une rotation
-            # libère du capital (vendre une position faible pour en financer une
-            # meilleure).
-            total_deployed = sum(p.get("valeur_usd", 0) for p in open_positions)
-            deployed_pct   = total_deployed / portfolio_value if portfolio_value > 0 else 1.0
-            MAX_DEPLOYED_PCT = 0.85
-            if deployed_pct >= MAX_DEPLOYED_PCT:
-                # Vérifier si une rotation est possible avant de bloquer
-                alloc_check = ca.calculate_allocation(
-                    ticker=ticker, score=score,
-                    portfolio_value=portfolio_value,
-                    usdc_available=usdc_dispo,
-                    open_positions=open_positions,
-                    context={"score": score,
-                             "regime": payload.get("regime", "unknown"),
-                             "vol_regime": payload.get("vol_regime", "normal")},
-                )
-                if not alloc_check.get("rotation_needed"):
-                    logger.info(
-                        f"[Phase 3] {ticker} ignoré — {deployed_pct:.0%} du portfolio "
-                        f"déjà déployé (${total_deployed:.0f} / ${portfolio_value:.0f}, "
-                        f"max {MAX_DEPLOYED_PCT:.0%}) sans candidat de rotation"
-                    )
-                    continue
+            # Pas de cap arbitraire sur le nombre de positions ni sur le % déployé.
+            # Le capital allocator plafonne chaque trade à 12/17/22% du portfolio
+            # selon le score, et `usdc_available * 0.95` + le filtre $20 bloquent
+            # naturellement toute entrée quand l'USDC disponible est insuffisant.
 
             alloc = ca.calculate_allocation(
                 ticker         = ticker,
