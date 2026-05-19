@@ -166,7 +166,14 @@ def calculate_allocation(
     # ── Taille cible (portfolio total × % × mémoire) ─────────────────────────
     target_usdt = portfolio_value * base_pct * mem_mult
 
-    # Plafond strict : ne jamais engager plus que ce qu'on a réellement ─────
+    # Plafond absolu : jamais plus de 25% du portfolio par trade ─────────────
+    # Empêche le multiplicateur mémoire (×1.25) de pousser le tier 22% à 27.5%.
+    # 25% = marge raisonnable au-dessus du tier max (22%) pour récompenser
+    # les tickers prouvés sans risquer une concentration excessive.
+    HARD_CAP_PCT = 0.25
+    target_usdt = min(target_usdt, portfolio_value * HARD_CAP_PCT)
+
+    # Plafond USDC : ne jamais engager plus que ce qu'on a réellement ────────
     capped_usdt = min(target_usdt, usdc_available * 0.95)
 
     # ── Rotation : faut-il libérer du capital ? ──────────────────────────────

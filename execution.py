@@ -17,7 +17,7 @@ import okx_client as okx
 logger = logging.getLogger(__name__)
 
 BUDGET_PCT = 0.95       # 95% du capital peut être investi (5% gardé pour frais)
-MAX_TRADE_PCT = 0.25    # Max 25% du capital par position (4 positions max)
+MAX_TRADE_PCT = 0.25    # Plafond fallback : max 25% du capital par position (aligné avec capital_allocator HARD_CAP_PCT)
 
 # Multiplicateurs de conviction selon la force du signal
 # Signal fort → position plus grosse dans la limite du budget
