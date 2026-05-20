@@ -39,6 +39,8 @@ FULL_PROFIT_PCT      =  0.12   # +12% → sortie complète (base)
 STRONG_PROFIT_PCT    =  0.20   # +20% → sortie si signal encore fort au moment du target
 STRONG_SCORE_MIN     =  2.0    # score minimum pour étendre le target à +20%
 MAX_HOLDING_DAYS     =  7      # 7 jours max en position, quelle que soit la situation
+SIGNAL_EXIT_PROFIT   =  3.0    # P2.5 : profit minimum (%) pour sortie sur signal retourné
+SIGNAL_EXIT_THRESH   =  1.0    # P2.5 : score en dessous duquel on considère le signal retourné
 MAX_POSITIONS        =  4
 MIN_POSITION_VALUE   =  5.0    # ignorer les poussières < $5 (restes de vieux trades)
 ORPHAN_AUTO_SELL_MAX = 20.0   # position orpheline (entrée inconnue) auto-vendue si < $20
@@ -363,6 +365,22 @@ def evaluate_position(pos: dict, score: float | None = None) -> dict:
             and pnl_pct < FULL_PROFIT_PCT * 100):
         decision = "FULL_SELL"
         raison   = f"Time stop ({days_held:.0f}j) — P&L {pnl_pct:+.1f}% — on libère le capital"
+
+    # ── P2.5 : Signal retourné en zone de profit ─────────────────────────────────
+    # Si la position est en profit (>= +3%) ET que le signal technique s'est
+    # dégradé (score < 1.0), on vend maintenant plutôt qu'attendre le TP.
+    # Évite : "était à +7%, signal retourné, bot a tenu, sorti à -7% au stop".
+    # Ne s'applique PAS si score est None (données manquantes → on reste prudent).
+    if (decision == "HOLD"
+            and entree
+            and pnl_pct >= SIGNAL_EXIT_PROFIT
+            and score is not None
+            and score < SIGNAL_EXIT_THRESH):
+        decision = "FULL_SELL"
+        raison   = (
+            f"Signal retourné en zone de profit : "
+            f"score {score:+.2f} < {SIGNAL_EXIT_THRESH} | P&L {pnl_pct:+.1f}% 📉"
+        )
 
     # ── P3 : Objectif atteint → sortie fixe ou étendue selon le signal ──────────
     if decision == "HOLD" and entree and pnl_pct >= FULL_PROFIT_PCT * 100:
