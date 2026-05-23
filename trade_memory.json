@@ -236,6 +236,19 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 1.55
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "WLD",
+      "pnl_pct": 7.44,
+      "days_held": 2.0,
+      "exit_reason": "Signal retourné en zone de profit : score +0.76 < 1.0 | P&L +7.4% 📉",
+      "valeur_usd": 202.06,
+      "outcome": "win",
+      "timestamp": "2026-05-23T20:04:18.402079+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 3
     }
   ],
   "entries": [
@@ -693,6 +706,18 @@
       "pnl_pct": 10.98623245707357,
       "type": "trade_reflection",
       "timestamp": "2026-05-21T16:05:26.074182+00:00"
+    },
+    {
+      "lecon_principale": "Signal composite fort (3) + régime bull = entrée solide, sortie précoce sur score 0.76",
+      "signal_fiable": "Régime bull combiné à score composite élevé (3) - conditions d'entrée optimales confirmées",
+      "signal_trompeur": "Score 0.76 en sortie - seuil trop bas pour justifier une sortie rapide sur +7.4% en seulement 2j",
+      "regime_optimal": "Bull avec volatilité normale - parfait pour WLD, momentum maintenu court terme",
+      "recommandation": "exit_earlier",
+      "confiance": 0.72,
+      "ticker": "WLD",
+      "pnl_pct": 7.441038165331548,
+      "type": "trade_reflection",
+      "timestamp": "2026-05-23T20:04:26.014340+00:00"
     }
   ],
   "_sd_prev_usdt_d": 7.163122251932351
