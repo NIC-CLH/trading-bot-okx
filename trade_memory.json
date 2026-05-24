@@ -551,6 +551,21 @@
       "prix": 0.013273,
       "btc_uptrend": true,
       "timestamp": "2026-05-24T00:04:55.404872+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ASTER",
+      "score": 1.88,
+      "score_tech": 1.88,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 189.78,
+      "prix": 0.7042513542819372,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-24T12:04:37.738141+00:00"
     }
   ],
   "reflections": [
@@ -735,5 +750,5 @@
       "timestamp": "2026-05-23T20:04:26.014340+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.163223241868039
+  "_sd_prev_usdt_d": 7.127020533648194
 }
