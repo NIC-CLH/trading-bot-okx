@@ -223,6 +223,16 @@ def store_trade_entry(payload: dict):
         "prix":        payload.get("prix", 0),
         "btc_uptrend": True,  # filtre 50MA passé — toujours True ici
         "timestamp":   datetime.now(timezone.utc).isoformat(),
+        # Sub-scores bruts (non pondérés) — pour repondération future
+        "score_tech_raw":     payload.get("score_tech", 0),
+        "score_news_raw":     payload.get("score_news", 0),
+        "score_ms_raw":       payload.get("score_ms", 0),
+        "score_oc_raw":       payload.get("score_oc", 0),
+        "score_cg_raw":       payload.get("score_cg", 0),
+        "score_macro_raw":    payload.get("score_macro", 0),
+        "score_tech_adj_raw": payload.get("score_tech_adj", payload.get("score_tech", 0)),
+        "score_rs_raw":       payload.get("score_rs", 0),
+        "score_social_raw":   payload.get("score_social", 0),
     }
 
     # Persistance JSON
@@ -262,6 +272,16 @@ def store_trade_outcome(decision: dict):
     pnl    = decision.get("pnl_pct", 0)
     ticker = decision["ticker"]
 
+    # Exit quality : % du pic capturé
+    try:
+        peak_pnl = get_peak_pnl(ticker)
+        if peak_pnl and peak_pnl > 0 and pnl > 0:
+            exit_quality = round(pnl / peak_pnl * 100, 1)
+        else:
+            exit_quality = None
+    except Exception:
+        exit_quality = None
+
     outcome = {
         "type":        "trade_outcome",
         "ticker":      ticker,
@@ -270,6 +290,7 @@ def store_trade_outcome(decision: dict):
         "exit_reason": decision.get("raison", ""),
         "valeur_usd":  round(decision.get("valeur", 0), 2),
         "outcome":     "win" if pnl > 0 else "loss",
+        "exit_quality": exit_quality,
         "timestamp":   datetime.now(timezone.utc).isoformat(),
     }
 
