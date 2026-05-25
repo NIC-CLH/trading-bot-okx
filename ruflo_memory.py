@@ -681,3 +681,66 @@ def get_ticker_memory(ticker: str, min_samples: int = 3) -> dict:
         "confidence": confidence,
         "suggestion": suggestion,
     }
+
+
+# ── Pending Signals (dual entry path) ────────────────────────────────────────
+
+PENDING_SIGNAL_MIN_SCORE = 2.0    # Seuil minimum pour entrée rapide 30min
+PENDING_SIGNAL_TTL       = 14400  # 4h en secondes
+
+
+def store_pending_signals(actionable: list) -> None:
+    """
+    Stocke les signaux forts (score >= 2.0) pour l'entrée rapide 30min.
+    Appelé depuis scanner.py en fin de Phase 1.
+    Remplace entièrement pending_signals (nouveau cycle = nouveaux signaux).
+    """
+    pending = []
+    for p in actionable:
+        if p.get("score", 0) >= PENDING_SIGNAL_MIN_SCORE:
+            pending.append({
+                "ticker":     p["ticker"],
+                "score":      p["score"],
+                "prix_ref":   p.get("prix", 0),
+                "vol_regime": p.get("vol_regime", "normal"),
+                "regime":     p.get("regime", "sideways"),
+                "timestamp":  datetime.now(timezone.utc).isoformat(),
+                "ttl":        PENDING_SIGNAL_TTL,
+                "stop_atr":   p.get("stop"),
+            })
+
+    data = _load_json()
+    data["pending_signals"] = pending
+    _save_json(data)
+
+    if pending:
+        logger.info(
+            f"[Pending] {len(pending)} signal(s) stocké(s) pour entrée 30min : "
+            f"{[p['ticker'] for p in pending]}"
+        )
+
+
+def get_active_pending_signals() -> list:
+    """
+    Retourne les signaux encore valides (dans le TTL).
+    Nettoie les signaux expirés.
+    """
+    data    = _load_json()
+    pending = data.get("pending_signals", [])
+    now     = time.time()
+    actifs  = []
+
+    for p in pending:
+        try:
+            ts  = datetime.fromisoformat(p["timestamp"]).timestamp()
+            age = now - ts
+            if age <= p.get("ttl", PENDING_SIGNAL_TTL):
+                actifs.append(p)
+        except Exception:
+            continue
+
+    if len(actifs) != len(pending):
+        data["pending_signals"] = actifs
+        _save_json(data)
+
+    return actifs

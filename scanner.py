@@ -582,6 +582,13 @@ def run_scan(portfolio_value: float) -> list[dict]:
     # et prive le meilleur signal de capital (bug BIO/TRX du 1er mai).
     actionable.sort(key=lambda p: p["score"], reverse=True)
 
+    # Stocker les signaux forts pour l'entrée rapide 30min (dual entry path)
+    try:
+        import ruflo_memory as rm_pending
+        rm_pending.store_pending_signals(actionable)
+    except Exception:
+        pass
+
     if actionable:
         ordre = " > ".join(f"{p['ticker']}({p['score']:+.2f})" for p in actionable)
         logger.info(f"Ordre d'execution par conviction : {ordre}")

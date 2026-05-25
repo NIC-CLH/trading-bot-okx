@@ -699,6 +699,139 @@ def emergency_stop_check() -> list[str]:
     return sold
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# Dual entry path — entrées scalp depuis pending_signals (30min)
+# ─────────────────────────────────────────────────────────────────────────────
+
+SCALP_PRICE_TOLERANCE = 0.02   # ±2% du prix de référence
+SCALP_TP_PCT          = 5.0    # Take profit scalp
+SCALP_STOP_PCT        = -3.0   # Stop loss scalp fixe
+SCALP_TIME_STOP_H     = 4      # Exit si pas de mouvement après 4h
+
+
+def entry_scan_scalp() -> list:
+    """
+    Vérifie les pending_signals toutes les 30min.
+    Entre sur les signaux qui :
+    1. Sont encore dans le TTL (via get_active_pending_signals)
+    2. Ont un prix dans ±2% du prix de référence
+    3. Ne sont pas déjà en position
+    4. Respectent le re-entry threshold si actif
+
+    Retourne la liste des tickers entrés.
+    """
+    entered = []
+    try:
+        import ruflo_memory as rm
+        import okx_client as okx
+        import position_manager as pm
+        import capital_allocator as ca
+
+        pending = rm.get_active_pending_signals()
+        if not pending:
+            return []
+
+        open_positions = pm.get_open_positions()
+        open_tickers   = {p["ticker"] for p in open_positions}
+
+        try:
+            balances        = okx.get_balances()
+            usdc_available  = float(balances.get("USDC", 0))
+            portfolio_value = usdc_available + sum(
+                p.get("valeur_usd", 0) for p in open_positions
+            )
+        except Exception:
+            return []
+
+        for signal in pending:
+            ticker   = signal["ticker"]
+            prix_ref = signal.get("prix_ref", 0)
+            score    = signal.get("score", 0)
+
+            if ticker in open_tickers:
+                continue
+
+            # Re-entry threshold
+            try:
+                reentry_thr = rm.get_reentry_threshold(ticker)
+                if reentry_thr and score < reentry_thr:
+                    logger.info(
+                        f"[Scalp] {ticker} : bloqué re-entry "
+                        f"(threshold={reentry_thr}, score={score:.2f})"
+                    )
+                    continue
+            except Exception:
+                pass
+
+            # Vérifier le prix actuel
+            try:
+                prix_actuel = okx.get_price_usdc(ticker)
+                if not prix_actuel or prix_ref <= 0:
+                    continue
+                drift = abs(prix_actuel - prix_ref) / prix_ref
+                if drift > SCALP_PRICE_TOLERANCE:
+                    logger.info(
+                        f"[Scalp] {ticker} : prix dérivé {drift:.1%} "
+                        f"(ref={prix_ref:.5f}, actuel={prix_actuel:.5f}) — skip"
+                    )
+                    continue
+            except Exception:
+                continue
+
+            # Calculer la taille
+            try:
+                alloc = ca.calculate_allocation(
+                    ticker          = ticker,
+                    score           = score,
+                    portfolio_value = portfolio_value,
+                    usdc_available  = usdc_available,
+                    open_positions  = open_positions,
+                )
+                taille = alloc.get("taille_allouee", 0)
+                if taille < 20:
+                    continue
+            except Exception:
+                continue
+
+            # Construire le payload scalp
+            stop_price   = round(prix_actuel * (1 + SCALP_STOP_PCT / 100), 6)
+            target_price = round(prix_actuel * (1 + SCALP_TP_PCT / 100), 6)
+
+            payload = {
+                "ticker":         ticker,
+                "score":          score,
+                "prix":           prix_actuel,
+                "stop":           stop_price,
+                "target":         target_price,
+                "taille_allouee": taille,
+                "trade_autorise": True,
+                "regime":         signal.get("regime", "sideways"),
+                "vol_regime":     signal.get("vol_regime", "normal"),
+                "trade_type":     "scalp",
+                "source":         "scalp_30min",
+            }
+
+            logger.info(
+                f"[Scalp] {ticker} : entrée rapide "
+                f"score={score:.2f} prix={prix_actuel:.5f} "
+                f"taille=${taille:.0f} stop={SCALP_STOP_PCT}% TP={SCALP_TP_PCT}%"
+            )
+
+            try:
+                import execution
+                execution.execute_signal(payload, portfolio_value)
+                if payload.get("ordre_execute"):
+                    rm.store_trade_entry(payload)
+                    entered.append(ticker)
+            except Exception as e:
+                logger.error(f"[Scalp] {ticker} entrée échouée : {e}")
+
+    except Exception as e:
+        logger.error(f"entry_scan_scalp erreur globale : {e}")
+
+    return entered
+
+
 # ── Point d'entrée ─────────────────────────────────────────────────────────────
 
 def run():
@@ -711,6 +844,14 @@ def run():
     emergency_sold = emergency_stop_check()
     if emergency_sold:
         logger.warning(f"Stops d'urgence exécutés : {emergency_sold}")
+
+    # Dual entry path : entrées scalp sur signaux haute conviction
+    try:
+        scalp_entered = entry_scan_scalp()
+        if scalp_entered:
+            logger.info(f"[Scalp] Entrées 30min : {scalp_entered}")
+    except Exception as e:
+        logger.error(f"entry_scan_scalp : {e}")
 
     # Exécution directe (pas d'alerte inutile — le bot agit)
     trades_executed = scan_and_execute_signals()
