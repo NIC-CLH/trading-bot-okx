@@ -95,17 +95,19 @@ def compute_final_score(
 ) -> float:
     """
     Score composite final pondéré — 6 dimensions.
-    Technique (40%) + News (15%) + Microstructure (15%) + On-Chain (10%)
-    + Coinglass/Liquidations (10%) + Macro DXY/DVOL (10%)
+    Technique (35%) + News (30%) + Microstructure (12%) + On-Chain (8%)
+    + Coinglass/Liquidations (8%) + Macro DXY/DVOL (7%)
     Résultat clampé à [-3.0, +3.0]
     """
+    # Poids révisés — score_news doublé (pattern wins = tokens à narrative forte)
+    # tech 0.40→0.35 | news 0.15→0.30 | ms 0.15→0.12 | oc 0.10→0.08 | cg 0.10→0.08 | macro 0.10→0.07
     score = (
-        score_tech  * 0.40
-        + score_news  * 0.15
-        + score_ms    * 0.15
-        + score_oc    * 0.10
-        + score_cg    * 0.10
-        + score_macro * 0.10
+        score_tech  * 0.35
+        + score_news  * 0.30
+        + score_ms    * 0.12
+        + score_oc    * 0.08
+        + score_cg    * 0.08
+        + score_macro * 0.07
     )
     return round(max(-3.0, min(3.0, score)), 2)
 
@@ -441,6 +443,22 @@ def run_scan(portfolio_value: float) -> list[dict]:
 
             # Appliquer le multiplicateur contextuel du Regime Enricher
             score_final = round(max(-3.0, min(3.0, score_final * ctx_mult)), 2)
+
+            # ── Filtre momentum : éviter d'acheter ce qui a déjà trop monté ──
+            try:
+                if df_ticker is not None and len(df_ticker) >= 18:
+                    # 18 candles × 4h = 72h de lookback
+                    prix_72h_ago = float(df_ticker["close"].iloc[-18])
+                    prix_now     = float(df_ticker["close"].iloc[-1])
+                    momentum_72h = (prix_now - prix_72h_ago) / prix_72h_ago * 100
+                    if momentum_72h > 15.0:
+                        score_final = min(score_final, 1.4)
+                        logger.info(
+                            f"{ticker} : momentum +{momentum_72h:.1f}% sur 72h "
+                            f"→ score plafonné à 1.4 (éviter top)"
+                        )
+            except Exception:
+                pass
 
             # Blocage si fondamentaux franchement négatifs ou trade non autorisé.
             # Filtré ici (Phase 1) pour ne pas envoyer d'alertes Telegram
