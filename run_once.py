@@ -65,6 +65,13 @@ try:
 except Exception as _e:
     logger.warning(f"ruflo seed ignoré : {_e}")
 
+# Shadow portfolio : vérifier les near-misses arrivés à maturité
+try:
+    import ruflo_memory as rm
+    rm.check_near_miss_outcomes()
+except Exception as e:
+    logger.debug(f"Shadow portfolio check : {e}")
+
 # Supprime les alertes intermédiaires bruyantes — on envoie un résumé à la fin
 # EXCEPTION : alertes.send reste actif pour les ventes urgentes (stop loss)
 # et les alertes de danger de position_manager

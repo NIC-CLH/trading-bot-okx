@@ -510,6 +510,19 @@ def run_scan(portfolio_value: float) -> list[dict]:
             # Le score final doit dépasser le seuil d'alerte
             if abs(score_final) < SIGNAL_THRESHOLD:
                 logger.info(f"{ticker} : score {score_final:+.2f} < {SIGNAL_THRESHOLD} — ignoré")
+                # ── Shadow portfolio : logger si score ≥ 1.0 mais sous le seuil ─
+                if abs(score_final) >= 1.0:
+                    try:
+                        import ruflo_memory as rm_shadow
+                        nm_type = "scalp" if score_final >= 2.0 else "swing"
+                        rm_shadow.add_near_miss(
+                            ticker     = ticker,
+                            score      = score_final,
+                            prix       = tech.get("prix_actuel", 0),
+                            trade_type = nm_type,
+                        )
+                    except Exception:
+                        pass
                 continue
 
             payload = build_signal_payload(

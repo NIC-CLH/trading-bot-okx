@@ -118,3 +118,31 @@ def test_reentry_threshold_expire(tmp_path, monkeypatch):
 
     result = rm.get_reentry_threshold("BTC")
     assert result is None, f"Threshold expiré doit retourner None, obtenu {result}"
+
+
+def test_add_near_miss_cap_15(tmp_path, monkeypatch):
+    import ruflo_memory as rm
+    monkeypatch.setattr(rm, "MEMORY_FILE", tmp_path / "mem.json")
+    import json
+    (tmp_path / "mem.json").write_text('{"outcomes":[],"entries":[]}')
+
+    for i in range(20):
+        rm.add_near_miss(f"T{i}", score=1.3, prix=1.0, trade_type="swing")
+
+    data = json.loads((tmp_path / "mem.json").read_text())
+    assert len(data["shadow_portfolio"]) <= 15, \
+        f"Shadow portfolio doit être plafonné à 15, obtenu {len(data['shadow_portfolio'])}"
+
+def test_add_near_miss_deduplique(tmp_path, monkeypatch):
+    import ruflo_memory as rm
+    monkeypatch.setattr(rm, "MEMORY_FILE", tmp_path / "mem.json")
+    import json
+    (tmp_path / "mem.json").write_text('{"outcomes":[],"entries":[]}')
+
+    rm.add_near_miss("KAIA", score=1.3, prix=0.05, trade_type="swing")
+    rm.add_near_miss("KAIA", score=1.4, prix=0.052, trade_type="swing")
+
+    data = json.loads((tmp_path / "mem.json").read_text())
+    kaias = [s for s in data["shadow_portfolio"] if s["ticker"] == "KAIA"]
+    assert len(kaias) == 1, "KAIA doit être dédupliqué"
+    assert kaias[0]["score"] == 1.4, "Version la plus récente doit être gardée"

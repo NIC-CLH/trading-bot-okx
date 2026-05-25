@@ -292,6 +292,105 @@ def get_reentry_threshold(ticker: str) -> float | None:
     return entry["threshold"]
 
 
+# ── Shadow Portfolio ──────────────────────────────────────────────────────────
+
+SHADOW_MAX              = 15   # Max near-misses actifs
+SHADOW_GOOD_PCT         = 8.0  # +8% = opportunité manquée significative
+SHADOW_MEASURE_SCALP_H  = 4    # Mesurer les scalps après 4h
+SHADOW_MEASURE_SWING_H  = 48   # Mesurer les swings après 48h
+
+
+def add_near_miss(ticker: str, score: float, prix: float, trade_type: str):
+    """
+    Enregistre un token scanné mais non acheté (score entre 1.0 et le seuil).
+    trade_type : 'scalp' (score >= 2.0) ou 'swing' (score < 2.0)
+    Plafond : 15 near-misses actifs. Déduplique par ticker.
+    """
+    data   = _load_json()
+    shadow = data.get("shadow_portfolio", [])
+
+    # Dédupliquer — garder la version la plus récente
+    shadow = [s for s in shadow if s.get("ticker") != ticker]
+
+    shadow.append({
+        "ticker":    ticker,
+        "score":     round(score, 2),
+        "prix_ref":  prix,
+        "type":      trade_type,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "outcome":   None,
+        "pnl_pct":   None,
+    })
+
+    # Garder les 15 plus récents
+    data["shadow_portfolio"] = shadow[-SHADOW_MAX:]
+    _save_json(data)
+
+
+def check_near_miss_outcomes() -> dict:
+    """
+    Vérifie les résultats des near-misses arrivés à maturité.
+    Appelé à chaque cycle 4h depuis run_once.py.
+    Retourne {"missed": int, "correct": int} pour les logs.
+    """
+    data   = _load_json()
+    shadow = data.get("shadow_portfolio", [])
+    now    = time.time()
+
+    missed  = 0
+    correct = 0
+    updated = []
+
+    for nm in shadow:
+        if nm.get("outcome") is not None:
+            updated.append(nm)
+            continue
+
+        try:
+            ts    = datetime.fromisoformat(nm["timestamp"]).timestamp()
+            age_h = (now - ts) / 3600
+            measure_h = (SHADOW_MEASURE_SCALP_H
+                         if nm.get("type") == "scalp"
+                         else SHADOW_MEASURE_SWING_H)
+
+            if age_h < measure_h:
+                updated.append(nm)
+                continue
+
+            # Mesurer le résultat
+            import okx_client as okx_shadow
+            prix_actuel = okx_shadow.get_price_usdc(nm["ticker"])
+            if prix_actuel and nm.get("prix_ref", 0) > 0:
+                pnl_pct     = (prix_actuel - nm["prix_ref"]) / nm["prix_ref"] * 100
+                was_missed  = pnl_pct > SHADOW_GOOD_PCT
+                nm["outcome"] = "missed" if was_missed else "correct"
+                nm["pnl_pct"] = round(pnl_pct, 2)
+                if was_missed:
+                    missed += 1
+                    logger.info(
+                        f"[Shadow] {nm['ticker']} : opportunité manquée "
+                        f"+{pnl_pct:.1f}% (score refus={nm['score']:.2f})"
+                    )
+                else:
+                    correct += 1
+            else:
+                nm["outcome"] = "error"
+
+        except Exception as e:
+            logger.debug(f"[Shadow] check {nm.get('ticker')} : {e}")
+            nm["outcome"] = "error"
+
+        updated.append(nm)
+
+    data["shadow_portfolio"] = updated
+    _save_json(data)
+
+    if missed + correct > 0:
+        logger.info(f"[Shadow] {missed} opportunités manquées / {correct} refus corrects")
+
+    return {"missed": missed, "correct": correct}
+
+
 # ── API publique ──────────────────────────────────────────────────────────────
 
 def seed_ruflo_from_json():
