@@ -223,6 +223,32 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.44
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "TRX",
+      "pnl_pct": 10.99,
+      "days_held": 0,
+      "exit_reason": "Signal retourné en zone de profit : score +0.92 < 1.0 | P&L +11.0% 📉",
+      "valeur_usd": 119.21,
+      "outcome": "win",
+      "timestamp": "2026-05-21T16:05:17.227349+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.55
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "WLD",
+      "pnl_pct": 7.44,
+      "days_held": 2.0,
+      "exit_reason": "Signal retourné en zone de profit : score +0.76 < 1.0 | P&L +7.4% 📉",
+      "valeur_usd": 202.06,
+      "outcome": "win",
+      "timestamp": "2026-05-23T20:04:18.402079+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 3
     }
   ],
   "entries": [
@@ -450,6 +476,111 @@
       "prix": 0.008811263864565091,
       "btc_uptrend": true,
       "timestamp": "2026-05-19T00:04:48.932861+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "INJ",
+      "score": 2.84,
+      "score_tech": 2.84,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 57.92,
+      "prix": 4.921247837908807,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-19T16:05:37.185992+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "PROMPT",
+      "score": 3,
+      "score_tech": 3,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 85.21,
+      "prix": 0.04076809014514896,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-20T08:05:24.021714+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "WLD",
+      "score": 3,
+      "score_tech": 3,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 188.07,
+      "prix": 0.2782921731823693,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-21T20:05:43.312431+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "LINK",
+      "score": 2.11,
+      "score_tech": 2.11,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 69.46,
+      "prix": 9.914069991841787,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-22T16:05:25.840263+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "GMT",
+      "score": 2.37,
+      "score_tech": 2.37,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bear",
+      "vol_regime": "normal",
+      "taille_usd": 194.14,
+      "prix": 0.013273,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-24T00:04:55.404872+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ASTER",
+      "score": 1.88,
+      "score_tech": 1.88,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 189.78,
+      "prix": 0.7042513542819372,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-24T12:04:37.738141+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ZEC",
+      "score": 3,
+      "score_tech": 3,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 188.06,
+      "prix": 660.9561479171773,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-25T08:05:15.455682+00:00"
     }
   ],
   "reflections": [
@@ -608,8 +739,31 @@
       "pnl_pct": -7.3969768378465774,
       "type": "trade_reflection",
       "timestamp": "2026-05-18T00:05:01.417868+00:00"
+    },
+    {
+      "lecon_principale": "Signal composite élevé (1.55) en régime bull + volatilité normale = setup profitable court terme",
+      "signal_fiable": "Score composite > 1.5 en régime bull avec volatilité normale - signal d'entrée très prédictif",
+      "signal_trompeur": "Sortie prématurée sur score 0.92 - a déclenché avant consolidation, mais rentable quand même",
+      "regime_optimal": "bull avec volatilité normale",
+      "recommandation": "increase_size",
+      "confiance": 0.78,
+      "ticker": "TRX",
+      "pnl_pct": 10.98623245707357,
+      "type": "trade_reflection",
+      "timestamp": "2026-05-21T16:05:26.074182+00:00"
+    },
+    {
+      "lecon_principale": "Signal composite fort (3) + régime bull = entrée solide, sortie précoce sur score 0.76",
+      "signal_fiable": "Régime bull combiné à score composite élevé (3) - conditions d'entrée optimales confirmées",
+      "signal_trompeur": "Score 0.76 en sortie - seuil trop bas pour justifier une sortie rapide sur +7.4% en seulement 2j",
+      "regime_optimal": "Bull avec volatilité normale - parfait pour WLD, momentum maintenu court terme",
+      "recommandation": "exit_earlier",
+      "confiance": 0.72,
+      "ticker": "WLD",
+      "pnl_pct": 7.441038165331548,
+      "type": "trade_reflection",
+      "timestamp": "2026-05-23T20:04:26.014340+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.136464388686821,
-  "peaks": {}
+  "_sd_prev_usdt_d": 7.125860690915799
 }
