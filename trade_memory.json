@@ -581,6 +581,30 @@
       "prix": 660.9561479171773,
       "btc_uptrend": true,
       "timestamp": "2026-05-25T08:05:15.455682+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "JTO",
+      "score": 2.17,
+      "score_tech": 2.17,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 71.99,
+      "prix": 0.5504878203428931,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-25T16:05:01.194368+00:00",
+      "score_tech_raw": 2.17,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0,
+      "score_cg_raw": 0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.17,
+      "score_rs_raw": 0,
+      "score_social_raw": 0
     }
   ],
   "reflections": [
@@ -765,7 +789,7 @@
       "timestamp": "2026-05-23T20:04:26.014340+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.1233298062946275,
+  "_sd_prev_usdt_d": 7.099642978422417,
   "shadow_portfolio": [
     {
       "ticker": "NEAR",
