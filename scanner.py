@@ -85,6 +85,34 @@ def is_cooldown_active(ticker: str) -> bool:
     return (time.time() - last) < (ALERT_COOLDOWN_HOURS * 3600)
 
 
+def is_observation_mode() -> bool:
+    """
+    Mode observation : aucune nouvelle entrée si BTC sous MA50 daily ET régime bear.
+
+    Double condition requise (pas de blocage sur condition unique) :
+    - BTC sous MA50 daily (vérifié via is_btc_uptrend())
+    - Régime HMM = "bear" sur BTC (vérifié via regime_detector)
+
+    Les exits (trailing stop, P2.5, TP, stop ATR) continuent normalement.
+    """
+    try:
+        from position_manager import is_btc_uptrend
+
+        # Condition 1 : BTC au-dessus de la MA50 → jamais en observation
+        if is_btc_uptrend():
+            return False
+
+        # Condition 2 : régime HMM bear sur BTC
+        btc_ohlcv = okx.get_ohlcv("BTC", days=90)
+        if btc_ohlcv is None or len(btc_ohlcv) < 20:
+            return False  # Données insuffisantes → conservateur mais pas bloquant
+        regime_btc = rd.analyze(btc_ohlcv)
+        return regime_btc.get("regime", "sideways") == "bear"
+    except Exception as e:
+        logger.debug(f"[ObservationMode] check échoué : {e}")
+        return False
+
+
 def compute_final_score(
     score_tech: float,
     score_news: float,
@@ -222,6 +250,14 @@ def run_scan(portfolio_value: float) -> list[dict]:
             )
         except Exception:
             pass
+        return []
+
+    # ── Mode observation (double condition) : BTC sous MA50 ET HMM bear ────────
+    if is_observation_mode():
+        logger.info(
+            "🔭 Mode observation actif — BTC sous MA50 ET régime bear. "
+            "Aucune nouvelle entrée. Exits et position_manager continuent normalement."
+        )
         return []
 
     # Univers complet : tout ce qui est disponible sur OKX EEA
