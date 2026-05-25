@@ -170,6 +170,78 @@ def clear_peak_pnl(ticker: str):
         _save_json(data)
 
 
+# ── EV Rolling (signal d'agressivité) ────────────────────────────────────────
+
+EV_AGGRESSIVE_THRESHOLD   =  2.0   # EV > 2% sur 5 cycles → agressif
+EV_CONSERVATIVE_THRESHOLD =  0.0   # EV < 0% sur 3 cycles → conservateur
+HYSTERESIS_TO_CONSERVATIVE = 3
+HYSTERESIS_TO_AGGRESSIVE   = 5
+
+
+def get_rolling_ev(n_trades: int = 15) -> dict:
+    """
+    Calcule l'EV médiane sur les n derniers trades réels.
+    Utilise la médiane (robuste aux outliers type CHZ -22%).
+
+    Returns dict avec :
+        ev     : float (% par trade) ou None si < 5 trades
+        mode   : "aggressive" | "normal" | "conservative"
+        wr     : float win rate [0-1] ou None
+        nb     : int nombre de trades utilisés
+    """
+    data     = _load_json()
+    outcomes = data.get("outcomes", [])[-n_trades:]
+    nb       = len(outcomes)
+
+    if nb < 5:
+        return {"ev": None, "mode": "normal", "nb": nb, "wr": None}
+
+    wins   = sorted([o["pnl_pct"] for o in outcomes if o.get("pnl_pct", 0) > 0])
+    losses = sorted([abs(o["pnl_pct"]) for o in outcomes if o.get("pnl_pct", 0) <= 0])
+
+    wr  = len(wins) / nb
+    lr  = 1.0 - wr
+
+    med_win  = wins[len(wins) // 2]     if wins   else 0.0
+    med_loss = losses[len(losses) // 2] if losses else 0.0
+
+    ev = round(wr * med_win - lr * med_loss, 2)
+
+    mode = _compute_ev_mode(ev, data)
+
+    return {
+        "ev":       ev,
+        "mode":     mode,
+        "wr":       round(wr, 3),
+        "med_win":  round(med_win, 2),
+        "med_loss": round(med_loss, 2),
+        "nb":       nb,
+    }
+
+
+def _compute_ev_mode(ev: float, data: dict) -> str:
+    """
+    Applique l'hysteresis pour éviter les flip-flops de mode.
+    Lit et met à jour ev_history dans trade_memory.json.
+    """
+    ev_history = data.setdefault("ev_history", [])
+    ev_history.append(round(ev, 2))
+    data["ev_history"] = ev_history[-10:]
+    _save_json(data)
+
+    recent = data["ev_history"]
+
+    if len(recent) >= HYSTERESIS_TO_CONSERVATIVE:
+        if all(v < EV_CONSERVATIVE_THRESHOLD for v in recent[-HYSTERESIS_TO_CONSERVATIVE:]):
+            return "conservative"
+
+    if len(recent) >= HYSTERESIS_TO_AGGRESSIVE:
+        if all(v > EV_AGGRESSIVE_THRESHOLD for v in recent[-HYSTERESIS_TO_AGGRESSIVE:]):
+            return "aggressive"
+
+    return "normal"
+
+
 # ── API publique ──────────────────────────────────────────────────────────────
 
 def seed_ruflo_from_json():

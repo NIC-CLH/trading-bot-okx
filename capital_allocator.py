@@ -32,6 +32,13 @@ SCORE_TIERS = [
 ROTATION_SCORE_MIN = 2.0        # était 2.5 dans scanner.py — abaissé
 ROTATION_USDC_RATIO = 0.60      # rotation si USDC < 60% du budget cible
 
+# Ajustements selon EV rolling
+EV_MODE_SIZE_MULT = {
+    "conservative": 0.80,
+    "normal":       1.00,
+    "aggressive":   1.10,
+}
+
 # Seuil de données mémoire minimales pour ajuster le sizing
 MIN_MEMORY_TRADES = 3
 
@@ -163,8 +170,23 @@ def calculate_allocation(
     # ── Multiplicateur mémoire (ruflo) ───────────────────────────────────────
     mem_mult, mem_msg = _get_memory_multiplier(ticker, context)
 
-    # ── Taille cible (portfolio total × % × mémoire) ─────────────────────────
-    target_usdt = portfolio_value * base_pct * mem_mult
+    # ── Ajustement EV rolling ────────────────────────────────────────────────
+    try:
+        from ruflo_memory import get_rolling_ev
+        ev_data      = get_rolling_ev()
+        ev_mode      = ev_data.get("mode", "normal")
+        ev_size_mult = EV_MODE_SIZE_MULT.get(ev_mode, 1.0)
+        if ev_mode != "normal":
+            logger.info(
+                f"[Allocateur] Mode EV={ev_mode} "
+                f"(EV={ev_data.get('ev')}%/trade, WR={ev_data.get('wr', 0) or 0:.0%}) "
+                f"→ taille ×{ev_size_mult}"
+            )
+    except Exception:
+        ev_size_mult = 1.0
+
+    # ── Taille cible (portfolio total × % × mémoire × EV) ───────────────────
+    target_usdt = portfolio_value * base_pct * mem_mult * ev_size_mult
 
     # Plafond absolu : jamais plus de 25% du portfolio par trade ─────────────
     # Empêche le multiplicateur mémoire (×1.25) de pousser le tier 22% à 27.5%.

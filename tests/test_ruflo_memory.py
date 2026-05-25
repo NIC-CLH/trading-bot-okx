@@ -41,3 +41,47 @@ def test_store_outcome_inclut_exit_quality(tmp_path, monkeypatch):
     assert "exit_quality" in outcome, "exit_quality manquant"
     # Sorti à 5%, peak 8% → exit_quality = 5/8*100 = 62.5
     assert abs(outcome["exit_quality"] - 62.5) < 0.1, f"exit_quality attendu 62.5, obtenu {outcome['exit_quality']}"
+
+
+def test_get_rolling_ev_positif(tmp_path, monkeypatch):
+    import ruflo_memory as rm
+    monkeypatch.setattr(rm, "MEMORY_FILE", tmp_path / "mem.json")
+
+    outcomes = (
+        [{"ticker": f"T{i}", "pnl_pct": 12.0, "outcome": "win"}  for i in range(8)] +
+        [{"ticker": f"L{i}", "pnl_pct": -7.0,  "outcome": "loss"} for i in range(7)]
+    )
+    import json
+    (tmp_path / "mem.json").write_text(json.dumps({"outcomes": outcomes, "entries": []}))
+
+    result = rm.get_rolling_ev(n_trades=15)
+    assert result["ev"] is not None
+    # WR=8/15=0.533, med_win=12, med_loss=7 → EV = 0.533×12 - 0.467×7 = 6.4 - 3.27 = 3.13
+    assert result["ev"] > 0, f"EV devrait être positif : {result['ev']}"
+
+def test_get_rolling_ev_negatif(tmp_path, monkeypatch):
+    import ruflo_memory as rm
+    monkeypatch.setattr(rm, "MEMORY_FILE", tmp_path / "mem.json")
+
+    outcomes = (
+        [{"ticker": f"T{i}", "pnl_pct": 12.0, "outcome": "win"}  for i in range(4)] +
+        [{"ticker": f"L{i}", "pnl_pct": -8.0,  "outcome": "loss"} for i in range(11)]
+    )
+    import json
+    (tmp_path / "mem.json").write_text(json.dumps({"outcomes": outcomes, "entries": []}))
+
+    result = rm.get_rolling_ev(n_trades=15)
+    assert result["ev"] < 0, f"EV devrait être négatif : {result['ev']}"
+
+def test_get_rolling_ev_trop_peu_de_trades(tmp_path, monkeypatch):
+    import ruflo_memory as rm
+    monkeypatch.setattr(rm, "MEMORY_FILE", tmp_path / "mem.json")
+
+    import json
+    (tmp_path / "mem.json").write_text(json.dumps({"outcomes": [
+        {"ticker": "X", "pnl_pct": 5.0}
+    ], "entries": []}))
+
+    result = rm.get_rolling_ev(n_trades=15)
+    assert result["ev"] is None
+    assert result["mode"] == "normal"
