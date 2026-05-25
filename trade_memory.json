@@ -566,6 +566,21 @@
       "prix": 0.7042513542819372,
       "btc_uptrend": true,
       "timestamp": "2026-05-24T12:04:37.738141+00:00"
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ZEC",
+      "score": 3,
+      "score_tech": 3,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 188.06,
+      "prix": 660.9561479171773,
+      "btc_uptrend": true,
+      "timestamp": "2026-05-25T08:05:15.455682+00:00"
     }
   ],
   "reflections": [
@@ -750,5 +765,5 @@
       "timestamp": "2026-05-23T20:04:26.014340+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.1610502181050935
+  "_sd_prev_usdt_d": 7.125860690915799
 }
