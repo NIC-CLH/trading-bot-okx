@@ -116,7 +116,7 @@ def _find_rotation_candidate(
     candidates = [
         p for p in open_positions
         if p.get("prix_entree") is not None
-        and (p.get("pnl_pct") or 0) < 10.0
+        and (p.get("pnl_pct") or 0) < 3.0   # Protège les positions ≥ +3% de la rotation
         and p.get("valeur_usd", 0) >= 10.0
         and p.get("ticker") != incoming_ticker
     ]
