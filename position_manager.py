@@ -486,6 +486,15 @@ def execute_decision(decision: dict, portfolio_value: float) -> bool:
         except Exception as _e:
             logger.debug(f"ruflo_memory store_outcome ignoré : {_e}")
 
+        # Re-entry graduated : relever le seuil temporairement après un stop
+        raison = decision.get("raison", "")
+        if raison and ("Stop ATR" in raison or "Stop Loss" in raison or "stop" in raison.lower()):
+            try:
+                import ruflo_memory as rm
+                rm.set_reentry_threshold(ticker, decision.get("pnl_pct") or 0.0)
+            except Exception:
+                pass
+
         # Reflect Agent LLM — analyse le trade clôturé et extrait les leçons
         try:
             import reflect_agent

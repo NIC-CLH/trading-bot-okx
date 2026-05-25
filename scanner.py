@@ -575,7 +575,15 @@ def run_scan(portfolio_value: float) -> list[dict]:
 
     # ── Phase 3 : Exécuter dans l'ordre (meilleur score = premier servi) ─────
     for payload in actionable:
-        if payload["score"] >= AUTO_EXECUTE_THRESHOLD and payload.get("trade_autorise"):
+        # ── Re-entry threshold : threshold temporaire si stop récent ────────
+        try:
+            import ruflo_memory as rm_reentry
+            reentry_thr = rm_reentry.get_reentry_threshold(payload["ticker"])
+            exec_threshold = reentry_thr if reentry_thr else AUTO_EXECUTE_THRESHOLD
+        except Exception:
+            exec_threshold = AUTO_EXECUTE_THRESHOLD
+
+        if payload["score"] >= exec_threshold and payload.get("trade_autorise"):
             ticker = payload["ticker"]
             score  = payload["score"]
 

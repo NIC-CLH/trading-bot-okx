@@ -85,3 +85,36 @@ def test_get_rolling_ev_trop_peu_de_trades(tmp_path, monkeypatch):
     result = rm.get_rolling_ev(n_trades=15)
     assert result["ev"] is None
     assert result["mode"] == "normal"
+
+
+def test_reentry_threshold_petite_perte(tmp_path, monkeypatch):
+    import ruflo_memory as rm
+    monkeypatch.setattr(rm, "MEMORY_FILE", tmp_path / "mem.json")
+    import json
+    (tmp_path / "mem.json").write_text('{"outcomes":[],"entries":[]}')
+
+    rm.set_reentry_threshold("KAIA", loss_pct=-4.0)
+    threshold = rm.get_reentry_threshold("KAIA")
+    assert threshold == 1.7, f"Perte -4% → seuil 1.7, obtenu {threshold}"
+
+def test_reentry_threshold_grande_perte(tmp_path, monkeypatch):
+    import ruflo_memory as rm
+    monkeypatch.setattr(rm, "MEMORY_FILE", tmp_path / "mem.json")
+    import json
+    (tmp_path / "mem.json").write_text('{"outcomes":[],"entries":[]}')
+
+    rm.set_reentry_threshold("CHZ", loss_pct=-12.0)
+    assert rm.get_reentry_threshold("CHZ") == 2.2
+
+def test_reentry_threshold_expire(tmp_path, monkeypatch):
+    import ruflo_memory as rm
+    monkeypatch.setattr(rm, "MEMORY_FILE", tmp_path / "mem.json")
+
+    import json, time
+    data = {"outcomes": [], "entries": [], "reentry_thresholds": {
+        "BTC": {"threshold": 2.0, "expires": time.time() - 1, "loss_pct": -8.0}
+    }}
+    (tmp_path / "mem.json").write_text(json.dumps(data))
+
+    result = rm.get_reentry_threshold("BTC")
+    assert result is None, f"Threshold expiré doit retourner None, obtenu {result}"

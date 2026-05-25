@@ -242,6 +242,56 @@ def _compute_ev_mode(ev: float, data: dict) -> str:
     return "normal"
 
 
+# ── Re-entry graduated threshold ─────────────────────────────────────────────
+
+_REENTRY_TABLE = [
+    (-10.0, 2.2),  # perte > 10% → seuil 2.2
+    (-5.0,  1.9),  # perte 5-10% → seuil 1.9
+    (0.0,   1.7),  # perte < 5%  → seuil 1.7
+]
+REENTRY_DURATION_SECONDS = 4 * 3600  # 4h
+
+
+def set_reentry_threshold(ticker: str, loss_pct: float):
+    """
+    Enregistre un seuil d'entrée temporaire après un stop loss.
+    loss_pct doit être négatif (ex : -7.5 pour -7.5%).
+    """
+    threshold = 1.7  # défaut
+    for min_loss, thr in _REENTRY_TABLE:
+        if loss_pct <= min_loss:
+            threshold = thr
+            break
+
+    data = _load_json()
+    data.setdefault("reentry_thresholds", {})[ticker] = {
+        "threshold": threshold,
+        "expires":   time.time() + REENTRY_DURATION_SECONDS,
+        "loss_pct":  round(loss_pct, 2),
+    }
+    _save_json(data)
+    logger.info(
+        f"[ReEntry] {ticker} : perte {loss_pct:+.1f}% → "
+        f"threshold temporaire {threshold} pendant 4h"
+    )
+
+
+def get_reentry_threshold(ticker: str) -> float | None:
+    """
+    Retourne le seuil d'entrée temporaire si actif, None sinon.
+    Nettoie automatiquement les entrées expirées.
+    """
+    data = _load_json()
+    entry = data.get("reentry_thresholds", {}).get(ticker)
+    if not entry:
+        return None
+    if time.time() > entry["expires"]:
+        del data["reentry_thresholds"][ticker]
+        _save_json(data)
+        return None
+    return entry["threshold"]
+
+
 # ── API publique ──────────────────────────────────────────────────────────────
 
 def seed_ruflo_from_json():
