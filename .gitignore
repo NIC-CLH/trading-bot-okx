@@ -17,9 +17,9 @@ __pycache__/
 .venv/
 venv/
 
-# Fichiers de test et debug
-test_*.py
+# Fichiers de test et debug (exclusion racine uniquement — tests/ est versionné)
 debug_*.py
+/test_*.py
 place_orders.py
 
 # OS
