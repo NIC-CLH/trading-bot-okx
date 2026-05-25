@@ -107,7 +107,7 @@ def _find_rotation_candidate(
 
     Critères :
     - Prix d'entrée connu (on ne vend pas à l'aveugle)
-    - P&L < +10% (on ne coupe pas un trade gagnant proche de l'objectif)
+    - P&L < +3% (on protège les positions en profit significatif ≥ +3%)
     - Valeur >= $10 (la vente doit vraiment libérer du capital utile)
     - Pas le même actif que le signal entrant
 
