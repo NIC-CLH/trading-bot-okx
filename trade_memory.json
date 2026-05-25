@@ -450,36 +450,6 @@
       "prix": 0.008811263864565091,
       "btc_uptrend": true,
       "timestamp": "2026-05-19T00:04:48.932861+00:00"
-    },
-    {
-      "type": "trade_entry",
-      "ticker": "INJ",
-      "score": 2.84,
-      "score_tech": 2.84,
-      "score_news": 0.0,
-      "score_ms": 0.0,
-      "score_macro": 0.0,
-      "regime": "bull",
-      "vol_regime": "normal",
-      "taille_usd": 57.92,
-      "prix": 4.921247837908807,
-      "btc_uptrend": true,
-      "timestamp": "2026-05-19T16:05:37.185992+00:00"
-    },
-    {
-      "type": "trade_entry",
-      "ticker": "PROMPT",
-      "score": 3,
-      "score_tech": 3,
-      "score_news": 0.0,
-      "score_ms": 0.0,
-      "score_macro": 0.0,
-      "regime": "bull",
-      "vol_regime": "normal",
-      "taille_usd": 85.21,
-      "prix": 0.04076809014514896,
-      "btc_uptrend": true,
-      "timestamp": "2026-05-20T08:05:24.021714+00:00"
     }
   ],
   "reflections": [
@@ -640,5 +610,6 @@
       "timestamp": "2026-05-18T00:05:01.417868+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.14767154821733
+  "_sd_prev_usdt_d": 7.136464388686821,
+  "peaks": {}
 }
