@@ -675,9 +675,16 @@ def run(portfolio_value: float, **kwargs) -> dict:
             # Alerte danger si proche du stop (-5%) sans l'avoir déclenché
             if pnl <= -5.0 and pos.get("prix_entree"):
                 emoji = "🔴" if pnl < -6 else "🟠"
+                # Calculer le vrai stop ATR pour l'afficher (pas -7% hardcodé)
+                try:
+                    stop_price_real = get_atr_stop(pos["ticker"], pos["prix_entree"])
+                    stop_pct_real   = (stop_price_real - pos["prix_entree"]) / pos["prix_entree"] * 100
+                    stop_label      = f"{stop_pct_real:.1f}%"
+                except Exception:
+                    stop_label = "~-7% (fallback)"
                 danger_lines.append(
                     f"{emoji} *{pos['ticker']}* `${pos['prix_actuel']:.4f}` "
-                    f"P&L `{pnl:+.1f}%` — stop à -7%"
+                    f"P&L `{pnl:+.1f}%` — stop à {stop_label}"
                 )
 
     if danger_lines:
@@ -685,7 +692,7 @@ def run(portfolio_value: float, **kwargs) -> dict:
             alertes.send(
                 "⚠️ *Positions proches du stop*\n\n"
                 + "\n".join(danger_lines)
-                + "\n\n_Stop automatique à -7% — surveille si tu veux couper avant._"
+                + "\n\n_Stop automatique — surveille si tu veux couper avant._"
             )
         except Exception:
             pass
