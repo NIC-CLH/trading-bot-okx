@@ -442,6 +442,7 @@ def store_trade_entry(payload: dict):
         "vol_regime":  payload.get("vol_regime", "normal"),
         "taille_usd":  round(payload.get("taille_allouee", payload.get("taille_usd", 0)), 2),
         "prix":        payload.get("prix", 0),
+        "stop":        payload.get("stop"),   # prix du stop ATR au moment de l'entrée
         "btc_uptrend": True,  # filtre 50MA passé — toujours True ici
         "timestamp":   datetime.now(timezone.utc).isoformat(),
         # Sub-scores bruts (non pondérés) — pour repondération future
@@ -469,6 +470,29 @@ def store_trade_entry(payload: dict):
         f"[Memory] Entrée enregistrée : {payload['ticker']} "
         f"score={payload.get('score', 0):+.2f} régime={entry['regime']}"
     )
+
+
+def get_entry_stop(ticker: str) -> float | None:
+    """
+    Retourne le prix du stop ATR stocké au moment de l'entrée pour ce ticker.
+
+    Utilité : évite le drift de stop dans emergency_stop_check.
+    Sans cette fonction, le stop est recalculé à partir de l'ATR live → peut
+    passer de -7% à -10% si la volatilité augmente après l'entrée.
+
+    Retourne None si aucune entrée trouvée (fallback vers get_atr_stop live).
+    """
+    try:
+        data = _load_json()
+        matching = [
+            e for e in data["entries"]
+            if e.get("ticker") == ticker and e.get("stop") is not None
+        ]
+        if matching:
+            return float(matching[-1]["stop"])
+    except Exception as e:
+        logger.debug(f"get_entry_stop({ticker}) : {e}")
+    return None
 
 
 def store_trade_outcome(decision: dict):

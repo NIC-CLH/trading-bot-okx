@@ -146,3 +146,28 @@ def test_add_near_miss_deduplique(tmp_path, monkeypatch):
     kaias = [s for s in data["shadow_portfolio"] if s["ticker"] == "KAIA"]
     assert len(kaias) == 1, "KAIA doit être dédupliqué"
     assert kaias[0]["score"] == 1.4, "Version la plus récente doit être gardée"
+
+
+def test_get_entry_stop_retourne_stop_stocke(tmp_path, monkeypatch):
+    """get_entry_stop doit retourner le stop stocké à l'entrée (pas de drift ATR)."""
+    import ruflo_memory as rm
+    monkeypatch.setattr(rm, "MEMORY_FILE", tmp_path / "mem.json")
+
+    payload = {
+        "ticker": "JTO", "score": 2.1, "regime": "bull",
+        "vol_regime": "normal", "prix": 3.50, "stop": 3.255,  # -7% stocké
+    }
+    rm.store_trade_entry(payload)
+
+    result = rm.get_entry_stop("JTO")
+    assert result is not None, "Le stop doit être retourné"
+    assert abs(result - 3.255) < 0.001, f"Stop attendu 3.255, obtenu {result}"
+
+
+def test_get_entry_stop_retourne_none_si_absent(tmp_path, monkeypatch):
+    """get_entry_stop retourne None si le ticker n'a pas d'entrée — fallback vers ATR live."""
+    import ruflo_memory as rm
+    monkeypatch.setattr(rm, "MEMORY_FILE", tmp_path / "mem.json")
+
+    result = rm.get_entry_stop("INCONNU")
+    assert result is None, "Doit retourner None si pas d'entrée connue"

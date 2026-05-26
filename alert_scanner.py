@@ -639,9 +639,11 @@ def emergency_stop_check() -> list[str]:
                         f"floor={trail_floor:+.1f}% actuel={pnl_pct:+.1f}% → OK"
                     )
 
-            # P3 : Stop ATR (comportement existant)
+            # P3 : Stop ATR — prix figé à l'entrée (pas de drift)
             else:
-                stop_price = pm.get_atr_stop(ticker, entree)
+                # Priorité : stop stocké au moment de l'achat (évite le drift ATR).
+                # Fallback live si l'entrée est manquante (positions antérieures).
+                stop_price = rm.get_entry_stop(ticker) or pm.get_atr_stop(ticker, entree)
                 stop_pct   = (stop_price - entree) / entree * 100
                 if pnl_pct <= stop_pct:
                     sell_reason = (
