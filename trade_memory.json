@@ -797,8 +797,8 @@
       "prix_ref": 2.455,
       "type": "swing",
       "timestamp": "2026-05-25T12:07:50.325399+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 4.44
     }
   ],
   "pending_signals": []
