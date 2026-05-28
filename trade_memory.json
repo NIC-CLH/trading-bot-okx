@@ -249,6 +249,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 3
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ASTER",
+      "pnl_pct": -6.16,
+      "days_held": 0,
+      "exit_reason": "Stop ATR déclenché (-6.2% < -6.1%)",
+      "valeur_usd": 177.97,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-05-28T04:06:28.656221+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.88
     }
   ],
   "entries": [
@@ -787,6 +801,18 @@
       "pnl_pct": 7.441038165331548,
       "type": "trade_reflection",
       "timestamp": "2026-05-23T20:04:26.014340+00:00"
+    },
+    {
+      "lecon_principale": "Stop ATR trop serré en régime bull - a déclenché sur noise normal",
+      "signal_fiable": "Régime bull était correct mais score composite faible (1.88) prédit faible probabilité",
+      "signal_trompeur": "Volatilité 'normal' masquait micro-fluctuations - ATR n'a pas capturé la vraie volatilité intra-candle",
+      "regime_optimal": "Bull avec score composite > 2.5 minimum - ce trade avait entrée prématurée",
+      "recommandation": "reduce_size",
+      "confiance": 0.72,
+      "ticker": "ASTER",
+      "pnl_pct": -6.158675310771717,
+      "type": "trade_reflection",
+      "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
   "_sd_prev_usdt_d": 7.1295518708368295,
@@ -801,5 +827,12 @@
       "pnl_pct": 4.44
     }
   ],
-  "pending_signals": []
+  "pending_signals": [],
+  "reentry_thresholds": {
+    "ASTER": {
+      "threshold": 1.9,
+      "expires": 1779955594.2063859,
+      "loss_pct": -6.16
+    }
+  }
 }
