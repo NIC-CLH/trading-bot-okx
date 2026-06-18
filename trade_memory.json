@@ -815,32 +815,14 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.985674207962766,
+  "_sd_prev_usdt_d": 8.322145553092763,
   "shadow_portfolio": [
-    {
-      "ticker": "HYPE",
-      "score": 1.45,
-      "prix_ref": 74.5,
-      "type": "swing",
-      "timestamp": "2026-06-16T16:08:14.032125+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "TRX",
       "score": -1.01,
       "prix_ref": 0.31728,
       "type": "swing",
       "timestamp": "2026-06-16T16:08:44.458962+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "JTO",
-      "score": 1.08,
-      "prix_ref": 0.8029,
-      "type": "swing",
-      "timestamp": "2026-06-16T16:08:54.748258+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -859,15 +841,6 @@
       "prix_ref": 0.37993,
       "type": "swing",
       "timestamp": "2026-06-16T16:09:27.316280+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "WLD",
-      "score": 1.1,
-      "prix_ref": 0.6834,
-      "type": "swing",
-      "timestamp": "2026-06-17T08:08:10.808570+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -913,6 +886,33 @@
       "prix_ref": 0.665,
       "type": "swing",
       "timestamp": "2026-06-17T08:10:54.656582+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "HYPE",
+      "score": 1.34,
+      "prix_ref": 68.058,
+      "type": "swing",
+      "timestamp": "2026-06-18T16:09:43.547322+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "WLD",
+      "score": 1.1,
+      "prix_ref": 0.621,
+      "type": "swing",
+      "timestamp": "2026-06-18T16:10:30.476684+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "JTO",
+      "score": 1.12,
+      "prix_ref": 0.7075,
+      "type": "swing",
+      "timestamp": "2026-06-18T16:12:07.041592+00:00",
       "outcome": null,
       "pnl_pct": null
     }
