@@ -815,7 +815,7 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.25076393994329,
+  "_sd_prev_usdt_d": 8.304137882202458,
   "shadow_portfolio": [
     {
       "ticker": "TRX",
@@ -900,28 +900,37 @@
     },
     {
       "ticker": "HYPE",
-      "score": 1.37,
-      "prix_ref": 67.959,
+      "score": 1.04,
+      "prix_ref": 66.412,
       "type": "swing",
-      "timestamp": "2026-06-19T00:08:22.848110+00:00",
+      "timestamp": "2026-06-19T04:08:41.043182+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "WLD",
-      "score": 1.16,
-      "prix_ref": 0.643,
+      "score": 1.02,
+      "prix_ref": 0.6383,
       "type": "swing",
-      "timestamp": "2026-06-19T00:09:05.689947+00:00",
+      "timestamp": "2026-06-19T04:09:25.489405+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "JTO",
-      "score": 1.31,
-      "prix_ref": 0.7412,
+      "score": 1.19,
+      "prix_ref": 0.73,
       "type": "swing",
-      "timestamp": "2026-06-19T00:10:20.738070+00:00",
+      "timestamp": "2026-06-19T04:10:39.089806+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "EIGEN",
+      "score": 1.0,
+      "prix_ref": 0.2301,
+      "type": "swing",
+      "timestamp": "2026-06-19T04:12:43.050564+00:00",
       "outcome": null,
       "pnl_pct": null
     }
