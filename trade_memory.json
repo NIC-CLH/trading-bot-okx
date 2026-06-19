@@ -815,17 +815,8 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.304137882202458,
+  "_sd_prev_usdt_d": 8.31625408517851,
   "shadow_portfolio": [
-    {
-      "ticker": "TRX",
-      "score": -1.01,
-      "prix_ref": 0.31728,
-      "type": "swing",
-      "timestamp": "2026-06-16T16:08:44.458962+00:00",
-      "outcome": "correct",
-      "pnl_pct": 0.92
-    },
     {
       "ticker": "NEAR",
       "score": 1.06,
@@ -900,37 +891,64 @@
     },
     {
       "ticker": "HYPE",
-      "score": 1.04,
-      "prix_ref": 66.412,
+      "score": 1.26,
+      "prix_ref": 67.024,
       "type": "swing",
-      "timestamp": "2026-06-19T04:08:41.043182+00:00",
+      "timestamp": "2026-06-19T08:09:02.751928+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "XRP",
+      "score": -1.14,
+      "prix_ref": 1.1239,
+      "type": "swing",
+      "timestamp": "2026-06-19T08:09:13.658187+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "WLD",
-      "score": 1.02,
-      "prix_ref": 0.6383,
+      "score": 1.16,
+      "prix_ref": 0.6482,
       "type": "swing",
-      "timestamp": "2026-06-19T04:09:25.489405+00:00",
+      "timestamp": "2026-06-19T08:09:37.330045+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ADA",
+      "score": -1.01,
+      "prix_ref": 0.1592,
+      "type": "swing",
+      "timestamp": "2026-06-19T08:10:19.157319+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "JTO",
-      "score": 1.19,
+      "score": 1.31,
       "prix_ref": 0.73,
       "type": "swing",
-      "timestamp": "2026-06-19T04:10:39.089806+00:00",
+      "timestamp": "2026-06-19T08:10:30.443676+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PEPE",
+      "score": -1.01,
+      "prix_ref": 3e-06,
+      "type": "swing",
+      "timestamp": "2026-06-19T08:10:41.823217+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "EIGEN",
-      "score": 1.0,
-      "prix_ref": 0.2301,
+      "score": 1.26,
+      "prix_ref": 0.2276,
       "type": "swing",
-      "timestamp": "2026-06-19T04:12:43.050564+00:00",
+      "timestamp": "2026-06-19T08:13:07.672214+00:00",
       "outcome": null,
       "pnl_pct": null
     }
