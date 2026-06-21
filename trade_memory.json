@@ -895,8 +895,8 @@
       "prix_ref": 0.1592,
       "type": "swing",
       "timestamp": "2026-06-19T08:10:19.157319+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 1.19
     },
     {
       "ticker": "PEPE",
@@ -904,8 +904,8 @@
       "prix_ref": 3e-06,
       "type": "swing",
       "timestamp": "2026-06-19T08:10:41.823217+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -5.97
     },
     {
       "ticker": "XRP",
