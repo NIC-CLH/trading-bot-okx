@@ -913,8 +913,8 @@
       "prix_ref": 1.1277,
       "type": "swing",
       "timestamp": "2026-06-19T12:08:30.086662+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 1.84
     },
     {
       "ticker": "WLD",
@@ -922,8 +922,8 @@
       "prix_ref": 0.605,
       "type": "swing",
       "timestamp": "2026-06-19T12:08:39.918808+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 5.24
     },
     {
       "ticker": "HYPE",
