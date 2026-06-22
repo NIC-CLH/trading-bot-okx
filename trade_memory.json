@@ -931,8 +931,8 @@
       "prix_ref": 70.735,
       "type": "swing",
       "timestamp": "2026-06-20T16:07:45.869497+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -4.37
     },
     {
       "ticker": "JTO",
@@ -940,8 +940,8 @@
       "prix_ref": 0.6707,
       "type": "swing",
       "timestamp": "2026-06-20T16:08:15.358230+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -1.19
     },
     {
       "ticker": "EIGEN",
@@ -949,8 +949,8 @@
       "prix_ref": 0.2465,
       "type": "swing",
       "timestamp": "2026-06-20T16:08:25.669466+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 17.65
     }
   ],
   "pending_signals": [],
