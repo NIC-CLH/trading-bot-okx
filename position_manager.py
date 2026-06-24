@@ -444,22 +444,29 @@ def execute_decision(decision: dict, portfolio_value: float) -> bool:
     if action == "DUST":
         return False  # Rien à faire — dust ignoré
 
-    # ── Watch-only : notification shadow sans exécution ──────────────────────
+    # ── Watch-only : uniquement alertes stop/crash, jamais TP ───────────────
+    # TP et trailing stop ignorés pour les holdings long terme (l'utilisateur veut hold).
+    # Seul un crash (Stop ATR, time stop) mérite une notification.
     if ticker.upper() in WATCH_ONLY_TICKERS and action == "FULL_SELL":
-        pnl    = decision.get("pnl_pct") or 0
-        valeur = decision.get("valeur", 0)
         raison = decision.get("raison", "")
-        logger.info(f"[Watch-only] {ticker} : j'aurais vendu ({raison}) — aucun ordre envoyé")
-        try:
-            alertes.send(
-                f"👁️ *{ticker} (watch-only)* — J'aurais vendu\n"
-                f"Raison : _{raison}_\n"
-                f"P&L actuel : `{pnl:+.1f}%` | Valeur : `${valeur:.2f}`\n"
-                f"_Aucune action — position gérée manuellement_"
-            )
-        except Exception:
-            pass
-        return False  # On ne compte pas ça comme une action exécutée
+        is_stop = any(kw in raison.lower() for kw in ["stop", "time", "7j", "signal"])
+        is_tp   = any(kw in raison for kw in ["Take profit", "Trailing", "+12%", "+20%"])
+        if is_stop and not is_tp:
+            pnl    = decision.get("pnl_pct") or 0
+            valeur = decision.get("valeur", 0)
+            logger.info(f"[Watch-only] {ticker} : alerte crash ({raison}) — aucun ordre envoyé")
+            try:
+                alertes.send(
+                    f"👁️ *{ticker} (watch-only)* — Alerte crash\n"
+                    f"Raison : _{raison}_\n"
+                    f"P&L actuel : `{pnl:+.1f}%` | Valeur : `${valeur:.2f}`\n"
+                    f"_Aucune action — décide si tu veux vendre manuellement_"
+                )
+            except Exception:
+                pass
+        else:
+            logger.debug(f"[Watch-only] {ticker} : TP ignoré (hold) — {raison}")
+        return False
 
     if action == "FULL_SELL":
         # ── Seul l'ordre OKX peut faire échouer la vente ────────────────────

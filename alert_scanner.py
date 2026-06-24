@@ -654,18 +654,24 @@ def emergency_stop_check() -> list[str]:
             if not sell_reason:
                 continue
 
-            # ── Watch-only : notification shadow, pas de vente ───────────────
+            # ── Watch-only : uniquement alertes stop/crash, jamais TP ──────────
+            # Le TP et le trailing stop ne s'appliquent pas aux holdings long terme.
+            # Seul un crash (Stop ATR) mérite une notification.
             if ticker.upper() in pm.WATCH_ONLY_TICKERS:
-                logger.info(f"[Watch-only 30min] {ticker} : j'aurais vendu ({sell_reason})")
-                try:
-                    _send_telegram(
-                        f"👁️ *{ticker} (watch-only)* — J'aurais vendu [30min]\n"
-                        f"Raison : _{sell_reason}_\n"
-                        f"P&L actuel : `{pnl_pct:+.1f}%` | Valeur : `${valeur:.2f}`\n"
-                        f"_Aucune action — position gérée manuellement_"
-                    )
-                except Exception:
-                    pass
+                is_stop = "Stop ATR" in sell_reason or "stop" in sell_reason.lower()
+                if is_stop:
+                    logger.info(f"[Watch-only 30min] {ticker} : alerte crash ({sell_reason})")
+                    try:
+                        _send_telegram(
+                            f"👁️ *{ticker} (watch-only)* — Alerte crash\n"
+                            f"Raison : _{sell_reason}_\n"
+                            f"P&L actuel : `{pnl_pct:+.1f}%` | Valeur : `${valeur:.2f}`\n"
+                            f"_Aucune action — décide si tu veux vendre manuellement_"
+                        )
+                    except Exception:
+                        pass
+                else:
+                    logger.debug(f"[Watch-only 30min] {ticker} : TP ignoré (hold) — {sell_reason}")
                 continue
 
             # ── Exécution de la vente ─────────────────────────────────────────
