@@ -45,6 +45,14 @@ MAX_POSITIONS        =  4
 MIN_POSITION_VALUE   =  5.0    # ignorer les poussières < $5 (restes de vieux trades)
 ORPHAN_AUTO_SELL_MAX = 20.0   # position orpheline (entrée inconnue) auto-vendue si < $20
 
+# ── Positions watch-only : surveillées mais jamais vendues par le bot ─────────
+# ticker → prix d'entrée manuel (en USD)
+# Le bot calcule le P&L, évalue les stops/TP, envoie des notifications shadow
+# mais n'exécute AUCUN ordre. Idéal pour les holdings personnels long terme.
+WATCH_ONLY_TICKERS: dict[str, float] = {
+    "XRP": 0.60,   # Transféré depuis Binance — holding perso
+}
+
 
 # ── Données de position ───────────────────────────────────────────────────────
 
@@ -107,6 +115,10 @@ def _get_entry_info(ticker: str) -> dict:
     il est rejeté comme aberrant (vieux fills hors contexte ou accAvgPx corrompu).
     Si toutes les sources échouent → {"price": None, "time": None}.
     """
+    # ── Watch-only : prix d'entrée manuel défini statiquement ───────────────────
+    if ticker.upper() in WATCH_ONLY_TICKERS:
+        return {"price": WATCH_ONLY_TICKERS[ticker.upper()], "time": None}
+
     # ── Fills OKX — uniquement les 90 derniers jours ────────────────────────────
     try:
         cutoff_ms = (time_module.time() - 90 * 86400) * 1000  # 90j en ms
@@ -431,6 +443,23 @@ def execute_decision(decision: dict, portfolio_value: float) -> bool:
 
     if action == "DUST":
         return False  # Rien à faire — dust ignoré
+
+    # ── Watch-only : notification shadow sans exécution ──────────────────────
+    if ticker.upper() in WATCH_ONLY_TICKERS and action == "FULL_SELL":
+        pnl    = decision.get("pnl_pct") or 0
+        valeur = decision.get("valeur", 0)
+        raison = decision.get("raison", "")
+        logger.info(f"[Watch-only] {ticker} : j'aurais vendu ({raison}) — aucun ordre envoyé")
+        try:
+            alertes.send(
+                f"👁️ *{ticker} (watch-only)* — J'aurais vendu\n"
+                f"Raison : _{raison}_\n"
+                f"P&L actuel : `{pnl:+.1f}%` | Valeur : `${valeur:.2f}`\n"
+                f"_Aucune action — position gérée manuellement_"
+            )
+        except Exception:
+            pass
+        return False  # On ne compte pas ça comme une action exécutée
 
     if action == "FULL_SELL":
         # ── Seul l'ordre OKX peut faire échouer la vente ────────────────────
