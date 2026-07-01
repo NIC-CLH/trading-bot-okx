@@ -840,7 +840,7 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.692694338933943,
+  "_sd_prev_usdt_d": 8.623468582495452,
   "shadow_portfolio": [
     {
       "ticker": "NEAR",
@@ -960,15 +960,6 @@
       "pnl_pct": -4.37
     },
     {
-      "ticker": "JTO",
-      "score": 1.06,
-      "prix_ref": 0.6707,
-      "type": "swing",
-      "timestamp": "2026-06-20T16:08:15.358230+00:00",
-      "outcome": "correct",
-      "pnl_pct": -1.19
-    },
-    {
       "ticker": "EIGEN",
       "score": 1.07,
       "prix_ref": 0.2465,
@@ -976,6 +967,15 @@
       "timestamp": "2026-06-20T16:08:25.669466+00:00",
       "outcome": "missed",
       "pnl_pct": 17.65
+    },
+    {
+      "ticker": "JTO",
+      "score": 1.0,
+      "prix_ref": 0.7744,
+      "type": "swing",
+      "timestamp": "2026-07-01T04:11:24.623737+00:00",
+      "outcome": null,
+      "pnl_pct": null
     }
   ],
   "pending_signals": [],
