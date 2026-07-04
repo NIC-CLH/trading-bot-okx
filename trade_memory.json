@@ -840,7 +840,7 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.213349879183566,
+  "_sd_prev_usdt_d": 8.172915506277551,
   "shadow_portfolio": [
     {
       "ticker": "NEAR",
@@ -906,15 +906,6 @@
       "pnl_pct": -6.02
     },
     {
-      "ticker": "XLM",
-      "score": 1.09,
-      "prix_ref": 0.23797,
-      "type": "swing",
-      "timestamp": "2026-06-18T20:09:43.678679+00:00",
-      "outcome": "correct",
-      "pnl_pct": -9.29
-    },
-    {
       "ticker": "ADA",
       "score": -1.01,
       "prix_ref": 0.1592,
@@ -976,6 +967,15 @@
       "timestamp": "2026-07-01T04:11:24.623737+00:00",
       "outcome": "correct",
       "pnl_pct": -2.14
+    },
+    {
+      "ticker": "XLM",
+      "score": 1.15,
+      "prix_ref": 0.20625,
+      "type": "swing",
+      "timestamp": "2026-07-04T04:09:47.830484+00:00",
+      "outcome": null,
+      "pnl_pct": null
     }
   ],
   "pending_signals": [],
