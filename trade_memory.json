@@ -840,7 +840,7 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.176097917718707,
+  "_sd_prev_usdt_d": 8.16847304090721,
   "shadow_portfolio": [
     {
       "ticker": "NEAR",
@@ -970,10 +970,10 @@
     },
     {
       "ticker": "XLM",
-      "score": 1.05,
-      "prix_ref": 0.20666,
+      "score": 1.04,
+      "prix_ref": 0.2054,
       "type": "swing",
-      "timestamp": "2026-07-04T08:08:55.744958+00:00",
+      "timestamp": "2026-07-04T12:09:35.286345+00:00",
       "outcome": null,
       "pnl_pct": null
     }
