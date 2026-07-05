@@ -840,7 +840,7 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.156516070421336,
+  "_sd_prev_usdt_d": 8.128325480218207,
   "shadow_portfolio": [
     {
       "ticker": "NEAR",
@@ -850,15 +850,6 @@
       "timestamp": "2026-06-16T16:09:06.308023+00:00",
       "outcome": "correct",
       "pnl_pct": -5.67
-    },
-    {
-      "ticker": "ALLO",
-      "score": 1.12,
-      "prix_ref": 0.37993,
-      "type": "swing",
-      "timestamp": "2026-06-16T16:09:27.316280+00:00",
-      "outcome": "correct",
-      "pnl_pct": 0.91
     },
     {
       "ticker": "UNI",
@@ -974,6 +965,15 @@
       "prix_ref": 0.2054,
       "type": "swing",
       "timestamp": "2026-07-04T12:09:35.286345+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ALLO",
+      "score": 1.04,
+      "prix_ref": 0.35142,
+      "type": "swing",
+      "timestamp": "2026-07-05T08:10:08.973212+00:00",
       "outcome": null,
       "pnl_pct": null
     }
