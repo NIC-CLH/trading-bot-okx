@@ -840,7 +840,7 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.12623132570978,
+  "_sd_prev_usdt_d": 8.097782854153898,
   "shadow_portfolio": [
     {
       "ticker": "BCH",
@@ -951,15 +951,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "JTO",
-      "score": 1.11,
-      "prix_ref": 0.7869,
-      "type": "swing",
-      "timestamp": "2026-07-07T08:09:09.402945+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "PI",
       "score": -1.07,
       "prix_ref": 0.1114,
@@ -974,6 +965,15 @@
       "prix_ref": 0.5391,
       "type": "swing",
       "timestamp": "2026-07-07T08:09:31.555723+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "JTO",
+      "score": 1.03,
+      "prix_ref": 0.7822,
+      "type": "swing",
+      "timestamp": "2026-07-07T12:11:32.628013+00:00",
       "outcome": null,
       "pnl_pct": null
     }
