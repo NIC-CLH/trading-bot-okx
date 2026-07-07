@@ -840,35 +840,8 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.121228359464542,
+  "_sd_prev_usdt_d": 8.12623132570978,
   "shadow_portfolio": [
-    {
-      "ticker": "UNI",
-      "score": 1.32,
-      "prix_ref": 3.61,
-      "type": "swing",
-      "timestamp": "2026-06-17T08:08:34.638170+00:00",
-      "outcome": "correct",
-      "pnl_pct": -15.57
-    },
-    {
-      "ticker": "IP",
-      "score": -1.0,
-      "prix_ref": 0.3109,
-      "type": "swing",
-      "timestamp": "2026-06-17T08:09:42.199878+00:00",
-      "outcome": "correct",
-      "pnl_pct": 0.0
-    },
-    {
-      "ticker": "SPACE",
-      "score": 1.26,
-      "prix_ref": 0.007932,
-      "type": "swing",
-      "timestamp": "2026-06-17T08:10:19.154456+00:00",
-      "outcome": "correct",
-      "pnl_pct": -16.28
-    },
     {
       "ticker": "BCH",
       "score": -1.07,
@@ -951,29 +924,56 @@
       "pnl_pct": -2.69
     },
     {
-      "ticker": "ALLO",
-      "score": 1.16,
-      "prix_ref": 0.35023,
+      "ticker": "AAVE",
+      "score": 1.09,
+      "prix_ref": 93.4,
       "type": "swing",
-      "timestamp": "2026-07-05T12:09:46.683120+00:00",
+      "timestamp": "2026-07-07T08:07:53.881750+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
-      "ticker": "AAVE",
-      "score": 1.04,
-      "prix_ref": 95.89,
+      "ticker": "ALLO",
+      "score": 1.02,
+      "prix_ref": 0.41576,
       "type": "swing",
-      "timestamp": "2026-07-06T20:09:35.170721+00:00",
+      "timestamp": "2026-07-07T08:08:06.927965+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "XPL",
+      "score": 1.02,
+      "prix_ref": 0.10679,
+      "type": "swing",
+      "timestamp": "2026-07-07T08:08:44.260485+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "JTO",
-      "score": 1.04,
-      "prix_ref": 0.7745,
+      "score": 1.11,
+      "prix_ref": 0.7869,
       "type": "swing",
-      "timestamp": "2026-07-07T04:11:00.156426+00:00",
+      "timestamp": "2026-07-07T08:09:09.402945+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PI",
+      "score": -1.07,
+      "prix_ref": 0.1114,
+      "type": "swing",
+      "timestamp": "2026-07-07T08:09:20.572956+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "GRASS",
+      "score": 1.05,
+      "prix_ref": 0.5391,
+      "type": "swing",
+      "timestamp": "2026-07-07T08:09:31.555723+00:00",
       "outcome": null,
       "pnl_pct": null
     }
