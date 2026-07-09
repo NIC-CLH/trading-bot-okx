@@ -840,7 +840,7 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.187493576400854,
+  "_sd_prev_usdt_d": 8.220376766184224,
   "shadow_portfolio": [
     {
       "ticker": "APT",
@@ -920,8 +920,8 @@
       "prix_ref": 93.4,
       "type": "swing",
       "timestamp": "2026-07-07T08:07:53.881750+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -4.53
     },
     {
       "ticker": "ALLO",
@@ -929,8 +929,8 @@
       "prix_ref": 0.41576,
       "type": "swing",
       "timestamp": "2026-07-07T08:08:06.927965+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -4.03
     },
     {
       "ticker": "XPL",
@@ -938,8 +938,8 @@
       "prix_ref": 0.10679,
       "type": "swing",
       "timestamp": "2026-07-07T08:08:44.260485+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -13.58
     },
     {
       "ticker": "PI",
@@ -947,8 +947,8 @@
       "prix_ref": 0.1114,
       "type": "swing",
       "timestamp": "2026-07-07T08:09:20.572956+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -12.48
     },
     {
       "ticker": "GRASS",
@@ -956,8 +956,8 @@
       "prix_ref": 0.5391,
       "type": "swing",
       "timestamp": "2026-07-07T08:09:31.555723+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -28.97
     },
     {
       "ticker": "JTO",
@@ -970,10 +970,10 @@
     },
     {
       "ticker": "APE",
-      "score": 1.05,
-      "prix_ref": 0.16232,
+      "score": 1.04,
+      "prix_ref": 0.16308,
       "type": "swing",
-      "timestamp": "2026-07-09T08:07:40.455235+00:00",
+      "timestamp": "2026-07-09T12:07:26.265341+00:00",
       "outcome": null,
       "pnl_pct": null
     }
