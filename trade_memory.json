@@ -840,17 +840,8 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.097782854153898,
+  "_sd_prev_usdt_d": 8.187493576400854,
   "shadow_portfolio": [
-    {
-      "ticker": "BCH",
-      "score": -1.07,
-      "prix_ref": 214.4,
-      "type": "swing",
-      "timestamp": "2026-06-17T08:10:42.892344+00:00",
-      "outcome": "correct",
-      "pnl_pct": -9.0
-    },
     {
       "ticker": "APT",
       "score": -1.0,
@@ -974,6 +965,15 @@
       "prix_ref": 0.7822,
       "type": "swing",
       "timestamp": "2026-07-07T12:11:32.628013+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "APE",
+      "score": 1.05,
+      "prix_ref": 0.16232,
+      "type": "swing",
+      "timestamp": "2026-07-09T08:07:40.455235+00:00",
       "outcome": null,
       "pnl_pct": null
     }
