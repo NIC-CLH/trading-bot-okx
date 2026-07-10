@@ -840,7 +840,7 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.087535239816681,
+  "_sd_prev_usdt_d": 8.088563604771975,
   "shadow_portfolio": [
     {
       "ticker": "XRP",
@@ -970,10 +970,10 @@
     },
     {
       "ticker": "AAVE",
-      "score": 1.0,
-      "prix_ref": 95.08,
+      "score": 1.24,
+      "prix_ref": 96.34,
       "type": "swing",
-      "timestamp": "2026-07-10T16:07:58.087469+00:00",
+      "timestamp": "2026-07-10T20:09:06.214562+00:00",
       "outcome": null,
       "pnl_pct": null
     }
