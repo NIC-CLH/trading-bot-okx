@@ -840,7 +840,7 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.175757857396725,
+  "_sd_prev_usdt_d": 8.087535239816681,
   "shadow_portfolio": [
     {
       "ticker": "XRP",
@@ -951,15 +951,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "AAVE",
-      "score": 1.16,
-      "prix_ref": 91.16,
-      "type": "swing",
-      "timestamp": "2026-07-10T00:07:28.021675+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "CC",
       "score": -1.07,
       "prix_ref": 0.13311,
@@ -974,6 +965,15 @@
       "prix_ref": 4e-06,
       "type": "swing",
       "timestamp": "2026-07-10T00:08:20.902660+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AAVE",
+      "score": 1.0,
+      "prix_ref": 95.08,
+      "type": "swing",
+      "timestamp": "2026-07-10T16:07:58.087469+00:00",
       "outcome": null,
       "pnl_pct": null
     }
