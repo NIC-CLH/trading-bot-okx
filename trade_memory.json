@@ -840,7 +840,7 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.063934248026513,
+  "_sd_prev_usdt_d": 8.06472310492765,
   "shadow_portfolio": [
     {
       "ticker": "WLD",
@@ -960,20 +960,20 @@
       "pnl_pct": null
     },
     {
-      "ticker": "AAVE",
-      "score": 1.15,
-      "prix_ref": 94.88,
-      "type": "swing",
-      "timestamp": "2026-07-11T04:08:14.771808+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "MMT",
       "score": 1.11,
       "prix_ref": 0.1893,
       "type": "swing",
       "timestamp": "2026-07-11T04:08:46.304969+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AAVE",
+      "score": 1.23,
+      "prix_ref": 96.09,
+      "type": "swing",
+      "timestamp": "2026-07-11T08:06:17.641161+00:00",
       "outcome": null,
       "pnl_pct": null
     }
