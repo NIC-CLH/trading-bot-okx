@@ -840,7 +840,7 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.058356107443544,
+  "_sd_prev_usdt_d": 8.04946987587879,
   "shadow_portfolio": [
     {
       "ticker": "WLD",
@@ -929,8 +929,8 @@
       "prix_ref": 0.16308,
       "type": "swing",
       "timestamp": "2026-07-09T12:07:26.265341+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -4.0
     },
     {
       "ticker": "ZEC",
