@@ -840,7 +840,7 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.101881613399375,
+  "_sd_prev_usdt_d": 8.062467933225495,
   "shadow_portfolio": [
     {
       "ticker": "WLD",
@@ -938,8 +938,8 @@
       "prix_ref": 481.15,
       "type": "swing",
       "timestamp": "2026-07-10T00:06:33.818188+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 7.1
     },
     {
       "ticker": "CC",
@@ -947,8 +947,8 @@
       "prix_ref": 0.13311,
       "type": "swing",
       "timestamp": "2026-07-10T00:08:10.856198+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 1.4
     },
     {
       "ticker": "BONK",
@@ -956,8 +956,8 @@
       "prix_ref": 4e-06,
       "type": "swing",
       "timestamp": "2026-07-10T00:08:20.902660+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 0.23
     },
     {
       "ticker": "MMT",
