@@ -444,12 +444,12 @@ def execute_decision(decision: dict, portfolio_value: float) -> bool:
     if action == "DUST":
         return False  # Rien à faire — dust ignoré
 
-    # ── Watch-only : uniquement alertes stop/crash, jamais TP ───────────────
-    # TP et trailing stop ignorés pour les holdings long terme (l'utilisateur veut hold).
-    # Seul un crash (Stop ATR, time stop) mérite une notification.
+    # ── Watch-only : uniquement alerte Stop ATR (crash prix), jamais TP/signal ──
+    # Seul un stop sur prix (Stop ATR) mérite une notification.
+    # Signal retourné, time stop, trailing stop → ignorés silencieusement.
     if ticker.upper() in WATCH_ONLY_TICKERS and action == "FULL_SELL":
         raison = decision.get("raison", "")
-        is_stop = any(kw in raison.lower() for kw in ["stop", "time", "7j", "signal"])
+        is_stop = "stop atr" in raison.lower()
         is_tp   = any(kw in raison for kw in ["Take profit", "Trailing", "+12%", "+20%"])
         if is_stop and not is_tp:
             pnl    = decision.get("pnl_pct") or 0

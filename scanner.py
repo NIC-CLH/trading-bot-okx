@@ -589,14 +589,6 @@ def run_scan(portfolio_value: float) -> list[dict]:
                 f"Mode baissier : {filtres} signaux < {BTC_BEAR_MIN_SCORE} filtrés "
                 f"— aucun signal exceptionnel, scan vide"
             )
-            try:
-                alertes.send(
-                    "🚫 *Scan annulé — BTC en dessous de sa moyenne 50 jours*\n"
-                    "_Le bot n'achète pas en marché baissier. Il reprendra automatiquement "
-                    "quand BTC repassera au-dessus._"
-                )
-            except Exception:
-                pass
             return []
         else:
             logger.info(

@@ -654,11 +654,10 @@ def emergency_stop_check() -> list[str]:
             if not sell_reason:
                 continue
 
-            # ── Watch-only : uniquement alertes stop/crash, jamais TP ──────────
-            # Le TP et le trailing stop ne s'appliquent pas aux holdings long terme.
-            # Seul un crash (Stop ATR) mérite une notification.
+            # ── Watch-only : uniquement alerte Stop ATR (crash prix) ─────────────
+            # Trailing stop, TP → ignorés silencieusement. Seul Stop ATR notifie.
             if ticker.upper() in pm.WATCH_ONLY_TICKERS:
-                is_stop = "Stop ATR" in sell_reason or "stop" in sell_reason.lower()
+                is_stop = "Stop ATR" in sell_reason
                 if is_stop:
                     logger.info(f"[Watch-only 30min] {ticker} : alerte crash ({sell_reason})")
                     try:
