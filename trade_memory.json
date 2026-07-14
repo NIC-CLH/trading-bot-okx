@@ -644,6 +644,56 @@
       "score_tech_adj_raw": -3,
       "score_rs_raw": 0,
       "score_social_raw": 0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "UNI",
+      "score": 1.9,
+      "score_tech": 1.9,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 532.92,
+      "prix": 3.7559999999999993,
+      "stop": null,
+      "btc_uptrend": true,
+      "timestamp": "2026-07-14T16:05:08.023807+00:00",
+      "score_tech_raw": 1.9,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0,
+      "score_cg_raw": 0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 1.9,
+      "score_rs_raw": 0,
+      "score_social_raw": 0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "AAVE",
+      "score": 1.9,
+      "score_tech": 1.9,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 28.26,
+      "prix": 100.83,
+      "stop": null,
+      "btc_uptrend": true,
+      "timestamp": "2026-07-14T16:05:11.263821+00:00",
+      "score_tech_raw": 1.9,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0,
+      "score_cg_raw": 0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 1.9,
+      "score_rs_raw": 0,
+      "score_social_raw": 0
     }
   ],
   "reflections": [
@@ -840,7 +890,7 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.174296552205716,
+  "_sd_prev_usdt_d": 8.00257323045837,
   "shadow_portfolio": [
     {
       "ticker": "HYPE",
