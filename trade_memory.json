@@ -965,8 +965,8 @@
       "prix_ref": 97.25,
       "type": "swing",
       "timestamp": "2026-07-12T08:08:22.225012+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -0.87
     },
     {
       "ticker": "KAITO",
@@ -974,8 +974,8 @@
       "prix_ref": 0.675,
       "type": "swing",
       "timestamp": "2026-07-12T08:09:17.632983+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 4.46
     }
   ],
   "pending_signals": [],
