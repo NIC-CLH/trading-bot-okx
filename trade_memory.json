@@ -890,17 +890,8 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.972775654371718,
+  "_sd_prev_usdt_d": 7.99146491415013,
   "shadow_portfolio": [
-    {
-      "ticker": "HYPE",
-      "score": 1.15,
-      "prix_ref": 70.735,
-      "type": "swing",
-      "timestamp": "2026-06-20T16:07:45.869497+00:00",
-      "outcome": "correct",
-      "pnl_pct": -4.37
-    },
     {
       "ticker": "XLM",
       "score": 1.04,
@@ -1024,6 +1015,15 @@
       "prix_ref": 0.245,
       "type": "swing",
       "timestamp": "2026-07-16T00:10:00.698952+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ETHFI",
+      "score": 1.17,
+      "prix_ref": 0.45,
+      "type": "swing",
+      "timestamp": "2026-07-16T04:08:48.789467+00:00",
       "outcome": null,
       "pnl_pct": null
     }
