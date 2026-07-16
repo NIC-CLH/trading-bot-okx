@@ -890,7 +890,7 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.964974219108263,
+  "_sd_prev_usdt_d": 7.972775654371718,
   "shadow_portfolio": [
     {
       "ticker": "HYPE",
@@ -900,15 +900,6 @@
       "timestamp": "2026-06-20T16:07:45.869497+00:00",
       "outcome": "correct",
       "pnl_pct": -4.37
-    },
-    {
-      "ticker": "EIGEN",
-      "score": 1.07,
-      "prix_ref": 0.2465,
-      "type": "swing",
-      "timestamp": "2026-06-20T16:08:25.669466+00:00",
-      "outcome": "missed",
-      "pnl_pct": 17.65
     },
     {
       "ticker": "XLM",
@@ -1026,6 +1017,15 @@
       "timestamp": "2026-07-12T08:09:17.632983+00:00",
       "outcome": "correct",
       "pnl_pct": 4.46
+    },
+    {
+      "ticker": "EIGEN",
+      "score": 1.09,
+      "prix_ref": 0.245,
+      "type": "swing",
+      "timestamp": "2026-07-16T00:10:00.698952+00:00",
+      "outcome": null,
+      "pnl_pct": null
     }
   ],
   "pending_signals": [],
