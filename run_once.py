@@ -89,11 +89,17 @@ _CHECKPOINT = "balance_compte"
 try:
     balances = okx.get_balances()
     usdc = balances.get("USDC", 0) + balances.get("USDT", 0)
-    positions_ouvertes = {k: v for k, v in balances.items() if k not in ("USDC", "USDT")}
+    # CRITIQUE : exclure les watch-only (XRP perso ~$6000) du capital de trading.
+    # Sans ça le sizing 12-22% se calcule sur un portfolio gonflé → le trade UNI
+    # du 14/07 a été taillé à $543 (100% du vrai capital du bot).
+    positions_ouvertes = {
+        k: v for k, v in balances.items()
+        if k not in ("USDC", "USDT") and k.upper() not in pm.WATCH_ONLY_TICKERS
+    }
     portfolio_value = usdc + sum(
         (okx.get_price_usdc(t) or 0) * q for t, q in positions_ouvertes.items()
     )
-    print(f"Portfolio total : ${portfolio_value:.2f}")
+    print(f"Portfolio bot   : ${portfolio_value:.2f} (watch-only exclus)")
     print(f"USDC libre      : ${usdc:.2f}")
     print(f"Positions       : {list(positions_ouvertes.keys()) or 'aucune'}\n")
 except Exception as e:
@@ -125,13 +131,23 @@ _time.sleep(5)
 try:
     balances = okx.get_balances()
     usdc = balances.get("USDC", 0) + balances.get("USDT", 0)
-    nb_positions = len([k for k in balances if k not in ("USDC", "USDT")])
-    positions_apres = {k: v for k, v in balances.items() if k not in ("USDC", "USDT")}
+    positions_apres = {
+        k: v for k, v in balances.items()
+        if k not in ("USDC", "USDT") and k.upper() not in pm.WATCH_ONLY_TICKERS
+    }
+    nb_positions = len(positions_apres)
     # Recalcul du portfolio total (positions liquidées → USDC monté)
     portfolio_value = usdc + sum(
         (okx.get_price_usdc(t) or 0) * q for t, q in positions_apres.items()
     )
-    print(f"Portfolio mis à jour : ${portfolio_value:.2f} (USDC libre : ${usdc:.2f})")
+    print(f"Portfolio mis à jour : ${portfolio_value:.2f} (USDC libre : ${usdc:.2f}, watch-only exclus)")
+
+    # Snapshot équity — historique de performance réelle du bot (1 point / cycle 4h)
+    try:
+        import ruflo_memory as _rm_eq
+        _rm_eq.record_equity(portfolio_value)
+    except Exception:
+        pass
 except Exception:
     pass
 

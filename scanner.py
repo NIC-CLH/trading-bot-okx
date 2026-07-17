@@ -274,11 +274,14 @@ def run_scan(portfolio_value: float) -> list[dict]:
 
     # Pré-filtre : seuil technique abaissé à 1.5 car les autres modules
     # peuvent compenser (score final pondéré 4 dimensions)
+    # + anti-churn : ticker blacklisté 7j après 2 stops (backtest : HYPE 18/69 trades)
+    import ruflo_memory as rm_churn
     candidates = {
         ticker: tech for ticker, tech in tech_results.items()
         if "erreur" not in tech
         and abs(tech.get("signal", {}).get("score", 0)) >= 1.5
         and not is_cooldown_active(ticker)
+        and not rm_churn.is_churn_blacklisted(ticker)
     }
     logger.info(f"Candidats après pré-filtre technique : {len(candidates)}")
 
@@ -328,6 +331,7 @@ def run_scan(portfolio_value: float) -> list[dict]:
     # On NE exécute PAS encore — on veut d'abord connaître tous les scores
     # pour financer les meilleurs signaux en priorité.
     actionable = []
+    scan_dims  = []   # health check des dimensions de scoring
     for ticker, tech in candidates.items():
         # ── Chaque ticker est analysé indépendamment ─────────────────────────
         # Un module externe qui retourne {} ou lève une exception ne doit
@@ -417,6 +421,12 @@ def run_scan(portfolio_value: float) -> list[dict]:
             # Stablecoin dominance blend avec macro (50/50)
             s_macro_raw = macro_ticker.get("score", 0)
             s_macro = round((s_macro_raw + sd_score) / 2.0, 3)
+
+            # Health check : traces pour détecter une dimension morte sur tout le scan
+            scan_dims.append({
+                "score_news": s_news, "score_ms": s_ms, "score_oc": s_oc,
+                "score_cg": s_cg, "score_macro": s_macro,
+            })
 
             # Score final : score_tech ajusté weekly + composantes additionnelles
             score_final = compute_final_score(
@@ -574,6 +584,20 @@ def run_scan(portfolio_value: float) -> list[dict]:
 
         time.sleep(1)  # anti-flood API
 
+    # ── Health check : alerter si une dimension est morte sur tout le scan ────
+    # (max 1 alerte / 7j — leçon du score news resté mort 2 mois sans bruit)
+    try:
+        import ruflo_memory as rm_health
+        dead_dims = rm_health.health_check_dimensions(scan_dims)
+        if dead_dims:
+            alertes.send(
+                "🩺 *Health check — source(s) de données morte(s)*\n"
+                f"Dimensions à zéro sur tout le scan : `{', '.join(dead_dims)}`\n"
+                "_Vérifier les APIs correspondantes (clé expirée, endpoint changé)_"
+            )
+    except Exception:
+        pass
+
     # CRITIQUE : le signal le plus fort est financé en priorité.
     # Sans ce tri, un signal faible traité en premier vide le budget USDC
     # et prive le meilleur signal de capital (bug BIO/TRX du 1er mai).
@@ -671,12 +695,14 @@ def run_scan(portfolio_value: float) -> list[dict]:
             execution.execute_signal(payload, portfolio_value)
 
             # ── Mémoriser l'entrée si l'ordre a été confirmé par OKX ─────────
+            # ERREUR VISIBLE obligatoire : un échec silencieux ici = entrée
+            # dégradée par l'auto-registration 4h plus tard (sans sub-scores).
             if payload.get("ordre_execute"):
                 try:
                     import ruflo_memory as rm
                     rm.store_trade_entry(payload)
-                except Exception:
-                    pass
+                except Exception as _mem_e:
+                    logger.error(f"[Memory] store_trade_entry({ticker}) ÉCHOUÉ : {_mem_e}")
 
     if not actionable:
         logger.info("Aucun signal actionnable détecté.")

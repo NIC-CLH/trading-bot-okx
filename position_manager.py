@@ -39,6 +39,7 @@ FULL_PROFIT_PCT      =  0.12   # +12% → sortie complète (base)
 STRONG_PROFIT_PCT    =  0.20   # +20% → sortie si signal encore fort au moment du target
 STRONG_SCORE_MIN     =  2.0    # score minimum pour étendre le target à +20%
 MAX_HOLDING_DAYS     =  7      # 7 jours max en position, quelle que soit la situation
+TIME_STOP_MAX_PNL    =  2.0    # time stop uniquement si P&L < +2% (les lents gagnants continuent)
 SIGNAL_EXIT_PROFIT   =  3.0    # P2.5 : profit minimum (%) pour sortie sur signal retourné
 SIGNAL_EXIT_THRESH   =  1.0    # P2.5 : score en dessous duquel on considère le signal retourné
 MAX_POSITIONS        =  4
@@ -368,13 +369,17 @@ def evaluate_position(pos: dict, score: float | None = None) -> dict:
             raison   = f"Stop ATR déclenché ({pnl_pct:.1f}% < {stop_pct:.1f}%)"
             urgence  = True
 
-    # ── P2 : Time stop — 7 jours CONFIRMÉS uniquement ────────────────────────
+    # ── P2 : Time stop — 7 jours CONFIRMÉS et position qui stagne ────────────
     # Conditions : P1 non déclenché + entrée connue + timestamp connu.
+    # Backtest 17/07/2026 : l'ancien time stop (< +12%) coupait des positions à
+    # +6.6%, +6.1%, +3.4% qui montaient lentement. On ne coupe désormais que les
+    # positions qui STAGNENT (< +2%) — les lents gagnants restent gérés par le
+    # trailing stop et P2.5.
     if (decision == "HOLD"
             and entree
             and days_held is not None
             and days_held >= MAX_HOLDING_DAYS
-            and pnl_pct < FULL_PROFIT_PCT * 100):
+            and pnl_pct < TIME_STOP_MAX_PNL):
         decision = "FULL_SELL"
         raison   = f"Time stop ({days_held:.0f}j) — P&L {pnl_pct:+.1f}% — on libère le capital"
 

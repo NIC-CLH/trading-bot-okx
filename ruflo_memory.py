@@ -425,36 +425,49 @@ def seed_ruflo_from_json():
     )
 
 
+def _f(val, default=0.0):
+    """Coerce en float natif — les np.float64 de pandas font planter json.dump."""
+    try:
+        return float(val)
+    except (TypeError, ValueError):
+        return default
+
+
 def store_trade_entry(payload: dict):
     """
     Enregistre le contexte d'entrée après un achat confirmé.
     Appelé depuis scanner.py quand payload['ordre_execute'] == True.
+
+    Toutes les valeurs numériques sont coercées en float natif : un np.float64
+    dans le payload faisait échouer la sérialisation JSON en silence, et
+    l'auto-registration créait ensuite une entrée minimale sans sub-scores.
     """
     entry = {
         "type":        "trade_entry",
         "ticker":      payload["ticker"],
-        "score":       payload.get("score", 0),
-        "score_tech":  payload.get("score_tech", 0),
-        "score_news":  payload.get("score_news", 0),
-        "score_ms":    payload.get("score_ms", 0),
-        "score_macro": payload.get("score_macro", 0),
+        "score":       _f(payload.get("score", 0)),
+        "score_tech":  _f(payload.get("score_tech", 0)),
+        "score_news":  _f(payload.get("score_news", 0)),
+        "score_ms":    _f(payload.get("score_ms", 0)),
+        "score_macro": _f(payload.get("score_macro", 0)),
         "regime":      payload.get("regime", "unknown"),
         "vol_regime":  payload.get("vol_regime", "normal"),
-        "taille_usd":  round(payload.get("taille_allouee", payload.get("taille_usd", 0)), 2),
-        "prix":        payload.get("prix", 0),
-        "stop":        payload.get("stop"),   # prix du stop ATR au moment de l'entrée
+        "taille_usd":  round(_f(payload.get("taille_allouee", payload.get("taille_usd", 0))), 2),
+        "prix":        _f(payload.get("prix", 0)),
+        "stop":        _f(payload["stop"]) if payload.get("stop") is not None else None,
         "btc_uptrend": True,  # filtre 50MA passé — toujours True ici
+        "late_entry":  bool(payload.get("late_entry", False)),  # True = auto-registration (sub-scores absents)
         "timestamp":   datetime.now(timezone.utc).isoformat(),
         # Sub-scores bruts (non pondérés) — pour repondération future
-        "score_tech_raw":     payload.get("score_tech", 0),
-        "score_news_raw":     payload.get("score_news", 0),
-        "score_ms_raw":       payload.get("score_ms", 0),
-        "score_oc_raw":       payload.get("score_oc", 0),
-        "score_cg_raw":       payload.get("score_cg", 0),
-        "score_macro_raw":    payload.get("score_macro", 0),
-        "score_tech_adj_raw": payload.get("score_tech_adj", payload.get("score_tech", 0)),
-        "score_rs_raw":       payload.get("score_rs", 0),
-        "score_social_raw":   payload.get("score_social", 0),
+        "score_tech_raw":     _f(payload.get("score_tech", 0)),
+        "score_news_raw":     _f(payload.get("score_news", 0)),
+        "score_ms_raw":       _f(payload.get("score_ms", 0)),
+        "score_oc_raw":       _f(payload.get("score_oc", 0)),
+        "score_cg_raw":       _f(payload.get("score_cg", 0)),
+        "score_macro_raw":    _f(payload.get("score_macro", 0)),
+        "score_tech_adj_raw": _f(payload.get("score_tech_adj", payload.get("score_tech", 0))),
+        "score_rs_raw":       _f(payload.get("score_rs", 0)),
+        "score_social_raw":   _f(payload.get("score_social", 0)),
     }
 
     # Persistance JSON
@@ -470,6 +483,94 @@ def store_trade_entry(payload: dict):
         f"[Memory] Entrée enregistrée : {payload['ticker']} "
         f"score={payload.get('score', 0):+.2f} régime={entry['regime']}"
     )
+
+
+# ── Anti-churn : blacklist temporaire après stops répétés ─────────────────────
+# Backtest 17/07/2026 : HYPE = 18 trades sur 69 (26%) — le bot re-rentrait en
+# boucle sur le même token après chaque stop, payant les frais à chaque cycle.
+CHURN_MAX_STOPS   = 2   # nombre de stops déclencheur
+CHURN_WINDOW_DAYS = 7   # fenêtre d'observation ET durée de la blacklist
+
+
+def is_churn_blacklisted(ticker: str) -> bool:
+    """
+    True si le ticker a pris >= CHURN_MAX_STOPS stops dans les
+    CHURN_WINDOW_DAYS derniers jours → entrée interdite.
+    """
+    try:
+        data = _load_json()
+        cutoff = datetime.now(timezone.utc).timestamp() - CHURN_WINDOW_DAYS * 86400
+        stops = 0
+        for o in data.get("outcomes", []):
+            if o.get("ticker") != ticker:
+                continue
+            reason = (o.get("exit_reason") or "").lower()
+            if "stop" not in reason or "trailing" in reason or "time" in reason:
+                continue
+            try:
+                ts = datetime.fromisoformat(o.get("timestamp", "")).timestamp()
+            except ValueError:
+                continue
+            if ts >= cutoff:
+                stops += 1
+        if stops >= CHURN_MAX_STOPS:
+            logger.info(f"[Anti-churn] {ticker} : {stops} stops en {CHURN_WINDOW_DAYS}j — blacklisté")
+            return True
+    except Exception as e:
+        logger.debug(f"is_churn_blacklisted({ticker}) : {e}")
+    return False
+
+
+# ── Snapshot équity : historique de la valeur du portfolio ────────────────────
+
+def record_equity(value: float, cap: int = 3000):
+    """Enregistre la valeur du portfolio (appelé une fois par cycle 4h)."""
+    try:
+        data = _load_json()
+        history = data.setdefault("equity_history", [])
+        history.append({
+            "date": datetime.now(timezone.utc).isoformat()[:16],
+            "equity": round(float(value), 2),
+        })
+        if len(history) > cap:
+            data["equity_history"] = history[-cap:]
+        _save_json(data)
+    except Exception as e:
+        logger.debug(f"record_equity : {e}")
+
+
+# ── Health check : détection des dimensions de scoring mortes ─────────────────
+HEALTH_WARN_INTERVAL_DAYS = 7
+
+
+def health_check_dimensions(payloads: list[dict]) -> list[str]:
+    """
+    Repère les dimensions de scoring restées à zéro sur TOUT le scan.
+    Retourne la liste des dimensions mortes si un warning est dû
+    (max 1 fois par HEALTH_WARN_INTERVAL_DAYS), sinon [].
+
+    Leçon du 17/07/2026 : le score news est resté mort 2 mois sans alerte.
+    """
+    if not payloads:
+        return []
+    dims = ["score_news", "score_ms", "score_oc", "score_cg", "score_macro"]
+    dead = [
+        d for d in dims
+        if all(abs(_f(p.get(d, 0))) < 1e-9 for p in payloads)
+    ]
+    if not dead:
+        return []
+    try:
+        data = _load_json()
+        last = data.get("health_last_warn", 0)
+        now = time.time()
+        if now - last < HEALTH_WARN_INTERVAL_DAYS * 86400:
+            return []  # déjà alerté récemment
+        data["health_last_warn"] = now
+        _save_json(data)
+    except Exception:
+        pass
+    return dead
 
 
 def get_entry_stop(ticker: str) -> float | None:
