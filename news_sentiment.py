@@ -58,63 +58,76 @@ POSITIVE_KEYWORDS = [
 
 # ─── Finnhub Crypto News + Sentiment ────────────────────────────────────────
 
-# Correspondance ticker → symbole Finnhub (format Binance/Coinbase)
-_FINNHUB_SYMBOLS = {
-    "BTC": "BINANCE:BTCUSDT", "ETH": "BINANCE:ETHUSDT",
-    "XRP": "BINANCE:XRPUSDT", "SOL": "BINANCE:SOLUSDT",
-    "BNB": "BINANCE:BNBUSDT", "ADA": "BINANCE:ADAUSDT",
-    "AVAX": "BINANCE:AVAXUSDT", "DOT": "BINANCE:DOTUSDT",
-    "LINK": "BINANCE:LINKUSDT", "MATIC": "BINANCE:MATICUSDT",
-    "UNI": "BINANCE:UNIUSDT", "AAVE": "BINANCE:AAVEUSDT",
-    "NEAR": "BINANCE:NEARUSDT", "ARB": "BINANCE:ARBUSDT",
-    "OP": "BINANCE:OPUSDT", "INJ": "BINANCE:INJUSDT",
-    "SUI": "BINANCE:SUIUSDT", "APT": "BINANCE:APTUSDT",
-    "ATOM": "BINANCE:ATOMUSDT", "DYDX": "BINANCE:DYDXUSDT",
+# Noms complets des tokens pour matcher les titres d'articles
+# (le feed crypto général ne tague pas par symbole — on filtre par mention)
+_TOKEN_NAMES = {
+    "BTC": ["bitcoin"], "ETH": ["ethereum", "ether"], "XRP": ["xrp", "ripple"],
+    "SOL": ["solana"], "BNB": ["bnb", "binance coin"], "ADA": ["cardano"],
+    "AVAX": ["avalanche"], "DOT": ["polkadot"], "LINK": ["chainlink"],
+    "UNI": ["uniswap"], "AAVE": ["aave"], "NEAR": ["near protocol"],
+    "ARB": ["arbitrum"], "OP": ["optimism"], "INJ": ["injective"],
+    "SUI": ["sui"], "APT": ["aptos"], "ATOM": ["cosmos"], "DYDX": ["dydx"],
+    "DOGE": ["dogecoin"], "LTC": ["litecoin"], "TRX": ["tron"],
+    "ICP": ["internet computer"], "JTO": ["jito"], "ONDO": ["ondo"],
+    "WLD": ["worldcoin"], "PENDLE": ["pendle"], "ZEC": ["zcash"],
 }
+
+# Cache du feed crypto général — 1 requête par scan au lieu de 55
+_finnhub_feed_cache: dict = {"ts": 0.0, "articles": []}
+_FINNHUB_FEED_TTL = 900  # 15 min
+
+
+def _get_finnhub_crypto_feed() -> list[dict]:
+    """Feed crypto général Finnhub (endpoint /news, le seul qui marche pour les cryptos)."""
+    now = time.time()
+    if now - _finnhub_feed_cache["ts"] < _FINNHUB_FEED_TTL and _finnhub_feed_cache["articles"]:
+        return _finnhub_feed_cache["articles"]
+    resp = requests.get(
+        "https://finnhub.io/api/v1/news",
+        params={"category": "crypto", "token": FINNHUB_API_KEY},
+        timeout=8,
+    )
+    if resp.status_code != 200:
+        logger.debug(f"Finnhub feed crypto : HTTP {resp.status_code}")
+        return _finnhub_feed_cache["articles"]
+    articles = resp.json()
+    if isinstance(articles, list) and articles:
+        _finnhub_feed_cache["ts"] = now
+        _finnhub_feed_cache["articles"] = articles
+    return _finnhub_feed_cache["articles"]
 
 
 def fetch_finnhub_news(ticker: str, max_age_hours: int = 24) -> tuple[float, list[str]]:
     """
-    Récupère les actualités crypto depuis Finnhub et retourne un score NLP.
+    Score news Finnhub pour un ticker, à partir du feed crypto général.
 
-    Finnhub analyse les nouvelles en temps réel (NLP sur +1000 sources).
-    Endpoint gratuit : 60 req/min.
+    L'endpoint company-news ne renvoie rien pour les paires crypto (réservé
+    aux actions) — on filtre le feed général par mention du token à la place.
 
     Returns : (score -1.0 à +1.0, liste de signaux)
     """
     if not FINNHUB_API_KEY:
         return 0.0, []
 
-    symbol = _FINNHUB_SYMBOLS.get(ticker.upper(), f"BINANCE:{ticker.upper()}USDT")
     now = datetime.now(timezone.utc)
     cutoff = now - timedelta(hours=max_age_hours)
 
     try:
-        # News crypto par symbole
-        resp = requests.get(
-            "https://finnhub.io/api/v1/company-news",
-            params={
-                "symbol": symbol,
-                "from": cutoff.strftime("%Y-%m-%d"),
-                "to": now.strftime("%Y-%m-%d"),
-                "token": FINNHUB_API_KEY,
-            },
-            timeout=8,
-        )
-        if resp.status_code != 200:
-            logger.debug(f"Finnhub news {ticker} : HTTP {resp.status_code}")
+        articles = _get_finnhub_crypto_feed()
+        if not articles:
             return 0.0, []
 
-        articles = resp.json()
-        if not isinstance(articles, list):
-            return 0.0, []
-
-        # Filtrer les articles récents
+        terms = _TOKEN_NAMES.get(ticker.upper(), []) + [ticker.upper()]
         recent = []
         for a in articles:
             ts_article = a.get("datetime", 0)
-            if ts_article and ts_article >= cutoff.timestamp():
-                recent.append(a)
+            if not ts_article or ts_article < cutoff.timestamp():
+                continue
+            text = f"{a.get('headline', '')} {a.get('summary', '')}"
+            for term in terms:
+                if re.search(r"\b" + re.escape(term) + r"\b", text, re.IGNORECASE):
+                    recent.append(a)
+                    break
 
         if not recent:
             return 0.0, []
