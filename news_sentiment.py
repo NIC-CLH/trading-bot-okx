@@ -30,8 +30,10 @@ FINNHUB_API_KEY = os.getenv("FINNHUB_API_KEY", "")
 # Sans ça, le score news tombe à ~0 silencieusement et le filtre narrative est aveugle.
 if not FINNHUB_API_KEY:
     logger.warning("FINNHUB_API_KEY absente — source Finnhub désactivée (score news dégradé)")
+# CryptoPanic : offre gratuite supprimée (avril 2026) — source abandonnée volontairement.
+# Les poids rebasculent sur RSS 50% + Finnhub 25% (cas `elif has_finnhub` plus bas).
 if not os.getenv("CRYPTOPANIC_TOKEN", ""):
-    logger.warning("CRYPTOPANIC_TOKEN absent — source CryptoPanic désactivée (score news dégradé)")
+    logger.info("CryptoPanic non configuré (API devenue payante) — RSS + Finnhub seulement")
 
 # Sources RSS crypto
 RSS_FEEDS = [
