@@ -40,11 +40,8 @@ logger = logging.getLogger(__name__)
 SIGNAL_THRESHOLD = 1.5      # Alerte envoyée (inchangé — on veut voir les signaux)
 AUTO_EXECUTE_THRESHOLD = 2.0  # Ordre automatique — relevé 1.5→2.0 (qualité > quantité)
 
-# ── Mode BTC baissier (Option A) ─────────────────────────────────────────────
-# Quand BTC est sous sa MA50, seuls les signaux exceptionnels passent,
-# avec une taille réduite pour limiter l'exposition en marché dégradé.
-BTC_BEAR_MIN_SCORE  = 2.5   # Score minimum pour acheter quand BTC < MA50
-BTC_BEAR_SIZE_MULT  = 0.50  # Taille réduite de 50% en mode baissier
+# Option A (achats en mode baissier) retirée le 17/07/2026 — le backtest 400j
+# montre EV -1.58% sous MA50 même à score >= 2.5. Blocage total dans run_scan().
 
 # Rotation et sizing délégués à capital_allocator.py
 # Les seuils ROTATION_SCORE_MIN (2.0) et ROTATION_USDC_RATIO (60%) sont définis là-bas.
@@ -244,16 +241,14 @@ def run_scan(portfolio_value: float) -> list[dict]:
     """
     logger.info("Démarrage du scan de marché OKX...")
 
-    # ── Filtre BTC 50MA ───────────────────────────────────────────────────────
-    # Mode normal   : BTC au-dessus MA50 → scan complet, taille normale
-    # Mode baissier : BTC sous MA50 → seuls signaux ≥ 2.5 autorisés, taille ×0.5
+    # ── Filtre BTC 50MA — blocage total ──────────────────────────────────────
+    # Backtest 400j (17/07/2026) : trades sous MA50 = WR 40%, EV -1.58% même à
+    # score >= 2.5 (vs WR 51%, EV +0.74% au-dessus). L'Option A (achats en mode
+    # baissier taille réduite) est retirée — aucune entrée sous la MA50.
     from position_manager import is_btc_uptrend
-    btc_bear_mode = not is_btc_uptrend()
-    if btc_bear_mode:
-        logger.info(
-            f"BTC sous MA50 — mode baissier actif : "
-            f"seuls signaux >= {BTC_BEAR_MIN_SCORE} autorisés, taille x{BTC_BEAR_SIZE_MULT}"
-        )
+    if not is_btc_uptrend():
+        logger.info("BTC sous MA50 — aucune entrée (blocage total, cf. backtest 17/07)")
+        return []
 
     # ── Mode observation (double condition) : BTC sous MA50 ET HMM bear ────────
     if is_observation_mode():
@@ -579,32 +574,6 @@ def run_scan(portfolio_value: float) -> list[dict]:
 
         time.sleep(1)  # anti-flood API
 
-    # ── Phase 2 : Filtre BTC baissier + tri par score ────────────────────────
-    if btc_bear_mode:
-        avant = len(actionable)
-        actionable = [p for p in actionable if abs(p["score"]) >= BTC_BEAR_MIN_SCORE]
-        filtres = avant - len(actionable)
-        if not actionable:
-            logger.info(
-                f"Mode baissier : {filtres} signaux < {BTC_BEAR_MIN_SCORE} filtrés "
-                f"— aucun signal exceptionnel, scan vide"
-            )
-            return []
-        else:
-            logger.info(
-                f"Mode baissier : {len(actionable)} signal(s) exceptionnel(s) "
-                f"(score >= {BTC_BEAR_MIN_SCORE}) conservés sur {avant} scannés"
-            )
-            try:
-                noms = ", ".join(f"{p['ticker']}({p['score']:+.2f})" for p in actionable)
-                alertes.send(
-                    f"⚠️ *Mode baissier — Signaux exceptionnels détectés*\n"
-                    f"BTC sous MA50 mais score >= {BTC_BEAR_MIN_SCORE} : {noms}\n"
-                    f"_Taille réduite x{BTC_BEAR_SIZE_MULT} — exposition limitée_"
-                )
-            except Exception:
-                pass
-
     # CRITIQUE : le signal le plus fort est financé en priorité.
     # Sans ce tri, un signal faible traité en premier vide le budget USDC
     # et prive le meilleur signal de capital (bug BIO/TRX du 1er mai).
@@ -683,16 +652,6 @@ def run_scan(portfolio_value: float) -> list[dict]:
 
             # Taille finale après régime
             taille_finale = round(alloc["taille_allouee"] * pos_mult, 2)
-
-            # Réduction BTC baissier : taille ×0.5 pour les signaux exceptionnels
-            # achetés quand BTC est sous MA50 (exposition réduite, risque marché élevé)
-            if btc_bear_mode:
-                taille_finale = round(taille_finale * BTC_BEAR_SIZE_MULT, 2)
-                payload["btc_bear"] = True
-                logger.info(
-                    f"[BTC Bear] {ticker} : taille réduite x{BTC_BEAR_SIZE_MULT} "
-                    f"→ ${taille_finale:.0f}"
-                )
 
             # Injecter la taille dans le payload — execution.py va la lire
             payload["taille_allouee"] = taille_finale
