@@ -309,6 +309,89 @@ def get_available_pairs(min_volume_usdc: float = 500_000) -> list[str]:
         return []
 
 
+# ── Achats maker-first ────────────────────────────────────────────────────────
+# Frais maker < taker + zéro slippage. L'edge brut du bot ≈ ses frais (backtest
+# 17/07/2026) — réduire le coût d'exécution EST l'edge. Uniquement les achats :
+# les ventes restent agressives (une sortie ne se négocie pas).
+MAKER_WAIT_SECONDS = 120   # attente max de remplissage avant fallback agressif
+MAKER_POLL_SECONDS = 10
+MAKER_MAX_PER_RUN  = 2     # garde-fou timeout GitHub Actions (20min) : au-delà,
+                           # les achats suivants du cycle partent direct en agressif
+_maker_attempts    = 0     # compteur process (1 process = 1 cycle)
+
+
+def get_order_state(ticker: str, order_id: str) -> dict:
+    """État d'un ordre : state = live | partially_filled | filled | canceled."""
+    data = _get("/api/v5/trade/order", {
+        "instId": f"{ticker.upper()}-{QUOTE_CCY}",
+        "ordId": order_id,
+    })
+    return data[0] if data else {}
+
+
+def _try_maker_buy(ticker: str, inst_id: str, bid: float, qty: float) -> dict | None:
+    """
+    Achat maker : ordre post_only au meilleur bid, poll jusqu'à MAKER_WAIT_SECONDS.
+
+    - Rempli (même partiellement) → résultat retourné, pas de fallback
+    - Zéro rempli après timeout → annulation, retourne None (le caller passe agressif)
+    - post_only rejeté par OKX (px croiserait le carnet) → None immédiat
+    """
+    try:
+        result = _post("/api/v5/trade/order", {
+            "instId": inst_id,
+            "tdMode": "cash",
+            "side": "buy",
+            "ordType": "post_only",
+            "px": str(bid),
+            "sz": str(qty),
+        })
+        order = result[0] if result else {}
+        ord_id = order.get("ordId", "")
+        if not ord_id:
+            return None
+        logger.info(f"Ordre MAKER buy {ticker} : {qty} @ ${bid} (post_only, attente {MAKER_WAIT_SECONDS}s max)")
+
+        deadline = time.time() + MAKER_WAIT_SECONDS
+        while time.time() < deadline:
+            time.sleep(MAKER_POLL_SECONDS)
+            state = get_order_state(ticker, ord_id)
+            status = state.get("state", "")
+            if status == "filled":
+                logger.info(f"MAKER {ticker} rempli @ ${bid} — frais réduits, zéro slippage")
+                return {
+                    "ordId": ord_id,
+                    "fill_price_estimate": bid,
+                    "qty_estimate": qty,
+                    "maker": True,
+                }
+            if status == "canceled":  # post_only annulé par OKX (aurait croisé le carnet)
+                logger.info(f"MAKER {ticker} annulé par OKX — fallback agressif")
+                return None
+
+        # Timeout — annuler le reste et statuer sur le rempli partiel
+        state = get_order_state(ticker, ord_id)
+        filled_qty = float(state.get("accFillSz", 0) or 0)
+        try:
+            cancel_order(ticker, ord_id)
+        except Exception:
+            pass
+        if filled_qty > 0:
+            logger.info(f"MAKER {ticker} partiel : {filled_qty}/{qty} rempli — on garde, pas de fallback")
+            return {
+                "ordId": ord_id,
+                "fill_price_estimate": bid,
+                "qty_estimate": filled_qty,
+                "maker": True,
+                "partial": True,
+            }
+        logger.info(f"MAKER {ticker} non rempli en {MAKER_WAIT_SECONDS}s — fallback agressif")
+        return None
+    except Exception as e:
+        logger.debug(f"Maker buy {ticker} : {e}")
+        return None
+
+
 def place_order(
     ticker: str,
     side: str,
@@ -322,8 +405,8 @@ def place_order(
     Passe un ordre Spot sur OKX avec stratégie limit intelligente.
 
     Stratégie d'exécution :
-    - ACHAT : limite à ask + 0.3% → évite l'annulation slippage 5% OKX sur paires peu liquides
-    - VENTE : limite à bid - 0.2% → garantit le remplissage rapide en sortie
+    - ACHAT : maker d'abord (post_only au bid, 2min max) → fallback limit ask + 0.3%
+    - VENTE : limite à bid - 0.5% → garantit le remplissage rapide en sortie
     - Si le carnet est indisponible : fallback market
 
     Puis place les ordres algo TP/SL séparément (OKX spot ne supporte pas l'inline).
@@ -349,12 +432,25 @@ def place_order(
     except Exception as e:
         logger.debug(f"Check ordres en attente {ticker} : {e}")
 
+    # ── Étape 0 : tentative maker pour les achats ─────────────────────────────
+    global _maker_attempts
+    if side == "buy" and usdt_amount and _maker_attempts < MAKER_MAX_PER_RUN:
+        bid = get_bid_price(ticker)
+        if bid:
+            qty_maker = round(usdt_amount / bid, 8)
+            if qty_maker * bid >= 1.0:
+                _maker_attempts += 1
+                maker_result = _try_maker_buy(ticker, inst_id, bid, qty_maker)
+                if maker_result:
+                    return maker_result
+                # None → on continue vers le chemin agressif ci-dessous
+
     # ── Étape 1 : calcul du prix et de la quantité ────────────────────────────
     fill_price = None
     use_limit = True
 
     if side == "buy":
-        # Achat : ordre limit à ask + 0.3% pour garantir le remplissage
+        # Achat agressif : ordre limit à ask + 0.3% pour garantir le remplissage
         ask = get_ask_price(ticker)
         if ask:
             fill_price = round(ask * 1.003, 8)
