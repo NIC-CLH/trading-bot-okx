@@ -12,7 +12,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: read
+  contents: write  # nécessaire pour persister les peaks du trailing stop (trade_memory.json)
 
 jobs:
   alert:
@@ -44,6 +44,26 @@ jobs:
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           PYTHONIOENCODING: utf-8
+
+      # Persister les peaks du trailing stop — sans ça, chaque run 30min oublie
+      # le pic du précédent et le trailing stop ne se déclenche jamais.
+      # Même stratégie rebase + retry que le bot principal.
+      - name: Persist trade memory
+        if: always()
+        run: |
+          git config user.name "Alert Scanner"
+          git config user.email "alert-scanner@github-actions"
+          git add trade_memory.json
+          if git diff --staged --quiet; then exit 0; fi
+          git commit -m "chore: update peaks [skip ci]"
+          for i in 1 2 3; do
+            if git push; then exit 0; fi
+            git pull --rebase -X theirs origin main || git rebase --abort
+            sleep $((i * 5))
+          done
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Notification Telegram uniquement si le scanner plante vraiment
       # (pas sur les annulations — if: failure() n'est pas déclenché par cancelled)

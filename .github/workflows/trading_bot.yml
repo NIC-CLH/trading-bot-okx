@@ -49,14 +49,24 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           PYTHONIOENCODING: utf-8
 
-      # Sauvegarder la mémoire d'apprentissage (trade_memory.json) dans le repo
+      # Sauvegarder la mémoire d'apprentissage (trade_memory.json) dans le repo.
+      # Push avec rebase + retry : si un autre push arrive pendant le run
+      # (scanner 30min, dev local), on rebase et on réessaie au lieu d'échouer.
+      # -X theirs pendant le rebase = garder NOTRE version du fichier (la plus fraîche).
       - name: Persist trade memory
         if: always()
         run: |
           git config user.name "Trading Bot"
           git config user.email "trading-bot@github-actions"
           git add trade_memory.json
-          git diff --staged --quiet || git commit -m "chore: update trade memory [skip ci]" && git push
+          if git diff --staged --quiet; then exit 0; fi
+          git commit -m "chore: update trade memory [skip ci]"
+          for i in 1 2 3; do
+            if git push; then exit 0; fi
+            git pull --rebase -X theirs origin main || git rebase --abort
+            sleep $((i * 5))
+          done
+          git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
