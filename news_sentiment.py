@@ -26,6 +26,13 @@ logger = logging.getLogger(__name__)
 
 FINNHUB_API_KEY = os.getenv("FINNHUB_API_KEY", "")
 
+# Alerte visible au démarrage si des sources news sont mortes (clés absentes).
+# Sans ça, le score news tombe à ~0 silencieusement et le filtre narrative est aveugle.
+if not FINNHUB_API_KEY:
+    logger.warning("FINNHUB_API_KEY absente — source Finnhub désactivée (score news dégradé)")
+if not os.getenv("CRYPTOPANIC_TOKEN", ""):
+    logger.warning("CRYPTOPANIC_TOKEN absent — source CryptoPanic désactivée (score news dégradé)")
+
 # Sources RSS crypto
 RSS_FEEDS = [
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
