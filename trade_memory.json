@@ -890,7 +890,7 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.087581212427212,
+  "_sd_prev_usdt_d": 8.041761104326838,
   "shadow_portfolio": [
     {
       "ticker": "PI",
@@ -1010,20 +1010,20 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ZEC",
-      "score": 1.0,
-      "prix_ref": 546.02,
-      "type": "swing",
-      "timestamp": "2026-07-18T12:06:57.782619+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "UNI",
       "score": 1.02,
       "prix_ref": 3.505,
       "type": "swing",
       "timestamp": "2026-07-18T12:07:56.724728+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.02,
+      "prix_ref": 557.12,
+      "type": "swing",
+      "timestamp": "2026-07-18T20:07:02.518143+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1071,6 +1071,10 @@
     {
       "date": "2026-07-18T16:06",
       "equity": 535.22
+    },
+    {
+      "date": "2026-07-18T20:05",
+      "equity": 536.52
     }
   ],
   "health_last_warn": 1784319030.5784879
