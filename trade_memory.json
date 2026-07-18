@@ -890,7 +890,7 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.098472971125084,
+  "_sd_prev_usdt_d": 8.094115137047151,
   "shadow_portfolio": [
     {
       "ticker": "XPL",
@@ -988,8 +988,8 @@
       "prix_ref": 0.245,
       "type": "swing",
       "timestamp": "2026-07-16T00:10:00.698952+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -4.61
     },
     {
       "ticker": "ETHFI",
@@ -1055,6 +1055,10 @@
     {
       "date": "2026-07-18T00:05",
       "equity": 552.68
+    },
+    {
+      "date": "2026-07-18T04:05",
+      "equity": 539.12
     }
   ],
   "health_last_warn": 1784319030.5784879
