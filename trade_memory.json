@@ -890,26 +890,8 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.082196346754133,
+  "_sd_prev_usdt_d": 8.098472971125084,
   "shadow_portfolio": [
-    {
-      "ticker": "XLM",
-      "score": 1.04,
-      "prix_ref": 0.2054,
-      "type": "swing",
-      "timestamp": "2026-07-04T12:09:35.286345+00:00",
-      "outcome": "correct",
-      "pnl_pct": -2.69
-    },
-    {
-      "ticker": "ALLO",
-      "score": 1.02,
-      "prix_ref": 0.41576,
-      "type": "swing",
-      "timestamp": "2026-07-07T08:08:06.927965+00:00",
-      "outcome": "correct",
-      "pnl_pct": -4.03
-    },
     {
       "ticker": "XPL",
       "score": 1.02,
@@ -954,15 +936,6 @@
       "timestamp": "2026-07-09T12:07:26.265341+00:00",
       "outcome": "correct",
       "pnl_pct": -4.0
-    },
-    {
-      "ticker": "ZEC",
-      "score": 1.11,
-      "prix_ref": 481.15,
-      "type": "swing",
-      "timestamp": "2026-07-10T00:06:33.818188+00:00",
-      "outcome": "correct",
-      "pnl_pct": 7.1
     },
     {
       "ticker": "CC",
@@ -1026,6 +999,33 @@
       "timestamp": "2026-07-16T04:08:48.789467+00:00",
       "outcome": null,
       "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.02,
+      "prix_ref": 547.5,
+      "type": "swing",
+      "timestamp": "2026-07-18T00:06:53.047367+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ONDO",
+      "score": 1.09,
+      "prix_ref": 0.3729,
+      "type": "swing",
+      "timestamp": "2026-07-18T00:07:23.291496+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "UNI",
+      "score": 1.14,
+      "prix_ref": 3.639,
+      "type": "swing",
+      "timestamp": "2026-07-18T00:08:20.905313+00:00",
+      "outcome": null,
+      "pnl_pct": null
     }
   ],
   "pending_signals": [],
@@ -1051,6 +1051,10 @@
     {
       "date": "2026-07-17T20:06",
       "equity": 538.97
+    },
+    {
+      "date": "2026-07-18T00:05",
+      "equity": 552.68
     }
   ],
   "health_last_warn": 1784319030.5784879
