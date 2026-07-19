@@ -890,17 +890,8 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.023963927960766,
+  "_sd_prev_usdt_d": 8.039824279400326,
   "shadow_portfolio": [
-    {
-      "ticker": "GRASS",
-      "score": 1.05,
-      "prix_ref": 0.5391,
-      "type": "swing",
-      "timestamp": "2026-07-07T08:09:31.555723+00:00",
-      "outcome": "correct",
-      "pnl_pct": -28.97
-    },
     {
       "ticker": "JTO",
       "score": 1.03,
@@ -1010,20 +1001,29 @@
       "pnl_pct": null
     },
     {
-      "ticker": "STRK",
-      "score": -1.05,
-      "prix_ref": 0.02921,
+      "ticker": "ONDO",
+      "score": 1.2,
+      "prix_ref": 0.3511,
       "type": "swing",
-      "timestamp": "2026-07-19T04:09:52.930260+00:00",
+      "timestamp": "2026-07-19T12:09:16.123260+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
-      "ticker": "ONDO",
-      "score": 1.07,
-      "prix_ref": 0.3516,
+      "ticker": "STRK",
+      "score": -1.04,
+      "prix_ref": 0.02914,
       "type": "swing",
-      "timestamp": "2026-07-19T08:06:52.117244+00:00",
+      "timestamp": "2026-07-19T12:10:09.071955+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "G",
+      "score": 1.13,
+      "prix_ref": 0.003833,
+      "type": "swing",
+      "timestamp": "2026-07-19T12:11:42.361738+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1087,6 +1087,10 @@
     {
       "date": "2026-07-19T08:05",
       "equity": 537.53
+    },
+    {
+      "date": "2026-07-19T12:07",
+      "equity": 533.93
     }
   ],
   "health_last_warn": 1784319030.5784879
