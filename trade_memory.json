@@ -890,7 +890,7 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.039824279400326,
+  "_sd_prev_usdt_d": 8.030878800093669,
   "shadow_portfolio": [
     {
       "ticker": "JTO",
@@ -992,15 +992,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ZEC",
-      "score": 1.07,
-      "prix_ref": 555.1,
-      "type": "swing",
-      "timestamp": "2026-07-19T04:07:41.912850+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ONDO",
       "score": 1.2,
       "prix_ref": 0.3511,
@@ -1024,6 +1015,15 @@
       "prix_ref": 0.003833,
       "type": "swing",
       "timestamp": "2026-07-19T12:11:42.361738+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.02,
+      "prix_ref": 553.34,
+      "type": "swing",
+      "timestamp": "2026-07-19T16:07:45.291223+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1091,6 +1091,10 @@
     {
       "date": "2026-07-19T12:07",
       "equity": 533.93
+    },
+    {
+      "date": "2026-07-19T16:06",
+      "equity": 533.64
     }
   ],
   "health_last_warn": 1784319030.5784879
