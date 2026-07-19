@@ -890,17 +890,8 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.017390715889091,
+  "_sd_prev_usdt_d": 8.025160273197594,
   "shadow_portfolio": [
-    {
-      "ticker": "PI",
-      "score": -1.07,
-      "prix_ref": 0.1114,
-      "type": "swing",
-      "timestamp": "2026-07-07T08:09:20.572956+00:00",
-      "outcome": "correct",
-      "pnl_pct": -12.48
-    },
     {
       "ticker": "GRASS",
       "score": 1.05,
@@ -1020,10 +1011,19 @@
     },
     {
       "ticker": "ZEC",
-      "score": 1.02,
-      "prix_ref": 557.12,
+      "score": 1.07,
+      "prix_ref": 555.1,
       "type": "swing",
-      "timestamp": "2026-07-18T20:07:02.518143+00:00",
+      "timestamp": "2026-07-19T04:07:41.912850+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STRK",
+      "score": -1.05,
+      "prix_ref": 0.02921,
+      "type": "swing",
+      "timestamp": "2026-07-19T04:09:52.930260+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1079,6 +1079,10 @@
     {
       "date": "2026-07-19T00:06",
       "equity": 543.01
+    },
+    {
+      "date": "2026-07-19T04:06",
+      "equity": 540.99
     }
   ],
   "health_last_warn": 1784319030.5784879
