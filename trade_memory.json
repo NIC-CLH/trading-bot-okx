@@ -890,35 +890,8 @@
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.043506427096876,
+  "_sd_prev_usdt_d": 8.018173578982456,
   "shadow_portfolio": [
-    {
-      "ticker": "JTO",
-      "score": 1.03,
-      "prix_ref": 0.7822,
-      "type": "swing",
-      "timestamp": "2026-07-07T12:11:32.628013+00:00",
-      "outcome": "correct",
-      "pnl_pct": -17.4
-    },
-    {
-      "ticker": "APE",
-      "score": 1.04,
-      "prix_ref": 0.16308,
-      "type": "swing",
-      "timestamp": "2026-07-09T12:07:26.265341+00:00",
-      "outcome": "correct",
-      "pnl_pct": -4.0
-    },
-    {
-      "ticker": "CC",
-      "score": -1.07,
-      "prix_ref": 0.13311,
-      "type": "swing",
-      "timestamp": "2026-07-10T00:08:10.856198+00:00",
-      "outcome": "correct",
-      "pnl_pct": 1.4
-    },
     {
       "ticker": "BONK",
       "score": -1.04,
@@ -1020,10 +993,37 @@
     },
     {
       "ticker": "ZEC",
-      "score": 1.02,
-      "prix_ref": 553.34,
+      "score": 1.11,
+      "prix_ref": 545.23,
       "type": "swing",
-      "timestamp": "2026-07-19T16:07:45.291223+00:00",
+      "timestamp": "2026-07-20T00:07:06.746635+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "TRUMP",
+      "score": -1.23,
+      "prix_ref": 1.564,
+      "type": "swing",
+      "timestamp": "2026-07-20T00:07:36.300744+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BNB",
+      "score": -1.02,
+      "prix_ref": 570.7,
+      "type": "swing",
+      "timestamp": "2026-07-20T00:08:30.067687+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ARG",
+      "score": -1.05,
+      "prix_ref": 0.1561,
+      "type": "swing",
+      "timestamp": "2026-07-20T00:09:24.440823+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1099,6 +1099,10 @@
     {
       "date": "2026-07-19T20:05",
       "equity": 532.19
+    },
+    {
+      "date": "2026-07-20T00:05",
+      "equity": 535.08
     }
   ],
   "health_last_warn": 1784319030.5784879
