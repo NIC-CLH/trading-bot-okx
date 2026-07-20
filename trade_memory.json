@@ -277,6 +277,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 1.9
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ACE",
+      "pnl_pct": -11.03,
+      "days_held": 0.0,
+      "exit_reason": "Stop ATR déclenché (-11.0% < -10.0%)",
+      "valeur_usd": 438.31,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-07-20T12:06:51.413086+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.02
     }
   ],
   "entries": [
@@ -708,6 +722,32 @@
       "score_tech_adj_raw": 1.9,
       "score_rs_raw": 0,
       "score_social_raw": 0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ACE",
+      "score": 2.02,
+      "score_tech": 2.02,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 438.31,
+      "prix": 0.15190999999999996,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-07-20T12:06:44.487151+00:00",
+      "score_tech_raw": 2.02,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.02,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -902,9 +942,21 @@
       "pnl_pct": -6.158675310771717,
       "type": "trade_reflection",
       "timestamp": "2026-05-28T04:06:40.398621+00:00"
+    },
+    {
+      "lecon_principale": "Score composite trop faible (2.02) pour un régime bull en volatilité normal",
+      "signal_fiable": "Stop ATR correctement calibré - a limité la perte à -11% vs risque théorique plus élevé",
+      "signal_trompeur": "Régime bull déclaré mais score composite insuffisant suggère signaux haussiers peu convergents",
+      "regime_optimal": "bull - à confirmer avec meilleure qualité de score composite",
+      "recommandation": "reduce_size",
+      "confiance": 0.78,
+      "ticker": "ACE",
+      "pnl_pct": -11.032848397077199,
+      "type": "trade_reflection",
+      "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.06604506893154,
+  "_sd_prev_usdt_d": 7.987899600961612,
   "shadow_portfolio": [
     {
       "ticker": "BONK",
@@ -966,8 +1018,8 @@
       "prix_ref": 0.41161,
       "type": "swing",
       "timestamp": "2026-07-18T08:09:04.491626+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 9.13
     },
     {
       "ticker": "UNI",
@@ -1015,15 +1067,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "TRUMP",
-      "score": -1.23,
-      "prix_ref": 1.564,
-      "type": "swing",
-      "timestamp": "2026-07-20T00:07:36.300744+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "BNB",
       "score": -1.02,
       "prix_ref": 570.7,
@@ -1040,6 +1083,15 @@
       "timestamp": "2026-07-20T04:09:17.488146+00:00",
       "outcome": null,
       "pnl_pct": null
+    },
+    {
+      "ticker": "TRUMP",
+      "score": -1.05,
+      "prix_ref": 1.576,
+      "type": "swing",
+      "timestamp": "2026-07-20T12:08:58.643904+00:00",
+      "outcome": null,
+      "pnl_pct": null
     }
   ],
   "pending_signals": [],
@@ -1048,6 +1100,11 @@
       "threshold": 1.9,
       "expires": 1779955594.2063859,
       "loss_pct": -6.16
+    },
+    "ACE": {
+      "threshold": 2.2,
+      "expires": 1784563618.8546674,
+      "loss_pct": -11.03
     }
   },
   "peaks": {
@@ -1125,6 +1182,10 @@
     {
       "date": "2026-07-20T08:06",
       "equity": 519.65
+    },
+    {
+      "date": "2026-07-20T12:07",
+      "equity": 461.25
     }
   ],
   "health_last_warn": 1784319030.5784879
