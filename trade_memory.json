@@ -956,7 +956,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.987899600961612,
+  "_sd_prev_usdt_d": 7.942425321283116,
   "shadow_portfolio": [
     {
       "ticker": "BONK",
@@ -1027,8 +1027,8 @@
       "prix_ref": 3.505,
       "type": "swing",
       "timestamp": "2026-07-18T12:07:56.724728+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 1.08
     },
     {
       "ticker": "ONDO",
@@ -1058,15 +1058,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ZEC",
-      "score": 1.11,
-      "prix_ref": 545.23,
-      "type": "swing",
-      "timestamp": "2026-07-20T00:07:06.746635+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "BNB",
       "score": -1.02,
       "prix_ref": 570.7,
@@ -1090,6 +1081,15 @@
       "prix_ref": 1.576,
       "type": "swing",
       "timestamp": "2026-07-20T12:08:58.643904+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.04,
+      "prix_ref": 546.02,
+      "type": "swing",
+      "timestamp": "2026-07-20T16:06:57.794877+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1185,6 +1185,10 @@
     },
     {
       "date": "2026-07-20T12:07",
+      "equity": 461.25
+    },
+    {
+      "date": "2026-07-20T16:05",
       "equity": 461.25
     }
   ],
