@@ -263,6 +263,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 1.88
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "UNI",
+      "pnl_pct": -9.42,
+      "days_held": 0,
+      "exit_reason": "Stop ATR -9.4% <= -9.0%",
+      "valeur_usd": 492.52,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-07-20T07:01:54.284337+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.9
     }
   ],
   "entries": [
