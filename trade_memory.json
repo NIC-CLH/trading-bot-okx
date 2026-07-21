@@ -956,7 +956,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.862584810921139,
+  "_sd_prev_usdt_d": 7.832189816696622,
   "shadow_portfolio": [
     {
       "ticker": "KAITO",
@@ -1000,8 +1000,8 @@
       "prix_ref": 0.02914,
       "type": "swing",
       "timestamp": "2026-07-19T12:10:09.071955+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 0.93
     },
     {
       "ticker": "G",
@@ -1009,8 +1009,8 @@
       "prix_ref": 0.003833,
       "type": "swing",
       "timestamp": "2026-07-19T12:11:42.361738+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -13.88
     },
     {
       "ticker": "BNB",
@@ -1209,6 +1209,10 @@
     },
     {
       "date": "2026-07-21T12:07",
+      "equity": 461.25
+    },
+    {
+      "date": "2026-07-21T16:07",
       "equity": 461.25
     }
   ],
