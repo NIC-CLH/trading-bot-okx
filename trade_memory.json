@@ -996,7 +996,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.897723775740263,
+  "_sd_prev_usdt_d": 7.88334382589185,
   "shadow_portfolio": [
     {
       "ticker": "STRK",
@@ -1031,8 +1031,8 @@
       "prix_ref": 1.576,
       "type": "swing",
       "timestamp": "2026-07-20T12:08:58.643904+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 1.84
     },
     {
       "ticker": "ZAMA",
@@ -1273,6 +1273,10 @@
     },
     {
       "date": "2026-07-22T12:05",
+      "equity": 463.99
+    },
+    {
+      "date": "2026-07-22T16:07",
       "equity": 463.99
     }
   ],
