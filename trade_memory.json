@@ -788,6 +788,32 @@
       "score_tech_adj_raw": 1.52,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ETHFI",
+      "score": 1.52,
+      "score_tech": 1.52,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 436.13,
+      "prix": 0.4607,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-07-22T20:05:34.925972+00:00",
+      "score_tech_raw": 1.52,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 1.52,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -996,7 +1022,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.88334382589185,
+  "_sd_prev_usdt_d": 7.903878083463225,
   "shadow_portfolio": [
     {
       "ticker": "STRK",
@@ -1080,15 +1106,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "UNI",
-      "score": 1.23,
-      "prix_ref": 3.775,
-      "type": "swing",
-      "timestamp": "2026-07-22T12:08:44.698706+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "BNB",
       "score": -1.01,
       "prix_ref": 570.1,
@@ -1130,6 +1147,15 @@
       "prix_ref": 0.09697,
       "type": "swing",
       "timestamp": "2026-07-22T12:10:21.098371+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "UNI",
+      "score": 1.1,
+      "prix_ref": 3.839,
+      "type": "swing",
+      "timestamp": "2026-07-22T20:08:07.497418+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1279,6 +1305,10 @@
     {
       "date": "2026-07-22T16:07",
       "equity": 463.99
+    },
+    {
+      "date": "2026-07-22T20:05",
+      "equity": 460.36
     }
   ],
   "health_last_warn": 1784319030.5784879
