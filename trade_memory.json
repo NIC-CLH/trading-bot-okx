@@ -996,44 +996,8 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.906199979312261,
+  "_sd_prev_usdt_d": 7.897723775740263,
   "shadow_portfolio": [
-    {
-      "ticker": "KAITO",
-      "score": 1.04,
-      "prix_ref": 0.675,
-      "type": "swing",
-      "timestamp": "2026-07-12T08:09:17.632983+00:00",
-      "outcome": "correct",
-      "pnl_pct": 4.46
-    },
-    {
-      "ticker": "EIGEN",
-      "score": 1.09,
-      "prix_ref": 0.245,
-      "type": "swing",
-      "timestamp": "2026-07-16T00:10:00.698952+00:00",
-      "outcome": "correct",
-      "pnl_pct": -4.61
-    },
-    {
-      "ticker": "ETHFI",
-      "score": 1.17,
-      "prix_ref": 0.45,
-      "type": "swing",
-      "timestamp": "2026-07-16T04:08:48.789467+00:00",
-      "outcome": "correct",
-      "pnl_pct": -1.56
-    },
-    {
-      "ticker": "ALLO",
-      "score": 1.13,
-      "prix_ref": 0.41161,
-      "type": "swing",
-      "timestamp": "2026-07-18T08:09:04.491626+00:00",
-      "outcome": "missed",
-      "pnl_pct": 9.13
-    },
     {
       "ticker": "STRK",
       "score": -1.04,
@@ -1051,15 +1015,6 @@
       "timestamp": "2026-07-19T12:11:42.361738+00:00",
       "outcome": "correct",
       "pnl_pct": -13.88
-    },
-    {
-      "ticker": "BNB",
-      "score": -1.02,
-      "prix_ref": 570.7,
-      "type": "swing",
-      "timestamp": "2026-07-20T00:08:30.067687+00:00",
-      "outcome": "correct",
-      "pnl_pct": 0.0
     },
     {
       "ticker": "ARG",
@@ -1098,24 +1053,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ONDO",
-      "score": 1.16,
-      "prix_ref": 0.3905,
-      "type": "swing",
-      "timestamp": "2026-07-21T08:09:01.321957+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "UNI",
-      "score": 1.11,
-      "prix_ref": 3.727,
-      "type": "swing",
-      "timestamp": "2026-07-21T08:09:25.129563+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "YGG",
       "score": -1.09,
       "prix_ref": 0.02031,
@@ -1125,11 +1062,74 @@
       "pnl_pct": null
     },
     {
-      "ticker": "BONK",
+      "ticker": "ONDO",
+      "score": 1.02,
+      "prix_ref": 0.4072,
+      "type": "swing",
+      "timestamp": "2026-07-22T12:07:49.044005+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "GRAM",
       "score": -1.04,
+      "prix_ref": 1.51,
+      "type": "swing",
+      "timestamp": "2026-07-22T12:08:10.821757+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "UNI",
+      "score": 1.23,
+      "prix_ref": 3.775,
+      "type": "swing",
+      "timestamp": "2026-07-22T12:08:44.698706+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BNB",
+      "score": -1.01,
+      "prix_ref": 570.1,
+      "type": "swing",
+      "timestamp": "2026-07-22T12:08:55.380640+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BCH",
+      "score": -1.1,
+      "prix_ref": 220.6,
+      "type": "swing",
+      "timestamp": "2026-07-22T12:09:30.159606+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BONK",
+      "score": -1.33,
       "prix_ref": 3e-06,
       "type": "swing",
-      "timestamp": "2026-07-21T12:10:07.665663+00:00",
+      "timestamp": "2026-07-22T12:09:43.592234+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AVAX",
+      "score": -1.08,
+      "prix_ref": 6.502,
+      "type": "swing",
+      "timestamp": "2026-07-22T12:09:54.366707+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "OP",
+      "score": -1.14,
+      "prix_ref": 0.09697,
+      "type": "swing",
+      "timestamp": "2026-07-22T12:10:21.098371+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1270,6 +1270,10 @@
     {
       "date": "2026-07-22T08:07",
       "equity": 432.7
+    },
+    {
+      "date": "2026-07-22T12:05",
+      "equity": 463.99
     }
   ],
   "health_last_warn": 1784319030.5784879
