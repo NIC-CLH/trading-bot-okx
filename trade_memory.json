@@ -291,6 +291,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.02
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ONE",
+      "pnl_pct": 1.49,
+      "days_held": 0.4,
+      "exit_reason": "Trailing stop : pic +5.2% → plancher +2.6% | actuel +1.5%",
+      "valeur_usd": 443.82,
+      "outcome": "win",
+      "exit_quality": 28.6,
+      "timestamp": "2026-07-22T11:31:40.946739+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.52
     }
   ],
   "entries": [
@@ -1134,8 +1148,7 @@
     }
   },
   "peaks": {
-    "XRP": 93.92,
-    "ONE": 5.21
+    "XRP": 93.92
   },
   "equity_history": [
     {
