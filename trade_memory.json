@@ -982,7 +982,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.868369504459769,
+  "_sd_prev_usdt_d": 7.906199979312261,
   "shadow_portfolio": [
     {
       "ticker": "KAITO",
@@ -1053,8 +1053,8 @@
       "prix_ref": 0.1461,
       "type": "swing",
       "timestamp": "2026-07-20T04:09:17.488146+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -17.8
     },
     {
       "ticker": "TRUMP",
@@ -1253,6 +1253,10 @@
     {
       "date": "2026-07-22T04:05",
       "equity": 459.4
+    },
+    {
+      "date": "2026-07-22T08:07",
+      "equity": 432.7
     }
   ],
   "health_last_warn": 1784319030.5784879
