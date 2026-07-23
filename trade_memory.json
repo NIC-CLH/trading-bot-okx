@@ -1022,7 +1022,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.903878083463225,
+  "_sd_prev_usdt_d": 7.8892767224605835,
   "shadow_portfolio": [
     {
       "ticker": "STRK",
@@ -1152,10 +1152,10 @@
     },
     {
       "ticker": "UNI",
-      "score": 1.1,
-      "prix_ref": 3.839,
+      "score": 1.03,
+      "prix_ref": 3.79,
       "type": "swing",
-      "timestamp": "2026-07-22T20:08:07.497418+00:00",
+      "timestamp": "2026-07-23T00:07:46.673799+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1309,6 +1309,10 @@
     {
       "date": "2026-07-22T20:05",
       "equity": 460.36
+    },
+    {
+      "date": "2026-07-23T00:05",
+      "equity": 464.45
     }
   ],
   "health_last_warn": 1784319030.5784879
