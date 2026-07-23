@@ -1022,7 +1022,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.928160329110747,
+  "_sd_prev_usdt_d": 7.997947653504628,
   "shadow_portfolio": [
     {
       "ticker": "STRK",
@@ -1133,15 +1133,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "AVAX",
-      "score": -1.08,
-      "prix_ref": 6.502,
-      "type": "swing",
-      "timestamp": "2026-07-22T12:09:54.366707+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "UNI",
       "score": 1.11,
       "prix_ref": 3.787,
@@ -1156,6 +1147,15 @@
       "prix_ref": 0.09606,
       "type": "swing",
       "timestamp": "2026-07-23T04:09:40.303060+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AVAX",
+      "score": -1.1,
+      "prix_ref": 6.439,
+      "type": "swing",
+      "timestamp": "2026-07-23T16:08:58.802940+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1325,6 +1325,10 @@
     {
       "date": "2026-07-23T12:05",
       "equity": 457.04
+    },
+    {
+      "date": "2026-07-23T16:06",
+      "equity": 451.62
     }
   ],
   "health_last_warn": 1784319030.5784879
