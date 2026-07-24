@@ -1022,26 +1022,8 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.958319582101588,
+  "_sd_prev_usdt_d": 8.00772314577126,
   "shadow_portfolio": [
-    {
-      "ticker": "G",
-      "score": 1.13,
-      "prix_ref": 0.003833,
-      "type": "swing",
-      "timestamp": "2026-07-19T12:11:42.361738+00:00",
-      "outcome": "correct",
-      "pnl_pct": -13.88
-    },
-    {
-      "ticker": "ARG",
-      "score": -1.0,
-      "prix_ref": 0.1461,
-      "type": "swing",
-      "timestamp": "2026-07-20T04:09:17.488146+00:00",
-      "outcome": "correct",
-      "pnl_pct": -17.8
-    },
     {
       "ticker": "TRUMP",
       "score": -1.05,
@@ -1106,15 +1088,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "BONK",
-      "score": -1.33,
-      "prix_ref": 3e-06,
-      "type": "swing",
-      "timestamp": "2026-07-22T12:09:43.592234+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "OP",
       "score": -1.06,
       "prix_ref": 0.09606,
@@ -1133,29 +1106,56 @@
       "pnl_pct": null
     },
     {
-      "ticker": "AVAX",
-      "score": -1.04,
-      "prix_ref": 6.275,
+      "ticker": "XPL",
+      "score": -1.01,
+      "prix_ref": 0.08448,
       "type": "swing",
-      "timestamp": "2026-07-24T08:09:22.054840+00:00",
+      "timestamp": "2026-07-24T08:10:40.926729+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "RE",
+      "score": 1.11,
+      "prix_ref": 0.63103,
+      "type": "swing",
+      "timestamp": "2026-07-24T12:08:54.261372+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AVAX",
+      "score": -1.07,
+      "prix_ref": 6.257,
+      "type": "swing",
+      "timestamp": "2026-07-24T12:10:09.562336+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "GRAM",
       "score": -1.01,
-      "prix_ref": 1.469,
+      "prix_ref": 1.463,
       "type": "swing",
-      "timestamp": "2026-07-24T08:10:29.947321+00:00",
+      "timestamp": "2026-07-24T12:11:11.184203+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
-      "ticker": "XPL",
-      "score": -1.01,
-      "prix_ref": 0.08448,
+      "ticker": "BONK",
+      "score": -1.07,
+      "prix_ref": 3e-06,
       "type": "swing",
-      "timestamp": "2026-07-24T08:10:40.926729+00:00",
+      "timestamp": "2026-07-24T12:12:02.828136+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "APT",
+      "score": -1.07,
+      "prix_ref": 0.61,
+      "type": "swing",
+      "timestamp": "2026-07-24T12:12:26.767166+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1345,6 +1345,10 @@
     {
       "date": "2026-07-24T08:07",
       "equity": 451.9
+    },
+    {
+      "date": "2026-07-24T12:07",
+      "equity": 452.76
     }
   ],
   "health_last_warn": 1784319030.5784879
