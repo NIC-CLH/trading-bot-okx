@@ -305,6 +305,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 1.52
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ETHFI",
+      "pnl_pct": -9.16,
+      "days_held": 2.2,
+      "exit_reason": "Stop ATR -9.2% <= -8.4%",
+      "valeur_usd": 397.82,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-07-24T23:01:54.104521+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.52
     }
   ],
   "entries": [
@@ -1174,8 +1188,7 @@
     }
   },
   "peaks": {
-    "XRP": 93.92,
-    "ETHFI": 0.46
+    "XRP": 93.92
   },
   "equity_history": [
     {
