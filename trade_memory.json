@@ -1022,17 +1022,8 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.975450482808806,
+  "_sd_prev_usdt_d": 7.958319582101588,
   "shadow_portfolio": [
-    {
-      "ticker": "STRK",
-      "score": -1.04,
-      "prix_ref": 0.02914,
-      "type": "swing",
-      "timestamp": "2026-07-19T12:10:09.071955+00:00",
-      "outcome": "correct",
-      "pnl_pct": 0.93
-    },
     {
       "ticker": "G",
       "score": 1.13,
@@ -1097,15 +1088,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "GRAM",
-      "score": -1.04,
-      "prix_ref": 1.51,
-      "type": "swing",
-      "timestamp": "2026-07-22T12:08:10.821757+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "BNB",
       "score": -1.01,
       "prix_ref": 570.1,
@@ -1133,15 +1115,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "UNI",
-      "score": 1.11,
-      "prix_ref": 3.787,
-      "type": "swing",
-      "timestamp": "2026-07-23T04:07:48.471285+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "OP",
       "score": -1.06,
       "prix_ref": 0.09606,
@@ -1151,11 +1124,38 @@
       "pnl_pct": null
     },
     {
-      "ticker": "AVAX",
-      "score": -1.1,
-      "prix_ref": 6.439,
+      "ticker": "UNI",
+      "score": 1.07,
+      "prix_ref": 3.847,
       "type": "swing",
-      "timestamp": "2026-07-23T16:08:58.802940+00:00",
+      "timestamp": "2026-07-24T08:08:38.390525+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AVAX",
+      "score": -1.04,
+      "prix_ref": 6.275,
+      "type": "swing",
+      "timestamp": "2026-07-24T08:09:22.054840+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "GRAM",
+      "score": -1.01,
+      "prix_ref": 1.469,
+      "type": "swing",
+      "timestamp": "2026-07-24T08:10:29.947321+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "XPL",
+      "score": -1.01,
+      "prix_ref": 0.08448,
+      "type": "swing",
+      "timestamp": "2026-07-24T08:10:40.926729+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1340,6 +1340,10 @@
     },
     {
       "date": "2026-07-24T04:05",
+      "equity": 451.9
+    },
+    {
+      "date": "2026-07-24T08:07",
       "equity": 451.9
     }
   ],
