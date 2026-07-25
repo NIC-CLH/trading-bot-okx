@@ -319,6 +319,17 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 1.52
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ALLO",
+      "pnl_pct": -15.35,
+      "days_held": 0.1,
+      "exit_reason": "Stop ATR -15.3% <= -10.0%",
+      "valeur_usd": 337.99,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-07-25T06:31:53.347385+00:00"
     }
   ],
   "entries": [
@@ -1188,8 +1199,7 @@
     }
   },
   "peaks": {
-    "XRP": 93.92,
-    "ALLO": 1.78
+    "XRP": 93.92
   },
   "equity_history": [
     {
