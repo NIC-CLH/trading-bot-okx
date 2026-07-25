@@ -1047,17 +1047,8 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.101634180879456,
+  "_sd_prev_usdt_d": 8.08107739738015,
   "shadow_portfolio": [
-    {
-      "ticker": "TRUMP",
-      "score": -1.05,
-      "prix_ref": 1.576,
-      "type": "swing",
-      "timestamp": "2026-07-20T12:08:58.643904+00:00",
-      "outcome": "correct",
-      "pnl_pct": 1.84
-    },
     {
       "ticker": "ZAMA",
       "score": 1.05,
@@ -1181,6 +1172,15 @@
       "prix_ref": 0.61,
       "type": "swing",
       "timestamp": "2026-07-24T12:12:26.767166+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "KAITO",
+      "score": 1.08,
+      "prix_ref": 0.9455,
+      "type": "swing",
+      "timestamp": "2026-07-25T16:07:26.905911+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1396,6 +1396,10 @@
     },
     {
       "date": "2026-07-25T12:06",
+      "equity": 356.9
+    },
+    {
+      "date": "2026-07-25T16:04",
       "equity": 356.9
     }
   ],
