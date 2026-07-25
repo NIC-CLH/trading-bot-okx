@@ -839,6 +839,32 @@
       "score_tech_adj_raw": 1.52,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "KAITO",
+      "score": 2.22,
+      "score_tech": 2.22,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 351.78,
+      "prix": 0.9446517884740919,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-07-25T20:06:54.285957+00:00",
+      "score_tech_raw": 2.22,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.22,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -1047,7 +1073,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.08107739738015,
+  "_sd_prev_usdt_d": 8.055110729039368,
   "shadow_portfolio": [
     {
       "ticker": "ZAMA",
@@ -1402,6 +1428,10 @@
     {
       "date": "2026-07-25T16:04",
       "equity": 356.9
+    },
+    {
+      "date": "2026-07-25T20:07",
+      "equity": 369.52
     }
   ],
   "health_last_warn": 1784923874.111532
