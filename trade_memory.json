@@ -1047,7 +1047,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.097815241282621,
+  "_sd_prev_usdt_d": 8.106392033935824,
   "shadow_portfolio": [
     {
       "ticker": "TRUMP",
@@ -1118,8 +1118,8 @@
       "prix_ref": 0.09606,
       "type": "swing",
       "timestamp": "2026-07-23T04:09:40.303060+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -4.74
     },
     {
       "ticker": "UNI",
@@ -1389,6 +1389,10 @@
     {
       "date": "2026-07-25T04:07",
       "equity": 421.14
+    },
+    {
+      "date": "2026-07-25T08:05",
+      "equity": 356.9
     }
   ],
   "health_last_warn": 1784923874.111532
