@@ -890,6 +890,32 @@
       "score_tech_adj_raw": 2.22,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ETC",
+      "score": 1.7,
+      "score_tech": 1.7,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 334.59,
+      "prix": 7.1739999999999995,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-07-26T20:06:18.291322+00:00",
+      "score_tech_raw": 1.7,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 1.7,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -1098,7 +1124,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.998067690370989,
+  "_sd_prev_usdt_d": 8.005979570129087,
   "shadow_portfolio": [
     {
       "ticker": "ZAMA",
@@ -1476,6 +1502,10 @@
     {
       "date": "2026-07-26T16:06",
       "equity": 358.56
+    },
+    {
+      "date": "2026-07-26T20:06",
+      "equity": 352.52
     }
   ],
   "health_last_warn": 1784923874.111532
