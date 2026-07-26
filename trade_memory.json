@@ -344,6 +344,17 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.22
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "LPT",
+      "pnl_pct": -8.08,
+      "days_held": 0.0,
+      "exit_reason": "Stop ATR -8.1% <= -4.9%",
+      "valeur_usd": 340.69,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-07-26T11:31:46.945542+00:00"
     }
   ],
   "entries": [
