@@ -330,6 +330,20 @@
       "outcome": "loss",
       "exit_quality": null,
       "timestamp": "2026-07-25T06:31:53.347385+00:00"
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "KAITO",
+      "pnl_pct": 12.05,
+      "days_held": 0.7,
+      "exit_reason": "Take profit +12% atteint (+12.1%) — capté en 30min 🎯",
+      "valeur_usd": 378.1,
+      "outcome": "win",
+      "exit_quality": 100.0,
+      "timestamp": "2026-07-26T10:01:57.114390+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.22
     }
   ],
   "entries": [
@@ -1225,8 +1239,7 @@
     }
   },
   "peaks": {
-    "XRP": 93.92,
-    "KAITO": 11.35
+    "XRP": 93.92
   },
   "equity_history": [
     {
