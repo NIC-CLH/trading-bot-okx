@@ -1098,7 +1098,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.036749890683259,
+  "_sd_prev_usdt_d": 7.998067690370989,
   "shadow_portfolio": [
     {
       "ticker": "ZAMA",
@@ -1187,8 +1187,8 @@
       "prix_ref": 0.63103,
       "type": "swing",
       "timestamp": "2026-07-24T12:08:54.261372+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -17.99
     },
     {
       "ticker": "AVAX",
@@ -1196,8 +1196,8 @@
       "prix_ref": 6.257,
       "type": "swing",
       "timestamp": "2026-07-24T12:10:09.562336+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 7.03
     },
     {
       "ticker": "GRAM",
@@ -1205,8 +1205,8 @@
       "prix_ref": 1.463,
       "type": "swing",
       "timestamp": "2026-07-24T12:11:11.184203+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 3.62
     },
     {
       "ticker": "BONK",
@@ -1214,8 +1214,8 @@
       "prix_ref": 3e-06,
       "type": "swing",
       "timestamp": "2026-07-24T12:12:02.828136+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 2.4
     },
     {
       "ticker": "APT",
@@ -1223,8 +1223,8 @@
       "prix_ref": 0.61,
       "type": "swing",
       "timestamp": "2026-07-24T12:12:26.767166+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 3.72
     },
     {
       "ticker": "KAITO",
@@ -1471,6 +1471,10 @@
     },
     {
       "date": "2026-07-26T12:08",
+      "equity": 358.56
+    },
+    {
+      "date": "2026-07-26T16:06",
       "equity": 358.56
     }
   ],
