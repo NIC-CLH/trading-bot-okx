@@ -1098,7 +1098,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.048637237374962,
+  "_sd_prev_usdt_d": 8.036749890683259,
   "shadow_portfolio": [
     {
       "ticker": "ZAMA",
@@ -1169,8 +1169,8 @@
       "prix_ref": 3.847,
       "type": "swing",
       "timestamp": "2026-07-24T08:08:38.390525+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 0.49
     },
     {
       "ticker": "XPL",
@@ -1178,8 +1178,8 @@
       "prix_ref": 0.08448,
       "type": "swing",
       "timestamp": "2026-07-24T08:10:40.926729+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -2.3
     },
     {
       "ticker": "RE",
@@ -1468,6 +1468,10 @@
     {
       "date": "2026-07-26T08:06",
       "equity": 386.41
+    },
+    {
+      "date": "2026-07-26T12:08",
+      "equity": 358.56
     }
   ],
   "health_last_warn": 1784923874.111532
