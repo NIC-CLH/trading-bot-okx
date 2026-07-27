@@ -355,6 +355,20 @@
       "outcome": "loss",
       "exit_quality": null,
       "timestamp": "2026-07-26T11:31:46.945542+00:00"
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ETC",
+      "pnl_pct": -5.21,
+      "days_held": 1.2,
+      "exit_reason": "Stop ATR -5.2% <= -4.3%",
+      "valeur_usd": 322.22,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-07-27T23:01:51.888048+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.7
     }
   ],
   "entries": [
