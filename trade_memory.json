@@ -1124,7 +1124,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.935144071387463,
+  "_sd_prev_usdt_d": 7.935307854630867,
   "shadow_portfolio": [
     {
       "ticker": "ZAMA",
@@ -1154,15 +1154,6 @@
       "pnl_pct": -7.83
     },
     {
-      "ticker": "ONDO",
-      "score": 1.02,
-      "prix_ref": 0.4072,
-      "type": "swing",
-      "timestamp": "2026-07-22T12:07:49.044005+00:00",
-      "outcome": "correct",
-      "pnl_pct": -3.27
-    },
-    {
       "ticker": "BNB",
       "score": -1.01,
       "prix_ref": 570.1,
@@ -1179,24 +1170,6 @@
       "timestamp": "2026-07-22T12:09:30.159606+00:00",
       "outcome": "correct",
       "pnl_pct": -4.81
-    },
-    {
-      "ticker": "OP",
-      "score": -1.06,
-      "prix_ref": 0.09606,
-      "type": "swing",
-      "timestamp": "2026-07-23T04:09:40.303060+00:00",
-      "outcome": "correct",
-      "pnl_pct": -4.74
-    },
-    {
-      "ticker": "UNI",
-      "score": 1.07,
-      "prix_ref": 3.847,
-      "type": "swing",
-      "timestamp": "2026-07-24T08:08:38.390525+00:00",
-      "outcome": "correct",
-      "pnl_pct": 0.49
     },
     {
       "ticker": "XPL",
@@ -1226,15 +1199,6 @@
       "pnl_pct": 7.03
     },
     {
-      "ticker": "GRAM",
-      "score": -1.01,
-      "prix_ref": 1.463,
-      "type": "swing",
-      "timestamp": "2026-07-24T12:11:11.184203+00:00",
-      "outcome": "correct",
-      "pnl_pct": 3.62
-    },
-    {
       "ticker": "BONK",
       "score": -1.07,
       "prix_ref": 3e-06,
@@ -1258,6 +1222,42 @@
       "prix_ref": 0.9455,
       "type": "swing",
       "timestamp": "2026-07-25T16:07:26.905911+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "UNI",
+      "score": 1.1,
+      "prix_ref": 3.898,
+      "type": "swing",
+      "timestamp": "2026-07-27T08:07:27.552394+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ONDO",
+      "score": 1.16,
+      "prix_ref": 0.4145,
+      "type": "swing",
+      "timestamp": "2026-07-27T08:07:59.063524+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "GRAM",
+      "score": -1.04,
+      "prix_ref": 1.509,
+      "type": "swing",
+      "timestamp": "2026-07-27T08:09:13.834890+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "OP",
+      "score": -1.07,
+      "prix_ref": 0.09438,
+      "type": "swing",
+      "timestamp": "2026-07-27T08:10:07.838073+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1514,6 +1514,10 @@
     {
       "date": "2026-07-27T04:06",
       "equity": 351.1
+    },
+    {
+      "date": "2026-07-27T08:06",
+      "equity": 349.44
     }
   ],
   "health_last_warn": 1784923874.111532
