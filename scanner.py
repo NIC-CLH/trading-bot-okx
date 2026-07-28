@@ -38,6 +38,10 @@ logger = logging.getLogger(__name__)
 
 # Seuil alerte Telegram (score composite 4 dimensions)
 SIGNAL_THRESHOLD = 1.5      # Alerte envoyée (inchangé — on veut voir les signaux)
+
+# Plafond d'exécution : au-dessus, le signal est "trop parfait" = sommet probable.
+# Validé backtest 400j sur les deux moitiés de la période (cf. Phase 3).
+SCORE_MAX_EXEC   = 2.8
 AUTO_EXECUTE_THRESHOLD = 2.0  # Ordre automatique — relevé 1.5→2.0 (qualité > quantité)
 
 # Option A (achats en mode baissier) retirée le 17/07/2026 — le backtest 400j
@@ -242,6 +246,20 @@ def run_scan(portfolio_value: float) -> list[dict]:
     Retourne les signaux actionnables et envoie les alertes Telegram.
     """
     logger.info("Démarrage du scan de marché OKX...")
+
+    # ── Coupe-circuit capital ────────────────────────────────────────────────
+    try:
+        import ruflo_memory as rm_floor
+        if rm_floor.is_capital_floor_breached(portfolio_value):
+            alertes.send(
+                f"🛑 *Coupe-circuit activé*\n"
+                f"Capital `${portfolio_value:.2f}` sous le plancher "
+                f"`${rm_floor.CAPITAL_FLOOR_USD:.0f}`\n"
+                f"_Aucune nouvelle entrée. Les sorties restent actives._"
+            )
+            return []
+    except Exception:
+        pass
 
     # ── Filtre BTC 50MA — blocage total ──────────────────────────────────────
     # Backtest 400j (17/07/2026) : trades sous MA50 = WR 40%, EV -1.58% même à
@@ -625,6 +643,19 @@ def run_scan(portfolio_value: float) -> list[dict]:
             exec_threshold = reentry_thr if reentry_thr else AUTO_EXECUTE_THRESHOLD
         except Exception:
             exec_threshold = AUTO_EXECUTE_THRESHOLD
+
+        # Plafond de score — les signaux "parfaits" sont un piège : on achète
+        # un token qui a déjà tout donné. Backtest 400j (BTC bull uniquement) :
+        #   score 2.0-2.8 → 28 trades, WR 57.1%, EV +1.27%  ✅
+        #   score >= 2.5  → 18 trades, WR 44.4%, EV -0.02%  ❌
+        # Robustesse : EV positive sur les DEUX moitiés de la période
+        # (+0.68% ancien / +1.86% récent) → ce n'est pas un artefact.
+        if payload["score"] > SCORE_MAX_EXEC:
+            logger.info(
+                f"{payload['ticker']} : score {payload['score']:+.2f} > {SCORE_MAX_EXEC} "
+                f"— zone surchauffe, entrée refusée"
+            )
+            continue
 
         if payload["score"] >= exec_threshold and payload.get("trade_autorise"):
             ticker = payload["ticker"]

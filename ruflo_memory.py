@@ -553,6 +553,29 @@ def get_eea_blacklist() -> set[str]:
         return set()
 
 
+# ── Coupe-circuit : arrêt automatique des entrées sous un plancher ───────────
+# Le capital est passé de $700 à $336 avec des positions 5x surdimensionnées
+# (bug de périmètre XRP, corrigé le 28/07). Ce garde-fou garantit qu'aucune
+# dérive future ne peut vider le compte sans arrêt automatique.
+CAPITAL_FLOOR_USD = 200.0   # sous ce seuil : plus aucune entrée, exits normaux
+
+
+def is_capital_floor_breached(equity: float) -> bool:
+    """
+    True si le capital du bot est sous le plancher → entrées interdites.
+    Les sorties (stops, TP, trailing) continuent normalement.
+    """
+    if equity is None or equity <= 0:
+        return False   # donnée absente : on ne bloque pas sur une erreur de lecture
+    if equity < CAPITAL_FLOOR_USD:
+        logger.warning(
+            f"[Coupe-circuit] Capital ${equity:.2f} < plancher ${CAPITAL_FLOOR_USD:.0f} "
+            f"— nouvelles entrées bloquées"
+        )
+        return True
+    return False
+
+
 # ── Snapshot équity : historique de la valeur du portfolio ────────────────────
 
 def record_equity(value: float, cap: int = 3000):

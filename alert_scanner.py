@@ -29,6 +29,7 @@ logger = logging.getLogger(__name__)
 
 # ── Seuils ────────────────────────────────────────────────────────────────────
 SIGNAL_ALERT_THRESHOLD = 2.5      # Score très fort → alerte tous tickers
+SCORE_MAX_EXEC         = 2.8      # Plafond : au-delà = sommet probable (backtest 400j)
 NEWS_VOTES_THRESHOLD   = 20       # Votes CryptoPanic minimum
 NEWS_MAX_AGE_MINUTES   = 45       # Ignorer les news trop vieilles
 
@@ -116,6 +117,11 @@ def scan_and_execute_signals() -> list[dict]:
         logger.error(f"Erreur balance OKX : {e}")
         return []
 
+    # Coupe-circuit capital — les exits (emergency_stop_check) continuent
+    if rm.is_capital_floor_breached(portfolio_value):
+        logger.warning(f"Coupe-circuit : capital ${portfolio_value:.2f} — achats 30min bloqués")
+        return []
+
     # Fear & Greed global — vérification rapide une seule fois
     try:
         fg_resp = requests.get("https://api.alternative.me/fng/?limit=1", timeout=6)
@@ -159,6 +165,12 @@ def scan_and_execute_signals() -> list[dict]:
 
         score = tech.get("signal", {}).get("score", 0)
         if abs(score) < SIGNAL_ALERT_THRESHOLD:
+            continue
+
+        # Ce chemin n'exécutait QUE des scores >= 2.5 — soit exactement la bande
+        # perdante du backtest (EV -0.02%). Plafond aligné sur le scanner 4h.
+        if abs(score) > SCORE_MAX_EXEC:
+            logger.info(f"{ticker} : score {score:+.2f} > {SCORE_MAX_EXEC} — zone surchauffe, ignoré")
             continue
 
         # Pas de doublon dans ce run
