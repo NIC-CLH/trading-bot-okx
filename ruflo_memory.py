@@ -544,6 +544,25 @@ def blacklist_eea(ticker: str, reason: str = ""):
         logger.error(f"blacklist_eea({ticker}) : {e}")
 
 
+def unblacklist_eea(ticker: str) -> bool:
+    """
+    Retire un ticker de la blacklist EEA (retest manuel).
+    Utile si OKX lève une restriction, ou pour vérifier une hypothèse.
+    Retourne True si le ticker y était.
+    """
+    try:
+        data = _load_json()
+        bl = data.get("eea_blacklist", {})
+        if bl.pop(ticker.upper(), None) is None:
+            return False
+        _save_json(data)
+        logger.info(f"[EEA] {ticker.upper()} retiré de la blacklist — sera retenté")
+        return True
+    except Exception as e:
+        logger.error(f"unblacklist_eea({ticker}) : {e}")
+        return False
+
+
 def get_eea_blacklist() -> set[str]:
     """Tickers dont OKX EEA refuse les ordres — à exclure de tout univers."""
     try:

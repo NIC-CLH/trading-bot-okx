@@ -10,6 +10,7 @@ import logging
 import os
 import time
 from datetime import datetime, timedelta
+from decimal import Decimal, InvalidOperation
 
 import pandas as pd
 import requests
@@ -320,6 +321,51 @@ MAKER_MAX_PER_RUN  = 2     # garde-fou timeout GitHub Actions (20min) : au-delà
 _maker_attempts    = 0     # compteur process (1 process = 1 cycle)
 
 
+_instrument_cache: dict = {}
+
+
+def get_instrument_specs(ticker: str) -> dict:
+    """
+    Contraintes de format OKX pour une paire : lotSz (pas de quantité),
+    tickSz (pas de prix), minSz (quantité minimale). Mis en cache par run.
+    """
+    inst_id = f"{ticker.upper()}-{QUOTE_CCY}"
+    if inst_id in _instrument_cache:
+        return _instrument_cache[inst_id]
+    specs = {"lotSz": None, "tickSz": None, "minSz": None}
+    try:
+        data = _get("/api/v5/public/instruments", {"instType": "SPOT", "instId": inst_id})
+        if data:
+            d = data[0]
+            specs = {
+                "lotSz":  d.get("lotSz"),
+                "tickSz": d.get("tickSz"),
+                "minSz":  d.get("minSz"),
+            }
+    except Exception as e:
+        logger.debug(f"get_instrument_specs {ticker} : {e}")
+    _instrument_cache[inst_id] = specs
+    return specs
+
+
+def _align_to_step(value: float, step: str | None) -> float:
+    """
+    Arrondit `value` au multiple inférieur de `step` (format OKX : "0.0001").
+    OKX tolère souvent l'excès de décimales, mais certaines paires le refusent —
+    envoyer une valeur conforme évite un rejet inutile.
+    """
+    if not step:
+        return value
+    try:
+        d_step = Decimal(str(step))
+        if d_step <= 0:
+            return value
+        aligned = (Decimal(str(value)) // d_step) * d_step
+        return float(aligned)
+    except (InvalidOperation, ValueError):
+        return value
+
+
 def get_order_state(ticker: str, order_id: str) -> dict:
     """État d'un ordre : state = live | partially_filled | filled | canceled."""
     data = _get("/api/v5/trade/order", {
@@ -434,11 +480,16 @@ def place_order(
 
     # ── Étape 0 : tentative maker pour les achats ─────────────────────────────
     global _maker_attempts
+    specs = get_instrument_specs(ticker)
     if side == "buy" and usdt_amount and _maker_attempts < MAKER_MAX_PER_RUN:
         bid = get_bid_price(ticker)
         if bid:
-            qty_maker = round(usdt_amount / bid, 8)
-            if qty_maker * bid >= 1.0:
+            bid = _align_to_step(bid, specs["tickSz"]) or bid
+            qty_maker = _align_to_step(usdt_amount / bid, specs["lotSz"])
+            min_sz = float(specs["minSz"] or 0)
+            if qty_maker < min_sz:
+                logger.info(f"{ticker} : qty {qty_maker} < minSz {min_sz} — maker ignoré")
+            elif qty_maker * bid >= 1.0:
                 _maker_attempts += 1
                 maker_result = _try_maker_buy(ticker, inst_id, bid, qty_maker)
                 if maker_result:
@@ -470,12 +521,17 @@ def place_order(
             use_limit = False
             fill_price = get_price_usdc(ticker)
 
-    # Convertir montant USDC → quantité si nécessaire
+    # Aligner le prix sur le tickSz de la paire (OKX rejette certains formats)
+    if fill_price:
+        fill_price = _align_to_step(fill_price, specs["tickSz"]) or fill_price
+
+    # Convertir montant USDC → quantité, alignée sur le lotSz
     qty_computed = None
     if usdt_amount and fill_price:
-        qty_computed = round(usdt_amount / fill_price, 8)
+        qty_computed = _align_to_step(usdt_amount / fill_price, specs["lotSz"])
     elif quantity:
-        qty_computed = round(quantity, 8)
+        # Vente : on aligne aussi, mais vers le bas pour ne jamais dépasser le solde
+        qty_computed = _align_to_step(quantity, specs["lotSz"])
 
     # ── Vérification montant minimum (~$1 pour OKX EEA) ──────────────────────
     if qty_computed and fill_price:
