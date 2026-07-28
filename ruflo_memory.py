@@ -521,6 +521,38 @@ def is_churn_blacklisted(ticker: str) -> bool:
     return False
 
 
+# ── Blacklist EEA : paires listées sur OKX mais dont les ordres sont refusés ──
+# OKX EEA renvoie "All operations failed (code 1)" sur certaines paires
+# (restrictions réglementaires). Sans persistance, le bot retentait toutes les
+# 30min indéfiniment — BNB/AVAX/GRAM ont spammé ~50 alertes le 18/07/2026.
+
+def blacklist_eea(ticker: str, reason: str = ""):
+    """Ajoute définitivement un ticker à la blacklist EEA (persistée en JSON)."""
+    try:
+        data = _load_json()
+        bl = data.setdefault("eea_blacklist", {})
+        t = ticker.upper()
+        if t in bl:
+            return
+        bl[t] = {
+            "reason": reason[:120],
+            "since": datetime.now(timezone.utc).isoformat()[:16],
+        }
+        _save_json(data)
+        logger.warning(f"[EEA] {t} blacklisté définitivement — {reason[:80]}")
+    except Exception as e:
+        logger.error(f"blacklist_eea({ticker}) : {e}")
+
+
+def get_eea_blacklist() -> set[str]:
+    """Tickers dont OKX EEA refuse les ordres — à exclure de tout univers."""
+    try:
+        return {t.upper() for t in _load_json().get("eea_blacklist", {})}
+    except Exception as e:
+        logger.debug(f"get_eea_blacklist : {e}")
+        return set()
+
+
 # ── Snapshot équity : historique de la valeur du portfolio ────────────────────
 
 def record_equity(value: float, cap: int = 3000):

@@ -80,16 +80,20 @@ def scan_and_execute_signals() -> list[dict]:
     """
     executed = []
 
+    import position_manager as pm
+    import ruflo_memory as rm
+
     # Filtre BTC 50MA — pas d'achat en marché baissier
-    from position_manager import is_btc_uptrend
-    if not is_btc_uptrend():
+    if not pm.is_btc_uptrend():
         logger.info("BTC sous MA50 — achats bloqués ce cycle")
         return []
 
     # Top N OKX EEA par volume — cap pour tenir dans le timeout GitHub Actions (14min)
-    # Paires triées par volume décroissant → on garde les plus liquides
+    # Paires triées par volume décroissant → on garde les plus liquides.
+    # blocked = stables + blacklist EEA apprise en live + holdings watch-only
+    blocked = STABLES_EXCLUDE | rm.get_eea_blacklist() | set(pm.WATCH_ONLY_TICKERS)
     universe = [t for t in okx.get_available_pairs(min_volume_usdc=500_000)
-                if t not in STABLES_EXCLUDE and t != "XRP"][:40]
+                if t not in blocked][:40]
     logger.info(f"Alert scanner — univers : {len(universe)} actifs (cap=40)")
 
     ohlcv = okx.get_all_ohlcv(universe, days=60)
@@ -98,7 +102,10 @@ def scan_and_execute_signals() -> list[dict]:
     # Récupérer les positions actuelles (pour éviter de doubler)
     try:
         balances = okx.get_balances()
-        stables = {"USDC", "USDT", "BUSD", "DAI"}
+        # Watch-only exclus du capital de trading : sans ça le sizing (pv × 0.20)
+        # se calcule sur un portfolio gonflé par XRP (~$6000) → positions x12 trop
+        # grosses. Même bug que run_once.py, corrigé le 17/07 mais manqué ici.
+        stables = {"USDC", "USDT", "BUSD", "DAI"} | set(pm.WATCH_ONLY_TICKERS)
         open_positions = {t for t, q in balances.items() if t not in stables and q > 0}
         usdc_available = balances.get("USDC", 0) + balances.get("USDT", 0)
         portfolio_value = usdc_available + sum(
@@ -752,8 +759,13 @@ def entry_scan_scalp() -> list:
         if not pending:
             return []
 
-        open_positions = pm.get_open_positions()
+        # Watch-only exclus : ils ne font pas partie du capital du bot
+        open_positions = [
+            p for p in pm.get_open_positions()
+            if p.get("ticker", "").upper() not in pm.WATCH_ONLY_TICKERS
+        ]
         open_tickers   = {p["ticker"] for p in open_positions}
+        eea_blocked    = rm.get_eea_blacklist()
 
         try:
             balances        = okx.get_balances()
@@ -770,6 +782,11 @@ def entry_scan_scalp() -> list:
             score    = signal.get("score", 0)
 
             if ticker in open_tickers:
+                continue
+
+            # Paire refusée par OKX EEA — inutile de retenter (spam 30min)
+            if ticker.upper() in eea_blocked:
+                logger.debug(f"[Scalp] {ticker} : blacklisté EEA — ignoré")
                 continue
 
             # Re-entry threshold

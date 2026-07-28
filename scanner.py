@@ -74,8 +74,10 @@ def get_universe() -> list[str]:
     Plafonnés à MAX_UNIVERSE pour tenir dans le timeout GitHub Actions.
     """
     try:
+        import ruflo_memory as rm_bl
+        blocked = EXCLUDE | rm_bl.get_eea_blacklist()  # statique + appris en live
         pairs = okx.get_available_pairs(min_volume_usdc=MIN_VOLUME_USDC)
-        universe = [t for t in pairs if t not in EXCLUDE][:MAX_UNIVERSE]
+        universe = [t for t in pairs if t not in blocked][:MAX_UNIVERSE]
         logger.info(f"Univers OKX EEA : {len(universe)} actifs (volume > ${MIN_VOLUME_USDC/1e6:.1f}M/j, cap={MAX_UNIVERSE})")
         return universe
     except Exception as e:

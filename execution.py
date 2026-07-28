@@ -205,18 +205,27 @@ def execute_signal(signal: dict, portfolio_value: float) -> bool:
         # "All operations failed (code 1)" = paire non disponible EEA ou instrument suspendu
         # → ajouter le ticker à EXCLUDE dans scanner.py et alert_scanner.py
         if "All operations failed" in err_str or "(code 1)" in err_str:
-            logger.warning(
-                f"{ticker} : 'All operations failed' = paire probablement restreinte EEA. "
-                f"Ajouter '{ticker}' à EXCLUDE dans scanner.py et alert_scanner.py."
-            )
+            # Blacklist automatique et définitive — sinon le bot retente toutes
+            # les 30min (BNB/AVAX/GRAM : ~50 alertes en une journée le 18/07/2026).
+            already_known = False
             try:
-                alertes.send(
-                    f"⚠️ *Ordre {ticker} bloqué* (OKX) : paire probablement restreinte EEA\n"
-                    f"`{err_str[:100]}`\n"
-                    f"_Ajouter '{ticker}' à EXCLUDE pour stopper les tentatives._"
-                )
-            except Exception:
-                pass
+                import ruflo_memory as rm_eea
+                already_known = ticker.upper() in rm_eea.get_eea_blacklist()
+                rm_eea.blacklist_eea(ticker, err_str)
+            except Exception as _bl_e:
+                logger.error(f"[EEA] Blacklist {ticker} échouée : {_bl_e}")
+
+            logger.warning(f"{ticker} : restreint EEA — blacklisté définitivement")
+            # Une seule alerte, à la découverte. Les cycles suivants filtrent en amont.
+            if not already_known:
+                try:
+                    alertes.send(
+                        f"🚫 *{ticker} blacklisté* — paire restreinte EEA\n"
+                        f"`{err_str[:100]}`\n"
+                        f"_Exclu automatiquement de tous les scans futurs._"
+                    )
+                except Exception:
+                    pass
         else:
             try:
                 alertes.send(f"❌ *Échec ordre {ticker}* (OKX) : {err_str[:100]}")
