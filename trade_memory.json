@@ -1138,7 +1138,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.975888143937436,
+  "_sd_prev_usdt_d": 8.12395312397285,
   "shadow_portfolio": [
     {
       "ticker": "ZAMA",
@@ -1166,15 +1166,6 @@
       "timestamp": "2026-07-21T08:11:44.251434+00:00",
       "outcome": "correct",
       "pnl_pct": -7.83
-    },
-    {
-      "ticker": "BNB",
-      "score": -1.01,
-      "prix_ref": 570.1,
-      "type": "swing",
-      "timestamp": "2026-07-22T12:08:55.380640+00:00",
-      "outcome": "correct",
-      "pnl_pct": -1.6
     },
     {
       "ticker": "BCH",
@@ -1272,6 +1263,15 @@
       "prix_ref": 0.09458,
       "type": "swing",
       "timestamp": "2026-07-27T12:09:17.623025+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BNB",
+      "score": -1.08,
+      "prix_ref": 565.6,
+      "type": "swing",
+      "timestamp": "2026-07-28T00:08:04.341149+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1544,6 +1544,10 @@
     {
       "date": "2026-07-27T20:07",
       "equity": 346.6
+    },
+    {
+      "date": "2026-07-28T00:06",
+      "equity": 336.64
     }
   ],
   "health_last_warn": 1784923874.111532
