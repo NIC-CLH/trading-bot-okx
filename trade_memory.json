@@ -930,6 +930,32 @@
       "score_tech_adj_raw": 1.7,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ACH",
+      "score": 2.53,
+      "score_tech": 2.53,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 99.56,
+      "prix": 0.004994,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-07-29T12:07:58.438460+00:00",
+      "score_tech_raw": 2.53,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.53,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -1138,7 +1164,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.050996086953866,
+  "_sd_prev_usdt_d": 8.055326653495296,
   "shadow_portfolio": [
     {
       "ticker": "ZAMA",
@@ -1227,8 +1253,8 @@
       "prix_ref": 1.509,
       "type": "swing",
       "timestamp": "2026-07-27T08:09:13.834890+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -6.96
     },
     {
       "ticker": "KAITO",
@@ -1236,8 +1262,8 @@
       "prix_ref": 1.1662,
       "type": "swing",
       "timestamp": "2026-07-27T12:07:00.310538+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 8.48
     },
     {
       "ticker": "UNI",
@@ -1580,6 +1606,10 @@
     {
       "date": "2026-07-29T08:08",
       "equity": 337.44
+    },
+    {
+      "date": "2026-07-29T12:08",
+      "equity": 336.82
     }
   ],
   "health_last_warn": 1784923874.111532,
