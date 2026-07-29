@@ -1316,7 +1316,8 @@
     }
   },
   "peaks": {
-    "XRP": 93.92
+    "XRP": 93.92,
+    "ACH": 0.64
   },
   "equity_history": [
     {
