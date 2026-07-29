@@ -1164,7 +1164,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.055326653495296,
+  "_sd_prev_usdt_d": 8.116473545366262,
   "shadow_portfolio": [
     {
       "ticker": "ZAMA",
@@ -1271,17 +1271,8 @@
       "prix_ref": 3.859,
       "type": "swing",
       "timestamp": "2026-07-27T12:07:12.211517+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ONDO",
-      "score": 1.11,
-      "prix_ref": 0.4068,
-      "type": "swing",
-      "timestamp": "2026-07-27T12:07:23.407100+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 2.36
     },
     {
       "ticker": "OP",
@@ -1289,8 +1280,8 @@
       "prix_ref": 0.09458,
       "type": "swing",
       "timestamp": "2026-07-27T12:09:17.623025+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -8.32
     },
     {
       "ticker": "BNB",
@@ -1298,6 +1289,15 @@
       "prix_ref": 565.6,
       "type": "swing",
       "timestamp": "2026-07-28T00:08:04.341149+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ONDO",
+      "score": 1.01,
+      "prix_ref": 0.3918,
+      "type": "swing",
+      "timestamp": "2026-07-29T16:09:53.914407+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1610,6 +1610,10 @@
     {
       "date": "2026-07-29T12:08",
       "equity": 336.82
+    },
+    {
+      "date": "2026-07-29T16:08",
+      "equity": 335.09
     }
   ],
   "health_last_warn": 1784923874.111532,
