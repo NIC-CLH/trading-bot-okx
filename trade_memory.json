@@ -1178,17 +1178,8 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.093605654556614,
+  "_sd_prev_usdt_d": 8.014826197567169,
   "shadow_portfolio": [
-    {
-      "ticker": "ZAMA",
-      "score": 1.05,
-      "prix_ref": 0.03905,
-      "type": "swing",
-      "timestamp": "2026-07-21T00:10:24.032668+00:00",
-      "outcome": "missed",
-      "pnl_pct": 27.22
-    },
     {
       "ticker": "ZEC",
       "score": 1.12,
@@ -1298,20 +1289,29 @@
       "pnl_pct": 1.27
     },
     {
-      "ticker": "ONDO",
-      "score": 1.02,
-      "prix_ref": 0.3971,
-      "type": "swing",
-      "timestamp": "2026-07-29T20:09:52.615273+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "KAITO",
       "score": 1.0,
       "prix_ref": 1.202,
       "type": "swing",
       "timestamp": "2026-07-30T08:07:14.959900+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ONDO",
+      "score": 1.04,
+      "prix_ref": 0.4264,
+      "type": "swing",
+      "timestamp": "2026-07-30T12:10:34.686016+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "MMT",
+      "score": 1.05,
+      "prix_ref": 0.2079,
+      "type": "swing",
+      "timestamp": "2026-07-30T12:11:50.995061+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1643,6 +1643,10 @@
     },
     {
       "date": "2026-07-30T08:05",
+      "equity": 341.75
+    },
+    {
+      "date": "2026-07-30T12:09",
       "equity": 341.75
     }
   ],
