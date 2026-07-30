@@ -1178,7 +1178,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.075669805883061,
+  "_sd_prev_usdt_d": 8.093605654556614,
   "shadow_portfolio": [
     {
       "ticker": "ZAMA",
@@ -1271,15 +1271,6 @@
       "pnl_pct": -6.96
     },
     {
-      "ticker": "KAITO",
-      "score": 1.02,
-      "prix_ref": 1.1662,
-      "type": "swing",
-      "timestamp": "2026-07-27T12:07:00.310538+00:00",
-      "outcome": "missed",
-      "pnl_pct": 8.48
-    },
-    {
       "ticker": "UNI",
       "score": 1.06,
       "prix_ref": 3.859,
@@ -1312,6 +1303,15 @@
       "prix_ref": 0.3971,
       "type": "swing",
       "timestamp": "2026-07-29T20:09:52.615273+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "KAITO",
+      "score": 1.0,
+      "prix_ref": 1.202,
+      "type": "swing",
+      "timestamp": "2026-07-30T08:07:14.959900+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1639,6 +1639,10 @@
     },
     {
       "date": "2026-07-30T04:05",
+      "equity": 341.75
+    },
+    {
+      "date": "2026-07-30T08:05",
       "equity": 341.75
     }
   ],
