@@ -369,6 +369,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 1.7
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ACH",
+      "pnl_pct": 3.16,
+      "days_held": 0.6,
+      "exit_reason": "Trailing stop : pic +6.5% → plancher +3.2% | actuel +3.2%",
+      "valeur_usd": 103.14,
+      "outcome": "win",
+      "exit_quality": 48.9,
+      "timestamp": "2026-07-30T03:01:56.119390+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.53
     }
   ],
   "entries": [
@@ -1316,8 +1330,7 @@
     }
   },
   "peaks": {
-    "XRP": 93.92,
-    "ACH": 6.47
+    "XRP": 93.92
   },
   "equity_history": [
     {
