@@ -1178,7 +1178,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.098807900980901,
+  "_sd_prev_usdt_d": 8.075669805883061,
   "shadow_portfolio": [
     {
       "ticker": "ZAMA",
@@ -1303,8 +1303,8 @@
       "prix_ref": 565.6,
       "type": "swing",
       "timestamp": "2026-07-28T00:08:04.341149+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 1.27
     },
     {
       "ticker": "ONDO",
@@ -1636,6 +1636,10 @@
     {
       "date": "2026-07-30T00:08",
       "equity": 337.36
+    },
+    {
+      "date": "2026-07-30T04:05",
+      "equity": 341.75
     }
   ],
   "health_last_warn": 1784923874.111532,
