@@ -1758,6 +1758,10 @@
     "HYPE": {
       "reason": "OKX API error : All operations failed (code 1)",
       "since": "2026-07-28T13:03"
+    },
+    "OP": {
+      "reason": "OKX API error : All operations failed (code 1)",
+      "since": "2026-07-31T12:03"
     }
   }
 }
