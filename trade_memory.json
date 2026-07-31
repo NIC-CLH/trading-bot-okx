@@ -970,6 +970,58 @@
       "score_tech_adj_raw": 2.53,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "PUMP",
+      "score": 2.23,
+      "score_tech": 2.23,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 99.14,
+      "prix": 0.002019,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-07-31T00:08:00.539602+00:00",
+      "score_tech_raw": 2.23,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.23,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "MMT",
+      "score": 2.44,
+      "score_tech": 2.44,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 96.0,
+      "prix": 0.2718,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-07-31T00:08:05.443280+00:00",
+      "score_tech_raw": 2.44,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.44,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -1178,7 +1230,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.000168749326626,
+  "_sd_prev_usdt_d": 8.00399315642209,
   "shadow_portfolio": [
     {
       "ticker": "ZEC",
@@ -1656,6 +1708,10 @@
     {
       "date": "2026-07-30T20:08",
       "equity": 341.75
+    },
+    {
+      "date": "2026-07-31T00:08",
+      "equity": 334.6
     }
   ],
   "health_last_warn": 1784923874.111532,
