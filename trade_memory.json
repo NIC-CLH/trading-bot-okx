@@ -397,6 +397,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.44
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "PUMP",
+      "pnl_pct": 2.08,
+      "days_held": 1.0,
+      "exit_reason": "Trailing stop : pic +5.9% → plancher +2.9% | actuel +2.1%",
+      "valeur_usd": 102.72,
+      "outcome": "win",
+      "exit_quality": 35.3,
+      "timestamp": "2026-07-31T22:02:05.049491+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.23
     }
   ],
   "entries": [
@@ -1396,8 +1410,7 @@
     }
   },
   "peaks": {
-    "XRP": 93.92,
-    "PUMP": 5.89
+    "XRP": 93.92
   },
   "equity_history": [
     {
