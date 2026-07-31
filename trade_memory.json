@@ -383,6 +383,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.53
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "MMT",
+      "pnl_pct": 12.58,
+      "days_held": 0.5,
+      "exit_reason": "Take profit +12% atteint (+12.6%) — capté en 30min 🎯",
+      "valeur_usd": 114.0,
+      "outcome": "win",
+      "exit_quality": 100.0,
+      "timestamp": "2026-07-31T09:31:44.709639+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.44
     }
   ],
   "entries": [
@@ -1383,7 +1397,6 @@
   },
   "peaks": {
     "XRP": 93.92,
-    "MMT": 10.49,
     "PUMP": 0.84
   },
   "equity_history": [
