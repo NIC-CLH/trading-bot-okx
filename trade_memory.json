@@ -1374,8 +1374,8 @@
       "prix_ref": 0.2079,
       "type": "swing",
       "timestamp": "2026-07-30T12:11:50.995061+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -8.03
     },
     {
       "ticker": "KAITO",
@@ -1775,6 +1775,10 @@
     },
     {
       "date": "2026-08-01T12:08",
+      "equity": 355.53
+    },
+    {
+      "date": "2026-08-01T16:09",
       "equity": 355.53
     }
   ],
