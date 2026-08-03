@@ -1050,6 +1050,32 @@
       "score_tech_adj_raw": 2.44,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "BOME",
+      "score": 2.63,
+      "score_tech": 2.63,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 103.76,
+      "prix": 0.0005996,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-08-03T00:09:22.470912+00:00",
+      "score_tech_raw": 2.63,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.63,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -1258,7 +1284,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.108797335855755,
+  "_sd_prev_usdt_d": 8.108619122904054,
   "shadow_portfolio": [
     {
       "ticker": "ZEC",
@@ -1808,6 +1834,10 @@
     {
       "date": "2026-08-02T20:09",
       "equity": 355.53
+    },
+    {
+      "date": "2026-08-03T00:09",
+      "equity": 354.06
     }
   ],
   "health_last_warn": 1785644019.510702,
