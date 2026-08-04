@@ -1906,6 +1906,10 @@
     "TRUMP": {
       "reason": "OKX API error : All operations failed (code 1)",
       "since": "2026-08-02T06:03"
+    },
+    "CC": {
+      "reason": "OKX API error : All operations failed (code 1)",
+      "since": "2026-08-04T08:32"
     }
   }
 }
