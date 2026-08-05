@@ -1284,7 +1284,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.05172839372399,
+  "_sd_prev_usdt_d": 8.047244007292724,
   "shadow_portfolio": [
     {
       "ticker": "YGG",
@@ -1415,9 +1415,9 @@
     {
       "ticker": "DOGE",
       "score": -1.01,
-      "prix_ref": 0.06971,
+      "prix_ref": 0.0697,
       "type": "swing",
-      "timestamp": "2026-08-05T04:09:28.572323+00:00",
+      "timestamp": "2026-08-05T08:09:37.029714+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1891,6 +1891,10 @@
     {
       "date": "2026-08-05T04:08",
       "equity": 350.38
+    },
+    {
+      "date": "2026-08-05T08:08",
+      "equity": 350.49
     }
   ],
   "health_last_warn": 1785644019.510702,
