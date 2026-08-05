@@ -1284,17 +1284,8 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.05812527809798,
+  "_sd_prev_usdt_d": 8.05172839372399,
   "shadow_portfolio": [
-    {
-      "ticker": "ZEC",
-      "score": 1.12,
-      "prix_ref": 548.69,
-      "type": "swing",
-      "timestamp": "2026-07-21T08:08:25.795707+00:00",
-      "outcome": "correct",
-      "pnl_pct": -5.7
-    },
     {
       "ticker": "YGG",
       "score": -1.09,
@@ -1420,6 +1411,15 @@
       "timestamp": "2026-07-30T20:10:43.972239+00:00",
       "outcome": "correct",
       "pnl_pct": -9.63
+    },
+    {
+      "ticker": "DOGE",
+      "score": -1.01,
+      "prix_ref": 0.06971,
+      "type": "swing",
+      "timestamp": "2026-08-05T04:09:28.572323+00:00",
+      "outcome": null,
+      "pnl_pct": null
     }
   ],
   "pending_signals": [],
@@ -1887,6 +1887,10 @@
     {
       "date": "2026-08-05T00:09",
       "equity": 351.35
+    },
+    {
+      "date": "2026-08-05T04:08",
+      "equity": 350.38
     }
   ],
   "health_last_warn": 1785644019.510702,
