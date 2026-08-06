@@ -411,6 +411,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.23
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "RESOLV",
+      "pnl_pct": 3.17,
+      "days_held": 0.1,
+      "exit_reason": "Trailing stop : pic +7.7% → plancher +3.8% | actuel +3.2%",
+      "valeur_usd": 107.65,
+      "outcome": "win",
+      "exit_quality": 41.2,
+      "timestamp": "2026-08-06T12:31:43.478101+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.4
     }
   ],
   "entries": [
@@ -1463,8 +1477,7 @@
   },
   "peaks": {
     "XRP": 93.92,
-    "BOME": 2.74,
-    "RESOLV": 7.68
+    "BOME": 2.74
   },
   "equity_history": [
     {
