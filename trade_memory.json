@@ -1284,7 +1284,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.032038558043924,
+  "_sd_prev_usdt_d": 8.002325188995975,
   "shadow_portfolio": [
     {
       "ticker": "BCH",
@@ -1414,10 +1414,10 @@
     },
     {
       "ticker": "FET",
-      "score": -1.06,
-      "prix_ref": 0.1407,
+      "score": -1.03,
+      "prix_ref": 0.1403,
       "type": "swing",
-      "timestamp": "2026-08-06T04:11:20.345729+00:00",
+      "timestamp": "2026-08-06T08:10:57.143225+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1915,6 +1915,10 @@
     {
       "date": "2026-08-06T04:08",
       "equity": 354.72
+    },
+    {
+      "date": "2026-08-06T08:08",
+      "equity": 353.6
     }
   ],
   "health_last_warn": 1785644019.510702,
