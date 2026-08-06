@@ -1076,6 +1076,32 @@
       "score_tech_adj_raw": 2.63,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "RESOLV",
+      "score": 1.4,
+      "score_tech": 1.4,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 108.26,
+      "prix": 0.01863,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-08-06T12:09:20.010762+00:00",
+      "score_tech_raw": 1.4,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 1.4,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -1284,7 +1310,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.002325188995975,
+  "_sd_prev_usdt_d": 8.029389898207722,
   "shadow_portfolio": [
     {
       "ticker": "BCH",
@@ -1920,6 +1946,10 @@
     {
       "date": "2026-08-06T08:08",
       "equity": 353.6
+    },
+    {
+      "date": "2026-08-06T12:09",
+      "equity": 356.51
     }
   ],
   "health_last_warn": 1785644019.510702,
