@@ -1284,17 +1284,8 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.9988284050233185,
+  "_sd_prev_usdt_d": 8.032038558043924,
   "shadow_portfolio": [
-    {
-      "ticker": "YGG",
-      "score": -1.09,
-      "prix_ref": 0.02031,
-      "type": "swing",
-      "timestamp": "2026-07-21T08:11:44.251434+00:00",
-      "outcome": "correct",
-      "pnl_pct": -7.83
-    },
     {
       "ticker": "BCH",
       "score": -1.1,
@@ -1418,6 +1409,15 @@
       "prix_ref": 0.0697,
       "type": "swing",
       "timestamp": "2026-08-05T08:09:37.029714+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "FET",
+      "score": -1.06,
+      "prix_ref": 0.1407,
+      "type": "swing",
+      "timestamp": "2026-08-06T04:11:20.345729+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1911,6 +1911,10 @@
     {
       "date": "2026-08-06T00:07",
       "equity": 353.2
+    },
+    {
+      "date": "2026-08-06T04:08",
+      "equity": 354.72
     }
   ],
   "health_last_warn": 1785644019.510702,
