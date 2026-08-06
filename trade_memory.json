@@ -1324,26 +1324,8 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.029389898207722,
+  "_sd_prev_usdt_d": 8.028063782993367,
   "shadow_portfolio": [
-    {
-      "ticker": "BCH",
-      "score": -1.1,
-      "prix_ref": 220.6,
-      "type": "swing",
-      "timestamp": "2026-07-22T12:09:30.159606+00:00",
-      "outcome": "correct",
-      "pnl_pct": -4.81
-    },
-    {
-      "ticker": "XPL",
-      "score": -1.01,
-      "prix_ref": 0.08448,
-      "type": "swing",
-      "timestamp": "2026-07-24T08:10:40.926729+00:00",
-      "outcome": "correct",
-      "pnl_pct": -2.3
-    },
     {
       "ticker": "RE",
       "score": 1.11,
@@ -1458,6 +1440,24 @@
       "prix_ref": 0.1403,
       "type": "swing",
       "timestamp": "2026-08-06T08:10:57.143225+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "FIL",
+      "score": -1.06,
+      "prix_ref": 0.7,
+      "type": "swing",
+      "timestamp": "2026-08-06T20:09:10.295918+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZAMA",
+      "score": 1.03,
+      "prix_ref": 0.05429,
+      "type": "swing",
+      "timestamp": "2026-08-06T20:10:19.824587+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1963,6 +1963,10 @@
     {
       "date": "2026-08-06T12:09",
       "equity": 356.51
+    },
+    {
+      "date": "2026-08-06T20:07",
+      "equity": 355.71
     }
   ],
   "health_last_warn": 1785644019.510702,
