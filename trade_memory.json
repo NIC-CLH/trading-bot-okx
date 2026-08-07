@@ -1116,6 +1116,84 @@
       "score_tech_adj_raw": 1.4,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ZAMA",
+      "score": 1.34,
+      "score_tech": 1.34,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 103.23,
+      "prix": 0.05231000000000001,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-08-07T08:08:08.272348+00:00",
+      "score_tech_raw": 1.34,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 1.34,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "KMNO",
+      "score": 2.32,
+      "score_tech": 2.32,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 102.0,
+      "prix": 0.02055172552508413,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-08-07T08:08:12.788851+00:00",
+      "score_tech_raw": 2.32,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.32,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "IRYS",
+      "score": 2.52,
+      "score_tech": 2.52,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 37.73,
+      "prix": 0.01593,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-08-07T08:08:17.316584+00:00",
+      "score_tech_raw": 2.52,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.52,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -1324,7 +1402,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.056769191848266,
+  "_sd_prev_usdt_d": 8.049598682652348,
   "shadow_portfolio": [
     {
       "ticker": "RE",
@@ -1426,15 +1504,6 @@
       "pnl_pct": -9.63
     },
     {
-      "ticker": "DOGE",
-      "score": -1.01,
-      "prix_ref": 0.0697,
-      "type": "swing",
-      "timestamp": "2026-08-05T08:09:37.029714+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "FET",
       "score": -1.03,
       "prix_ref": 0.1403,
@@ -1458,6 +1527,15 @@
       "prix_ref": 0.7043,
       "type": "swing",
       "timestamp": "2026-08-07T00:10:37.978233+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "DOGE",
+      "score": -1.03,
+      "prix_ref": 0.06928,
+      "type": "swing",
+      "timestamp": "2026-08-07T08:10:10.437655+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1976,6 +2054,10 @@
     {
       "date": "2026-08-07T04:09",
       "equity": 358.21
+    },
+    {
+      "date": "2026-08-07T08:08",
+      "equity": 349.69
     }
   ],
   "health_last_warn": 1785644019.510702,
