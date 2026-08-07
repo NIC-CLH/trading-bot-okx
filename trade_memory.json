@@ -1324,7 +1324,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.028063782993367,
+  "_sd_prev_usdt_d": 8.046005251949884,
   "shadow_portfolio": [
     {
       "ticker": "RE",
@@ -1444,20 +1444,20 @@
       "pnl_pct": null
     },
     {
-      "ticker": "FIL",
-      "score": -1.06,
-      "prix_ref": 0.7,
-      "type": "swing",
-      "timestamp": "2026-08-06T20:09:10.295918+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ZAMA",
       "score": 1.03,
       "prix_ref": 0.05429,
       "type": "swing",
       "timestamp": "2026-08-06T20:10:19.824587+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "FIL",
+      "score": -1.06,
+      "prix_ref": 0.7043,
+      "type": "swing",
+      "timestamp": "2026-08-07T00:10:37.978233+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -1967,6 +1967,10 @@
     {
       "date": "2026-08-06T20:07",
       "equity": 355.71
+    },
+    {
+      "date": "2026-08-07T00:09",
+      "equity": 356.69
     }
   ],
   "health_last_warn": 1785644019.510702,
