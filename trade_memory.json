@@ -1402,17 +1402,8 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.049598682652348,
+  "_sd_prev_usdt_d": 7.981969091181898,
   "shadow_portfolio": [
-    {
-      "ticker": "RE",
-      "score": 1.11,
-      "prix_ref": 0.63103,
-      "type": "swing",
-      "timestamp": "2026-07-24T12:08:54.261372+00:00",
-      "outcome": "correct",
-      "pnl_pct": -17.99
-    },
     {
       "ticker": "AVAX",
       "score": -1.07,
@@ -1522,20 +1513,29 @@
       "pnl_pct": null
     },
     {
-      "ticker": "FIL",
-      "score": -1.06,
-      "prix_ref": 0.7043,
-      "type": "swing",
-      "timestamp": "2026-08-07T00:10:37.978233+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "DOGE",
       "score": -1.03,
       "prix_ref": 0.06928,
       "type": "swing",
       "timestamp": "2026-08-07T08:10:10.437655+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "FIL",
+      "score": -1.06,
+      "prix_ref": 0.6973,
+      "type": "swing",
+      "timestamp": "2026-08-07T12:14:11.182249+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "JUP",
+      "score": -1.0,
+      "prix_ref": 0.1857,
+      "type": "swing",
+      "timestamp": "2026-08-07T12:17:40.985643+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -2059,6 +2059,10 @@
     {
       "date": "2026-08-07T08:08",
       "equity": 349.69
+    },
+    {
+      "date": "2026-08-07T12:12",
+      "equity": 352.25
     }
   ],
   "health_last_warn": 1785644019.510702,
