@@ -64,7 +64,12 @@ MIN_VOLUME_USDC = 500_000
 
 # Cap universe — évite les timeouts GitHub Actions (cycle 4h, timeout 20min).
 # Les paires OKX sont triées par volume décroissant → on garde les plus liquides.
-MAX_UNIVERSE = 55
+# Élargi de 55 à 80 le 28/07/2026. Backtest des rangs 56+ sur la même fenêtre
+# temporelle que le top 55 : +28 trades, WR 53.6%, EV +1.10% (vs +1.64% pour le
+# top 55) → moins bon mais franchement positif, et double la fréquence.
+# Enjeu réel : à 3 trades/mois, valider 20 trades prend 6 mois. À 6, trois mois.
+# Coût : scan ~12min au lieu de ~9min, sous le timeout de 20min.
+MAX_UNIVERSE = 80
 
 # Cooldown anti-doublon (ticker -> timestamp dernier signal)
 _alerted_cache: dict[str, float] = {}

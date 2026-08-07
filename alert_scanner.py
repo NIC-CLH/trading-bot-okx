@@ -30,6 +30,7 @@ logger = logging.getLogger(__name__)
 # ── Seuils ────────────────────────────────────────────────────────────────────
 SIGNAL_ALERT_THRESHOLD = 2.5      # Score très fort → alerte tous tickers
 SCORE_MAX_EXEC         = 2.8      # Plafond : au-delà = sommet probable (backtest 400j)
+ALERT_MAX_UNIVERSE     = 65       # Élargi de 40 le 28/07 (cf. scanner.MAX_UNIVERSE=80)
 NEWS_VOTES_THRESHOLD   = 20       # Votes CryptoPanic minimum
 NEWS_MAX_AGE_MINUTES   = 45       # Ignorer les news trop vieilles
 
@@ -89,13 +90,14 @@ def scan_and_execute_signals() -> list[dict]:
         logger.info("BTC sous MA50 — achats bloqués ce cycle")
         return []
 
-    # Top N OKX EEA par volume — cap pour tenir dans le timeout GitHub Actions (14min)
-    # Paires triées par volume décroissant → on garde les plus liquides.
+    # Top N OKX EEA par volume — cap pour tenir dans le timeout (20min).
+    # Élargi 40 → 65 le 28/07/2026 : reste sous le cap du scanner 4h (80) car ce
+    # cycle a moins de temps, mais couvre la majorité des tokens validés au backtest.
     # blocked = stables + blacklist EEA apprise en live + holdings watch-only
     blocked = STABLES_EXCLUDE | rm.get_eea_blacklist() | set(pm.WATCH_ONLY_TICKERS)
     universe = [t for t in okx.get_available_pairs(min_volume_usdc=500_000)
-                if t not in blocked][:40]
-    logger.info(f"Alert scanner — univers : {len(universe)} actifs (cap=40)")
+                if t not in blocked][:ALERT_MAX_UNIVERSE]
+    logger.info(f"Alert scanner — univers : {len(universe)} actifs (cap={ALERT_MAX_UNIVERSE})")
 
     ohlcv = okx.get_all_ohlcv(universe, days=60)
     tech_results = ts.run(ohlcv)
