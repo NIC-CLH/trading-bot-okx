@@ -17,7 +17,7 @@ permissions:
 jobs:
   alert:
     runs-on: ubuntu-latest
-    timeout-minutes: 14  # Univers plafonné à 40 assets — 14min suffisants
+    timeout-minutes: 20  # Marge : les achats maker peuvent ajouter ~3min au cycle
 
     steps:
       - name: Checkout code
@@ -44,6 +44,9 @@ jobs:
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           PYTHONIOENCODING: utf-8
+          # Cycle 30min : budget serré → attente maker courte, coupure à 11min
+          OKX_MAKER_WAIT: "45"
+          OKX_PROCESS_BUDGET: "660"
 
       # Persister les peaks du trailing stop — sans ça, chaque run 30min oublie
       # le pic du précédent et le trailing stop ne se déclenche jamais.

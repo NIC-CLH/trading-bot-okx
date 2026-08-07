@@ -314,11 +314,24 @@ def get_available_pairs(min_volume_usdc: float = 500_000) -> list[str]:
 # Frais maker < taker + zéro slippage. L'edge brut du bot ≈ ses frais (backtest
 # 17/07/2026) — réduire le coût d'exécution EST l'edge. Uniquement les achats :
 # les ventes restent agressives (une sortie ne se négocie pas).
-MAKER_WAIT_SECONDS = 120   # attente max de remplissage avant fallback agressif
+# Attente configurable : le cycle 30min a un budget serré (timeout 14min), le
+# cycle 4h peut se permettre d'attendre plus longtemps pour économiser les frais.
+# Réglé par OKX_MAKER_WAIT dans le workflow — défaut prudent.
+MAKER_WAIT_SECONDS = int(os.getenv("OKX_MAKER_WAIT", "90"))
 MAKER_POLL_SECONDS = 10
-MAKER_MAX_PER_RUN  = 2     # garde-fou timeout GitHub Actions (20min) : au-delà,
+MAKER_MAX_PER_RUN  = 2     # garde-fou timeout GitHub Actions : au-delà,
                            # les achats suivants du cycle partent direct en agressif
 _maker_attempts    = 0     # compteur process (1 process = 1 cycle)
+
+# Budget global du process : au-delà, plus aucune attente maker (fallback direct).
+# Empêche un cycle de dépasser son timeout à cause de l'exécution patiente.
+_process_start     = time.time()
+PROCESS_BUDGET_SEC = int(os.getenv("OKX_PROCESS_BUDGET", "600"))
+
+
+def _budget_restant() -> float:
+    """Secondes restantes avant d'entamer la marge de sécurité du cycle."""
+    return PROCESS_BUDGET_SEC - (time.time() - _process_start)
 
 
 _instrument_cache: dict = {}
@@ -481,7 +494,13 @@ def place_order(
     # ── Étape 0 : tentative maker pour les achats ─────────────────────────────
     global _maker_attempts
     specs = get_instrument_specs(ticker)
-    if side == "buy" and usdt_amount and _maker_attempts < MAKER_MAX_PER_RUN:
+    # Maker seulement si le cycle a encore du temps devant lui — sinon fallback
+    # agressif immédiat (mieux vaut payer 0.02% de frais que rater le timeout).
+    maker_possible = (
+        _maker_attempts < MAKER_MAX_PER_RUN
+        and _budget_restant() > MAKER_WAIT_SECONDS + 30
+    )
+    if side == "buy" and usdt_amount and maker_possible:
         bid = get_bid_price(ticker)
         if bid:
             bid = _align_to_step(bid, specs["tickSz"]) or bid

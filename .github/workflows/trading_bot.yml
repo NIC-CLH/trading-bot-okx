@@ -48,6 +48,9 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           PYTHONIOENCODING: utf-8
+          # Cycle 4h : plus de marge → on peut attendre pour économiser les frais
+          OKX_MAKER_WAIT: "120"
+          OKX_PROCESS_BUDGET: "900"
 
       # Sauvegarder la mémoire d'apprentissage (trade_memory.json) dans le repo.
       # Push avec rebase + retry : si un autre push arrive pendant le run
