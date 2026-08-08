@@ -1444,26 +1444,8 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.972491235526895,
+  "_sd_prev_usdt_d": 7.948395071681856,
   "shadow_portfolio": [
-    {
-      "ticker": "BONK",
-      "score": -1.07,
-      "prix_ref": 3e-06,
-      "type": "swing",
-      "timestamp": "2026-07-24T12:12:02.828136+00:00",
-      "outcome": "correct",
-      "pnl_pct": 2.4
-    },
-    {
-      "ticker": "APT",
-      "score": -1.07,
-      "prix_ref": 0.61,
-      "type": "swing",
-      "timestamp": "2026-07-24T12:12:26.767166+00:00",
-      "outcome": "correct",
-      "pnl_pct": 3.72
-    },
     {
       "ticker": "GRAM",
       "score": -1.04,
@@ -1578,6 +1560,24 @@
       "prix_ref": 503.58,
       "type": "swing",
       "timestamp": "2026-08-08T08:12:40.217693+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PUMP",
+      "score": 1.04,
+      "prix_ref": 0.00237,
+      "type": "swing",
+      "timestamp": "2026-08-08T16:12:12.203269+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BONK",
+      "score": -1.07,
+      "prix_ref": 3e-06,
+      "type": "swing",
+      "timestamp": "2026-08-08T16:12:32.463884+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -2127,6 +2127,10 @@
     {
       "date": "2026-08-08T12:09",
       "equity": 346.25
+    },
+    {
+      "date": "2026-08-08T16:10",
+      "equity": 342.24
     }
   ],
   "health_last_warn": 1785644019.510702,
