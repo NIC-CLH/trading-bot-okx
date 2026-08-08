@@ -453,6 +453,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.52
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ZAMA",
+      "pnl_pct": -10.34,
+      "days_held": 1.4,
+      "exit_reason": "Stop ATR -10.3% <= -10.0%",
+      "valeur_usd": 95.21,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-08-08T15:02:10.314843+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.34
     }
   ],
   "entries": [
@@ -1583,8 +1597,7 @@
   },
   "peaks": {
     "XRP": 93.92,
-    "BOME": 8.67,
-    "ZAMA": 0.13
+    "BOME": 8.67
   },
   "equity_history": [
     {
