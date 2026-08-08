@@ -1402,7 +1402,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.990440631392973,
+  "_sd_prev_usdt_d": 7.998278426495707,
   "shadow_portfolio": [
     {
       "ticker": "AVAX",
@@ -1522,20 +1522,20 @@
       "pnl_pct": null
     },
     {
-      "ticker": "FIL",
-      "score": -1.06,
-      "prix_ref": 0.6973,
-      "type": "swing",
-      "timestamp": "2026-08-07T12:14:11.182249+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "JUP",
       "score": -1.0,
       "prix_ref": 0.1857,
       "type": "swing",
       "timestamp": "2026-08-07T12:17:40.985643+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "FIL",
+      "score": -1.05,
+      "prix_ref": 0.6843,
+      "type": "swing",
+      "timestamp": "2026-08-08T00:12:31.369718+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -2071,6 +2071,10 @@
     {
       "date": "2026-08-07T20:09",
       "equity": 345.44
+    },
+    {
+      "date": "2026-08-08T00:10",
+      "equity": 343.31
     }
   ],
   "health_last_warn": 1785644019.510702,
