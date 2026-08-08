@@ -1416,17 +1416,8 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.972627348889006,
+  "_sd_prev_usdt_d": 7.979175778715381,
   "shadow_portfolio": [
-    {
-      "ticker": "AVAX",
-      "score": -1.07,
-      "prix_ref": 6.257,
-      "type": "swing",
-      "timestamp": "2026-07-24T12:10:09.562336+00:00",
-      "outcome": "correct",
-      "pnl_pct": 7.03
-    },
     {
       "ticker": "BONK",
       "score": -1.07,
@@ -1480,15 +1471,6 @@
       "timestamp": "2026-07-28T00:08:04.341149+00:00",
       "outcome": "correct",
       "pnl_pct": 1.27
-    },
-    {
-      "ticker": "MMT",
-      "score": 1.05,
-      "prix_ref": 0.2079,
-      "type": "swing",
-      "timestamp": "2026-07-30T12:11:50.995061+00:00",
-      "outcome": "correct",
-      "pnl_pct": -8.03
     },
     {
       "ticker": "KAITO",
@@ -1550,6 +1532,24 @@
       "prix_ref": 0.6843,
       "type": "swing",
       "timestamp": "2026-08-08T00:12:31.369718+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "MMT",
+      "score": 1.04,
+      "prix_ref": 0.2324,
+      "type": "swing",
+      "timestamp": "2026-08-08T08:12:17.908832+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.11,
+      "prix_ref": 503.58,
+      "type": "swing",
+      "timestamp": "2026-08-08T08:12:40.217693+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -2093,6 +2093,10 @@
     {
       "date": "2026-08-08T04:09",
       "equity": 344.21
+    },
+    {
+      "date": "2026-08-08T08:10",
+      "equity": 349.89
     }
   ],
   "health_last_warn": 1785644019.510702,
