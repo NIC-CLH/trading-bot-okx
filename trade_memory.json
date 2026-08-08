@@ -439,6 +439,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.32
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "IRYS",
+      "pnl_pct": 1.88,
+      "days_held": 1.0,
+      "exit_reason": "Trailing stop : pic +5.4% → plancher +2.7% | actuel +1.9%",
+      "valeur_usd": 38.44,
+      "outcome": "win",
+      "exit_quality": 34.9,
+      "timestamp": "2026-08-08T08:31:52.720379+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.52
     }
   ],
   "entries": [
@@ -1569,9 +1583,8 @@
   },
   "peaks": {
     "XRP": 93.92,
-    "BOME": 8.21,
-    "ZAMA": 0.13,
-    "IRYS": 5.4
+    "BOME": 8.67,
+    "ZAMA": 0.13
   },
   "equity_history": [
     {
