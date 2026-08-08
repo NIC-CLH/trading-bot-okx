@@ -1430,7 +1430,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.979175778715381,
+  "_sd_prev_usdt_d": 7.972491235526895,
   "shadow_portfolio": [
     {
       "ticker": "BONK",
@@ -1510,8 +1510,8 @@
       "prix_ref": 0.1403,
       "type": "swing",
       "timestamp": "2026-08-06T08:10:57.143225+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -1.5
     },
     {
       "ticker": "ZAMA",
@@ -2110,6 +2110,10 @@
     {
       "date": "2026-08-08T08:10",
       "equity": 349.89
+    },
+    {
+      "date": "2026-08-08T12:09",
+      "equity": 346.25
     }
   ],
   "health_last_warn": 1785644019.510702,
