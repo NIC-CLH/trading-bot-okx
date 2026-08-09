@@ -1458,17 +1458,8 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.972956013825367,
+  "_sd_prev_usdt_d": 7.96295513326636,
   "shadow_portfolio": [
-    {
-      "ticker": "UNI",
-      "score": 1.06,
-      "prix_ref": 3.859,
-      "type": "swing",
-      "timestamp": "2026-07-27T12:07:12.211517+00:00",
-      "outcome": "correct",
-      "pnl_pct": 2.36
-    },
     {
       "ticker": "OP",
       "score": -1.07,
@@ -1529,8 +1520,8 @@
       "prix_ref": 0.06928,
       "type": "swing",
       "timestamp": "2026-08-07T08:10:10.437655+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 1.34
     },
     {
       "ticker": "JUP",
@@ -1578,20 +1569,29 @@
       "pnl_pct": null
     },
     {
-      "ticker": "PUMP",
-      "score": 1.0,
-      "prix_ref": 0.00239,
-      "type": "swing",
-      "timestamp": "2026-08-08T20:11:09.818303+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "PEOPLE",
       "score": 1.01,
       "prix_ref": 0.007099,
       "type": "swing",
       "timestamp": "2026-08-08T20:12:41.318638+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "XRP",
+      "score": -1.03,
+      "prix_ref": 1.0349,
+      "type": "swing",
+      "timestamp": "2026-08-09T12:10:52.917459+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PUMP",
+      "score": 1.12,
+      "prix_ref": 0.002536,
+      "type": "swing",
+      "timestamp": "2026-08-09T12:11:27.376820+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -2159,6 +2159,10 @@
     },
     {
       "date": "2026-08-09T08:09",
+      "equity": 339.25
+    },
+    {
+      "date": "2026-08-09T12:09",
       "equity": 339.25
     }
   ],
