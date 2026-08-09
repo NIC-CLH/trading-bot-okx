@@ -1458,7 +1458,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.948395071681856,
+  "_sd_prev_usdt_d": 7.965014741860786,
   "shadow_portfolio": [
     {
       "ticker": "UNI",
@@ -1520,8 +1520,8 @@
       "prix_ref": 0.05429,
       "type": "swing",
       "timestamp": "2026-08-06T20:10:19.824587+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -13.06
     },
     {
       "ticker": "DOGE",
@@ -2147,6 +2147,10 @@
     },
     {
       "date": "2026-08-08T20:09",
+      "equity": 339.25
+    },
+    {
+      "date": "2026-08-09T00:10",
       "equity": 339.25
     }
   ],
