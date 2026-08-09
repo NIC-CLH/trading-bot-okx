@@ -1458,7 +1458,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.96295513326636,
+  "_sd_prev_usdt_d": 7.9288626650798415,
   "shadow_portfolio": [
     {
       "ticker": "OP",
@@ -1529,8 +1529,8 @@
       "prix_ref": 0.1857,
       "type": "swing",
       "timestamp": "2026-08-07T12:17:40.985643+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 0.92
     },
     {
       "ticker": "FIL",
@@ -2163,6 +2163,10 @@
     },
     {
       "date": "2026-08-09T12:09",
+      "equity": 339.25
+    },
+    {
+      "date": "2026-08-09T16:09",
       "equity": 339.25
     }
   ],
