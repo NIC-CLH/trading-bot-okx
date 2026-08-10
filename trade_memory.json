@@ -1250,6 +1250,32 @@
       "score_tech_adj_raw": 2.52,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "PNUT",
+      "score": 0.38,
+      "score_tech": 0.38,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 97.34,
+      "prix": 0.04367,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-08-10T04:05:51.207335+00:00",
+      "score_tech_raw": 0.38,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 0.38,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -1458,17 +1484,8 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.977658697109937,
+  "_sd_prev_usdt_d": 7.965572822692662,
   "shadow_portfolio": [
-    {
-      "ticker": "OP",
-      "score": -1.07,
-      "prix_ref": 0.09458,
-      "type": "swing",
-      "timestamp": "2026-07-27T12:09:17.623025+00:00",
-      "outcome": "correct",
-      "pnl_pct": -8.32
-    },
     {
       "ticker": "BNB",
       "score": -1.08,
@@ -1524,22 +1541,13 @@
       "pnl_pct": 1.34
     },
     {
-      "ticker": "JUP",
-      "score": -1.0,
-      "prix_ref": 0.1857,
-      "type": "swing",
-      "timestamp": "2026-08-07T12:17:40.985643+00:00",
-      "outcome": "correct",
-      "pnl_pct": 0.92
-    },
-    {
       "ticker": "FIL",
       "score": -1.05,
       "prix_ref": 0.6843,
       "type": "swing",
       "timestamp": "2026-08-08T00:12:31.369718+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 2.46
     },
     {
       "ticker": "MMT",
@@ -1592,6 +1600,24 @@
       "prix_ref": 0.002536,
       "type": "swing",
       "timestamp": "2026-08-09T12:11:27.376820+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "TIA",
+      "score": -1.06,
+      "prix_ref": 0.32,
+      "type": "swing",
+      "timestamp": "2026-08-10T04:09:58.722597+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "JUP",
+      "score": -1.06,
+      "prix_ref": 0.18,
+      "type": "swing",
+      "timestamp": "2026-08-10T04:10:19.416841+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -2176,6 +2202,10 @@
     {
       "date": "2026-08-10T00:09",
       "equity": 339.25
+    },
+    {
+      "date": "2026-08-10T04:06",
+      "equity": 335.88
     }
   ],
   "health_last_warn": 1786263187.139056,
