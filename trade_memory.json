@@ -1510,7 +1510,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.03844414280383,
+  "_sd_prev_usdt_d": 8.050121478275019,
   "shadow_portfolio": [
     {
       "ticker": "BNB",
@@ -1599,8 +1599,8 @@
       "prix_ref": 3e-06,
       "type": "swing",
       "timestamp": "2026-08-08T16:12:32.463884+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -18.33
     },
     {
       "ticker": "PEOPLE",
@@ -2245,6 +2245,10 @@
     {
       "date": "2026-08-10T16:10",
       "equity": 334.63
+    },
+    {
+      "date": "2026-08-10T20:11",
+      "equity": 333.82
     }
   ],
   "health_last_warn": 1786263187.139056,
