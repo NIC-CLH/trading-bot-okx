@@ -1484,7 +1484,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.934229473908487,
+  "_sd_prev_usdt_d": 7.946825241736338,
   "shadow_portfolio": [
     {
       "ticker": "BNB",
@@ -1555,8 +1555,8 @@
       "prix_ref": 0.2324,
       "type": "swing",
       "timestamp": "2026-08-08T08:12:17.908832+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -8.3
     },
     {
       "ticker": "ZEC",
@@ -1564,8 +1564,8 @@
       "prix_ref": 503.58,
       "type": "swing",
       "timestamp": "2026-08-08T08:12:40.217693+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 0.88
     },
     {
       "ticker": "BONK",
@@ -2209,6 +2209,10 @@
     },
     {
       "date": "2026-08-10T08:10",
+      "equity": 335.32
+    },
+    {
+      "date": "2026-08-10T12:10",
       "equity": 335.32
     }
   ],
