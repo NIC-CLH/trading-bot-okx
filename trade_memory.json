@@ -1564,7 +1564,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.01696498519003,
+  "_sd_prev_usdt_d": 8.100570543891957,
   "shadow_portfolio": [
     {
       "ticker": "ONDO",
@@ -1653,8 +1653,8 @@
       "prix_ref": 1.0349,
       "type": "swing",
       "timestamp": "2026-08-09T12:10:52.917459+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -3.09
     },
     {
       "ticker": "PUMP",
@@ -1662,8 +1662,8 @@
       "prix_ref": 0.002536,
       "type": "swing",
       "timestamp": "2026-08-09T12:11:27.376820+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 7.69
     },
     {
       "ticker": "TIA",
@@ -2319,6 +2319,10 @@
     {
       "date": "2026-08-11T12:09",
       "equity": 347.8
+    },
+    {
+      "date": "2026-08-11T16:09",
+      "equity": 347.6
     }
   ],
   "health_last_warn": 1786263187.139056,
