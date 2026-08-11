@@ -481,6 +481,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.63
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "BICO",
+      "pnl_pct": 16.82,
+      "days_held": 0.5,
+      "exit_reason": "Take profit +12% atteint (+16.8%) — capté en 30min 🎯",
+      "valeur_usd": 115.56,
+      "outcome": "win",
+      "exit_quality": 100.0,
+      "timestamp": "2026-08-11T04:02:02.500907+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.23
     }
   ],
   "entries": [
@@ -1662,8 +1676,7 @@
     }
   },
   "peaks": {
-    "XRP": 93.92,
-    "BICO": 2.23
+    "XRP": 93.92
   },
   "equity_history": [
     {
