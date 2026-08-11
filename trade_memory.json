@@ -1330,6 +1330,32 @@
       "score_tech_adj_raw": 2.23,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ENA",
+      "score": 2.02,
+      "score_tech": 2.02,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 103.79,
+      "prix": 0.09036318762159536,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-08-11T08:10:45.619511+00:00",
+      "score_tech_raw": 2.02,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.02,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -1538,26 +1564,8 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.04328818949478,
+  "_sd_prev_usdt_d": 8.054580302305512,
   "shadow_portfolio": [
-    {
-      "ticker": "BNB",
-      "score": -1.08,
-      "prix_ref": 565.6,
-      "type": "swing",
-      "timestamp": "2026-07-28T00:08:04.341149+00:00",
-      "outcome": "correct",
-      "pnl_pct": 1.27
-    },
-    {
-      "ticker": "KAITO",
-      "score": 1.03,
-      "prix_ref": 1.0833,
-      "type": "swing",
-      "timestamp": "2026-07-30T20:10:22.397255+00:00",
-      "outcome": "missed",
-      "pnl_pct": 11.79
-    },
     {
       "ticker": "ONDO",
       "score": 1.17,
@@ -1672,6 +1680,24 @@
       "prix_ref": 0.18,
       "type": "swing",
       "timestamp": "2026-08-10T04:10:19.416841+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STRK",
+      "score": -1.05,
+      "prix_ref": 0.02392,
+      "type": "swing",
+      "timestamp": "2026-08-11T08:15:24.703337+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "GALA",
+      "score": -1.09,
+      "prix_ref": 0.001752,
+      "type": "swing",
+      "timestamp": "2026-08-11T08:15:57.833415+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -2285,6 +2311,10 @@
     {
       "date": "2026-08-11T04:07",
       "equity": 351.22
+    },
+    {
+      "date": "2026-08-11T08:11",
+      "equity": 348.43
     }
   ],
   "health_last_warn": 1786263187.139056,
