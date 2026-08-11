@@ -495,6 +495,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.23
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "PNUT",
+      "pnl_pct": -6.39,
+      "days_held": 1.2,
+      "exit_reason": "Stop ATR -6.4% <= -6.0%",
+      "valeur_usd": 94.09,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-08-11T06:02:11.975155+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 0.38
     }
   ],
   "entries": [
