@@ -1510,7 +1510,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.050121478275019,
+  "_sd_prev_usdt_d": 8.066016143723033,
   "shadow_portfolio": [
     {
       "ticker": "BNB",
@@ -1608,8 +1608,8 @@
       "prix_ref": 0.007099,
       "type": "swing",
       "timestamp": "2026-08-08T20:12:41.318638+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 18.68
     },
     {
       "ticker": "XRP",
@@ -2249,6 +2249,10 @@
     {
       "date": "2026-08-10T20:11",
       "equity": 333.82
+    },
+    {
+      "date": "2026-08-11T00:09",
+      "equity": 335.08
     }
   ],
   "health_last_warn": 1786263187.139056,
