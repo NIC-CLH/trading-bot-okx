@@ -509,6 +509,17 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 0.38
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "LSK",
+      "pnl_pct": 2.5,
+      "days_held": 0.1,
+      "exit_reason": "Trailing stop : pic +7.2% → plancher +3.6% | actuel +2.5%",
+      "valeur_usd": 105.39,
+      "outcome": "win",
+      "exit_quality": 34.6,
+      "timestamp": "2026-08-12T03:31:48.820497+00:00"
     }
   ],
   "entries": [
@@ -1717,8 +1728,7 @@
   },
   "peaks": {
     "XRP": 93.92,
-    "ENA": 0.52,
-    "LSK": 7.22
+    "ENA": 0.52
   },
   "equity_history": [
     {
