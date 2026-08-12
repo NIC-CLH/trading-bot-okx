@@ -1575,7 +1575,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.052242004446917,
+  "_sd_prev_usdt_d": 8.050942912980673,
   "shadow_portfolio": [
     {
       "ticker": "ONDO",
@@ -1682,8 +1682,8 @@
       "prix_ref": 0.32,
       "type": "swing",
       "timestamp": "2026-08-10T04:09:58.722597+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -3.97
     },
     {
       "ticker": "JUP",
@@ -1691,8 +1691,8 @@
       "prix_ref": 0.18,
       "type": "swing",
       "timestamp": "2026-08-10T04:10:19.416841+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -3.44
     },
     {
       "ticker": "STRK",
@@ -2346,6 +2346,10 @@
     {
       "date": "2026-08-12T04:10",
       "equity": 348.31
+    },
+    {
+      "date": "2026-08-12T08:09",
+      "equity": 347.16
     }
   ],
   "health_last_warn": 1786263187.139056,
