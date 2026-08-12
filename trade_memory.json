@@ -2425,6 +2425,10 @@
     "GALA": {
       "reason": "OKX API error : All operations failed (code 1)",
       "since": "2026-08-11T16:03"
+    },
+    "RVN": {
+      "reason": "OKX API error : All operations failed (code 1)",
+      "since": "2026-08-12T05:04"
     }
   }
 }
