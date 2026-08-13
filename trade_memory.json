@@ -1795,7 +1795,7 @@
   "peaks": {
     "XRP": 93.92,
     "ENA": 0.52,
-    "ROBO": 0.71
+    "ROBO": 1.06
   },
   "equity_history": [
     {
@@ -2540,6 +2540,14 @@
     "POL": {
       "reason": "OKX API error : All operations failed (code 1)",
       "since": "2026-08-12T14:33"
+    },
+    "WIF": {
+      "reason": "OKX API error : All operations failed (code 1)",
+      "since": "2026-08-13T22:03"
+    },
+    "BABY": {
+      "reason": "OKX API error : All operations failed (code 1)",
+      "since": "2026-08-13T22:03"
     }
   }
 }
