@@ -520,6 +520,20 @@
       "outcome": "win",
       "exit_quality": 34.6,
       "timestamp": "2026-08-12T03:31:48.820497+00:00"
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "AVNT",
+      "pnl_pct": 13.82,
+      "days_held": 0.2,
+      "exit_reason": "Take profit +12% atteint (+13.8%) — capté en 30min 🎯",
+      "valeur_usd": 115.47,
+      "outcome": "win",
+      "exit_quality": 100.0,
+      "timestamp": "2026-08-13T15:02:15.626633+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.45
     }
   ],
   "entries": [
@@ -1754,8 +1768,7 @@
   },
   "peaks": {
     "XRP": 93.92,
-    "ENA": 0.52,
-    "AVNT": 8.33
+    "ENA": 0.52
   },
   "equity_history": [
     {
