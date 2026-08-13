@@ -1575,17 +1575,8 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.088168893107108,
+  "_sd_prev_usdt_d": 8.067727866668774,
   "shadow_portfolio": [
-    {
-      "ticker": "ONDO",
-      "score": 1.17,
-      "prix_ref": 0.4218,
-      "type": "swing",
-      "timestamp": "2026-07-30T20:10:43.972239+00:00",
-      "outcome": "correct",
-      "pnl_pct": -9.63
-    },
     {
       "ticker": "FET",
       "score": -1.03,
@@ -1709,6 +1700,15 @@
       "prix_ref": 0.00271,
       "type": "swing",
       "timestamp": "2026-08-12T20:12:08.411560+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ETC",
+      "score": -1.06,
+      "prix_ref": 6.277,
+      "type": "swing",
+      "timestamp": "2026-08-13T04:10:59.393808+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -2366,6 +2366,10 @@
     {
       "date": "2026-08-13T00:09",
       "equity": 344.86
+    },
+    {
+      "date": "2026-08-13T04:08",
+      "equity": 345.65
     }
   ],
   "health_last_warn": 1786263187.139056,
