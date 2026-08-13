@@ -1575,7 +1575,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.067727866668774,
+  "_sd_prev_usdt_d": 8.042212286026315,
   "shadow_portfolio": [
     {
       "ticker": "FET",
@@ -1705,10 +1705,10 @@
     },
     {
       "ticker": "ETC",
-      "score": -1.06,
-      "prix_ref": 6.277,
+      "score": -1.09,
+      "prix_ref": 6.301,
       "type": "swing",
-      "timestamp": "2026-08-13T04:10:59.393808+00:00",
+      "timestamp": "2026-08-13T08:12:46.244791+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -2370,6 +2370,10 @@
     {
       "date": "2026-08-13T04:08",
       "equity": 345.65
+    },
+    {
+      "date": "2026-08-13T08:11",
+      "equity": 344.75
     }
   ],
   "health_last_warn": 1786263187.139056,
