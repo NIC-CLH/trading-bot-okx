@@ -548,6 +548,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.02
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ROBO",
+      "pnl_pct": 4.73,
+      "days_held": 1.0,
+      "exit_reason": "Trailing stop : pic +9.5% → plancher +4.7% | actuel +4.7%",
+      "valeur_usd": 110.25,
+      "outcome": "win",
+      "exit_quality": 50.0,
+      "timestamp": "2026-08-14T16:01:44.028333+00:00",
+      "regime": "bear",
+      "vol_regime": "normal",
+      "score_entry": 0.54
     }
   ],
   "entries": [
@@ -1807,8 +1821,7 @@
     }
   },
   "peaks": {
-    "XRP": 93.92,
-    "ROBO": 9.46
+    "XRP": 93.92
   },
   "equity_history": [
     {
