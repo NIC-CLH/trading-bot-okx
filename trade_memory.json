@@ -534,6 +534,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.45
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ENA",
+      "pnl_pct": -8.95,
+      "days_held": 0,
+      "exit_reason": "Stop ATR -9.0% <= -8.6%",
+      "valeur_usd": 94.73,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-08-14T15:02:02.187972+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.02
     }
   ],
   "entries": [
@@ -1794,7 +1808,6 @@
   },
   "peaks": {
     "XRP": 93.92,
-    "ENA": 0.52,
     "ROBO": 9.46
   },
   "equity_history": [
