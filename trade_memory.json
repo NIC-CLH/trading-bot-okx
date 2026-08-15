@@ -1776,8 +1776,8 @@
       "prix_ref": 0.00271,
       "type": "swing",
       "timestamp": "2026-08-12T20:12:08.411560+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 4.65
     },
     {
       "ticker": "BONK",
@@ -2502,6 +2502,10 @@
     },
     {
       "date": "2026-08-14T20:12",
+      "equity": 355.28
+    },
+    {
+      "date": "2026-08-15T00:10",
       "equity": 355.28
     }
   ],
