@@ -1785,8 +1785,8 @@
       "prix_ref": 2e-06,
       "type": "swing",
       "timestamp": "2026-08-13T12:12:29.301936+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 17.05
     },
     {
       "ticker": "SHIB",
@@ -1794,8 +1794,8 @@
       "prix_ref": 4e-06,
       "type": "swing",
       "timestamp": "2026-08-13T12:12:38.905051+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 14.45
     },
     {
       "ticker": "ETC",
@@ -1803,8 +1803,8 @@
       "prix_ref": 6.275,
       "type": "swing",
       "timestamp": "2026-08-13T12:12:48.794998+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -0.18
     }
   ],
   "pending_signals": [],
@@ -2518,6 +2518,10 @@
     },
     {
       "date": "2026-08-15T12:11",
+      "equity": 355.28
+    },
+    {
+      "date": "2026-08-15T16:09",
       "equity": 355.28
     }
   ],
