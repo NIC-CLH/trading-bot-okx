@@ -1501,6 +1501,32 @@
       "score_tech_adj_raw": 3.0,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "OKB",
+      "score": 2.48,
+      "score_tech": 2.48,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 103.23,
+      "prix": 99.52,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-08-18T16:09:23.410493+00:00",
+      "score_tech_raw": 2.48,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.48,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -1709,35 +1735,8 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.020220625667475,
+  "_sd_prev_usdt_d": 7.97009964484631,
   "shadow_portfolio": [
-    {
-      "ticker": "ZEC",
-      "score": 1.11,
-      "prix_ref": 503.58,
-      "type": "swing",
-      "timestamp": "2026-08-08T08:12:40.217693+00:00",
-      "outcome": "correct",
-      "pnl_pct": 0.88
-    },
-    {
-      "ticker": "PEOPLE",
-      "score": 1.01,
-      "prix_ref": 0.007099,
-      "type": "swing",
-      "timestamp": "2026-08-08T20:12:41.318638+00:00",
-      "outcome": "missed",
-      "pnl_pct": 18.68
-    },
-    {
-      "ticker": "XRP",
-      "score": -1.03,
-      "prix_ref": 1.0349,
-      "type": "swing",
-      "timestamp": "2026-08-09T12:10:52.917459+00:00",
-      "outcome": "correct",
-      "pnl_pct": -3.09
-    },
     {
       "ticker": "TIA",
       "score": -1.06,
@@ -1775,15 +1774,6 @@
       "pnl_pct": -5.14
     },
     {
-      "ticker": "PUMP",
-      "score": 1.09,
-      "prix_ref": 0.00271,
-      "type": "swing",
-      "timestamp": "2026-08-12T20:12:08.411560+00:00",
-      "outcome": "correct",
-      "pnl_pct": 4.65
-    },
-    {
       "ticker": "BONK",
       "score": -1.0,
       "prix_ref": 2e-06,
@@ -1800,24 +1790,6 @@
       "timestamp": "2026-08-13T12:12:38.905051+00:00",
       "outcome": "missed",
       "pnl_pct": 14.45
-    },
-    {
-      "ticker": "ETC",
-      "score": -1.06,
-      "prix_ref": 6.275,
-      "type": "swing",
-      "timestamp": "2026-08-13T12:12:48.794998+00:00",
-      "outcome": "correct",
-      "pnl_pct": -0.18
-    },
-    {
-      "ticker": "ONDO",
-      "score": -1.02,
-      "prix_ref": 0.335,
-      "type": "swing",
-      "timestamp": "2026-08-18T00:10:11.632251+00:00",
-      "outcome": null,
-      "pnl_pct": null
     },
     {
       "ticker": "COMP",
@@ -1843,6 +1815,60 @@
       "prix_ref": 0.3245,
       "type": "swing",
       "timestamp": "2026-08-18T12:12:42.059494+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "OKB",
+      "score": 1.0,
+      "prix_ref": 99.48,
+      "type": "swing",
+      "timestamp": "2026-08-18T16:10:55.025653+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PUMP",
+      "score": 1.01,
+      "prix_ref": 0.002809,
+      "type": "swing",
+      "timestamp": "2026-08-18T16:11:53.208695+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ONDO",
+      "score": -1.08,
+      "prix_ref": 0.3339,
+      "type": "swing",
+      "timestamp": "2026-08-18T16:12:15.755934+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "DOT",
+      "score": -1.05,
+      "prix_ref": 0.7505,
+      "type": "swing",
+      "timestamp": "2026-08-18T16:12:26.362417+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ETHFI",
+      "score": 1.19,
+      "prix_ref": 0.4866,
+      "type": "swing",
+      "timestamp": "2026-08-18T16:12:36.836860+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ETC",
+      "score": -1.2,
+      "prix_ref": 6.044,
+      "type": "swing",
+      "timestamp": "2026-08-18T16:13:56.847394+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -2631,6 +2657,10 @@
     {
       "date": "2026-08-18T12:10",
       "equity": 349.98
+    },
+    {
+      "date": "2026-08-18T16:09",
+      "equity": 349.57
     }
   ],
   "health_last_warn": 1786983229.201761,
