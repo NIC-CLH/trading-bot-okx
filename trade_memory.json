@@ -1709,17 +1709,8 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.038520722437573,
+  "_sd_prev_usdt_d": 8.020220625667475,
   "shadow_portfolio": [
-    {
-      "ticker": "MMT",
-      "score": 1.04,
-      "prix_ref": 0.2324,
-      "type": "swing",
-      "timestamp": "2026-08-08T08:12:17.908832+00:00",
-      "outcome": "correct",
-      "pnl_pct": -8.3
-    },
     {
       "ticker": "ZEC",
       "score": 1.11,
@@ -1843,6 +1834,15 @@
       "prix_ref": 0.06592,
       "type": "swing",
       "timestamp": "2026-08-18T00:10:52.857022+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "WLD",
+      "score": -1.0,
+      "prix_ref": 0.3245,
+      "type": "swing",
+      "timestamp": "2026-08-18T12:12:42.059494+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -2626,6 +2626,10 @@
     },
     {
       "date": "2026-08-18T08:10",
+      "equity": 349.98
+    },
+    {
+      "date": "2026-08-18T12:10",
       "equity": 349.98
     }
   ],
