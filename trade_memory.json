@@ -1461,6 +1461,32 @@
       "score_tech_adj_raw": 0.54,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "COMP",
+      "score": 3.0,
+      "score_tech": 3.0,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 103.01,
+      "prix": 18.2,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-08-18T00:07:58.996617+00:00",
+      "score_tech_raw": 3.0,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 3.0,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -1669,35 +1695,8 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.021275920079663,
+  "_sd_prev_usdt_d": 8.000914632768788,
   "shadow_portfolio": [
-    {
-      "ticker": "ZAMA",
-      "score": 1.03,
-      "prix_ref": 0.05429,
-      "type": "swing",
-      "timestamp": "2026-08-06T20:10:19.824587+00:00",
-      "outcome": "correct",
-      "pnl_pct": -13.06
-    },
-    {
-      "ticker": "DOGE",
-      "score": -1.03,
-      "prix_ref": 0.06928,
-      "type": "swing",
-      "timestamp": "2026-08-07T08:10:10.437655+00:00",
-      "outcome": "correct",
-      "pnl_pct": 1.34
-    },
-    {
-      "ticker": "FIL",
-      "score": -1.05,
-      "prix_ref": 0.6843,
-      "type": "swing",
-      "timestamp": "2026-08-08T00:12:31.369718+00:00",
-      "outcome": "correct",
-      "pnl_pct": 2.46
-    },
     {
       "ticker": "MMT",
       "score": 1.04,
@@ -1805,6 +1804,33 @@
       "timestamp": "2026-08-13T12:12:48.794998+00:00",
       "outcome": "correct",
       "pnl_pct": -0.18
+    },
+    {
+      "ticker": "ONDO",
+      "score": -1.02,
+      "prix_ref": 0.335,
+      "type": "swing",
+      "timestamp": "2026-08-18T00:10:11.632251+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "COMP",
+      "score": 1.1,
+      "prix_ref": 17.81,
+      "type": "swing",
+      "timestamp": "2026-08-18T00:10:31.880261+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "HBAR",
+      "score": -1.02,
+      "prix_ref": 0.06592,
+      "type": "swing",
+      "timestamp": "2026-08-18T00:10:52.857022+00:00",
+      "outcome": null,
+      "pnl_pct": null
     }
   ],
   "pending_signals": [],
@@ -2575,6 +2601,10 @@
     {
       "date": "2026-08-17T20:11",
       "equity": 355.28
+    },
+    {
+      "date": "2026-08-18T00:08",
+      "equity": 352.81
     }
   ],
   "health_last_warn": 1786983229.201761,
