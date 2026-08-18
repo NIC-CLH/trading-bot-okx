@@ -562,6 +562,20 @@
       "regime": "bear",
       "vol_regime": "normal",
       "score_entry": 0.54
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "COMP",
+      "pnl_pct": -4.29,
+      "days_held": 0.2,
+      "exit_reason": "Stop ATR -4.3% <= -4.0%",
+      "valeur_usd": 100.75,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-08-18T03:31:42.648404+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 3.0
     }
   ],
   "entries": [
