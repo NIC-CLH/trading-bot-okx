@@ -1735,7 +1735,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.006133884903242,
+  "_sd_prev_usdt_d": 7.989464240553122,
   "shadow_portfolio": [
     {
       "ticker": "JUP",
@@ -1865,10 +1865,10 @@
     },
     {
       "ticker": "PUMP",
-      "score": 1.17,
-      "prix_ref": 0.002988,
+      "score": 1.14,
+      "prix_ref": 0.00299,
       "type": "swing",
-      "timestamp": "2026-08-19T08:12:33.545312+00:00",
+      "timestamp": "2026-08-19T12:13:25.330582+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -2678,6 +2678,10 @@
     {
       "date": "2026-08-19T08:10",
       "equity": 351.44
+    },
+    {
+      "date": "2026-08-19T12:11",
+      "equity": 351.91
     }
   ],
   "health_last_warn": 1786983229.201761,
