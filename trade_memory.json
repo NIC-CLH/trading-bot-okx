@@ -1735,26 +1735,8 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.579505450585717,
+  "_sd_prev_usdt_d": 7.582089145519491,
   "shadow_portfolio": [
-    {
-      "ticker": "JUP",
-      "score": -1.06,
-      "prix_ref": 0.18,
-      "type": "swing",
-      "timestamp": "2026-08-10T04:10:19.416841+00:00",
-      "outcome": "correct",
-      "pnl_pct": -3.44
-    },
-    {
-      "ticker": "STRK",
-      "score": -1.05,
-      "prix_ref": 0.02392,
-      "type": "swing",
-      "timestamp": "2026-08-11T08:15:24.703337+00:00",
-      "outcome": "correct",
-      "pnl_pct": -2.34
-    },
     {
       "ticker": "GALA",
       "score": -1.09,
@@ -1810,15 +1792,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "OKB",
-      "score": 1.0,
-      "prix_ref": 99.48,
-      "type": "swing",
-      "timestamp": "2026-08-18T16:10:55.025653+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ONDO",
       "score": -1.08,
       "prix_ref": 0.3339,
@@ -1864,11 +1837,38 @@
       "pnl_pct": null
     },
     {
-      "ticker": "PUMP",
-      "score": 1.14,
-      "prix_ref": 0.00299,
+      "ticker": "OKB",
+      "score": 1.07,
+      "prix_ref": 101.28,
       "type": "swing",
-      "timestamp": "2026-08-19T12:13:25.330582+00:00",
+      "timestamp": "2026-08-19T20:09:34.037088+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.04,
+      "prix_ref": 552.48,
+      "type": "swing",
+      "timestamp": "2026-08-19T20:09:46.809681+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PUMP",
+      "score": 1.09,
+      "prix_ref": 0.003159,
+      "type": "swing",
+      "timestamp": "2026-08-19T20:09:58.889839+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "CFG",
+      "score": -1.1,
+      "prix_ref": 0.1371,
+      "type": "swing",
+      "timestamp": "2026-08-19T20:11:40.772217+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -2686,6 +2686,10 @@
     {
       "date": "2026-08-19T16:09",
       "equity": 351.7
+    },
+    {
+      "date": "2026-08-19T20:08",
+      "equity": 351.44
     }
   ],
   "health_last_warn": 1786983229.201761,
