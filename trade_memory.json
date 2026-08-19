@@ -1735,7 +1735,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 8.015749445850137,
+  "_sd_prev_usdt_d": 8.006133884903242,
   "shadow_portfolio": [
     {
       "ticker": "JUP",
@@ -1855,20 +1855,20 @@
       "pnl_pct": null
     },
     {
-      "ticker": "PUMP",
-      "score": 1.17,
-      "prix_ref": 0.002845,
-      "type": "swing",
-      "timestamp": "2026-08-18T20:12:56.694255+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ETHFI",
       "score": 1.13,
       "prix_ref": 0.4822,
       "type": "swing",
       "timestamp": "2026-08-18T20:14:07.887447+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PUMP",
+      "score": 1.17,
+      "prix_ref": 0.002988,
+      "type": "swing",
+      "timestamp": "2026-08-19T08:12:33.545312+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -2674,6 +2674,10 @@
     {
       "date": "2026-08-19T04:11",
       "equity": 351.15
+    },
+    {
+      "date": "2026-08-19T08:10",
+      "equity": 351.44
     }
   ],
   "health_last_warn": 1786983229.201761,
