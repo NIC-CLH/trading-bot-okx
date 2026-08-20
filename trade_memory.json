@@ -576,6 +576,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 3.0
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "MON",
+      "pnl_pct": 10.93,
+      "days_held": 0.5,
+      "exit_reason": "Signal retourné en zone de profit : score +0.85 < 1.0 | P&L +10.9% 📉",
+      "valeur_usd": 114.15,
+      "outcome": "win",
+      "exit_quality": 100.0,
+      "timestamp": "2026-08-20T16:08:33.026029+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.59
     }
   ],
   "entries": [
@@ -1811,9 +1825,21 @@
       "pnl_pct": -11.032848397077199,
       "type": "trade_reflection",
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
+    },
+    {
+      "lecon_principale": "Sortie précoce sur signal retourné : +10.9% en 0.5j, score 1.59→0.85",
+      "signal_fiable": "Score composite > 1.5 en régime bull = signal d'entrée robuste",
+      "signal_trompeur": "Chute score 0.85 < 1.0 = signal de sortie trop sensible/précoce",
+      "regime_optimal": "bull avec volatilité normal : conditions idéales pour MON",
+      "recommandation": "hold_longer",
+      "confiance": 0.72,
+      "ticker": "MON",
+      "pnl_pct": 10.92577147623018,
+      "type": "trade_reflection",
+      "timestamp": "2026-08-20T16:08:39.704080+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.469629277595702,
+  "_sd_prev_usdt_d": 7.3696881101404115,
   "shadow_portfolio": [
     {
       "ticker": "BONK",
@@ -1857,8 +1883,8 @@
       "prix_ref": 0.3245,
       "type": "swing",
       "timestamp": "2026-08-18T12:12:42.059494+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 11.8
     },
     {
       "ticker": "ONDO",
@@ -2787,6 +2813,10 @@
     {
       "date": "2026-08-20T12:12",
       "equity": 363.31
+    },
+    {
+      "date": "2026-08-20T16:08",
+      "equity": 368.75
     }
   ],
   "health_last_warn": 1786983229.201761,
