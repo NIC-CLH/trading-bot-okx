@@ -1735,7 +1735,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.582089145519491,
+  "_sd_prev_usdt_d": 7.430051780114129,
   "shadow_portfolio": [
     {
       "ticker": "GALA",
@@ -1828,24 +1828,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ETHFI",
-      "score": 1.13,
-      "prix_ref": 0.4822,
-      "type": "swing",
-      "timestamp": "2026-08-18T20:14:07.887447+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "OKB",
-      "score": 1.07,
-      "prix_ref": 101.28,
-      "type": "swing",
-      "timestamp": "2026-08-19T20:09:34.037088+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ZEC",
       "score": 1.04,
       "prix_ref": 552.48,
@@ -1855,20 +1837,38 @@
       "pnl_pct": null
     },
     {
-      "ticker": "PUMP",
-      "score": 1.09,
-      "prix_ref": 0.003159,
-      "type": "swing",
-      "timestamp": "2026-08-19T20:09:58.889839+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "CFG",
       "score": -1.1,
       "prix_ref": 0.1371,
       "type": "swing",
       "timestamp": "2026-08-19T20:11:40.772217+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "OKB",
+      "score": 1.08,
+      "prix_ref": 103.8,
+      "type": "swing",
+      "timestamp": "2026-08-20T00:10:53.577826+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PUMP",
+      "score": 1.28,
+      "prix_ref": 0.00302,
+      "type": "swing",
+      "timestamp": "2026-08-20T00:11:16.779554+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ETHFI",
+      "score": 1.08,
+      "prix_ref": 0.5317,
+      "type": "swing",
+      "timestamp": "2026-08-20T00:12:28.391398+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -2690,6 +2690,10 @@
     {
       "date": "2026-08-19T20:08",
       "equity": 351.44
+    },
+    {
+      "date": "2026-08-20T00:09",
+      "equity": 354.05
     }
   ],
   "health_last_warn": 1786983229.201761,
