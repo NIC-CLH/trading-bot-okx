@@ -1579,6 +1579,32 @@
       "score_tech_adj_raw": 1.59,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ALGO",
+      "score": 1.48,
+      "score_tech": 1.48,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 35.61,
+      "prix": 0.08606532785720496,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-08-20T12:11:42.826092+00:00",
+      "score_tech_raw": 1.48,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 1.48,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -1787,7 +1813,7 @@
       "timestamp": "2026-07-20T12:07:03.120024+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.572411639206762,
+  "_sd_prev_usdt_d": 7.469629277595702,
   "shadow_portfolio": [
     {
       "ticker": "BONK",
@@ -2756,6 +2782,10 @@
     {
       "date": "2026-08-20T08:10",
       "equity": 356.61
+    },
+    {
+      "date": "2026-08-20T12:12",
+      "equity": 363.31
     }
   ],
   "health_last_warn": 1786983229.201761,
