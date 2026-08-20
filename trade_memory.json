@@ -1839,7 +1839,7 @@
       "timestamp": "2026-08-20T16:08:39.704080+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.3696881101404115,
+  "_sd_prev_usdt_d": 7.3616307476204765,
   "shadow_portfolio": [
     {
       "ticker": "BONK",
@@ -1892,8 +1892,8 @@
       "prix_ref": 0.3339,
       "type": "swing",
       "timestamp": "2026-08-18T16:12:15.755934+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 4.19
     },
     {
       "ticker": "DOT",
@@ -1901,8 +1901,8 @@
       "prix_ref": 0.7505,
       "type": "swing",
       "timestamp": "2026-08-18T16:12:26.362417+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 11.42
     },
     {
       "ticker": "ETC",
@@ -1910,8 +1910,8 @@
       "prix_ref": 6.044,
       "type": "swing",
       "timestamp": "2026-08-18T16:13:56.847394+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 12.86
     },
     {
       "ticker": "TRX",
@@ -2817,6 +2817,10 @@
     {
       "date": "2026-08-20T16:08",
       "equity": 368.75
+    },
+    {
+      "date": "2026-08-20T20:11",
+      "equity": 371.45
     }
   ],
   "health_last_warn": 1786983229.201761,
