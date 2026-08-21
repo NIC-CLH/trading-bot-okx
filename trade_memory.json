@@ -1659,6 +1659,32 @@
       "score_tech_adj_raw": 2.55,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "VIRTUAL",
+      "score": 2.14,
+      "score_tech": 2.14,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 42.25,
+      "prix": 0.6715,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-08-21T12:12:01.216362+00:00",
+      "score_tech_raw": 2.14,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.14,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -1891,7 +1917,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.088137803183249,
+  "_sd_prev_usdt_d": 7.049640823030133,
   "shadow_portfolio": [
     {
       "ticker": "SHIB",
@@ -2887,6 +2913,10 @@
     {
       "date": "2026-08-21T08:10",
       "equity": 375.79
+    },
+    {
+      "date": "2026-08-21T12:12",
+      "equity": 378.81
     }
   ],
   "health_last_warn": 1786983229.201761,
