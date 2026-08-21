@@ -590,6 +590,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 1.59
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ALGO",
+      "pnl_pct": 5.26,
+      "days_held": 0.9,
+      "exit_reason": "Signal retourné en zone de profit : score +0.74 < 1.0 | P&L +5.3% 📉",
+      "valeur_usd": 37.88,
+      "outcome": "win",
+      "exit_quality": 124.3,
+      "timestamp": "2026-08-21T08:09:48.395356+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.48
     }
   ],
   "entries": [
@@ -1863,19 +1877,22 @@
       "pnl_pct": 10.92577147623018,
       "type": "trade_reflection",
       "timestamp": "2026-08-20T16:08:39.704080+00:00"
+    },
+    {
+      "lecon_principale": "Score composite élevé (1.48) en régime bull + volatilité normale = setup optimal",
+      "signal_fiable": "Score composite >1.4 en régime bull avec volatilité stable",
+      "signal_trompeur": "Sortie trop précoce sur score 0.74 - signal de retournement peut être faux",
+      "regime_optimal": "Bull avec volatilité normal - idéal pour ALGO",
+      "recommandation": "hold_longer",
+      "confiance": 0.72,
+      "ticker": "ALGO",
+      "pnl_pct": 5.257253130206097,
+      "type": "trade_reflection",
+      "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.21805228383523,
+  "_sd_prev_usdt_d": 7.088137803183249,
   "shadow_portfolio": [
-    {
-      "ticker": "BONK",
-      "score": -1.0,
-      "prix_ref": 2e-06,
-      "type": "swing",
-      "timestamp": "2026-08-13T12:12:29.301936+00:00",
-      "outcome": "missed",
-      "pnl_pct": 17.05
-    },
     {
       "ticker": "SHIB",
       "score": -1.05,
@@ -1999,6 +2016,15 @@
       "prix_ref": 0.02386,
       "type": "swing",
       "timestamp": "2026-08-20T04:13:53.522864+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BTC",
+      "score": 1.04,
+      "prix_ref": 76664.0,
+      "type": "swing",
+      "timestamp": "2026-08-21T08:11:43.802045+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -2856,6 +2882,10 @@
     {
       "date": "2026-08-21T04:10",
       "equity": 368.56
+    },
+    {
+      "date": "2026-08-21T08:10",
+      "equity": 375.79
     }
   ],
   "health_last_warn": 1786983229.201761,
