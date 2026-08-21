@@ -604,6 +604,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 1.48
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "MORPHO",
+      "pnl_pct": 3.53,
+      "days_held": 1.8,
+      "exit_reason": "Trailing stop : pic +9.6% → plancher +4.8% | actuel +3.5%",
+      "valeur_usd": 108.32,
+      "outcome": "win",
+      "exit_quality": 36.7,
+      "timestamp": "2026-08-21T19:01:47.897607+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.49
     }
   ],
   "entries": [
@@ -2073,7 +2087,6 @@
     "OKB": 9.39,
     "MON": 10.93,
     "ALGO": 5.0,
-    "MORPHO": 9.6,
     "TAO": 8.54,
     "VIRTUAL": 7.21
   },
