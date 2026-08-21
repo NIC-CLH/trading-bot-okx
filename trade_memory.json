@@ -618,6 +618,34 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.49
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "OKB",
+      "pnl_pct": 4.02,
+      "days_held": 0,
+      "exit_reason": "Trailing stop : pic +9.4% → plancher +4.7% | actuel +4.0%",
+      "valeur_usd": 107.76,
+      "outcome": "win",
+      "exit_quality": 42.8,
+      "timestamp": "2026-08-21T19:31:46.807696+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.48
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "VIRTUAL",
+      "pnl_pct": 3.34,
+      "days_held": 0.4,
+      "exit_reason": "Trailing stop : pic +7.2% → plancher +3.6% | actuel +3.3%",
+      "valeur_usd": 42.87,
+      "outcome": "win",
+      "exit_quality": 46.3,
+      "timestamp": "2026-08-21T19:31:56.756170+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.14
     }
   ],
   "entries": [
@@ -2084,11 +2112,9 @@
   },
   "peaks": {
     "XRP": 135.48,
-    "OKB": 9.39,
     "MON": 10.93,
     "ALGO": 5.0,
-    "TAO": 8.54,
-    "VIRTUAL": 7.21
+    "TAO": 8.54
   },
   "equity_history": [
     {
