@@ -660,6 +660,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.55
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "LDO",
+      "pnl_pct": -1.16,
+      "days_held": 0.2,
+      "exit_reason": "Trailing stop : pic +8.0% → plancher +4.0% | actuel -1.2%",
+      "valeur_usd": 110.53,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-08-22T05:31:30.885002+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.53
     }
   ],
   "entries": [
@@ -2153,8 +2167,7 @@
   "peaks": {
     "XRP": 180.18,
     "MON": 10.93,
-    "ALGO": 5.0,
-    "LDO": 7.97
+    "ALGO": 5.0
   },
   "equity_history": [
     {
