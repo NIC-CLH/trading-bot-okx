@@ -1999,7 +1999,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.859686306887082,
+  "_sd_prev_usdt_d": 6.812583634755246,
   "shadow_portfolio": [
     {
       "ticker": "SHIB",
@@ -2088,8 +2088,8 @@
       "prix_ref": 0.00302,
       "type": "swing",
       "timestamp": "2026-08-20T00:11:16.779554+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 39.6
     },
     {
       "ticker": "ETHFI",
@@ -2097,8 +2097,8 @@
       "prix_ref": 0.5317,
       "type": "swing",
       "timestamp": "2026-08-20T00:12:28.391398+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 17.85
     },
     {
       "ticker": "ZEC",
@@ -3008,6 +3008,10 @@
     {
       "date": "2026-08-22T00:11",
       "equity": 376.42
+    },
+    {
+      "date": "2026-08-22T04:08",
+      "equity": 389.7
     }
   ],
   "health_last_warn": 1786983229.201761,
