@@ -2013,7 +2013,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.812583634755246,
+  "_sd_prev_usdt_d": 6.913058062703685,
   "shadow_portfolio": [
     {
       "ticker": "SHIB",
@@ -2120,8 +2120,8 @@
       "prix_ref": 553.9,
       "type": "swing",
       "timestamp": "2026-08-20T04:12:07.125759+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 47.22
     },
     {
       "ticker": "OKB",
@@ -2129,8 +2129,8 @@
       "prix_ref": 103.17,
       "type": "swing",
       "timestamp": "2026-08-20T04:12:17.967514+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 9.22
     },
     {
       "ticker": "MON",
@@ -2138,8 +2138,8 @@
       "prix_ref": 0.02386,
       "type": "swing",
       "timestamp": "2026-08-20T04:13:53.522864+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 13.79
     },
     {
       "ticker": "BTC",
@@ -3025,6 +3025,10 @@
     {
       "date": "2026-08-22T04:08",
       "equity": 389.7
+    },
+    {
+      "date": "2026-08-22T08:07",
+      "equity": 380.1
     }
   ],
   "health_last_warn": 1786983229.201761,
