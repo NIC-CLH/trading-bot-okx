@@ -646,6 +646,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.14
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "TAO",
+      "pnl_pct": 12.23,
+      "days_held": 1.2,
+      "exit_reason": "Take profit +12% atteint (+12.2%) — capté en 30min 🎯",
+      "valeur_usd": 122.81,
+      "outcome": "win",
+      "exit_quality": 100.0,
+      "timestamp": "2026-08-22T02:31:36.526107+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.55
     }
   ],
   "entries": [
@@ -2137,11 +2151,10 @@
     }
   },
   "peaks": {
-    "XRP": 147.4,
+    "XRP": 154.63,
     "MON": 10.93,
     "ALGO": 5.0,
-    "TAO": 8.96,
-    "LDO": 2.68
+    "LDO": 3.84
   },
   "equity_history": [
     {
