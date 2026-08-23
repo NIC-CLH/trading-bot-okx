@@ -1781,6 +1781,32 @@
       "score_tech_adj_raw": 2.53,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "BIO",
+      "score": 2.06,
+      "score_tech": 2.06,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 111.99,
+      "prix": 0.02925,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-08-23T08:11:42.704031+00:00",
+      "score_tech_raw": 2.06,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.06,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -2013,7 +2039,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.048441555782927,
+  "_sd_prev_usdt_d": 7.107774530621466,
   "shadow_portfolio": [
     {
       "ticker": "SHIB",
@@ -3049,6 +3075,10 @@
     {
       "date": "2026-08-23T04:09",
       "equity": 380.1
+    },
+    {
+      "date": "2026-08-23T08:12",
+      "equity": 379.55
     }
   ],
   "health_last_warn": 1786983229.201761,
