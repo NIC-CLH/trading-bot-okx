@@ -674,6 +674,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.53
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ORDI",
+      "pnl_pct": 2.7,
+      "days_held": 0.3,
+      "exit_reason": "Trailing stop : pic +6.3% → plancher +3.2% | actuel +2.7%",
+      "valeur_usd": 115.15,
+      "outcome": "win",
+      "exit_quality": 42.6,
+      "timestamp": "2026-08-23T17:31:36.820969+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.39
     }
   ],
   "entries": [
@@ -2220,8 +2234,7 @@
     "XRP": 180.18,
     "MON": 10.93,
     "ALGO": 5.0,
-    "BIO": 5.37,
-    "ORDI": 6.35
+    "BIO": 5.37
   },
   "equity_history": [
     {
