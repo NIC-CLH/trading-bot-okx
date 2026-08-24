@@ -2093,7 +2093,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.013146497659561,
+  "_sd_prev_usdt_d": 6.990924484629566,
   "shadow_portfolio": [
     {
       "ticker": "HBAR",
@@ -2214,19 +2214,19 @@
     },
     {
       "ticker": "ENA",
-      "score": 1.04,
-      "prix_ref": 0.16037,
+      "score": 1.17,
+      "prix_ref": 0.16179,
       "type": "swing",
-      "timestamp": "2026-08-24T00:08:33.974754+00:00",
+      "timestamp": "2026-08-24T08:15:39.503315+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "ACE",
       "score": 1.03,
-      "prix_ref": 0.2408,
+      "prix_ref": 0.23611,
       "type": "swing",
-      "timestamp": "2026-08-24T04:15:08.917181+00:00",
+      "timestamp": "2026-08-24T08:19:15.602226+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3152,6 +3152,10 @@
     },
     {
       "date": "2026-08-24T04:10",
+      "equity": 383.12
+    },
+    {
+      "date": "2026-08-24T08:13",
       "equity": 383.12
     }
   ],
