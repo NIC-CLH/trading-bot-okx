@@ -688,6 +688,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.39
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "BIO",
+      "pnl_pct": 1.98,
+      "days_held": 0.7,
+      "exit_reason": "Trailing stop : pic +5.4% → plancher +2.7% | actuel +2.0%",
+      "valeur_usd": 114.36,
+      "outcome": "win",
+      "exit_quality": 36.9,
+      "timestamp": "2026-08-24T00:31:38.033599+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.06
     }
   ],
   "entries": [
@@ -2233,8 +2247,7 @@
   "peaks": {
     "XRP": 180.18,
     "MON": 10.93,
-    "ALGO": 5.0,
-    "BIO": 5.37
+    "ALGO": 5.0
   },
   "equity_history": [
     {
