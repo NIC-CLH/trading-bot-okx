@@ -2093,7 +2093,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.951227310609412,
+  "_sd_prev_usdt_d": 7.013146497659561,
   "shadow_portfolio": [
     {
       "ticker": "HBAR",
@@ -2223,10 +2223,10 @@
     },
     {
       "ticker": "ACE",
-      "score": 1.05,
-      "prix_ref": 0.23247,
+      "score": 1.03,
+      "prix_ref": 0.2408,
       "type": "swing",
-      "timestamp": "2026-08-24T00:11:12.900657+00:00",
+      "timestamp": "2026-08-24T04:15:08.917181+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3149,6 +3149,10 @@
     {
       "date": "2026-08-24T00:06",
       "equity": 384.74
+    },
+    {
+      "date": "2026-08-24T04:10",
+      "equity": 383.12
     }
   ],
   "health_last_warn": 1786983229.201761,
