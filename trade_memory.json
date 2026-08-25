@@ -2093,17 +2093,8 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.851277642534848,
+  "_sd_prev_usdt_d": 6.821133433786035,
   "shadow_portfolio": [
-    {
-      "ticker": "HBAR",
-      "score": -1.02,
-      "prix_ref": 0.06592,
-      "type": "swing",
-      "timestamp": "2026-08-18T00:10:52.857022+00:00",
-      "outcome": "correct",
-      "pnl_pct": 7.22
-    },
     {
       "ticker": "WLD",
       "score": -1.0,
@@ -2157,15 +2148,6 @@
       "timestamp": "2026-08-19T20:11:40.772217+00:00",
       "outcome": "correct",
       "pnl_pct": 6.29
-    },
-    {
-      "ticker": "PUMP",
-      "score": 1.28,
-      "prix_ref": 0.00302,
-      "type": "swing",
-      "timestamp": "2026-08-20T00:11:16.779554+00:00",
-      "outcome": "missed",
-      "pnl_pct": 39.6
     },
     {
       "ticker": "ETHFI",
@@ -2222,11 +2204,29 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ACE",
-      "score": 1.04,
-      "prix_ref": 0.21447,
+      "ticker": "SOL",
+      "score": 1.01,
+      "prix_ref": 99.62,
       "type": "swing",
-      "timestamp": "2026-08-24T20:13:31.088696+00:00",
+      "timestamp": "2026-08-25T00:12:04.626609+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PUMP",
+      "score": 1.05,
+      "prix_ref": 0.004718,
+      "type": "swing",
+      "timestamp": "2026-08-25T00:12:28.361690+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ACE",
+      "score": 1.15,
+      "prix_ref": 0.21675,
+      "type": "swing",
+      "timestamp": "2026-08-25T00:14:21.950896+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3168,6 +3168,10 @@
     },
     {
       "date": "2026-08-24T20:09",
+      "equity": 383.12
+    },
+    {
+      "date": "2026-08-25T00:10",
       "equity": 383.12
     }
   ],
