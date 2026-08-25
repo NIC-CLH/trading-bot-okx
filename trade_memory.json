@@ -2093,7 +2093,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.727460899999009,
+  "_sd_prev_usdt_d": 6.779385359041562,
   "shadow_portfolio": [
     {
       "ticker": "WLD",
@@ -2215,18 +2215,18 @@
     {
       "ticker": "PUMP",
       "score": 1.0,
-      "prix_ref": 0.004848,
+      "prix_ref": 0.004855,
       "type": "swing",
-      "timestamp": "2026-08-25T04:12:46.691966+00:00",
+      "timestamp": "2026-08-25T08:11:12.975573+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "ACE",
-      "score": 1.01,
-      "prix_ref": 0.21199,
+      "score": 1.03,
+      "prix_ref": 0.22096,
       "type": "swing",
-      "timestamp": "2026-08-25T04:14:33.381876+00:00",
+      "timestamp": "2026-08-25T08:13:46.848595+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3176,6 +3176,10 @@
     },
     {
       "date": "2026-08-25T04:10",
+      "equity": 383.12
+    },
+    {
+      "date": "2026-08-25T08:09",
       "equity": 383.12
     }
   ],
