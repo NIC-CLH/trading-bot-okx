@@ -1887,6 +1887,58 @@
       "score_tech_adj_raw": 2.73,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "CFX",
+      "score": 2.37,
+      "score_tech": 2.37,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 113.58,
+      "prix": 0.04685027302215943,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-08-26T00:11:30.577961+00:00",
+      "score_tech_raw": 2.37,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.37,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "TRB",
+      "score": 2.3,
+      "score_tech": 2.3,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 110.83,
+      "prix": 17.77,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-08-26T00:11:35.276428+00:00",
+      "score_tech_raw": 2.3,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.3,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -2119,17 +2171,8 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.837187436093144,
+  "_sd_prev_usdt_d": 6.899935638268021,
   "shadow_portfolio": [
-    {
-      "ticker": "WLD",
-      "score": -1.0,
-      "prix_ref": 0.3245,
-      "type": "swing",
-      "timestamp": "2026-08-18T12:12:42.059494+00:00",
-      "outcome": "missed",
-      "pnl_pct": 11.8
-    },
     {
       "ticker": "ONDO",
       "score": -1.08,
@@ -2183,15 +2226,6 @@
       "timestamp": "2026-08-20T00:12:28.391398+00:00",
       "outcome": "missed",
       "pnl_pct": 17.85
-    },
-    {
-      "ticker": "ZEC",
-      "score": 1.05,
-      "prix_ref": 553.9,
-      "type": "swing",
-      "timestamp": "2026-08-20T04:12:07.125759+00:00",
-      "outcome": "missed",
-      "pnl_pct": 47.22
     },
     {
       "ticker": "OKB",
@@ -2248,11 +2282,29 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ACE",
-      "score": 1.06,
-      "prix_ref": 0.22266,
+      "ticker": "ZEC",
+      "score": 1.03,
+      "prix_ref": 768.37,
       "type": "swing",
-      "timestamp": "2026-08-25T20:14:48.262798+00:00",
+      "timestamp": "2026-08-26T00:13:30.913115+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AAVE",
+      "score": 1.11,
+      "prix_ref": 125.98,
+      "type": "swing",
+      "timestamp": "2026-08-26T00:14:41.958314+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ACE",
+      "score": 1.19,
+      "prix_ref": 0.22,
+      "type": "swing",
+      "timestamp": "2026-08-26T00:16:19.814409+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3221,6 +3273,10 @@
     {
       "date": "2026-08-25T20:09",
       "equity": 382.79
+    },
+    {
+      "date": "2026-08-26T00:11",
+      "equity": 380.14
     }
   ],
   "health_last_warn": 1787588058.8099475,
