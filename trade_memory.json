@@ -2171,17 +2171,8 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.843809726641573,
+  "_sd_prev_usdt_d": 6.841252032090055,
   "shadow_portfolio": [
-    {
-      "ticker": "DOT",
-      "score": -1.05,
-      "prix_ref": 0.7505,
-      "type": "swing",
-      "timestamp": "2026-08-18T16:12:26.362417+00:00",
-      "outcome": "missed",
-      "pnl_pct": 11.42
-    },
     {
       "ticker": "ETC",
       "score": -1.2,
@@ -2237,15 +2228,6 @@
       "pnl_pct": 0.61
     },
     {
-      "ticker": "ENA",
-      "score": 1.17,
-      "prix_ref": 0.16179,
-      "type": "swing",
-      "timestamp": "2026-08-24T08:15:39.503315+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "PUMP",
       "score": 1.0,
       "prix_ref": 0.004855,
@@ -2282,15 +2264,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ACE",
-      "score": 1.19,
-      "prix_ref": 0.22306,
-      "type": "swing",
-      "timestamp": "2026-08-26T04:15:14.860800+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ETHFI",
       "score": 1.02,
       "prix_ref": 0.5747,
@@ -2305,6 +2278,33 @@
       "prix_ref": 1.732,
       "type": "swing",
       "timestamp": "2026-08-26T04:18:57.849365+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.11,
+      "prix_ref": 0.14372,
+      "type": "swing",
+      "timestamp": "2026-08-26T08:15:56.304656+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ACE",
+      "score": 1.15,
+      "prix_ref": 0.21717,
+      "type": "swing",
+      "timestamp": "2026-08-26T08:17:51.240245+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "KMNO",
+      "score": 1.03,
+      "prix_ref": 0.0238,
+      "type": "swing",
+      "timestamp": "2026-08-26T08:21:03.499674+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3281,6 +3281,10 @@
     {
       "date": "2026-08-26T04:10",
       "equity": 384.61
+    },
+    {
+      "date": "2026-08-26T08:13",
+      "equity": 384.99
     }
   ],
   "health_last_warn": 1787588058.8099475,
