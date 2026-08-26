@@ -1939,6 +1939,32 @@
       "score_tech_adj_raw": 2.3,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "PYTH",
+      "score": 2.99,
+      "score_tech": 2.99,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 40.3,
+      "prix": 0.05326000000000001,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-08-26T12:11:42.184570+00:00",
+      "score_tech_raw": 2.99,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.99,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -2171,17 +2197,8 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.841252032090055,
+  "_sd_prev_usdt_d": 6.877064350269384,
   "shadow_portfolio": [
-    {
-      "ticker": "ETC",
-      "score": -1.2,
-      "prix_ref": 6.044,
-      "type": "swing",
-      "timestamp": "2026-08-18T16:13:56.847394+00:00",
-      "outcome": "missed",
-      "pnl_pct": 12.86
-    },
     {
       "ticker": "TRX",
       "score": 1.11,
@@ -2237,15 +2254,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "AAVE",
-      "score": 1.11,
-      "prix_ref": 125.98,
-      "type": "swing",
-      "timestamp": "2026-08-26T00:14:41.958314+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "SOL",
       "score": 1.08,
       "prix_ref": 97.07,
@@ -2264,15 +2272,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ETHFI",
-      "score": 1.02,
-      "prix_ref": 0.5747,
-      "type": "swing",
-      "timestamp": "2026-08-26T04:15:25.420913+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "PENDLE",
       "score": 1.02,
       "prix_ref": 1.732,
@@ -2283,28 +2282,55 @@
     },
     {
       "ticker": "ENA",
-      "score": 1.11,
-      "prix_ref": 0.14372,
+      "score": 1.16,
+      "prix_ref": 0.14332,
       "type": "swing",
-      "timestamp": "2026-08-26T08:15:56.304656+00:00",
+      "timestamp": "2026-08-26T12:14:46.925933+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AAVE",
+      "score": 1.11,
+      "prix_ref": 126.2,
+      "type": "swing",
+      "timestamp": "2026-08-26T12:15:34.264491+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "ACE",
-      "score": 1.15,
-      "prix_ref": 0.21717,
+      "score": 1.13,
+      "prix_ref": 0.21022,
       "type": "swing",
-      "timestamp": "2026-08-26T08:17:51.240245+00:00",
+      "timestamp": "2026-08-26T12:16:52.902028+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ETHFI",
+      "score": 1.02,
+      "prix_ref": 0.5806,
+      "type": "swing",
+      "timestamp": "2026-08-26T12:17:03.672926+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "MORPHO",
+      "score": 1.04,
+      "prix_ref": 2.5741,
+      "type": "swing",
+      "timestamp": "2026-08-26T12:17:23.835475+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "KMNO",
-      "score": 1.03,
-      "prix_ref": 0.0238,
+      "score": 1.04,
+      "prix_ref": 0.02376,
       "type": "swing",
-      "timestamp": "2026-08-26T08:21:03.499674+00:00",
+      "timestamp": "2026-08-26T12:19:30.902917+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3285,6 +3311,10 @@
     {
       "date": "2026-08-26T08:13",
       "equity": 384.99
+    },
+    {
+      "date": "2026-08-26T12:12",
+      "equity": 381.58
     }
   ],
   "health_last_warn": 1787588058.8099475,
