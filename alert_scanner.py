@@ -198,8 +198,14 @@ def scan_and_execute_signals() -> list[dict]:
         target = tech.get("target_proche")
         atr = tech.get("atr_14", 0)
 
-        if not stop and atr:
-            stop = round(prix - atr * 2, 6)
+        # Stop aligné sur position_manager.get_atr_stop (ATR×1.5, borné -4%/-10%)
+        # Avant : ATR×2 sans borne → stop à -12.4%, incohérent avec le reste du bot.
+        try:
+            import position_manager as _pm
+            stop = _pm.get_atr_stop(ticker, prix)
+        except Exception:
+            if not stop and atr:
+                stop = round(prix - atr * 1.5, 6)
         if not target and stop:
             target = round(prix + abs(prix - stop) * 2, 6)
 
@@ -497,8 +503,14 @@ def scan_xrp_binance():
         target = tech.get("target_proche")
         atr = tech.get("atr_14", 0)
 
-        if not stop and atr:
-            stop = round(prix - atr * 2, 6)
+        # Stop aligné sur position_manager.get_atr_stop (ATR×1.5, borné -4%/-10%)
+        # Avant : ATR×2 sans borne → stop à -12.4%, incohérent avec le reste du bot.
+        try:
+            import position_manager as _pm
+            stop = _pm.get_atr_stop("XRP", prix)
+        except Exception:
+            if not stop and atr:
+                stop = round(prix - atr * 1.5, 6)
         if not target and stop:
             target = round(prix + abs(prix - stop) * 2, 6)
 
@@ -516,10 +528,36 @@ def scan_xrp_binance():
             pass
 
         # Mode ACHAT UNIQUEMENT — pas d'alertes de vente XRP.
-        # XRP est une position long terme sur Binance. Les alertes de vente
-        # créaient un whipsawing systématique (vendre à X, racheter à X+5%).
-        # Le bot alerte uniquement quand c'est un bon moment d'ACHETER davantage.
-        is_buy_signal  = score >= XRP_BUY_THRESHOLD
+        # Position long terme (watch-only) : les alertes de vente créaient un
+        # whipsawing systématique (vendre à X, racheter à X+5%).
+        #
+        # Aligné le 28/07/2026 sur les règles validées par le backtest 400j.
+        # Avant, ce module était un chemin isolé : aucun plafond de score,
+        # stop à ATR×2 (−12%), aucun filtre fondamental. Il a envoyé un
+        # "Bon moment pour renforcer" un jour où le prix faisait −6.2%.
+        is_buy_signal = score >= XRP_BUY_THRESHOLD
+
+        # 1. Plafond de score — au-delà, on achète un sommet probable
+        #    (backtest : score >= 2.5 → EV −0.02%)
+        if is_buy_signal and score > SCORE_MAX_EXEC:
+            logger.info(f"XRP score {score:+.2f} > {SCORE_MAX_EXEC} — zone surchauffe, pas d'alerte achat")
+            is_buy_signal = False
+
+        # 2. Fondamentaux — un signal technique ne suffit pas
+        if is_buy_signal:
+            try:
+                fond = ns.analyze("XRP")
+                if fond.get("score_global", 0) < -0.5:
+                    logger.info(f"XRP fondamentaux {fond.get('score_global'):+.2f} — alerte achat bloquée")
+                    is_buy_signal = False
+            except Exception:
+                pass
+
+        # 3. Cohérence prix/signal — ne pas annoncer "tendance haussière
+        #    confirmée" un jour de forte baisse (les indicateurs retardent).
+        if is_buy_signal and price_move_pct <= -XRP_PRICE_MOVE_PCT:
+            logger.info(f"XRP en baisse de {price_move_pct:.1f}% aujourd'hui — alerte achat reportée")
+            is_buy_signal = False
         is_price_spike = is_price_spike  # spike toujours pertinent (info)
 
         actionnable = is_buy_signal or is_price_spike
@@ -551,7 +589,8 @@ def scan_xrp_binance():
             conseil = (
                 f"Zone d'achat : `${prix:.4f}` — `${round(prix * 1.01, 4):.4f}`\n"
                 f"🛡 Stop suggéré : `${stop:.4f}` (−{risque_pct:.1f}%)\n"
-                f"🎯 Objectif : `${target:.4f}` (+{gain_pct:.1f}%)"
+                f"🎯 Objectif : `${target:.4f}` (+{gain_pct:.1f}%)\n"
+                f"_Variation du jour : {price_move_pct:+.1f}% — décision manuelle_"
             )
         else:  # spike uniquement
             direction_spike = "hausse" if price_move_pct > 0 else "baisse"
