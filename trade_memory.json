@@ -2171,17 +2171,8 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.899935638268021,
+  "_sd_prev_usdt_d": 6.843809726641573,
   "shadow_portfolio": [
-    {
-      "ticker": "ONDO",
-      "score": -1.08,
-      "prix_ref": 0.3339,
-      "type": "swing",
-      "timestamp": "2026-08-18T16:12:15.755934+00:00",
-      "outcome": "correct",
-      "pnl_pct": 4.19
-    },
     {
       "ticker": "DOT",
       "score": -1.05,
@@ -2217,15 +2208,6 @@
       "timestamp": "2026-08-19T20:11:40.772217+00:00",
       "outcome": "correct",
       "pnl_pct": 6.29
-    },
-    {
-      "ticker": "ETHFI",
-      "score": 1.08,
-      "prix_ref": 0.5317,
-      "type": "swing",
-      "timestamp": "2026-08-20T00:12:28.391398+00:00",
-      "outcome": "missed",
-      "pnl_pct": 17.85
     },
     {
       "ticker": "OKB",
@@ -2264,29 +2246,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "SOL",
-      "score": 1.01,
-      "prix_ref": 99.62,
-      "type": "swing",
-      "timestamp": "2026-08-25T00:12:04.626609+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "PUMP",
       "score": 1.0,
       "prix_ref": 0.004855,
       "type": "swing",
       "timestamp": "2026-08-25T08:11:12.975573+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ZEC",
-      "score": 1.03,
-      "prix_ref": 768.37,
-      "type": "swing",
-      "timestamp": "2026-08-26T00:13:30.913115+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -2300,11 +2264,47 @@
       "pnl_pct": null
     },
     {
+      "ticker": "SOL",
+      "score": 1.08,
+      "prix_ref": 97.07,
+      "type": "swing",
+      "timestamp": "2026-08-26T04:11:49.422098+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.06,
+      "prix_ref": 785.33,
+      "type": "swing",
+      "timestamp": "2026-08-26T04:12:12.284683+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
       "ticker": "ACE",
       "score": 1.19,
-      "prix_ref": 0.22,
+      "prix_ref": 0.22306,
       "type": "swing",
-      "timestamp": "2026-08-26T00:16:19.814409+00:00",
+      "timestamp": "2026-08-26T04:15:14.860800+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ETHFI",
+      "score": 1.02,
+      "prix_ref": 0.5747,
+      "type": "swing",
+      "timestamp": "2026-08-26T04:15:25.420913+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PENDLE",
+      "score": 1.02,
+      "prix_ref": 1.732,
+      "type": "swing",
+      "timestamp": "2026-08-26T04:18:57.849365+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3277,6 +3277,10 @@
     {
       "date": "2026-08-26T00:11",
       "equity": 380.14
+    },
+    {
+      "date": "2026-08-26T04:10",
+      "equity": 384.61
     }
   ],
   "health_last_warn": 1787588058.8099475,
