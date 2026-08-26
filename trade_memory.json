@@ -2197,7 +2197,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.933474338721774,
+  "_sd_prev_usdt_d": 6.900806183793342,
   "shadow_portfolio": [
     {
       "ticker": "CFG",
@@ -2290,29 +2290,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "MORPHO",
-      "score": 1.04,
-      "prix_ref": 2.5741,
-      "type": "swing",
-      "timestamp": "2026-08-26T12:17:23.835475+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "KMNO",
       "score": 1.04,
       "prix_ref": 0.02376,
       "type": "swing",
       "timestamp": "2026-08-26T12:19:30.902917+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ZEC",
-      "score": 1.18,
-      "prix_ref": 775.56,
-      "type": "swing",
-      "timestamp": "2026-08-26T16:09:53.668789+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -2326,11 +2308,29 @@
       "pnl_pct": null
     },
     {
-      "ticker": "UNI",
-      "score": 1.03,
-      "prix_ref": 4.221,
+      "ticker": "ZEC",
+      "score": 1.13,
+      "prix_ref": 784.8,
       "type": "swing",
-      "timestamp": "2026-08-26T16:11:44.195306+00:00",
+      "timestamp": "2026-08-26T20:12:32.274853+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "UNI",
+      "score": 1.04,
+      "prix_ref": 4.27,
+      "type": "swing",
+      "timestamp": "2026-08-26T20:14:14.659368+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "MORPHO",
+      "score": 1.03,
+      "prix_ref": 2.4839,
+      "type": "swing",
+      "timestamp": "2026-08-26T20:16:18.341046+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3319,6 +3319,10 @@
     {
       "date": "2026-08-26T16:07",
       "equity": 373.84
+    },
+    {
+      "date": "2026-08-26T20:09",
+      "equity": 373.13
     }
   ],
   "health_last_warn": 1787588058.8099475,
