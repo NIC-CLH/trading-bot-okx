@@ -2237,7 +2237,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.849118558373248,
+  "_sd_prev_usdt_d": 6.821812552851606,
   "shadow_portfolio": [
     {
       "ticker": "OKB",
@@ -2312,15 +2312,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ZEC",
-      "score": 1.1,
-      "prix_ref": 778.5,
-      "type": "swing",
-      "timestamp": "2026-08-27T04:12:21.929020+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ENA",
       "score": 1.17,
       "prix_ref": 0.1454,
@@ -2371,6 +2362,15 @@
       "prix_ref": 1.734,
       "type": "swing",
       "timestamp": "2026-08-27T04:19:05.575961+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.1,
+      "prix_ref": 792.25,
+      "type": "swing",
+      "timestamp": "2026-08-27T08:09:41.985880+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3373,6 +3373,10 @@
     {
       "date": "2026-08-27T04:10",
       "equity": 378.39
+    },
+    {
+      "date": "2026-08-27T08:07",
+      "equity": 381.39
     }
   ],
   "health_last_warn": 1787588058.8099475,
