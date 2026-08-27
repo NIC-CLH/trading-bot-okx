@@ -1979,6 +1979,32 @@
       "score_tech_adj_raw": 2.99,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "DOT",
+      "score": 2.02,
+      "score_tech": 2.02,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 37.44,
+      "prix": 0.8764,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-08-27T00:11:44.471446+00:00",
+      "score_tech_raw": 2.02,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.02,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -2211,7 +2237,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.900806183793342,
+  "_sd_prev_usdt_d": 6.8286268981749805,
   "shadow_portfolio": [
     {
       "ticker": "CFG",
@@ -2277,15 +2303,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "AAVE",
-      "score": 1.11,
-      "prix_ref": 126.2,
-      "type": "swing",
-      "timestamp": "2026-08-26T12:15:34.264491+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ACE",
       "score": 1.13,
       "prix_ref": 0.21022,
@@ -2313,38 +2330,47 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ENA",
-      "score": 1.03,
-      "prix_ref": 0.13861,
+      "ticker": "ZEC",
+      "score": 1.05,
+      "prix_ref": 810.47,
       "type": "swing",
-      "timestamp": "2026-08-26T16:11:22.156226+00:00",
+      "timestamp": "2026-08-27T00:13:51.482036+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
-      "ticker": "ZEC",
-      "score": 1.13,
-      "prix_ref": 784.8,
+      "ticker": "ENA",
+      "score": 1.03,
+      "prix_ref": 0.1478,
       "type": "swing",
-      "timestamp": "2026-08-26T20:12:32.274853+00:00",
+      "timestamp": "2026-08-27T00:14:24.066963+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "UNI",
-      "score": 1.04,
-      "prix_ref": 4.27,
+      "score": 1.09,
+      "prix_ref": 4.382,
       "type": "swing",
-      "timestamp": "2026-08-26T20:14:14.659368+00:00",
+      "timestamp": "2026-08-27T00:15:12.586393+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AAVE",
+      "score": 1.03,
+      "prix_ref": 126.32,
+      "type": "swing",
+      "timestamp": "2026-08-27T00:15:45.822268+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "MORPHO",
       "score": 1.03,
-      "prix_ref": 2.4839,
+      "prix_ref": 2.525,
       "type": "swing",
-      "timestamp": "2026-08-26T20:16:18.341046+00:00",
+      "timestamp": "2026-08-27T00:17:08.764332+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3338,6 +3364,10 @@
     {
       "date": "2026-08-26T20:09",
       "equity": 373.13
+    },
+    {
+      "date": "2026-08-27T00:12",
+      "equity": 382.99
     }
   ],
   "health_last_warn": 1787588058.8099475,
