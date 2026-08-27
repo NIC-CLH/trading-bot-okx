@@ -2237,7 +2237,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.799498761649711,
+  "_sd_prev_usdt_d": 6.730063029028174,
   "shadow_portfolio": [
     {
       "ticker": "MON",
@@ -2357,20 +2357,20 @@
       "pnl_pct": null
     },
     {
-      "ticker": "MORPHO",
-      "score": 1.08,
-      "prix_ref": 2.6833,
-      "type": "swing",
-      "timestamp": "2026-08-27T12:19:58.293187+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "JUP",
       "score": 1.03,
       "prix_ref": 0.2227,
       "type": "swing",
       "timestamp": "2026-08-27T12:20:09.488128+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "MORPHO",
+      "score": 1.03,
+      "prix_ref": 2.6166,
+      "type": "swing",
+      "timestamp": "2026-08-27T16:21:05.201864+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3381,6 +3381,10 @@
     {
       "date": "2026-08-27T12:14",
       "equity": 383.38
+    },
+    {
+      "date": "2026-08-27T16:14",
+      "equity": 389.99
     }
   ],
   "health_last_warn": 1787588058.8099475,
