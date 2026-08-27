@@ -730,6 +730,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.73
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "MERL",
+      "pnl_pct": 3.32,
+      "days_held": 0.2,
+      "exit_reason": "Trailing stop : pic +6.8% → plancher +3.4% | actuel +3.3%",
+      "valeur_usd": 114.85,
+      "outcome": "win",
+      "exit_quality": 49.1,
+      "timestamp": "2026-08-27T22:31:41.811925+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.75
     }
   ],
   "entries": [
@@ -2434,8 +2448,7 @@
     "ALGO": 5.0,
     "CFX": 4.1,
     "TRB": 1.63,
-    "DOT": 2.1,
-    "MERL": 6.76
+    "DOT": 2.1
   },
   "equity_history": [
     {
