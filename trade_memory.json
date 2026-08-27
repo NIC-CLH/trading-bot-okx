@@ -716,6 +716,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.99
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "CRV",
+      "pnl_pct": 3.04,
+      "days_held": 2.0,
+      "exit_reason": "Trailing stop : pic +6.6% → plancher +3.3% | actuel +3.0%",
+      "valeur_usd": 116.41,
+      "outcome": "win",
+      "exit_quality": 46.1,
+      "timestamp": "2026-08-27T18:31:47.011079+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.73
     }
   ],
   "entries": [
@@ -2392,7 +2406,6 @@
     "XRP": 180.18,
     "MON": 10.93,
     "ALGO": 5.0,
-    "CRV": 6.58,
     "CFX": 4.1,
     "TRB": 1.63,
     "DOT": 2.1
