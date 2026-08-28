@@ -2059,6 +2059,32 @@
       "score_tech_adj_raw": 2.75,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "CRO",
+      "score": 2.11,
+      "score_tech": 2.11,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 113.22,
+      "prix": 0.06088,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-08-28T00:12:37.568321+00:00",
+      "score_tech_raw": 2.11,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.11,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -2291,17 +2317,8 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.7635808548726235,
+  "_sd_prev_usdt_d": 6.742343425290762,
   "shadow_portfolio": [
-    {
-      "ticker": "MON",
-      "score": 1.08,
-      "prix_ref": 0.02386,
-      "type": "swing",
-      "timestamp": "2026-08-20T04:13:53.522864+00:00",
-      "outcome": "missed",
-      "pnl_pct": 13.79
-    },
     {
       "ticker": "BTC",
       "score": 1.04,
@@ -2344,15 +2361,6 @@
       "prix_ref": 0.02376,
       "type": "swing",
       "timestamp": "2026-08-26T12:19:30.902917+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ENA",
-      "score": 1.17,
-      "prix_ref": 0.1454,
-      "type": "swing",
-      "timestamp": "2026-08-27T04:13:15.105174+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -2402,15 +2410,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "AAVE",
-      "score": 1.06,
-      "prix_ref": 126.55,
-      "type": "swing",
-      "timestamp": "2026-08-27T12:18:37.339278+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "JUP",
       "score": 1.03,
       "prix_ref": 0.2227,
@@ -2425,6 +2424,33 @@
       "prix_ref": 2.6166,
       "type": "swing",
       "timestamp": "2026-08-27T16:21:05.201864+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "XRP",
+      "score": 1.11,
+      "prix_ref": 1.4462,
+      "type": "swing",
+      "timestamp": "2026-08-28T00:14:44.222060+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.14,
+      "prix_ref": 0.17105,
+      "type": "swing",
+      "timestamp": "2026-08-28T00:15:14.656652+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AAVE",
+      "score": 1.07,
+      "prix_ref": 128.44,
+      "type": "swing",
+      "timestamp": "2026-08-28T00:16:55.827631+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3442,6 +3468,10 @@
     {
       "date": "2026-08-27T20:13",
       "equity": 383.09
+    },
+    {
+      "date": "2026-08-28T00:13",
+      "equity": 384.72
     }
   ],
   "health_last_warn": 1787588058.8099475,
