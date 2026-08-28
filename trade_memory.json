@@ -2317,7 +2317,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.7805885216979656,
+  "_sd_prev_usdt_d": 6.7791660114294245,
   "shadow_portfolio": [
     {
       "ticker": "BTC",
@@ -2419,15 +2419,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "XRP",
-      "score": 1.15,
-      "prix_ref": 1.4239,
-      "type": "swing",
-      "timestamp": "2026-08-28T04:12:48.987229+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ENA",
       "score": 1.09,
       "prix_ref": 0.16131,
@@ -2437,20 +2428,29 @@
       "pnl_pct": null
     },
     {
-      "ticker": "KMNO",
-      "score": 1.08,
-      "prix_ref": 0.02715,
-      "type": "swing",
-      "timestamp": "2026-08-28T04:17:25.312886+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "PENDLE",
       "score": 1.04,
       "prix_ref": 1.741,
       "type": "swing",
       "timestamp": "2026-08-28T04:19:57.468216+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "XRP",
+      "score": 1.23,
+      "prix_ref": 1.422,
+      "type": "swing",
+      "timestamp": "2026-08-28T08:13:16.158222+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "KMNO",
+      "score": 1.08,
+      "prix_ref": 0.02706,
+      "type": "swing",
+      "timestamp": "2026-08-28T08:18:22.229963+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3477,6 +3477,10 @@
     {
       "date": "2026-08-28T04:11",
       "equity": 374.89
+    },
+    {
+      "date": "2026-08-28T08:11",
+      "equity": 376.52
     }
   ],
   "health_last_warn": 1787588058.8099475,
