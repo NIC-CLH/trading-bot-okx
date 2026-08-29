@@ -2317,7 +2317,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.949817278053333,
+  "_sd_prev_usdt_d": 6.92385869057003,
   "shadow_portfolio": [
     {
       "ticker": "CORE",
@@ -2401,24 +2401,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "BTC",
-      "score": 1.37,
-      "prix_ref": 77489.7,
-      "type": "swing",
-      "timestamp": "2026-08-28T20:11:11.223783+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ENA",
-      "score": 1.4,
-      "prix_ref": 0.1593,
-      "type": "swing",
-      "timestamp": "2026-08-28T20:12:27.305415+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "UNI",
       "score": 1.01,
       "prix_ref": 4.4,
@@ -2428,29 +2410,47 @@
       "pnl_pct": null
     },
     {
-      "ticker": "PUMP",
-      "score": 1.08,
-      "prix_ref": 0.004606,
-      "type": "swing",
-      "timestamp": "2026-08-28T20:13:31.997129+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "TURBO",
-      "score": 1.06,
-      "prix_ref": 0.001093,
-      "type": "swing",
-      "timestamp": "2026-08-28T20:16:46.389106+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "FOGO",
       "score": -1.1,
       "prix_ref": 0.007737,
       "type": "swing",
       "timestamp": "2026-08-28T20:19:55.029752+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BTC",
+      "score": 1.13,
+      "prix_ref": 77864.8,
+      "type": "swing",
+      "timestamp": "2026-08-29T00:11:22.524156+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.4,
+      "prix_ref": 0.16453,
+      "type": "swing",
+      "timestamp": "2026-08-29T00:12:14.670742+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PUMP",
+      "score": 1.12,
+      "prix_ref": 0.004659,
+      "type": "swing",
+      "timestamp": "2026-08-29T00:12:58.265408+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "TURBO",
+      "score": 1.07,
+      "prix_ref": 0.001091,
+      "type": "swing",
+      "timestamp": "2026-08-29T00:14:39.188219+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3493,6 +3493,10 @@
     {
       "date": "2026-08-28T20:09",
       "equity": 365.01
+    },
+    {
+      "date": "2026-08-29T00:10",
+      "equity": 367.58
     }
   ],
   "health_last_warn": 1787588058.8099475,
