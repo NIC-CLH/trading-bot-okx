@@ -2317,7 +2317,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.944417899623565,
+  "_sd_prev_usdt_d": 6.950452725213754,
   "shadow_portfolio": [
     {
       "ticker": "CORE",
@@ -2325,8 +2325,8 @@
       "prix_ref": 0.02728,
       "type": "swing",
       "timestamp": "2026-08-27T04:15:23.112708+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -8.47
     },
     {
       "ticker": "SOL",
@@ -2428,29 +2428,29 @@
       "pnl_pct": null
     },
     {
-      "ticker": "BTC",
-      "score": 1.4,
-      "prix_ref": 77583.3,
-      "type": "swing",
-      "timestamp": "2026-08-29T04:11:20.756798+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ENA",
-      "score": 1.4,
-      "prix_ref": 0.16106,
-      "type": "swing",
-      "timestamp": "2026-08-29T04:12:10.812168+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "AAVE",
       "score": 1.0,
       "prix_ref": 120.69,
       "type": "swing",
       "timestamp": "2026-08-29T04:13:55.726659+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BTC",
+      "score": 1.18,
+      "prix_ref": 77520.7,
+      "type": "swing",
+      "timestamp": "2026-08-29T08:13:24.639461+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.32,
+      "prix_ref": 0.15845,
+      "type": "swing",
+      "timestamp": "2026-08-29T08:14:20.784559+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3501,6 +3501,10 @@
     {
       "date": "2026-08-29T04:10",
       "equity": 365.07
+    },
+    {
+      "date": "2026-08-29T08:12",
+      "equity": 366.18
     }
   ],
   "health_last_warn": 1787588058.8099475,
