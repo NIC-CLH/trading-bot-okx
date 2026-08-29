@@ -2317,7 +2317,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.943403171304722,
+  "_sd_prev_usdt_d": 6.912879924986572,
   "shadow_portfolio": [
     {
       "ticker": "CORE",
@@ -2334,8 +2334,8 @@
       "prix_ref": 104.15,
       "type": "swing",
       "timestamp": "2026-08-27T12:15:25.092081+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 0.96
     },
     {
       "ticker": "ZEC",
@@ -2343,8 +2343,8 @@
       "prix_ref": 785.6,
       "type": "swing",
       "timestamp": "2026-08-27T12:15:59.507727+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 5.92
     },
     {
       "ticker": "JUP",
@@ -2352,8 +2352,8 @@
       "prix_ref": 0.2227,
       "type": "swing",
       "timestamp": "2026-08-27T12:20:09.488128+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -1.8
     },
     {
       "ticker": "KMNO",
@@ -2379,24 +2379,6 @@
       "prix_ref": 1.749,
       "type": "swing",
       "timestamp": "2026-08-28T12:18:46.508378+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "XRP",
-      "score": 1.18,
-      "prix_ref": 1.4056,
-      "type": "swing",
-      "timestamp": "2026-08-28T16:11:57.741317+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "UNI",
-      "score": 1.01,
-      "prix_ref": 4.4,
-      "type": "swing",
-      "timestamp": "2026-08-28T20:13:06.133794+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -2428,29 +2410,47 @@
       "pnl_pct": null
     },
     {
-      "ticker": "AAVE",
-      "score": 1.0,
-      "prix_ref": 120.69,
+      "ticker": "BTC",
+      "score": 1.03,
+      "prix_ref": 77960.7,
       "type": "swing",
-      "timestamp": "2026-08-29T04:13:55.726659+00:00",
+      "timestamp": "2026-08-29T16:11:37.445024+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
-      "ticker": "BTC",
-      "score": 1.31,
-      "prix_ref": 77596.5,
+      "ticker": "XRP",
+      "score": 1.15,
+      "prix_ref": 1.3949,
       "type": "swing",
-      "timestamp": "2026-08-29T12:14:53.997486+00:00",
+      "timestamp": "2026-08-29T16:12:14.910097+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "ENA",
-      "score": 1.29,
-      "prix_ref": 0.15545,
+      "score": 1.32,
+      "prix_ref": 0.15741,
       "type": "swing",
-      "timestamp": "2026-08-29T12:15:48.449269+00:00",
+      "timestamp": "2026-08-29T16:12:42.434820+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "UNI",
+      "score": 1.04,
+      "prix_ref": 4.525,
+      "type": "swing",
+      "timestamp": "2026-08-29T16:13:26.162599+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AAVE",
+      "score": 1.07,
+      "prix_ref": 123.48,
+      "type": "swing",
+      "timestamp": "2026-08-29T16:14:08.033294+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3509,6 +3509,10 @@
     {
       "date": "2026-08-29T12:13",
       "equity": 366.88
+    },
+    {
+      "date": "2026-08-29T16:10",
+      "equity": 367.2
     }
   ],
   "health_last_warn": 1787588058.8099475,
