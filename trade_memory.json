@@ -2317,7 +2317,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.92385869057003,
+  "_sd_prev_usdt_d": 6.944417899623565,
   "shadow_portfolio": [
     {
       "ticker": "CORE",
@@ -2392,15 +2392,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "AAVE",
-      "score": 1.07,
-      "prix_ref": 122.34,
-      "type": "swing",
-      "timestamp": "2026-08-28T16:13:53.873359+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "UNI",
       "score": 1.01,
       "prix_ref": 4.4,
@@ -2419,24 +2410,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "BTC",
-      "score": 1.13,
-      "prix_ref": 77864.8,
-      "type": "swing",
-      "timestamp": "2026-08-29T00:11:22.524156+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ENA",
-      "score": 1.4,
-      "prix_ref": 0.16453,
-      "type": "swing",
-      "timestamp": "2026-08-29T00:12:14.670742+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "PUMP",
       "score": 1.12,
       "prix_ref": 0.004659,
@@ -2451,6 +2424,33 @@
       "prix_ref": 0.001091,
       "type": "swing",
       "timestamp": "2026-08-29T00:14:39.188219+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BTC",
+      "score": 1.4,
+      "prix_ref": 77583.3,
+      "type": "swing",
+      "timestamp": "2026-08-29T04:11:20.756798+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.4,
+      "prix_ref": 0.16106,
+      "type": "swing",
+      "timestamp": "2026-08-29T04:12:10.812168+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AAVE",
+      "score": 1.0,
+      "prix_ref": 120.69,
+      "type": "swing",
+      "timestamp": "2026-08-29T04:13:55.726659+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3497,6 +3497,10 @@
     {
       "date": "2026-08-29T00:10",
       "equity": 367.58
+    },
+    {
+      "date": "2026-08-29T04:10",
+      "equity": 365.07
     }
   ],
   "health_last_warn": 1787588058.8099475,
