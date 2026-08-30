@@ -2317,35 +2317,8 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.950070072291388,
+  "_sd_prev_usdt_d": 6.927761549051587,
   "shadow_portfolio": [
-    {
-      "ticker": "CORE",
-      "score": 1.0,
-      "prix_ref": 0.02728,
-      "type": "swing",
-      "timestamp": "2026-08-27T04:15:23.112708+00:00",
-      "outcome": "correct",
-      "pnl_pct": -8.47
-    },
-    {
-      "ticker": "SOL",
-      "score": 1.04,
-      "prix_ref": 104.15,
-      "type": "swing",
-      "timestamp": "2026-08-27T12:15:25.092081+00:00",
-      "outcome": "correct",
-      "pnl_pct": 0.96
-    },
-    {
-      "ticker": "ZEC",
-      "score": 1.02,
-      "prix_ref": 785.6,
-      "type": "swing",
-      "timestamp": "2026-08-27T12:15:59.507727+00:00",
-      "outcome": "correct",
-      "pnl_pct": 5.92
-    },
     {
       "ticker": "JUP",
       "score": 1.03,
@@ -2361,8 +2334,8 @@
       "prix_ref": 0.02706,
       "type": "swing",
       "timestamp": "2026-08-28T08:18:22.229963+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -6.91
     },
     {
       "ticker": "MORPHO",
@@ -2428,15 +2401,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "BTC",
-      "score": 1.18,
-      "prix_ref": 78192.1,
-      "type": "swing",
-      "timestamp": "2026-08-30T08:11:43.131843+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "XRP",
       "score": 1.15,
       "prix_ref": 1.394,
@@ -2446,11 +2410,47 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ENA",
-      "score": 1.28,
-      "prix_ref": 0.16087,
+      "ticker": "BTC",
+      "score": 1.02,
+      "prix_ref": 78661.2,
       "type": "swing",
-      "timestamp": "2026-08-30T08:13:48.335361+00:00",
+      "timestamp": "2026-08-30T12:13:07.945410+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.03,
+      "prix_ref": 105.74,
+      "type": "swing",
+      "timestamp": "2026-08-30T12:13:37.459801+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.25,
+      "prix_ref": 0.15953,
+      "type": "swing",
+      "timestamp": "2026-08-30T12:14:58.900492+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "LINK",
+      "score": 1.18,
+      "prix_ref": 11.49,
+      "type": "swing",
+      "timestamp": "2026-08-30T12:15:49.087104+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZORA",
+      "score": 1.04,
+      "prix_ref": 0.00684,
+      "type": "swing",
+      "timestamp": "2026-08-30T12:18:57.306473+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3529,6 +3529,10 @@
     {
       "date": "2026-08-30T08:10",
       "equity": 366.76
+    },
+    {
+      "date": "2026-08-30T12:11",
+      "equity": 368.99
     }
   ],
   "health_last_warn": 1787588058.8099475,
