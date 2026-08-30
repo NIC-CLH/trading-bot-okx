@@ -2317,7 +2317,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.888401662553775,
+  "_sd_prev_usdt_d": 6.9490678033945,
   "shadow_portfolio": [
     {
       "ticker": "CORE",
@@ -2437,20 +2437,20 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ENA",
-      "score": 1.29,
-      "prix_ref": 0.15618,
-      "type": "swing",
-      "timestamp": "2026-08-29T20:16:48.745053+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "AAVE",
       "score": 1.07,
       "prix_ref": 124.52,
       "type": "swing",
       "timestamp": "2026-08-29T20:19:19.624188+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.19,
+      "prix_ref": 0.15904,
+      "type": "swing",
+      "timestamp": "2026-08-30T00:14:27.294175+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3517,6 +3517,10 @@
     {
       "date": "2026-08-29T20:13",
       "equity": 366.89
+    },
+    {
+      "date": "2026-08-30T00:12",
+      "equity": 367.37
     }
   ],
   "health_last_warn": 1787588058.8099475,
