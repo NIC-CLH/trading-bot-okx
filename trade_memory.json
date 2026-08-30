@@ -2317,7 +2317,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.896960191419824,
+  "_sd_prev_usdt_d": 6.885800944490336,
   "shadow_portfolio": [
     {
       "ticker": "JUP",
@@ -2447,10 +2447,10 @@
     },
     {
       "ticker": "ENA",
-      "score": 1.11,
-      "prix_ref": 0.16011,
+      "score": 1.16,
+      "prix_ref": 0.16059,
       "type": "swing",
-      "timestamp": "2026-08-30T16:15:53.967890+00:00",
+      "timestamp": "2026-08-30T20:15:05.692864+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3537,6 +3537,10 @@
     {
       "date": "2026-08-30T16:13",
       "equity": 373.9
+    },
+    {
+      "date": "2026-08-30T20:12",
+      "equity": 373.4
     }
   ],
   "health_last_warn": 1787588058.8099475,
