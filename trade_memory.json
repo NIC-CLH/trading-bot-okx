@@ -2317,7 +2317,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.9515574661142985,
+  "_sd_prev_usdt_d": 6.950070072291388,
   "shadow_portfolio": [
     {
       "ticker": "CORE",
@@ -2410,29 +2410,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "XRP",
-      "score": 1.15,
-      "prix_ref": 1.3949,
-      "type": "swing",
-      "timestamp": "2026-08-29T16:12:14.910097+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "UNI",
       "score": 1.04,
       "prix_ref": 4.525,
       "type": "swing",
       "timestamp": "2026-08-29T16:13:26.162599+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "BTC",
-      "score": 1.06,
-      "prix_ref": 78220.8,
-      "type": "swing",
-      "timestamp": "2026-08-29T20:15:14.320319+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -2446,11 +2428,29 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ENA",
-      "score": 1.16,
-      "prix_ref": 0.15815,
+      "ticker": "BTC",
+      "score": 1.18,
+      "prix_ref": 78192.1,
       "type": "swing",
-      "timestamp": "2026-08-30T04:15:16.081316+00:00",
+      "timestamp": "2026-08-30T08:11:43.131843+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "XRP",
+      "score": 1.15,
+      "prix_ref": 1.394,
+      "type": "swing",
+      "timestamp": "2026-08-30T08:12:27.595712+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.28,
+      "prix_ref": 0.16087,
+      "type": "swing",
+      "timestamp": "2026-08-30T08:13:48.335361+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3525,6 +3525,10 @@
     {
       "date": "2026-08-30T04:12",
       "equity": 365.25
+    },
+    {
+      "date": "2026-08-30T08:10",
+      "equity": 366.76
     }
   ],
   "health_last_warn": 1787588058.8099475,
