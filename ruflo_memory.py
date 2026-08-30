@@ -595,6 +595,31 @@ def is_capital_floor_breached(equity: float) -> bool:
     return False
 
 
+# ── Cooldown d'alertes persistant ─────────────────────────────────────────────
+# GitHub Actions repart de zéro à chaque run : un cache mémoire ne survit pas.
+# Sans persistance, une alerte "mouvement du jour" se répète à chaque cycle 30min
+# (jusqu'à 48 fois pour un seul mouvement — constaté sur XRP le 25/08/2026).
+
+def is_alert_cooldown_active(key: str, hours: float) -> bool:
+    """True si une alerte `key` a déjà été envoyée il y a moins de `hours`."""
+    try:
+        last = _load_json().get("alert_cooldowns", {}).get(key, 0)
+        return (time.time() - float(last)) < hours * 3600
+    except Exception as e:
+        logger.debug(f"is_alert_cooldown_active({key}) : {e}")
+        return False
+
+
+def mark_alert_sent(key: str):
+    """Horodate l'envoi d'une alerte `key` pour armer son cooldown."""
+    try:
+        data = _load_json()
+        data.setdefault("alert_cooldowns", {})[key] = time.time()
+        _save_json(data)
+    except Exception as e:
+        logger.debug(f"mark_alert_sent({key}) : {e}")
+
+
 # ── Snapshot équity : historique de la valeur du portfolio ────────────────────
 
 def record_equity(value: float, cap: int = 3000):

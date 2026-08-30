@@ -39,6 +39,8 @@ XRP_BUY_THRESHOLD  =  2.0   # >= 2.0 → "ACHETER"
 XRP_SELL_THRESHOLD = -2.0   # <= -2.0 → "VENDRE" (signal très fort requis)
 XRP_PRICE_MOVE_PCT =  4.0   # Alerte aussi si prix bouge > 4% sur la journée
 XRP_ANALYSIS_INTERVAL_H = 2 # N'analyser XRP que toutes les 2h (heures paires UTC)
+XRP_SPIKE_ATR_MULT     = 1.5  # spike = mouvement > 1.5x la volatilite normale du jour
+XRP_ALERT_COOLDOWN_H   = 8    # max 1 alerte de chaque type toutes les 8h
 
 STABLES_EXCLUDE = {
     "USDT", "USDC", "BUSD", "DAI", "FDUSD", "TUSD", "USDP",
@@ -523,7 +525,11 @@ def scan_xrp_binance():
                 open_price = float(df_xrp["open"].iloc[-1])
                 if open_price > 0:
                     price_move_pct = (prix - open_price) / open_price * 100
-                    is_price_spike = abs(price_move_pct) >= XRP_PRICE_MOVE_PCT
+                    # Seuil relatif a la volatilite : un mouvement de 4% n'a rien
+                    # d'exceptionnel quand XRP bouge de 5.8%/jour en moyenne.
+                    atr_pct = tech.get("atr_pct") or 0
+                    seuil_spike = max(XRP_PRICE_MOVE_PCT, atr_pct * XRP_SPIKE_ATR_MULT)
+                    is_price_spike = abs(price_move_pct) >= seuil_spike
         except Exception:
             pass
 
@@ -614,8 +620,23 @@ def scan_xrp_binance():
             msg += f"\n*Pourquoi :*\n{raisons_txt}\n"
         msg += "\n_Action manuelle sur Binance_"
 
+        # Cooldown persistant — sans lui, un mouvement du jour qui depasse le
+        # seuil declenche une alerte a CHAQUE run 30min (jusqu'a 48 par jour).
+        cle_cooldown = "xrp_buy" if is_buy_signal else "xrp_spike"
+        try:
+            import ruflo_memory as _rm
+            if _rm.is_alert_cooldown_active(cle_cooldown, XRP_ALERT_COOLDOWN_H):
+                logger.info(f"XRP : alerte {cle_cooldown} en cooldown — silence")
+                return None
+        except Exception:
+            pass
+
         _send_telegram(msg)
-        logger.info(f"XRP alerte envoyée (score={score:+.2f})")
+        try:
+            _rm.mark_alert_sent(cle_cooldown)
+        except Exception:
+            pass
+        logger.info(f"XRP alerte envoyée (score={score:+.2f}, type={cle_cooldown})")
         return {"score": score, "action": titre, "prix": prix}
 
     except Exception as e:
