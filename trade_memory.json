@@ -2397,35 +2397,8 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.943023809045777,
+  "_sd_prev_usdt_d": 6.871134259039538,
   "shadow_portfolio": [
-    {
-      "ticker": "TURBO",
-      "score": 1.07,
-      "prix_ref": 0.001091,
-      "type": "swing",
-      "timestamp": "2026-08-29T00:14:39.188219+00:00",
-      "outcome": "correct",
-      "pnl_pct": -13.92
-    },
-    {
-      "ticker": "UNI",
-      "score": 1.04,
-      "prix_ref": 4.525,
-      "type": "swing",
-      "timestamp": "2026-08-29T16:13:26.162599+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "AAVE",
-      "score": 1.07,
-      "prix_ref": 124.52,
-      "type": "swing",
-      "timestamp": "2026-08-29T20:19:19.624188+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "XRP",
       "score": 1.15,
@@ -2508,15 +2481,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "BTC",
-      "score": 1.05,
-      "prix_ref": 78373.0,
-      "type": "swing",
-      "timestamp": "2026-08-31T12:13:37.277010+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "LINK",
       "score": 1.05,
       "prix_ref": 11.311,
@@ -2531,6 +2495,42 @@
       "prix_ref": 0.14978,
       "type": "swing",
       "timestamp": "2026-08-31T12:15:08.699797+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BTC",
+      "score": 1.17,
+      "prix_ref": 78690.5,
+      "type": "swing",
+      "timestamp": "2026-08-31T16:15:00.903402+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PUMP",
+      "score": 1.02,
+      "prix_ref": 0.004301,
+      "type": "swing",
+      "timestamp": "2026-08-31T16:16:15.966484+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEN",
+      "score": 1.01,
+      "prix_ref": 5.577,
+      "type": "swing",
+      "timestamp": "2026-08-31T16:19:32.271631+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PENDLE",
+      "score": 1.06,
+      "prix_ref": 1.752,
+      "type": "swing",
+      "timestamp": "2026-08-31T16:19:55.645976+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3637,9 +3637,13 @@
     {
       "date": "2026-08-31T12:12",
       "equity": 357.41
+    },
+    {
+      "date": "2026-08-31T16:13",
+      "equity": 355.73
     }
   ],
-  "health_last_warn": 1787588058.8099475,
+  "health_last_warn": 1788193259.646417,
   "eea_blacklist": {
     "BNB": {
       "reason": "All operations failed (code 1) - constate 18/07/2026",
