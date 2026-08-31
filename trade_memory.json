@@ -2397,26 +2397,8 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.871134259039538,
+  "_sd_prev_usdt_d": 6.849822182558578,
   "shadow_portfolio": [
-    {
-      "ticker": "XRP",
-      "score": 1.15,
-      "prix_ref": 1.394,
-      "type": "swing",
-      "timestamp": "2026-08-30T08:12:27.595712+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ZORA",
-      "score": 1.04,
-      "prix_ref": 0.00684,
-      "type": "swing",
-      "timestamp": "2026-08-30T12:18:57.306473+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "ETH",
       "score": 1.04,
@@ -2490,33 +2472,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ENA",
-      "score": 1.16,
-      "prix_ref": 0.14978,
-      "type": "swing",
-      "timestamp": "2026-08-31T12:15:08.699797+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "BTC",
-      "score": 1.17,
-      "prix_ref": 78690.5,
-      "type": "swing",
-      "timestamp": "2026-08-31T16:15:00.903402+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "PUMP",
-      "score": 1.02,
-      "prix_ref": 0.004301,
-      "type": "swing",
-      "timestamp": "2026-08-31T16:16:15.966484+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ZEN",
       "score": 1.01,
       "prix_ref": 5.577,
@@ -2531,6 +2486,51 @@
       "prix_ref": 1.752,
       "type": "swing",
       "timestamp": "2026-08-31T16:19:55.645976+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BTC",
+      "score": 1.11,
+      "prix_ref": 78939.7,
+      "type": "swing",
+      "timestamp": "2026-08-31T20:14:45.319517+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "XRP",
+      "score": 1.27,
+      "prix_ref": 1.3881,
+      "type": "swing",
+      "timestamp": "2026-08-31T20:15:24.389339+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PUMP",
+      "score": 1.2,
+      "prix_ref": 0.004417,
+      "type": "swing",
+      "timestamp": "2026-08-31T20:16:00.351449+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.0,
+      "prix_ref": 0.14949,
+      "type": "swing",
+      "timestamp": "2026-08-31T20:16:36.188761+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "MORPHO",
+      "score": 1.08,
+      "prix_ref": 2.6702,
+      "type": "swing",
+      "timestamp": "2026-08-31T20:19:10.875812+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3641,6 +3641,10 @@
     {
       "date": "2026-08-31T16:13",
       "equity": 355.73
+    },
+    {
+      "date": "2026-08-31T20:13",
+      "equity": 358.04
     }
   ],
   "health_last_warn": 1788193259.646417,
