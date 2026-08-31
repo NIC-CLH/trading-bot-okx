@@ -744,6 +744,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.75
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "CFX",
+      "pnl_pct": -8.16,
+      "days_held": 0,
+      "exit_reason": "Stop ATR -8.2% <= -8.0%",
+      "valeur_usd": 103.84,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-08-31T00:01:46.981049+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.37
     }
   ],
   "entries": [
@@ -2472,7 +2486,6 @@
     "XRP": 180.18,
     "MON": 10.93,
     "ALGO": 5.0,
-    "CFX": 4.1,
     "TRB": 1.63,
     "DOT": 2.1,
     "CRO": 3.17
