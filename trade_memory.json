@@ -758,6 +758,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.37
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "TNSR",
+      "pnl_pct": -0.51,
+      "days_held": 0.2,
+      "exit_reason": "Trailing stop : pic +5.5% → plancher +2.7% | actuel -0.5%",
+      "valeur_usd": 104.61,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-08-31T04:32:10.109095+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 3.0
     }
   ],
   "entries": [
@@ -2514,8 +2528,7 @@
     "ALGO": 5.0,
     "TRB": 1.63,
     "DOT": 2.1,
-    "CRO": 3.17,
-    "TNSR": 5.45
+    "CRO": 3.17
   },
   "equity_history": [
     {
