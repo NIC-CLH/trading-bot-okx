@@ -314,7 +314,11 @@ def scan_and_execute_signals() -> list[dict]:
             "stop": stop,
             "target": target,
             "rr": rr,
-            "taille_usd": pv * 0.20,
+            # CLE CRITIQUE : execution.py lit "taille_allouee", pas "taille_usd".
+            # Avec la mauvaise cle, le fallback conviction prenait la main
+            # et sizait a 29.7% du capital au lieu des 20% voulus ici.
+            "taille_allouee": round(pv * 0.20, 2),
+            "taille_usd": round(pv * 0.20, 2),
             "verdict_news": "Rotation" if rotation_faite else "Signal rapide 30min",
             "trade_autorise": True,
             "source": "OKX Scanner 30min",

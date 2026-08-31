@@ -165,7 +165,11 @@ def execute_signal(signal: dict, portfolio_value: float) -> bool:
             if score_abs >= threshold:
                 conviction = mult
                 break
-        max_trade = max_trade_base * conviction
+        # Le plafond dur doit s'appliquer APRES le multiplicateur de conviction.
+        # Avant : base(23.75%) x 1.25 = 29.7% du capital — le cap de 25% etait
+        # franchi a chaque signal fort (constate sur CRO/TRB/CRV/CFX/MERL a $113).
+        hard_cap = portfolio_value * MAX_TRADE_PCT
+        max_trade = min(max_trade_base * conviction, hard_cap)
         trade_size_usdt = min(max_trade, usdt_available * 0.95)
         logger.info(
             f"{ticker} : portfolio=${portfolio_value:.0f} | max_trade=${max_trade:.0f} "
