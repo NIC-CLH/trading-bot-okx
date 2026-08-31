@@ -2397,7 +2397,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.974578119700227,
+  "_sd_prev_usdt_d": 6.943023809045777,
   "shadow_portfolio": [
     {
       "ticker": "TURBO",
@@ -2472,38 +2472,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "BTC",
-      "score": 1.36,
-      "prix_ref": 78231.2,
-      "type": "swing",
-      "timestamp": "2026-08-31T08:14:03.985465+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "SOL",
       "score": 1.07,
       "prix_ref": 103.05,
       "type": "swing",
       "timestamp": "2026-08-31T08:14:28.562429+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "LINK",
-      "score": 1.21,
-      "prix_ref": 11.292,
-      "type": "swing",
-      "timestamp": "2026-08-31T08:15:34.944829+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ENA",
-      "score": 1.17,
-      "prix_ref": 0.15123,
-      "type": "swing",
-      "timestamp": "2026-08-31T08:15:45.685791+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -2531,6 +2504,33 @@
       "prix_ref": 0.10885,
       "type": "swing",
       "timestamp": "2026-08-31T08:20:32.624944+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BTC",
+      "score": 1.05,
+      "prix_ref": 78373.0,
+      "type": "swing",
+      "timestamp": "2026-08-31T12:13:37.277010+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "LINK",
+      "score": 1.05,
+      "prix_ref": 11.311,
+      "type": "swing",
+      "timestamp": "2026-08-31T12:14:56.326707+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.16,
+      "prix_ref": 0.14978,
+      "type": "swing",
+      "timestamp": "2026-08-31T12:15:08.699797+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3633,6 +3633,10 @@
     {
       "date": "2026-08-31T08:12",
       "equity": 360.36
+    },
+    {
+      "date": "2026-08-31T12:12",
+      "equity": 357.41
     }
   ],
   "health_last_warn": 1787588058.8099475,
