@@ -2357,34 +2357,16 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.018418058118395,
+  "_sd_prev_usdt_d": 7.010290958689567,
   "shadow_portfolio": [
-    {
-      "ticker": "FOGO",
-      "score": -1.1,
-      "prix_ref": 0.007737,
-      "type": "swing",
-      "timestamp": "2026-08-28T20:19:55.029752+00:00",
-      "outcome": "correct",
-      "pnl_pct": -6.82
-    },
-    {
-      "ticker": "PUMP",
-      "score": 1.12,
-      "prix_ref": 0.004659,
-      "type": "swing",
-      "timestamp": "2026-08-29T00:12:58.265408+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "TURBO",
       "score": 1.07,
       "prix_ref": 0.001091,
       "type": "swing",
       "timestamp": "2026-08-29T00:14:39.188219+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -13.92
     },
     {
       "ticker": "UNI",
@@ -2432,65 +2414,83 @@
       "pnl_pct": null
     },
     {
-      "ticker": "BTC",
-      "score": 1.29,
-      "prix_ref": 77459.4,
+      "ticker": "EIGEN",
+      "score": -1.1,
+      "prix_ref": 0.1859,
       "type": "swing",
-      "timestamp": "2026-08-31T00:10:51.958816+00:00",
+      "timestamp": "2026-08-31T00:16:11.311588+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BTC",
+      "score": 1.4,
+      "prix_ref": 77617.0,
+      "type": "swing",
+      "timestamp": "2026-08-31T04:12:20.824276+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "ETH",
-      "score": 1.08,
-      "prix_ref": 2407.18,
+      "score": 1.04,
+      "prix_ref": 2414.96,
       "type": "swing",
-      "timestamp": "2026-08-31T00:11:03.696367+00:00",
+      "timestamp": "2026-08-31T04:12:36.153122+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "SOL",
-      "score": 1.33,
-      "prix_ref": 101.31,
+      "score": 1.31,
+      "prix_ref": 101.44,
       "type": "swing",
-      "timestamp": "2026-08-31T00:11:15.697722+00:00",
+      "timestamp": "2026-08-31T04:12:58.939467+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.08,
+      "prix_ref": 817.53,
+      "type": "swing",
+      "timestamp": "2026-08-31T04:13:29.041197+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "ENA",
-      "score": 1.2,
-      "prix_ref": 0.14712,
+      "score": 1.23,
+      "prix_ref": 0.14739,
       "type": "swing",
-      "timestamp": "2026-08-31T00:12:18.884343+00:00",
+      "timestamp": "2026-08-31T04:14:20.410114+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "ONDO",
       "score": -1.09,
-      "prix_ref": 0.343,
+      "prix_ref": 0.344,
       "type": "swing",
-      "timestamp": "2026-08-31T00:12:54.463501+00:00",
+      "timestamp": "2026-08-31T04:15:11.948670+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "JTO",
-      "score": -1.08,
-      "prix_ref": 0.4537,
+      "score": -1.11,
+      "prix_ref": 0.4351,
       "type": "swing",
-      "timestamp": "2026-08-31T00:15:40.704108+00:00",
+      "timestamp": "2026-08-31T04:18:18.701352+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
-      "ticker": "EIGEN",
+      "ticker": "DYDX",
       "score": -1.1,
-      "prix_ref": 0.1859,
+      "prix_ref": 0.10874,
       "type": "swing",
-      "timestamp": "2026-08-31T00:16:11.311588+00:00",
+      "timestamp": "2026-08-31T04:20:21.896892+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3585,6 +3585,10 @@
     {
       "date": "2026-08-31T00:09",
       "equity": 357.37
+    },
+    {
+      "date": "2026-08-31T04:10",
+      "equity": 361.47
     }
   ],
   "health_last_warn": 1787588058.8099475,
