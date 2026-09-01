@@ -2634,7 +2634,8 @@
     "ALGO": 5.0,
     "TRB": 1.63,
     "DOT": 2.1,
-    "FLR": 0.86
+    "FLR": 0.86,
+    "STX": 1.21
   },
   "equity_history": [
     {
