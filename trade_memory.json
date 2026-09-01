@@ -2397,35 +2397,8 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.861685003638139,
+  "_sd_prev_usdt_d": 6.873046385215588,
   "shadow_portfolio": [
-    {
-      "ticker": "ZEC",
-      "score": 1.08,
-      "prix_ref": 817.53,
-      "type": "swing",
-      "timestamp": "2026-08-31T04:13:29.041197+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "JTO",
-      "score": -1.11,
-      "prix_ref": 0.4351,
-      "type": "swing",
-      "timestamp": "2026-08-31T04:18:18.701352+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "SOL",
-      "score": 1.07,
-      "prix_ref": 103.05,
-      "type": "swing",
-      "timestamp": "2026-08-31T08:14:28.562429+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "ONDO",
       "score": -1.09,
@@ -2472,42 +2445,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "PENDLE",
-      "score": 1.02,
-      "prix_ref": 1.764,
-      "type": "swing",
-      "timestamp": "2026-09-01T00:21:19.791275+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "BTC",
-      "score": 1.14,
-      "prix_ref": 78789.4,
-      "type": "swing",
-      "timestamp": "2026-09-01T04:12:00.477108+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "XRP",
-      "score": 1.15,
-      "prix_ref": 1.3866,
-      "type": "swing",
-      "timestamp": "2026-09-01T04:12:40.713009+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "PUMP",
-      "score": 1.27,
-      "prix_ref": 0.004522,
-      "type": "swing",
-      "timestamp": "2026-09-01T04:13:19.994397+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "LINK",
       "score": 1.09,
       "prix_ref": 11.425,
@@ -2517,20 +2454,83 @@
       "pnl_pct": null
     },
     {
-      "ticker": "CRV",
-      "score": 1.03,
-      "prix_ref": 0.3575,
-      "type": "swing",
-      "timestamp": "2026-09-01T04:14:46.187513+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "MORPHO",
       "score": 1.04,
       "prix_ref": 2.5387,
       "type": "swing",
       "timestamp": "2026-09-01T04:16:09.498838+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BTC",
+      "score": 1.35,
+      "prix_ref": 78326.1,
+      "type": "swing",
+      "timestamp": "2026-09-01T08:13:46.347179+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.2,
+      "prix_ref": 102.57,
+      "type": "swing",
+      "timestamp": "2026-09-01T08:14:10.543364+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "XRP",
+      "score": 1.26,
+      "prix_ref": 1.372,
+      "type": "swing",
+      "timestamp": "2026-09-01T08:14:22.455447+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PUMP",
+      "score": 1.29,
+      "prix_ref": 0.004444,
+      "type": "swing",
+      "timestamp": "2026-09-01T08:15:07.810511+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "DASH",
+      "score": 1.08,
+      "prix_ref": 45.96,
+      "type": "swing",
+      "timestamp": "2026-09-01T08:15:30.804173+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "CRV",
+      "score": 1.08,
+      "prix_ref": 0.3509,
+      "type": "swing",
+      "timestamp": "2026-09-01T08:16:27.592924+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "VIRTUAL",
+      "score": 1.03,
+      "prix_ref": 0.7022,
+      "type": "swing",
+      "timestamp": "2026-09-01T08:17:53.086351+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PENDLE",
+      "score": 1.02,
+      "prix_ref": 1.782,
+      "type": "swing",
+      "timestamp": "2026-09-01T08:21:00.886146+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3653,6 +3653,10 @@
     {
       "date": "2026-09-01T04:10",
       "equity": 362.06
+    },
+    {
+      "date": "2026-09-01T08:12",
+      "equity": 361.54
     }
   ],
   "health_last_warn": 1788193259.646417,
