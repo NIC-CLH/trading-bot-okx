@@ -2397,17 +2397,8 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.864662641367371,
+  "_sd_prev_usdt_d": 6.861685003638139,
   "shadow_portfolio": [
-    {
-      "ticker": "ETH",
-      "score": 1.04,
-      "prix_ref": 2414.96,
-      "type": "swing",
-      "timestamp": "2026-08-31T04:12:36.153122+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "ZEC",
       "score": 1.08,
@@ -2463,15 +2454,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "LINK",
-      "score": 1.05,
-      "prix_ref": 11.311,
-      "type": "swing",
-      "timestamp": "2026-08-31T12:14:56.326707+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ZEN",
       "score": 1.01,
       "prix_ref": 5.577,
@@ -2490,47 +2472,65 @@
       "pnl_pct": null
     },
     {
-      "ticker": "MORPHO",
-      "score": 1.08,
-      "prix_ref": 2.6702,
+      "ticker": "PENDLE",
+      "score": 1.02,
+      "prix_ref": 1.764,
       "type": "swing",
-      "timestamp": "2026-08-31T20:19:10.875812+00:00",
+      "timestamp": "2026-09-01T00:21:19.791275+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "BTC",
       "score": 1.14,
-      "prix_ref": 78737.5,
+      "prix_ref": 78789.4,
       "type": "swing",
-      "timestamp": "2026-09-01T00:14:30.218470+00:00",
+      "timestamp": "2026-09-01T04:12:00.477108+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "XRP",
       "score": 1.15,
-      "prix_ref": 1.383,
+      "prix_ref": 1.3866,
       "type": "swing",
-      "timestamp": "2026-09-01T00:15:16.307654+00:00",
+      "timestamp": "2026-09-01T04:12:40.713009+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "PUMP",
-      "score": 1.19,
-      "prix_ref": 0.00452,
+      "score": 1.27,
+      "prix_ref": 0.004522,
       "type": "swing",
-      "timestamp": "2026-09-01T00:15:54.203045+00:00",
+      "timestamp": "2026-09-01T04:13:19.994397+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
-      "ticker": "PENDLE",
-      "score": 1.02,
-      "prix_ref": 1.764,
+      "ticker": "LINK",
+      "score": 1.09,
+      "prix_ref": 11.425,
       "type": "swing",
-      "timestamp": "2026-09-01T00:21:19.791275+00:00",
+      "timestamp": "2026-09-01T04:13:56.491644+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "CRV",
+      "score": 1.03,
+      "prix_ref": 0.3575,
+      "type": "swing",
+      "timestamp": "2026-09-01T04:14:46.187513+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "MORPHO",
+      "score": 1.04,
+      "prix_ref": 2.5387,
+      "type": "swing",
+      "timestamp": "2026-09-01T04:16:09.498838+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3649,6 +3649,10 @@
     {
       "date": "2026-09-01T00:13",
       "equity": 359.76
+    },
+    {
+      "date": "2026-09-01T04:10",
+      "equity": 362.06
     }
   ],
   "health_last_warn": 1788193259.646417,
