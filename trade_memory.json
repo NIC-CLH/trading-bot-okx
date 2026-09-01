@@ -786,6 +786,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.98
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "CRO",
+      "pnl_pct": -10.35,
+      "days_held": 0,
+      "exit_reason": "Stop ATR -10.4% <= -10.0%",
+      "valeur_usd": 101.86,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-09-01T18:31:51.942705+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.11
     }
   ],
   "entries": [
@@ -2620,7 +2634,6 @@
     "ALGO": 5.0,
     "TRB": 1.63,
     "DOT": 2.1,
-    "CRO": 3.17,
     "FLR": 0.86
   },
   "equity_history": [
