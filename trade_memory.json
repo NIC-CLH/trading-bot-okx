@@ -2463,7 +2463,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.910203352105109,
+  "_sd_prev_usdt_d": 6.925792700178713,
   "shadow_portfolio": [
     {
       "ticker": "ZEN",
@@ -2493,24 +2493,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "BTC",
-      "score": 1.4,
-      "prix_ref": 78063.7,
-      "type": "swing",
-      "timestamp": "2026-09-01T12:11:33.658190+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "SOL",
-      "score": 1.15,
-      "prix_ref": 102.26,
-      "type": "swing",
-      "timestamp": "2026-09-01T12:11:56.814298+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "XRP",
       "score": 1.26,
       "prix_ref": 1.3801,
@@ -2520,56 +2502,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "PUMP",
-      "score": 1.26,
-      "prix_ref": 0.00442,
-      "type": "swing",
-      "timestamp": "2026-09-01T12:12:50.184322+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "NEAR",
-      "score": 1.05,
-      "prix_ref": 1.987,
-      "type": "swing",
-      "timestamp": "2026-09-01T12:13:01.181552+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ENA",
-      "score": 1.11,
-      "prix_ref": 0.16285,
-      "type": "swing",
-      "timestamp": "2026-09-01T12:13:11.213358+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "LINK",
-      "score": 1.06,
-      "prix_ref": 11.463,
-      "type": "swing",
-      "timestamp": "2026-09-01T12:13:31.439933+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "CRV",
       "score": 1.07,
       "prix_ref": 0.3653,
       "type": "swing",
       "timestamp": "2026-09-01T12:13:41.000102+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "AR",
-      "score": 1.06,
-      "prix_ref": 2.179,
-      "type": "swing",
-      "timestamp": "2026-09-01T12:14:51.658488+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -2597,6 +2534,69 @@
       "prix_ref": 0.2179,
       "type": "swing",
       "timestamp": "2026-09-01T12:15:18.588382+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BTC",
+      "score": 1.31,
+      "prix_ref": 77725.2,
+      "type": "swing",
+      "timestamp": "2026-09-01T16:15:32.394401+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.39,
+      "prix_ref": 101.54,
+      "type": "swing",
+      "timestamp": "2026-09-01T16:15:58.938954+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.11,
+      "prix_ref": 0.16081,
+      "type": "swing",
+      "timestamp": "2026-09-01T16:16:30.408545+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "NEAR",
+      "score": 1.12,
+      "prix_ref": 2.001,
+      "type": "swing",
+      "timestamp": "2026-09-01T16:16:42.174853+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PUMP",
+      "score": 1.05,
+      "prix_ref": 0.00445,
+      "type": "swing",
+      "timestamp": "2026-09-01T16:16:55.222843+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "LINK",
+      "score": 1.02,
+      "prix_ref": 11.392,
+      "type": "swing",
+      "timestamp": "2026-09-01T16:17:31.766244+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AR",
+      "score": 1.02,
+      "prix_ref": 2.241,
+      "type": "swing",
+      "timestamp": "2026-09-01T16:18:29.408573+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3727,6 +3727,10 @@
     {
       "date": "2026-09-01T12:10",
       "equity": 359.14
+    },
+    {
+      "date": "2026-09-01T16:14",
+      "equity": 356.58
     }
   ],
   "health_last_warn": 1788193259.646417,
