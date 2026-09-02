@@ -2529,26 +2529,8 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.0261543240918645,
+  "_sd_prev_usdt_d": 6.985024526976212,
   "shadow_portfolio": [
-    {
-      "ticker": "ZEN",
-      "score": 1.01,
-      "prix_ref": 5.577,
-      "type": "swing",
-      "timestamp": "2026-08-31T16:19:32.271631+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "DASH",
-      "score": 1.08,
-      "prix_ref": 45.96,
-      "type": "swing",
-      "timestamp": "2026-09-01T08:15:30.804173+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "XRP",
       "score": 1.26,
@@ -2659,10 +2641,28 @@
     },
     {
       "ticker": "BTC",
-      "score": 1.14,
-      "prix_ref": 76772.8,
+      "score": 1.01,
+      "prix_ref": 77324.7,
       "type": "swing",
-      "timestamp": "2026-09-02T12:14:22.434477+00:00",
+      "timestamp": "2026-09-02T16:14:41.714288+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ASTER",
+      "score": 1.1,
+      "prix_ref": 0.7345,
+      "type": "swing",
+      "timestamp": "2026-09-02T16:16:20.657324+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "CHIP",
+      "score": 1.06,
+      "prix_ref": 0.04096,
+      "type": "swing",
+      "timestamp": "2026-09-02T16:17:07.298774+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3818,6 +3818,10 @@
     {
       "date": "2026-09-02T12:13",
       "equity": 345.59
+    },
+    {
+      "date": "2026-09-02T16:13",
+      "equity": 345.27
     }
   ],
   "health_last_warn": 1788193259.646417,
