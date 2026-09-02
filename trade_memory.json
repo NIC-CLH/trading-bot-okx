@@ -800,6 +800,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.11
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "NOT",
+      "pnl_pct": -10.04,
+      "days_held": 1.4,
+      "exit_reason": "Stop ATR -10.0% <= -10.0%",
+      "valeur_usd": 32.84,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-09-02T17:01:55.943397+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.93
     }
   ],
   "entries": [
