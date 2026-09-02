@@ -2311,6 +2311,32 @@
       "score_tech_adj_raw": 2.38,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "AR",
+      "score": 3.0,
+      "score_tech": 3.0,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 33.0,
+      "prix": 2.238,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-02T20:14:03.474847+00:00",
+      "score_tech_raw": 3.0,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 3.0,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -2543,17 +2569,8 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.985024526976212,
+  "_sd_prev_usdt_d": 6.970893952503173,
   "shadow_portfolio": [
-    {
-      "ticker": "XRP",
-      "score": 1.26,
-      "prix_ref": 1.3801,
-      "type": "swing",
-      "timestamp": "2026-09-01T12:12:19.175998+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "CRV",
       "score": 1.07,
@@ -2672,11 +2689,20 @@
       "pnl_pct": null
     },
     {
-      "ticker": "CHIP",
-      "score": 1.06,
-      "prix_ref": 0.04096,
+      "ticker": "ZEC",
+      "score": 1.0,
+      "prix_ref": 811.57,
       "type": "swing",
-      "timestamp": "2026-09-02T16:17:07.298774+00:00",
+      "timestamp": "2026-09-02T20:16:35.864199+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "CHIP",
+      "score": 1.02,
+      "prix_ref": 0.0416,
+      "type": "swing",
+      "timestamp": "2026-09-02T20:18:14.819290+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3837,6 +3863,10 @@
     {
       "date": "2026-09-02T16:13",
       "equity": 345.27
+    },
+    {
+      "date": "2026-09-02T20:14",
+      "equity": 346.38
     }
   ],
   "health_last_warn": 1788193259.646417,
