@@ -2529,7 +2529,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.969207531517572,
+  "_sd_prev_usdt_d": 6.963130924069046,
   "shadow_portfolio": [
     {
       "ticker": "ZEN",
@@ -2546,15 +2546,6 @@
       "prix_ref": 45.96,
       "type": "swing",
       "timestamp": "2026-09-01T08:15:30.804173+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "PENDLE",
-      "score": 1.02,
-      "prix_ref": 1.782,
-      "type": "swing",
-      "timestamp": "2026-09-01T08:21:00.886146+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -2586,29 +2577,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "MORPHO",
-      "score": 1.07,
-      "prix_ref": 2.5618,
-      "type": "swing",
-      "timestamp": "2026-09-01T12:15:08.953054+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "JUP",
       "score": 1.07,
       "prix_ref": 0.2179,
       "type": "swing",
       "timestamp": "2026-09-01T12:15:18.588382+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "SOL",
-      "score": 1.39,
-      "prix_ref": 101.54,
-      "type": "swing",
-      "timestamp": "2026-09-01T16:15:58.938954+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -2640,15 +2613,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ENA",
-      "score": 1.03,
-      "prix_ref": 0.15678,
-      "type": "swing",
-      "timestamp": "2026-09-01T20:12:30.350893+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "NEAR",
       "score": 1.05,
       "prix_ref": 1.905,
@@ -2659,10 +2623,46 @@
     },
     {
       "ticker": "BTC",
-      "score": 1.15,
-      "prix_ref": 77315.5,
+      "score": 1.35,
+      "prix_ref": 77431.8,
       "type": "swing",
-      "timestamp": "2026-09-02T00:13:26.697415+00:00",
+      "timestamp": "2026-09-02T04:09:22.916133+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.12,
+      "prix_ref": 99.98,
+      "type": "swing",
+      "timestamp": "2026-09-02T04:09:50.360032+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.07,
+      "prix_ref": 0.15971,
+      "type": "swing",
+      "timestamp": "2026-09-02T04:10:26.416266+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "MORPHO",
+      "score": 1.08,
+      "prix_ref": 2.6562,
+      "type": "swing",
+      "timestamp": "2026-09-02T04:14:01.836174+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PENDLE",
+      "score": 1.01,
+      "prix_ref": 1.851,
+      "type": "swing",
+      "timestamp": "2026-09-02T04:15:37.750608+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3806,6 +3806,10 @@
     {
       "date": "2026-09-02T00:12",
       "equity": 347.61
+    },
+    {
+      "date": "2026-09-02T04:07",
+      "equity": 348.27
     }
   ],
   "health_last_warn": 1788193259.646417,
