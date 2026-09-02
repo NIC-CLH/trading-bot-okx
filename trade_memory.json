@@ -2529,7 +2529,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.985580973376463,
+  "_sd_prev_usdt_d": 6.969207531517572,
   "shadow_portfolio": [
     {
       "ticker": "ZEN",
@@ -2640,15 +2640,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "BTC",
-      "score": 1.16,
-      "prix_ref": 77268.1,
-      "type": "swing",
-      "timestamp": "2026-09-01T20:11:31.460108+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ENA",
       "score": 1.03,
       "prix_ref": 0.15678,
@@ -2663,6 +2654,15 @@
       "prix_ref": 1.905,
       "type": "swing",
       "timestamp": "2026-09-01T20:12:43.539848+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BTC",
+      "score": 1.15,
+      "prix_ref": 77315.5,
+      "type": "swing",
+      "timestamp": "2026-09-02T00:13:26.697415+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3802,6 +3802,10 @@
     {
       "date": "2026-09-01T20:10",
       "equity": 350.22
+    },
+    {
+      "date": "2026-09-02T00:12",
+      "equity": 347.61
     }
   ],
   "health_last_warn": 1788193259.646417,
