@@ -2529,7 +2529,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.967041236811107,
+  "_sd_prev_usdt_d": 7.0261543240918645,
   "shadow_portfolio": [
     {
       "ticker": "ZEN",
@@ -2659,10 +2659,10 @@
     },
     {
       "ticker": "BTC",
-      "score": 1.2,
-      "prix_ref": 77416.4,
+      "score": 1.14,
+      "prix_ref": 76772.8,
       "type": "swing",
-      "timestamp": "2026-09-02T08:15:23.033043+00:00",
+      "timestamp": "2026-09-02T12:14:22.434477+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3814,6 +3814,10 @@
     {
       "date": "2026-09-02T08:13",
       "equity": 348.48
+    },
+    {
+      "date": "2026-09-02T12:13",
+      "equity": 345.59
     }
   ],
   "health_last_warn": 1788193259.646417,
