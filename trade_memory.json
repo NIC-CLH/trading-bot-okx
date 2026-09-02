@@ -2529,7 +2529,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.963130924069046,
+  "_sd_prev_usdt_d": 6.967041236811107,
   "shadow_portfolio": [
     {
       "ticker": "ZEN",
@@ -2622,15 +2622,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "BTC",
-      "score": 1.35,
-      "prix_ref": 77431.8,
-      "type": "swing",
-      "timestamp": "2026-09-02T04:09:22.916133+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "SOL",
       "score": 1.12,
       "prix_ref": 99.98,
@@ -2663,6 +2654,15 @@
       "prix_ref": 1.851,
       "type": "swing",
       "timestamp": "2026-09-02T04:15:37.750608+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BTC",
+      "score": 1.2,
+      "prix_ref": 77416.4,
+      "type": "swing",
+      "timestamp": "2026-09-02T08:15:23.033043+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3810,6 +3810,10 @@
     {
       "date": "2026-09-02T04:07",
       "equity": 348.27
+    },
+    {
+      "date": "2026-09-02T08:13",
+      "equity": 348.48
     }
   ],
   "health_last_warn": 1788193259.646417,
