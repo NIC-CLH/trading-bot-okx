@@ -2405,6 +2405,32 @@
       "score_tech_adj_raw": 1.85,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "KITE",
+      "score": 2.68,
+      "score_tech": 2.68,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 70.63,
+      "prix": 0.1373361024692072,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-03T12:09:44.626265+00:00",
+      "score_tech_raw": 2.68,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.68,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -2637,7 +2663,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.976066125823256,
+  "_sd_prev_usdt_d": 6.977112027284853,
   "shadow_portfolio": [
     {
       "ticker": "PUMP",
@@ -2748,15 +2774,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ZEC",
-      "score": 1.08,
-      "prix_ref": 831.95,
-      "type": "swing",
-      "timestamp": "2026-09-03T08:12:26.709724+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "JUP",
       "score": 1.08,
       "prix_ref": 0.2226,
@@ -2771,6 +2788,15 @@
       "prix_ref": 0.05514,
       "type": "swing",
       "timestamp": "2026-09-03T08:17:42.644534+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.0,
+      "prix_ref": 843.82,
+      "type": "swing",
+      "timestamp": "2026-09-03T12:12:25.889509+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3945,6 +3971,10 @@
     {
       "date": "2026-09-03T08:10",
       "equity": 359.62
+    },
+    {
+      "date": "2026-09-03T12:10",
+      "equity": 356.64
     }
   ],
   "health_last_warn": 1788193259.646417,
