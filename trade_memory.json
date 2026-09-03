@@ -828,6 +828,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 3.0
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "STX",
+      "pnl_pct": 4.25,
+      "days_held": 1.6,
+      "exit_reason": "Trailing stop : pic +9.3% → plancher +4.7% | actuel +4.2%",
+      "valeur_usd": 73.03,
+      "outcome": "win",
+      "exit_quality": 45.4,
+      "timestamp": "2026-09-03T09:01:52.336537+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.56
     }
   ],
   "entries": [
@@ -2767,7 +2781,6 @@
     "TRB": 1.63,
     "DOT": 2.1,
     "FLR": 0.86,
-    "STX": 9.35,
     "ENS": 1.23,
     "EDGE": 10.14
   },
