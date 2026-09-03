@@ -2569,17 +2569,8 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.970893952503173,
+  "_sd_prev_usdt_d": 6.975178152090947,
   "shadow_portfolio": [
-    {
-      "ticker": "CRV",
-      "score": 1.07,
-      "prix_ref": 0.3653,
-      "type": "swing",
-      "timestamp": "2026-09-01T12:13:41.000102+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "VIRTUAL",
       "score": 1.03,
@@ -2613,15 +2604,6 @@
       "prix_ref": 11.392,
       "type": "swing",
       "timestamp": "2026-09-01T16:17:31.766244+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "AR",
-      "score": 1.02,
-      "prix_ref": 2.241,
-      "type": "swing",
-      "timestamp": "2026-09-01T16:18:29.408573+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -2662,15 +2644,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "PENDLE",
-      "score": 1.01,
-      "prix_ref": 1.851,
-      "type": "swing",
-      "timestamp": "2026-09-02T04:15:37.750608+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "BTC",
       "score": 1.01,
       "prix_ref": 77324.7,
@@ -2690,19 +2663,46 @@
     },
     {
       "ticker": "ZEC",
-      "score": 1.0,
-      "prix_ref": 811.57,
+      "score": 1.08,
+      "prix_ref": 813.58,
       "type": "swing",
-      "timestamp": "2026-09-02T20:16:35.864199+00:00",
+      "timestamp": "2026-09-03T00:14:56.997615+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "CRV",
+      "score": 1.08,
+      "prix_ref": 0.3613,
+      "type": "swing",
+      "timestamp": "2026-09-03T00:16:05.551957+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "CHIP",
-      "score": 1.02,
-      "prix_ref": 0.0416,
+      "score": 1.16,
+      "prix_ref": 0.04265,
       "type": "swing",
-      "timestamp": "2026-09-02T20:18:14.819290+00:00",
+      "timestamp": "2026-09-03T00:16:28.448603+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AR",
+      "score": 1.08,
+      "prix_ref": 2.271,
+      "type": "swing",
+      "timestamp": "2026-09-03T00:18:40.683444+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PENDLE",
+      "score": 1.07,
+      "prix_ref": 1.862,
+      "type": "swing",
+      "timestamp": "2026-09-03T00:18:52.521393+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3867,6 +3867,10 @@
     {
       "date": "2026-09-02T20:14",
       "equity": 346.38
+    },
+    {
+      "date": "2026-09-03T00:13",
+      "equity": 347.9
     }
   ],
   "health_last_warn": 1788193259.646417,
