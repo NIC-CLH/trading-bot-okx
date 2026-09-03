@@ -2471,6 +2471,32 @@
       "score_tech_adj_raw": 2.63,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "JUP",
+      "score": 2.91,
+      "score_tech": 2.91,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 73.49,
+      "prix": 0.2353,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-03T20:13:01.155106+00:00",
+      "score_tech_raw": 2.91,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.91,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -2703,25 +2729,16 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.69831998323323,
+  "_sd_prev_usdt_d": 6.6507141248333905,
   "shadow_portfolio": [
-    {
-      "ticker": "PUMP",
-      "score": 1.05,
-      "prix_ref": 0.00445,
-      "type": "swing",
-      "timestamp": "2026-09-01T16:16:55.222843+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "LINK",
       "score": 1.02,
       "prix_ref": 11.392,
       "type": "swing",
       "timestamp": "2026-09-01T16:17:31.766244+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 4.29
     },
     {
       "ticker": "NEAR",
@@ -2742,15 +2759,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ENA",
-      "score": 1.07,
-      "prix_ref": 0.15971,
-      "type": "swing",
-      "timestamp": "2026-09-02T04:10:26.416266+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "MORPHO",
       "score": 1.08,
       "prix_ref": 2.6562,
@@ -2765,15 +2773,6 @@
       "prix_ref": 77324.7,
       "type": "swing",
       "timestamp": "2026-09-02T16:14:41.714288+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ASTER",
-      "score": 1.1,
-      "prix_ref": 0.7345,
-      "type": "swing",
-      "timestamp": "2026-09-02T16:16:20.657324+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -2837,6 +2836,33 @@
       "prix_ref": 843.82,
       "type": "swing",
       "timestamp": "2026-09-03T12:12:25.889509+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.15,
+      "prix_ref": 0.16991,
+      "type": "swing",
+      "timestamp": "2026-09-03T20:16:23.634367+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ASTER",
+      "score": 1.0,
+      "prix_ref": 0.7307,
+      "type": "swing",
+      "timestamp": "2026-09-03T20:17:48.720823+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ICP",
+      "score": 1.04,
+      "prix_ref": 2.539,
+      "type": "swing",
+      "timestamp": "2026-09-03T20:19:39.347702+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4021,6 +4047,10 @@
     {
       "date": "2026-09-03T16:09",
       "equity": 367.58
+    },
+    {
+      "date": "2026-09-03T20:13",
+      "equity": 369.28
     }
   ],
   "health_last_warn": 1788193259.646417,
