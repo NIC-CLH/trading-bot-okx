@@ -856,6 +856,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 1.85
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "TRB",
+      "pnl_pct": 2.57,
+      "days_held": 0,
+      "exit_reason": "Trailing stop : pic +5.4% → plancher +2.7% | actuel +2.6%",
+      "valeur_usd": 115.9,
+      "outcome": "win",
+      "exit_quality": 47.8,
+      "timestamp": "2026-09-03T17:31:42.433501+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.3
     }
   ],
   "entries": [
@@ -2844,7 +2858,6 @@
     "XRP": 180.18,
     "MON": 10.93,
     "ALGO": 5.0,
-    "TRB": 5.37,
     "DOT": 2.1,
     "FLR": 2.4,
     "ENS": 1.23,
