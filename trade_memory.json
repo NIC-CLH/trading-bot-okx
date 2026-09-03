@@ -2569,7 +2569,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.975178152090947,
+  "_sd_prev_usdt_d": 6.940469054675901,
   "shadow_portfolio": [
     {
       "ticker": "VIRTUAL",
@@ -2662,24 +2662,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ZEC",
-      "score": 1.08,
-      "prix_ref": 813.58,
-      "type": "swing",
-      "timestamp": "2026-09-03T00:14:56.997615+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "CRV",
-      "score": 1.08,
-      "prix_ref": 0.3613,
-      "type": "swing",
-      "timestamp": "2026-09-03T00:16:05.551957+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "CHIP",
       "score": 1.16,
       "prix_ref": 0.04265,
@@ -2703,6 +2685,24 @@
       "prix_ref": 1.862,
       "type": "swing",
       "timestamp": "2026-09-03T00:18:52.521393+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.08,
+      "prix_ref": 821.03,
+      "type": "swing",
+      "timestamp": "2026-09-03T04:11:33.728103+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "CRV",
+      "score": 1.08,
+      "prix_ref": 0.3594,
+      "type": "swing",
+      "timestamp": "2026-09-03T04:13:06.150017+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3871,6 +3871,10 @@
     {
       "date": "2026-09-03T00:13",
       "equity": 347.9
+    },
+    {
+      "date": "2026-09-03T04:09",
+      "equity": 357.24
     }
   ],
   "health_last_warn": 1788193259.646417,
