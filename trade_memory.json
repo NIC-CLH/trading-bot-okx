@@ -2431,6 +2431,32 @@
       "score_tech_adj_raw": 2.68,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "SNT",
+      "score": 2.63,
+      "score_tech": 2.63,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 38.25,
+      "prix": 0.007342260481199789,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-03T16:08:57.541540+00:00",
+      "score_tech_raw": 2.63,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.63,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -2663,7 +2689,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.977112027284853,
+  "_sd_prev_usdt_d": 6.69831998323323,
   "shadow_portfolio": [
     {
       "ticker": "PUMP",
@@ -3976,6 +4002,10 @@
     {
       "date": "2026-09-03T12:10",
       "equity": 356.64
+    },
+    {
+      "date": "2026-09-03T16:09",
+      "equity": 367.58
     }
   ],
   "health_last_warn": 1788193259.646417,
