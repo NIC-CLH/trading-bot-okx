@@ -842,6 +842,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.56
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "EDGE",
+      "pnl_pct": 4.22,
+      "days_held": 0.2,
+      "exit_reason": "Trailing stop : pic +10.1% → plancher +5.1% | actuel +4.2%",
+      "valeur_usd": 37.68,
+      "outcome": "win",
+      "exit_quality": 41.6,
+      "timestamp": "2026-09-03T10:02:04.097629+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.85
     }
   ],
   "entries": [
@@ -2781,8 +2795,7 @@
     "TRB": 1.63,
     "DOT": 2.1,
     "FLR": 0.86,
-    "ENS": 1.23,
-    "EDGE": 10.14
+    "ENS": 1.23
   },
   "equity_history": [
     {
