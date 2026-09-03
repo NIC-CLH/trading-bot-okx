@@ -2351,6 +2351,32 @@
       "score_tech_adj_raw": 3.0,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "EDGE",
+      "score": 1.85,
+      "score_tech": 1.85,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 40.15,
+      "prix": 0.491,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-03T08:09:43.129440+00:00",
+      "score_tech_raw": 1.85,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 1.85,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -2583,26 +2609,8 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.940469054675901,
+  "_sd_prev_usdt_d": 6.976066125823256,
   "shadow_portfolio": [
-    {
-      "ticker": "VIRTUAL",
-      "score": 1.03,
-      "prix_ref": 0.7028,
-      "type": "swing",
-      "timestamp": "2026-09-01T12:14:58.509765+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "JUP",
-      "score": 1.07,
-      "prix_ref": 0.2179,
-      "type": "swing",
-      "timestamp": "2026-09-01T12:15:18.588382+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "PUMP",
       "score": 1.05,
@@ -2703,20 +2711,38 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ZEC",
-      "score": 1.08,
-      "prix_ref": 821.03,
-      "type": "swing",
-      "timestamp": "2026-09-03T04:11:33.728103+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "CRV",
       "score": 1.08,
       "prix_ref": 0.3594,
       "type": "swing",
       "timestamp": "2026-09-03T04:13:06.150017+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.08,
+      "prix_ref": 831.95,
+      "type": "swing",
+      "timestamp": "2026-09-03T08:12:26.709724+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "JUP",
+      "score": 1.08,
+      "prix_ref": 0.2226,
+      "type": "swing",
+      "timestamp": "2026-09-03T08:14:53.453506+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZAMA",
+      "score": 1.07,
+      "prix_ref": 0.05514,
+      "type": "swing",
+      "timestamp": "2026-09-03T08:17:42.644534+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -3889,6 +3915,10 @@
     {
       "date": "2026-09-03T04:09",
       "equity": 357.24
+    },
+    {
+      "date": "2026-09-03T08:10",
+      "equity": 359.62
     }
   ],
   "health_last_warn": 1788193259.646417,
