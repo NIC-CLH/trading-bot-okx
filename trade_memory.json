@@ -2497,6 +2497,32 @@
       "score_tech_adj_raw": 2.91,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ZEN",
+      "score": 2.39,
+      "score_tech": 2.39,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 42.11,
+      "prix": 6.079999999999999,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-04T08:09:38.230407+00:00",
+      "score_tech_raw": 2.39,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.39,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -2729,7 +2755,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.697394853896103,
+  "_sd_prev_usdt_d": 6.705760841610646,
   "shadow_portfolio": [
     {
       "ticker": "LINK",
@@ -2764,8 +2790,8 @@
       "prix_ref": 2.6562,
       "type": "swing",
       "timestamp": "2026-09-02T04:14:01.836174+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -6.84
     },
     {
       "ticker": "BTC",
@@ -2822,15 +2848,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ENA",
-      "score": 1.15,
-      "prix_ref": 0.16991,
-      "type": "swing",
-      "timestamp": "2026-09-03T20:16:23.634367+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ASTER",
       "score": 1.0,
       "prix_ref": 0.7307,
@@ -2858,11 +2875,20 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ICP",
-      "score": 1.04,
-      "prix_ref": 2.56,
+      "ticker": "ENA",
+      "score": 1.03,
+      "prix_ref": 0.16655,
       "type": "swing",
-      "timestamp": "2026-09-04T04:17:01.039595+00:00",
+      "timestamp": "2026-09-04T08:12:59.070797+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ICP",
+      "score": 1.03,
+      "prix_ref": 2.539,
+      "type": "swing",
+      "timestamp": "2026-09-04T08:16:03.434052+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4059,6 +4085,10 @@
     {
       "date": "2026-09-04T04:11",
       "equity": 361.33
+    },
+    {
+      "date": "2026-09-04T08:10",
+      "equity": 358.17
     }
   ],
   "health_last_warn": 1788193259.646417,
