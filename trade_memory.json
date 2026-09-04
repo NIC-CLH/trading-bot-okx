@@ -2769,17 +2769,8 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.663353319190876,
+  "_sd_prev_usdt_d": 6.7997629538151125,
   "shadow_portfolio": [
-    {
-      "ticker": "LINK",
-      "score": 1.02,
-      "prix_ref": 11.392,
-      "type": "swing",
-      "timestamp": "2026-09-01T16:17:31.766244+00:00",
-      "outcome": "correct",
-      "pnl_pct": 4.29
-    },
     {
       "ticker": "SOL",
       "score": 1.12,
@@ -2853,15 +2844,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ZEC",
-      "score": 1.07,
-      "prix_ref": 948.77,
-      "type": "swing",
-      "timestamp": "2026-09-04T04:13:46.300514+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ICP",
       "score": 1.03,
       "prix_ref": 2.539,
@@ -2889,20 +2871,38 @@
       "pnl_pct": null
     },
     {
-      "ticker": "CRV",
-      "score": 1.08,
-      "prix_ref": 0.3673,
-      "type": "swing",
-      "timestamp": "2026-09-04T12:15:00.419725+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "JUP",
       "score": 1.03,
       "prix_ref": 0.2208,
       "type": "swing",
       "timestamp": "2026-09-04T12:15:46.095712+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.04,
+      "prix_ref": 992.2,
+      "type": "swing",
+      "timestamp": "2026-09-04T16:16:23.910671+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "CRV",
+      "score": 1.04,
+      "prix_ref": 0.3573,
+      "type": "swing",
+      "timestamp": "2026-09-04T16:17:51.484658+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STX",
+      "score": 1.07,
+      "prix_ref": 0.2634,
+      "type": "swing",
+      "timestamp": "2026-09-04T16:19:00.693485+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4107,6 +4107,10 @@
     {
       "date": "2026-09-04T12:10",
       "equity": 361.56
+    },
+    {
+      "date": "2026-09-04T16:14",
+      "equity": 352.86
     }
   ],
   "health_last_warn": 1788193259.646417,
