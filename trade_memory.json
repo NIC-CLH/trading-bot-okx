@@ -2769,7 +2769,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.7997629538151125,
+  "_sd_prev_usdt_d": 6.777399611663794,
   "shadow_portfolio": [
     {
       "ticker": "SOL",
@@ -2795,8 +2795,8 @@
       "prix_ref": 77324.7,
       "type": "swing",
       "timestamp": "2026-09-02T16:14:41.714288+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 3.19
     },
     {
       "ticker": "CHIP",
@@ -2880,15 +2880,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ZEC",
-      "score": 1.04,
-      "prix_ref": 992.2,
-      "type": "swing",
-      "timestamp": "2026-09-04T16:16:23.910671+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "CRV",
       "score": 1.04,
       "prix_ref": 0.3573,
@@ -2903,6 +2894,15 @@
       "prix_ref": 0.2634,
       "type": "swing",
       "timestamp": "2026-09-04T16:19:00.693485+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.04,
+      "prix_ref": 1039.36,
+      "type": "swing",
+      "timestamp": "2026-09-04T20:13:20.667201+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4111,6 +4111,10 @@
     {
       "date": "2026-09-04T16:14",
       "equity": 352.86
+    },
+    {
+      "date": "2026-09-04T20:11",
+      "equity": 356.2
     }
   ],
   "health_last_warn": 1788193259.646417,
