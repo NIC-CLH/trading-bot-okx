@@ -2729,7 +2729,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.6507141248333905,
+  "_sd_prev_usdt_d": 6.682101108703016,
   "shadow_portfolio": [
     {
       "ticker": "LINK",
@@ -2746,8 +2746,8 @@
       "prix_ref": 1.905,
       "type": "swing",
       "timestamp": "2026-09-01T20:12:43.539848+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 2.36
     },
     {
       "ticker": "SOL",
@@ -4051,6 +4051,10 @@
     {
       "date": "2026-09-03T20:13",
       "equity": 369.28
+    },
+    {
+      "date": "2026-09-04T00:13",
+      "equity": 365.09
     }
   ],
   "health_last_warn": 1788193259.646417,
