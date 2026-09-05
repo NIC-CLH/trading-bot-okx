@@ -2769,7 +2769,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.772689716660558,
+  "_sd_prev_usdt_d": 6.764883013775667,
   "shadow_portfolio": [
     {
       "ticker": "MORPHO",
@@ -2822,8 +2822,8 @@
       "prix_ref": 0.05514,
       "type": "swing",
       "timestamp": "2026-09-03T08:17:42.644534+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -7.24
     },
     {
       "ticker": "ASTER",
@@ -2831,15 +2831,6 @@
       "prix_ref": 0.7307,
       "type": "swing",
       "timestamp": "2026-09-03T20:17:48.720823+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ICP",
-      "score": 1.03,
-      "prix_ref": 2.539,
-      "type": "swing",
-      "timestamp": "2026-09-04T08:16:03.434052+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -2862,15 +2853,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "JUP",
-      "score": 1.03,
-      "prix_ref": 0.2208,
-      "type": "swing",
-      "timestamp": "2026-09-04T12:15:46.095712+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "STX",
       "score": 1.07,
       "prix_ref": 0.2634,
@@ -2880,29 +2862,47 @@
       "pnl_pct": null
     },
     {
-      "ticker": "DASH",
-      "score": 1.14,
-      "prix_ref": 63.63,
+      "ticker": "ZEC",
+      "score": 1.13,
+      "prix_ref": 1014.27,
       "type": "swing",
-      "timestamp": "2026-09-05T00:16:32.140501+00:00",
+      "timestamp": "2026-09-05T12:14:54.906279+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "DASH",
+      "score": 1.03,
+      "prix_ref": 67.82,
+      "type": "swing",
+      "timestamp": "2026-09-05T12:15:30.169286+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ICP",
+      "score": 1.1,
+      "prix_ref": 2.634,
+      "type": "swing",
+      "timestamp": "2026-09-05T12:18:11.287379+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "CRV",
-      "score": 1.04,
-      "prix_ref": 0.3522,
+      "score": 1.05,
+      "prix_ref": 0.3639,
       "type": "swing",
-      "timestamp": "2026-09-05T00:17:35.439950+00:00",
+      "timestamp": "2026-09-05T12:19:07.263663+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
-      "ticker": "ZEC",
-      "score": 1.02,
-      "prix_ref": 1025.87,
+      "ticker": "JUP",
+      "score": 1.03,
+      "prix_ref": 0.2256,
       "type": "swing",
-      "timestamp": "2026-09-05T04:15:34.092022+00:00",
+      "timestamp": "2026-09-05T12:19:38.005168+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4127,6 +4127,10 @@
     {
       "date": "2026-09-05T08:14",
       "equity": 357.63
+    },
+    {
+      "date": "2026-09-05T12:12",
+      "equity": 359.17
     }
   ],
   "health_last_warn": 1788193259.646417,
