@@ -2809,17 +2809,8 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.744840480828615,
+  "_sd_prev_usdt_d": 6.734759264046078,
   "shadow_portfolio": [
-    {
-      "ticker": "MORPHO",
-      "score": 1.08,
-      "prix_ref": 2.6562,
-      "type": "swing",
-      "timestamp": "2026-09-02T04:14:01.836174+00:00",
-      "outcome": "correct",
-      "pnl_pct": -6.84
-    },
     {
       "ticker": "BTC",
       "score": 1.01,
@@ -2893,15 +2884,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "STX",
-      "score": 1.07,
-      "prix_ref": 0.2634,
-      "type": "swing",
-      "timestamp": "2026-09-04T16:19:00.693485+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ZEC",
       "score": 1.13,
       "prix_ref": 1014.27,
@@ -2943,6 +2925,24 @@
       "prix_ref": 0.2256,
       "type": "swing",
       "timestamp": "2026-09-05T12:19:38.005168+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SUSHI",
+      "score": 1.05,
+      "prix_ref": 0.2669,
+      "type": "swing",
+      "timestamp": "2026-09-05T20:15:50.273846+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STX",
+      "score": 1.07,
+      "prix_ref": 0.2718,
+      "type": "swing",
+      "timestamp": "2026-09-05T20:17:54.504664+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4175,6 +4175,10 @@
     {
       "date": "2026-09-05T16:13",
       "equity": 355.8
+    },
+    {
+      "date": "2026-09-05T20:11",
+      "equity": 350.27
     }
   ],
   "health_last_warn": 1788193259.646417,
