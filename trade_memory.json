@@ -884,6 +884,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.39
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ICX",
+      "pnl_pct": -11.75,
+      "days_held": 0.2,
+      "exit_reason": "Stop ATR -11.7% <= -10.0%",
+      "valeur_usd": 37.52,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-09-05T19:31:44.721990+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 0.04
     }
   ],
   "entries": [
@@ -2955,8 +2969,7 @@
     "ENS": 3.06,
     "KITE": 0.68,
     "SNT": 0.11,
-    "JUP": 1.06,
-    "ICX": 3.31
+    "JUP": 1.06
   },
   "equity_history": [
     {
