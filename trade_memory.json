@@ -2769,7 +2769,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.786322314381279,
+  "_sd_prev_usdt_d": 6.79067437843236,
   "shadow_portfolio": [
     {
       "ticker": "MORPHO",
@@ -2795,8 +2795,8 @@
       "prix_ref": 0.04265,
       "type": "swing",
       "timestamp": "2026-09-03T00:16:28.448603+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 30.04
     },
     {
       "ticker": "AR",
@@ -2804,8 +2804,8 @@
       "prix_ref": 2.271,
       "type": "swing",
       "timestamp": "2026-09-03T00:18:40.683444+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 26.29
     },
     {
       "ticker": "PENDLE",
@@ -2813,8 +2813,8 @@
       "prix_ref": 1.862,
       "type": "swing",
       "timestamp": "2026-09-03T00:18:52.521393+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 3.33
     },
     {
       "ticker": "ZAMA",
@@ -2880,15 +2880,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ZEC",
-      "score": 1.13,
-      "prix_ref": 1024.5,
-      "type": "swing",
-      "timestamp": "2026-09-05T00:15:39.509119+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "DASH",
       "score": 1.14,
       "prix_ref": 63.63,
@@ -2903,6 +2894,15 @@
       "prix_ref": 0.3522,
       "type": "swing",
       "timestamp": "2026-09-05T00:17:35.439950+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.02,
+      "prix_ref": 1025.87,
+      "type": "swing",
+      "timestamp": "2026-09-05T04:15:34.092022+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4119,6 +4119,10 @@
     {
       "date": "2026-09-05T00:14",
       "equity": 358.21
+    },
+    {
+      "date": "2026-09-05T04:14",
+      "equity": 355.71
     }
   ],
   "health_last_warn": 1788193259.646417,
