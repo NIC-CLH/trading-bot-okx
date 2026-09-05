@@ -2769,17 +2769,8 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.777399611663794,
+  "_sd_prev_usdt_d": 6.786322314381279,
   "shadow_portfolio": [
-    {
-      "ticker": "SOL",
-      "score": 1.12,
-      "prix_ref": 99.98,
-      "type": "swing",
-      "timestamp": "2026-09-02T04:09:50.360032+00:00",
-      "outcome": "correct",
-      "pnl_pct": 3.66
-    },
     {
       "ticker": "MORPHO",
       "score": 1.08,
@@ -2880,15 +2871,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "CRV",
-      "score": 1.04,
-      "prix_ref": 0.3573,
-      "type": "swing",
-      "timestamp": "2026-09-04T16:17:51.484658+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "STX",
       "score": 1.07,
       "prix_ref": 0.2634,
@@ -2899,10 +2881,28 @@
     },
     {
       "ticker": "ZEC",
-      "score": 1.04,
-      "prix_ref": 1039.36,
+      "score": 1.13,
+      "prix_ref": 1024.5,
       "type": "swing",
-      "timestamp": "2026-09-04T20:13:20.667201+00:00",
+      "timestamp": "2026-09-05T00:15:39.509119+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "DASH",
+      "score": 1.14,
+      "prix_ref": 63.63,
+      "type": "swing",
+      "timestamp": "2026-09-05T00:16:32.140501+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "CRV",
+      "score": 1.04,
+      "prix_ref": 0.3522,
+      "type": "swing",
+      "timestamp": "2026-09-05T00:17:35.439950+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4115,6 +4115,10 @@
     {
       "date": "2026-09-04T20:11",
       "equity": 356.2
+    },
+    {
+      "date": "2026-09-05T00:14",
+      "equity": 358.21
     }
   ],
   "health_last_warn": 1788193259.646417,
