@@ -2537,6 +2537,32 @@
       "score_tech_adj_raw": 2.39,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ICX",
+      "score": 0.04,
+      "score_tech": 0.04,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 42.09,
+      "prix": 0.015999884731269287,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-05T16:13:05.047424+00:00",
+      "score_tech_raw": 0.04,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 0.04,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -2769,7 +2795,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.764883013775667,
+  "_sd_prev_usdt_d": 6.744840480828615,
   "shadow_portfolio": [
     {
       "ticker": "MORPHO",
@@ -4132,6 +4158,10 @@
     {
       "date": "2026-09-05T12:12",
       "equity": 359.17
+    },
+    {
+      "date": "2026-09-05T16:13",
+      "equity": 355.8
     }
   ],
   "health_last_warn": 1788193259.646417,
