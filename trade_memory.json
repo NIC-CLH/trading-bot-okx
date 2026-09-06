@@ -926,6 +926,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.91
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "DOT",
+      "pnl_pct": 12.3,
+      "days_held": 0,
+      "exit_reason": "Take profit +12% atteint (+12.3%) — capté en 30min 🎯",
+      "valeur_usd": 42.21,
+      "outcome": "win",
+      "exit_quality": 100.0,
+      "timestamp": "2026-09-06T12:01:58.556178+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.02
     }
   ],
   "entries": [
@@ -3061,7 +3075,6 @@
     "XRP": 180.18,
     "MON": 10.93,
     "ALGO": 5.0,
-    "DOT": 10.66,
     "FLR": 2.85,
     "ENS": 5.67,
     "KITE": 0.68,
@@ -4439,6 +4452,6 @@
     }
   },
   "alert_cooldowns": {
-    "xrp_buy": 1788667437.139517
+    "xrp_buy": 1788696285.566787
   }
 }
