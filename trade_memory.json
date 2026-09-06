@@ -2682,6 +2682,32 @@
       "score_tech_adj_raw": 2.3,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "LAYER",
+      "score": 2.41,
+      "score_tech": 2.41,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 70.13,
+      "prix": 0.08199226785251588,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-06T20:15:09.907437+00:00",
+      "score_tech_raw": 2.41,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.41,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -2926,7 +2952,7 @@
       "timestamp": "2026-09-06T04:14:16.726217+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.7927002544671735,
+  "_sd_prev_usdt_d": 6.779284489895529,
   "shadow_portfolio": [
     {
       "ticker": "NEAR",
@@ -3028,15 +3054,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "SOL",
-      "score": 1.04,
-      "prix_ref": 105.77,
-      "type": "swing",
-      "timestamp": "2026-09-06T16:13:54.970201+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ASTER",
       "score": 1.04,
       "prix_ref": 0.7657,
@@ -3046,20 +3063,29 @@
       "pnl_pct": null
     },
     {
-      "ticker": "TAO",
-      "score": 1.12,
-      "prix_ref": 246.0,
-      "type": "swing",
-      "timestamp": "2026-09-06T16:16:43.675689+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "STX",
       "score": 1.02,
       "prix_ref": 0.2659,
       "type": "swing",
       "timestamp": "2026-09-06T16:18:29.165663+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.0,
+      "prix_ref": 105.48,
+      "type": "swing",
+      "timestamp": "2026-09-06T20:17:31.778316+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "TAO",
+      "score": 1.11,
+      "prix_ref": 268.2,
+      "type": "swing",
+      "timestamp": "2026-09-06T20:19:12.587289+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4322,6 +4348,10 @@
     {
       "date": "2026-09-06T16:12",
       "equity": 366.1
+    },
+    {
+      "date": "2026-09-06T20:15",
+      "equity": 361.88
     }
   ],
   "health_last_warn": 1788193259.646417,
