@@ -2577,6 +2577,32 @@
       "score_tech_adj_raw": 0.04,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "SUSHI",
+      "score": 2.28,
+      "score_tech": 2.28,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 35.96,
+      "prix": 0.2628,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-06T00:11:39.806332+00:00",
+      "score_tech_raw": 2.28,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.28,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -2809,7 +2835,7 @@
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.734759264046078,
+  "_sd_prev_usdt_d": 6.789396421524714,
   "shadow_portfolio": [
     {
       "ticker": "BTC",
@@ -2862,8 +2888,8 @@
       "prix_ref": 0.7307,
       "type": "swing",
       "timestamp": "2026-09-03T20:17:48.720823+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 6.75
     },
     {
       "ticker": "ENA",
@@ -4180,6 +4206,10 @@
     {
       "date": "2026-09-05T20:11",
       "equity": 350.27
+    },
+    {
+      "date": "2026-09-06T00:12",
+      "equity": 348.04
     }
   ],
   "health_last_warn": 1788193259.646417,
