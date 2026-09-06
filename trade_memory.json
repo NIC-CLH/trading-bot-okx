@@ -2617,6 +2617,32 @@
       "score_tech_adj_raw": 2.28,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "SPK",
+      "score": 2.3,
+      "score_tech": 2.3,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 35.0,
+      "prix": 0.02229,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-06T08:10:40.317156+00:00",
+      "score_tech_raw": 2.3,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.3,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -2861,35 +2887,8 @@
       "timestamp": "2026-09-06T04:14:16.726217+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.759392568446271,
+  "_sd_prev_usdt_d": 6.775258478050829,
   "shadow_portfolio": [
-    {
-      "ticker": "BTC",
-      "score": 1.01,
-      "prix_ref": 77324.7,
-      "type": "swing",
-      "timestamp": "2026-09-02T16:14:41.714288+00:00",
-      "outcome": "correct",
-      "pnl_pct": 3.19
-    },
-    {
-      "ticker": "CHIP",
-      "score": 1.16,
-      "prix_ref": 0.04265,
-      "type": "swing",
-      "timestamp": "2026-09-03T00:16:28.448603+00:00",
-      "outcome": "missed",
-      "pnl_pct": 30.04
-    },
-    {
-      "ticker": "AR",
-      "score": 1.08,
-      "prix_ref": 2.271,
-      "type": "swing",
-      "timestamp": "2026-09-03T00:18:40.683444+00:00",
-      "outcome": "missed",
-      "pnl_pct": 26.29
-    },
     {
       "ticker": "PENDLE",
       "score": 1.07,
@@ -2907,24 +2906,6 @@
       "timestamp": "2026-09-03T08:17:42.644534+00:00",
       "outcome": "correct",
       "pnl_pct": -7.24
-    },
-    {
-      "ticker": "ASTER",
-      "score": 1.0,
-      "prix_ref": 0.7307,
-      "type": "swing",
-      "timestamp": "2026-09-03T20:17:48.720823+00:00",
-      "outcome": "correct",
-      "pnl_pct": 6.75
-    },
-    {
-      "ticker": "ENA",
-      "score": 1.15,
-      "prix_ref": 0.16914,
-      "type": "swing",
-      "timestamp": "2026-09-04T12:12:48.876447+00:00",
-      "outcome": null,
-      "pnl_pct": null
     },
     {
       "ticker": "NEAR",
@@ -2945,33 +2926,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ICP",
-      "score": 1.1,
-      "prix_ref": 2.634,
-      "type": "swing",
-      "timestamp": "2026-09-05T12:18:11.287379+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "CRV",
-      "score": 1.05,
-      "prix_ref": 0.3639,
-      "type": "swing",
-      "timestamp": "2026-09-05T12:19:07.263663+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "JUP",
-      "score": 1.03,
-      "prix_ref": 0.2256,
-      "type": "swing",
-      "timestamp": "2026-09-05T12:19:38.005168+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "SUSHI",
       "score": 1.05,
       "prix_ref": 0.2669,
@@ -2981,20 +2935,92 @@
       "pnl_pct": null
     },
     {
-      "ticker": "STX",
-      "score": 1.07,
-      "prix_ref": 0.2718,
-      "type": "swing",
-      "timestamp": "2026-09-05T20:17:54.504664+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ZEC",
       "score": 1.01,
       "prix_ref": 1074.24,
       "type": "swing",
       "timestamp": "2026-09-06T04:17:21.833539+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "XRP",
+      "score": 1.04,
+      "prix_ref": 1.4183,
+      "type": "swing",
+      "timestamp": "2026-09-06T08:13:17.325901+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.08,
+      "prix_ref": 0.17404,
+      "type": "swing",
+      "timestamp": "2026-09-06T08:13:47.337201+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ASTER",
+      "score": 1.0,
+      "prix_ref": 0.7726,
+      "type": "swing",
+      "timestamp": "2026-09-06T08:13:54.991097+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "JUP",
+      "score": 1.08,
+      "prix_ref": 0.2404,
+      "type": "swing",
+      "timestamp": "2026-09-06T08:16:03.293389+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "CRV",
+      "score": 1.08,
+      "prix_ref": 0.3737,
+      "type": "swing",
+      "timestamp": "2026-09-06T08:16:28.951202+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ICP",
+      "score": 1.03,
+      "prix_ref": 2.667,
+      "type": "swing",
+      "timestamp": "2026-09-06T08:16:59.681006+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STX",
+      "score": 1.07,
+      "prix_ref": 0.2656,
+      "type": "swing",
+      "timestamp": "2026-09-06T08:18:10.603272+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENS",
+      "score": 1.02,
+      "prix_ref": 6.114,
+      "type": "swing",
+      "timestamp": "2026-09-06T08:19:24.136699+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ALGO",
+      "score": 1.01,
+      "prix_ref": 0.0948,
+      "type": "swing",
+      "timestamp": "2026-09-06T08:19:34.657697+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4246,6 +4272,10 @@
     {
       "date": "2026-09-06T04:14",
       "equity": 355.4
+    },
+    {
+      "date": "2026-09-06T08:11",
+      "equity": 357.96
     }
   ],
   "health_last_warn": 1788193259.646417,
