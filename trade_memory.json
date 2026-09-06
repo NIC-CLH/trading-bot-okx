@@ -898,6 +898,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 0.04
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "SUSHI",
+      "pnl_pct": -9.44,
+      "days_held": 0.3,
+      "exit_reason": "Stop ATR déclenché (-9.4% < -8.7%)",
+      "valeur_usd": 34.09,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-09-06T04:14:04.428152+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.28
     }
   ],
   "entries": [
@@ -2833,9 +2847,21 @@
       "pnl_pct": 5.257253130206097,
       "type": "trade_reflection",
       "timestamp": "2026-08-21T08:09:55.713383+00:00"
+    },
+    {
+      "lecon_principale": "Score composite faible (2.28) + régime bull trompeur = perte rapide",
+      "signal_fiable": "Stop ATR a fonctionné correctement en limites la perte à -9.4%",
+      "signal_trompeur": "Régime bull identifié à l'entrée ne s'est pas confirmé; score composite trop bas",
+      "regime_optimal": "Attendre des régimes haussiers avec score composite > 3.5 minimum",
+      "recommandation": "avoid_regime",
+      "confiance": 0.82,
+      "ticker": "SUSHI",
+      "pnl_pct": -9.436834094368338,
+      "type": "trade_reflection",
+      "timestamp": "2026-09-06T04:14:16.726217+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.789396421524714,
+  "_sd_prev_usdt_d": 6.759392568446271,
   "shadow_portfolio": [
     {
       "ticker": "BTC",
@@ -2910,15 +2936,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ZEC",
-      "score": 1.13,
-      "prix_ref": 1014.27,
-      "type": "swing",
-      "timestamp": "2026-09-05T12:14:54.906279+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "DASH",
       "score": 1.03,
       "prix_ref": 67.82,
@@ -2971,6 +2988,15 @@
       "timestamp": "2026-09-05T20:17:54.504664+00:00",
       "outcome": null,
       "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.01,
+      "prix_ref": 1074.24,
+      "type": "swing",
+      "timestamp": "2026-09-06T04:17:21.833539+00:00",
+      "outcome": null,
+      "pnl_pct": null
     }
   ],
   "pending_signals": [],
@@ -2984,6 +3010,11 @@
       "threshold": 2.2,
       "expires": 1784563618.8546674,
       "loss_pct": -11.03
+    },
+    "SUSHI": {
+      "threshold": 1.9,
+      "expires": 1788682452.4598413,
+      "loss_pct": -9.44
     }
   },
   "peaks": {
@@ -4210,6 +4241,10 @@
     {
       "date": "2026-09-06T00:12",
       "equity": 348.04
+    },
+    {
+      "date": "2026-09-06T04:14",
+      "equity": 355.4
     }
   ],
   "health_last_warn": 1788193259.646417,
