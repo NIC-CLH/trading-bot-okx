@@ -2926,34 +2926,16 @@
       "timestamp": "2026-09-06T04:14:16.726217+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.762048587871606,
+  "_sd_prev_usdt_d": 6.7927002544671735,
   "shadow_portfolio": [
-    {
-      "ticker": "PENDLE",
-      "score": 1.07,
-      "prix_ref": 1.862,
-      "type": "swing",
-      "timestamp": "2026-09-03T00:18:52.521393+00:00",
-      "outcome": "correct",
-      "pnl_pct": 3.33
-    },
-    {
-      "ticker": "ZAMA",
-      "score": 1.07,
-      "prix_ref": 0.05514,
-      "type": "swing",
-      "timestamp": "2026-09-03T08:17:42.644534+00:00",
-      "outcome": "correct",
-      "pnl_pct": -7.24
-    },
     {
       "ticker": "NEAR",
       "score": 1.04,
       "prix_ref": 2.016,
       "type": "swing",
       "timestamp": "2026-09-04T12:13:30.685012+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 18.85
     },
     {
       "ticker": "DASH",
@@ -3001,15 +2983,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ASTER",
-      "score": 1.0,
-      "prix_ref": 0.7726,
-      "type": "swing",
-      "timestamp": "2026-09-06T08:13:54.991097+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "JUP",
       "score": 1.08,
       "prix_ref": 0.2404,
@@ -3037,15 +3010,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "STX",
-      "score": 1.07,
-      "prix_ref": 0.2656,
-      "type": "swing",
-      "timestamp": "2026-09-06T08:18:10.603272+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ENS",
       "score": 1.02,
       "prix_ref": 6.114,
@@ -3060,6 +3024,42 @@
       "prix_ref": 0.0948,
       "type": "swing",
       "timestamp": "2026-09-06T08:19:34.657697+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.04,
+      "prix_ref": 105.77,
+      "type": "swing",
+      "timestamp": "2026-09-06T16:13:54.970201+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ASTER",
+      "score": 1.04,
+      "prix_ref": 0.7657,
+      "type": "swing",
+      "timestamp": "2026-09-06T16:16:08.213547+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "TAO",
+      "score": 1.12,
+      "prix_ref": 246.0,
+      "type": "swing",
+      "timestamp": "2026-09-06T16:16:43.675689+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STX",
+      "score": 1.02,
+      "prix_ref": 0.2659,
+      "type": "swing",
+      "timestamp": "2026-09-06T16:18:29.165663+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4317,6 +4317,10 @@
     {
       "date": "2026-09-06T12:06",
       "equity": 365.46
+    },
+    {
+      "date": "2026-09-06T16:12",
+      "equity": 366.1
     }
   ],
   "health_last_warn": 1788193259.646417,
