@@ -965,6 +965,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.41
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ENS",
+      "pnl_pct": 3.59,
+      "days_held": 0,
+      "exit_reason": "Trailing stop : pic +7.7% → plancher +3.9% | actuel +3.6%",
+      "valeur_usd": 32.1,
+      "outcome": "win",
+      "exit_quality": 46.5,
+      "timestamp": "2026-09-07T08:01:51.994191+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.38
     }
   ],
   "entries": [
@@ -3127,7 +3141,6 @@
     "MON": 10.93,
     "ALGO": 5.0,
     "FLR": 2.85,
-    "ENS": 7.72,
     "KITE": 0.68,
     "SNT": 0.11,
     "SUSHI": 2.32,
