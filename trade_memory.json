@@ -2966,7 +2966,7 @@
       "timestamp": "2026-09-06T04:14:16.726217+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.733981652804682,
+  "_sd_prev_usdt_d": 6.788791204966873,
   "shadow_portfolio": [
     {
       "ticker": "NEAR",
@@ -3086,20 +3086,20 @@
       "pnl_pct": null
     },
     {
-      "ticker": "SOL",
-      "score": 1.0,
-      "prix_ref": 105.48,
-      "type": "swing",
-      "timestamp": "2026-09-06T20:17:31.778316+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "TAO",
       "score": 1.11,
       "prix_ref": 268.2,
       "type": "swing",
       "timestamp": "2026-09-06T20:19:12.587289+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.11,
+      "prix_ref": 104.92,
+      "type": "swing",
+      "timestamp": "2026-09-07T04:16:53.607825+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4369,6 +4369,10 @@
     {
       "date": "2026-09-07T00:12",
       "equity": 360.31
+    },
+    {
+      "date": "2026-09-07T04:14",
+      "equity": 358.1
     }
   ],
   "health_last_warn": 1788193259.646417,
