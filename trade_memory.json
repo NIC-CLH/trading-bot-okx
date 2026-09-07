@@ -2750,6 +2750,32 @@
       "score_tech_adj_raw": 2.41,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "CATI",
+      "score": 2.39,
+      "score_tech": 2.39,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 70.19,
+      "prix": 0.0631,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-07T16:09:38.061869+00:00",
+      "score_tech_raw": 2.39,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.39,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -2994,7 +3020,7 @@
       "timestamp": "2026-09-06T04:14:16.726217+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.799379270139405,
+  "_sd_prev_usdt_d": 6.844809993068318,
   "shadow_portfolio": [
     {
       "ticker": "DASH",
@@ -3002,8 +3028,8 @@
       "prix_ref": 67.82,
       "type": "swing",
       "timestamp": "2026-09-05T12:15:30.169286+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -3.76
     },
     {
       "ticker": "SUSHI",
@@ -3124,10 +3150,10 @@
     },
     {
       "ticker": "TOSHI",
-      "score": 1.1,
-      "prix_ref": 0.000136,
+      "score": 1.13,
+      "prix_ref": 0.000131,
       "type": "swing",
-      "timestamp": "2026-09-07T12:18:03.161629+00:00",
+      "timestamp": "2026-09-07T16:19:28.529441+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4407,6 +4433,10 @@
     {
       "date": "2026-09-07T12:09",
       "equity": 355.56
+    },
+    {
+      "date": "2026-09-07T16:10",
+      "equity": 354.16
     }
   ],
   "health_last_warn": 1788193259.646417,
