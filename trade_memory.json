@@ -2980,7 +2980,7 @@
       "timestamp": "2026-09-06T04:14:16.726217+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.788791204966873,
+  "_sd_prev_usdt_d": 6.801593479707667,
   "shadow_portfolio": [
     {
       "ticker": "NEAR",
@@ -3015,15 +3015,6 @@
       "prix_ref": 1074.24,
       "type": "swing",
       "timestamp": "2026-09-06T04:17:21.833539+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "XRP",
-      "score": 1.04,
-      "prix_ref": 1.4183,
-      "type": "swing",
-      "timestamp": "2026-09-06T08:13:17.325901+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -3114,6 +3105,15 @@
       "prix_ref": 104.92,
       "type": "swing",
       "timestamp": "2026-09-07T04:16:53.607825+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "XRP",
+      "score": 1.01,
+      "prix_ref": 1.4009,
+      "type": "swing",
+      "timestamp": "2026-09-07T08:17:38.829266+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4386,6 +4386,10 @@
     {
       "date": "2026-09-07T04:14",
       "equity": 358.1
+    },
+    {
+      "date": "2026-09-07T08:15",
+      "equity": 356.37
     }
   ],
   "health_last_warn": 1788193259.646417,
