@@ -979,6 +979,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.38
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "KITE",
+      "pnl_pct": -11.09,
+      "days_held": 0,
+      "exit_reason": "Stop ATR -11.1% <= -10.0%",
+      "valeur_usd": 63.35,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-09-07T09:01:50.023199+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.68
     }
   ],
   "entries": [
@@ -3141,7 +3155,6 @@
     "MON": 10.93,
     "ALGO": 5.0,
     "FLR": 2.85,
-    "KITE": 0.68,
     "SNT": 0.11,
     "SUSHI": 2.32,
     "SPK": 4.13
