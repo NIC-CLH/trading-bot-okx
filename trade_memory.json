@@ -2994,17 +2994,8 @@
       "timestamp": "2026-09-06T04:14:16.726217+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.801593479707667,
+  "_sd_prev_usdt_d": 6.799379270139405,
   "shadow_portfolio": [
-    {
-      "ticker": "NEAR",
-      "score": 1.04,
-      "prix_ref": 2.016,
-      "type": "swing",
-      "timestamp": "2026-09-04T12:13:30.685012+00:00",
-      "outcome": "missed",
-      "pnl_pct": 18.85
-    },
     {
       "ticker": "DASH",
       "score": 1.03,
@@ -3124,10 +3115,19 @@
     },
     {
       "ticker": "XRP",
-      "score": 1.01,
-      "prix_ref": 1.4009,
+      "score": 1.21,
+      "prix_ref": 1.4031,
       "type": "swing",
-      "timestamp": "2026-09-07T08:17:38.829266+00:00",
+      "timestamp": "2026-09-07T12:11:38.292653+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "TOSHI",
+      "score": 1.1,
+      "prix_ref": 0.000136,
+      "type": "swing",
+      "timestamp": "2026-09-07T12:18:03.161629+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4403,6 +4403,10 @@
     {
       "date": "2026-09-07T08:15",
       "equity": 356.37
+    },
+    {
+      "date": "2026-09-07T12:09",
+      "equity": 355.56
     }
   ],
   "health_last_warn": 1788193259.646417,
