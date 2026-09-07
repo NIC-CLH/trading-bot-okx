@@ -3020,17 +3020,8 @@
       "timestamp": "2026-09-06T04:14:16.726217+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.844809993068318,
+  "_sd_prev_usdt_d": 6.8084422188420035,
   "shadow_portfolio": [
-    {
-      "ticker": "DASH",
-      "score": 1.03,
-      "prix_ref": 67.82,
-      "type": "swing",
-      "timestamp": "2026-09-05T12:15:30.169286+00:00",
-      "outcome": "correct",
-      "pnl_pct": -3.76
-    },
     {
       "ticker": "SUSHI",
       "score": 1.05,
@@ -3154,6 +3145,15 @@
       "prix_ref": 0.000131,
       "type": "swing",
       "timestamp": "2026-09-07T16:19:28.529441+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "INJ",
+      "score": 1.11,
+      "prix_ref": 6.23,
+      "type": "swing",
+      "timestamp": "2026-09-07T20:16:15.288340+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4437,9 +4437,13 @@
     {
       "date": "2026-09-07T16:10",
       "equity": 354.16
+    },
+    {
+      "date": "2026-09-07T20:11",
+      "equity": 349.97
     }
   ],
-  "health_last_warn": 1788193259.646417,
+  "health_last_warn": 1788812448.16511,
   "eea_blacklist": {
     "BNB": {
       "reason": "All operations failed (code 1) - constate 18/07/2026",
