@@ -3020,7 +3020,7 @@
       "timestamp": "2026-09-06T04:14:16.726217+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.8084422188420035,
+  "_sd_prev_usdt_d": 6.826705441468844,
   "shadow_portfolio": [
     {
       "ticker": "SUSHI",
@@ -3028,8 +3028,8 @@
       "prix_ref": 0.2669,
       "type": "swing",
       "timestamp": "2026-09-05T20:15:50.273846+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -9.93
     },
     {
       "ticker": "ZEC",
@@ -3150,10 +3150,10 @@
     },
     {
       "ticker": "INJ",
-      "score": 1.11,
-      "prix_ref": 6.23,
+      "score": 1.09,
+      "prix_ref": 6.179,
       "type": "swing",
-      "timestamp": "2026-09-07T20:16:15.288340+00:00",
+      "timestamp": "2026-09-08T00:14:06.406259+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4441,6 +4441,10 @@
     {
       "date": "2026-09-07T20:11",
       "equity": 349.97
+    },
+    {
+      "date": "2026-09-08T00:10",
+      "equity": 349.33
     }
   ],
   "health_last_warn": 1788812448.16511,
