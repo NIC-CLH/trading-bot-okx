@@ -3020,7 +3020,7 @@
       "timestamp": "2026-09-06T04:14:16.726217+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.826705441468844,
+  "_sd_prev_usdt_d": 6.838734833716016,
   "shadow_portfolio": [
     {
       "ticker": "SUSHI",
@@ -3030,15 +3030,6 @@
       "timestamp": "2026-09-05T20:15:50.273846+00:00",
       "outcome": "correct",
       "pnl_pct": -9.93
-    },
-    {
-      "ticker": "ZEC",
-      "score": 1.01,
-      "prix_ref": 1074.24,
-      "type": "swing",
-      "timestamp": "2026-09-06T04:17:21.833539+00:00",
-      "outcome": null,
-      "pnl_pct": null
     },
     {
       "ticker": "ENA",
@@ -3095,15 +3086,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ASTER",
-      "score": 1.04,
-      "prix_ref": 0.7657,
-      "type": "swing",
-      "timestamp": "2026-09-06T16:16:08.213547+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "STX",
       "score": 1.02,
       "prix_ref": 0.2659,
@@ -3118,15 +3100,6 @@
       "prix_ref": 268.2,
       "type": "swing",
       "timestamp": "2026-09-06T20:19:12.587289+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "SOL",
-      "score": 1.11,
-      "prix_ref": 104.92,
-      "type": "swing",
-      "timestamp": "2026-09-07T04:16:53.607825+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -3149,11 +3122,38 @@
       "pnl_pct": null
     },
     {
-      "ticker": "INJ",
-      "score": 1.09,
-      "prix_ref": 6.179,
+      "ticker": "SOL",
+      "score": 1.04,
+      "prix_ref": 103.25,
       "type": "swing",
-      "timestamp": "2026-09-08T00:14:06.406259+00:00",
+      "timestamp": "2026-09-08T04:10:38.420563+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.03,
+      "prix_ref": 1129.89,
+      "type": "swing",
+      "timestamp": "2026-09-08T04:10:51.298889+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "INJ",
+      "score": 1.22,
+      "prix_ref": 6.513,
+      "type": "swing",
+      "timestamp": "2026-09-08T04:12:15.430529+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ASTER",
+      "score": 1.04,
+      "prix_ref": 0.7621,
+      "type": "swing",
+      "timestamp": "2026-09-08T04:13:59.131960+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4445,6 +4445,10 @@
     {
       "date": "2026-09-08T00:10",
       "equity": 349.33
+    },
+    {
+      "date": "2026-09-08T04:08",
+      "equity": 351.92
     }
   ],
   "health_last_warn": 1788812448.16511,
