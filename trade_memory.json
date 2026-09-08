@@ -993,6 +993,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.68
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "SPK",
+      "pnl_pct": -10.14,
+      "days_held": 2.6,
+      "exit_reason": "Stop ATR -10.1% <= -10.0%",
+      "valeur_usd": 30.8,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-09-08T20:02:09.472780+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.3
     }
   ],
   "entries": [
@@ -3235,7 +3249,6 @@
     "FLR": 2.85,
     "SNT": 2.14,
     "SUSHI": 2.32,
-    "SPK": 4.13,
     "CATI": 1.74,
     "PI": 1.63,
     "PROS": 2.36
