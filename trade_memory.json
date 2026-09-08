@@ -2776,6 +2776,58 @@
       "score_tech_adj_raw": 2.39,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "PI",
+      "score": 1.64,
+      "score_tech": 1.64,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 70.03,
+      "prix": 0.09594,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-08T08:14:52.611582+00:00",
+      "score_tech_raw": 1.64,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 1.64,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "PROS",
+      "score": 1.25,
+      "score_tech": 1.25,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 70.01,
+      "prix": 0.4364,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-08T08:14:57.868040+00:00",
+      "score_tech_raw": 1.25,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 1.25,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -3020,7 +3072,7 @@
       "timestamp": "2026-09-06T04:14:16.726217+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.838734833716016,
+  "_sd_prev_usdt_d": 6.865826667398705,
   "shadow_portfolio": [
     {
       "ticker": "SUSHI",
@@ -3132,28 +3184,28 @@
     },
     {
       "ticker": "ZEC",
-      "score": 1.03,
-      "prix_ref": 1129.89,
+      "score": 1.2,
+      "prix_ref": 1127.63,
       "type": "swing",
-      "timestamp": "2026-09-08T04:10:51.298889+00:00",
+      "timestamp": "2026-09-08T08:17:27.199129+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "INJ",
-      "score": 1.22,
-      "prix_ref": 6.513,
+      "score": 1.27,
+      "prix_ref": 6.282,
       "type": "swing",
-      "timestamp": "2026-09-08T04:12:15.430529+00:00",
+      "timestamp": "2026-09-08T08:18:43.598564+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "ASTER",
       "score": 1.04,
-      "prix_ref": 0.7621,
+      "prix_ref": 0.769,
       "type": "swing",
-      "timestamp": "2026-09-08T04:13:59.131960+00:00",
+      "timestamp": "2026-09-08T08:20:18.197156+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4451,6 +4503,10 @@
     {
       "date": "2026-09-08T04:08",
       "equity": 351.92
+    },
+    {
+      "date": "2026-09-08T08:15",
+      "equity": 352.09
     }
   ],
   "health_last_warn": 1788812448.16511,
