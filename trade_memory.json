@@ -3112,17 +3112,8 @@
       "timestamp": "2026-09-09T04:14:28.298200+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.785374337371907,
+  "_sd_prev_usdt_d": 6.781745138164267,
   "shadow_portfolio": [
-    {
-      "ticker": "ICP",
-      "score": 1.03,
-      "prix_ref": 2.667,
-      "type": "swing",
-      "timestamp": "2026-09-06T08:16:59.681006+00:00",
-      "outcome": "missed",
-      "pnl_pct": 11.74
-    },
     {
       "ticker": "ENS",
       "score": 1.02,
@@ -3246,6 +3237,15 @@
       "prix_ref": 0.0046,
       "type": "swing",
       "timestamp": "2026-09-09T12:14:35.795267+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SUSHI",
+      "score": 1.07,
+      "prix_ref": 0.2301,
+      "type": "swing",
+      "timestamp": "2026-09-09T16:19:40.035735+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4575,6 +4575,10 @@
     {
       "date": "2026-09-09T12:11",
       "equity": 357.86
+    },
+    {
+      "date": "2026-09-09T16:12",
+      "equity": 357.15
     }
   ],
   "health_last_warn": 1788812448.16511,
