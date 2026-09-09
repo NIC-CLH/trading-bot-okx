@@ -1007,6 +1007,17 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.3
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "OL",
+      "pnl_pct": -11.07,
+      "days_held": 0.1,
+      "exit_reason": "Stop ATR -11.1% <= -10.0%",
+      "valeur_usd": 29.19,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-09-09T04:01:50.578620+00:00"
     }
   ],
   "entries": [
@@ -3251,8 +3262,7 @@
     "SUSHI": 2.32,
     "CATI": 1.74,
     "PI": 2.96,
-    "PROS": 2.36,
-    "OL": 1.63
+    "PROS": 9.4
   },
   "equity_history": [
     {
