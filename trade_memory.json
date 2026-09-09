@@ -1021,6 +1021,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 1.25
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "FLR",
+      "pnl_pct": -7.29,
+      "days_held": 0,
+      "exit_reason": "Stop ATR -7.3% <= -7.1%",
+      "valeur_usd": 66.44,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-09-09T19:02:12.435329+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.46
     }
   ],
   "entries": [
@@ -3272,7 +3286,6 @@
     "XRP": 180.18,
     "MON": 10.93,
     "ALGO": 5.0,
-    "FLR": 2.85,
     "SNT": 2.23,
     "SUSHI": 2.32,
     "CATI": 1.74,
