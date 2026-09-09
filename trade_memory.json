@@ -3112,7 +3112,7 @@
       "timestamp": "2026-09-09T04:14:28.298200+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.763489344974352,
+  "_sd_prev_usdt_d": 6.7164981249110145,
   "shadow_portfolio": [
     {
       "ticker": "JUP",
@@ -3169,29 +3169,11 @@
       "pnl_pct": -3.24
     },
     {
-      "ticker": "XRP",
-      "score": 1.21,
-      "prix_ref": 1.4031,
-      "type": "swing",
-      "timestamp": "2026-09-07T12:11:38.292653+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "TOSHI",
       "score": 1.13,
       "prix_ref": 0.000131,
       "type": "swing",
       "timestamp": "2026-09-07T16:19:28.529441+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "SOL",
-      "score": 1.04,
-      "prix_ref": 103.25,
-      "type": "swing",
-      "timestamp": "2026-09-08T04:10:38.420563+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -3246,6 +3228,24 @@
       "prix_ref": 0.10941,
       "type": "swing",
       "timestamp": "2026-09-08T12:17:30.120250+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.05,
+      "prix_ref": 104.8,
+      "type": "swing",
+      "timestamp": "2026-09-09T08:16:34.135183+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "XRP",
+      "score": 1.0,
+      "prix_ref": 1.4401,
+      "type": "swing",
+      "timestamp": "2026-09-09T08:16:44.703576+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4567,6 +4567,10 @@
     {
       "date": "2026-09-09T04:14",
       "equity": 357.64
+    },
+    {
+      "date": "2026-09-09T08:14",
+      "equity": 359.4
     }
   ],
   "health_last_warn": 1788812448.16511,
