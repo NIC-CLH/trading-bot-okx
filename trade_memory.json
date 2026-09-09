@@ -1010,14 +1010,17 @@
     },
     {
       "type": "trade_outcome",
-      "ticker": "OL",
-      "pnl_pct": -11.07,
-      "days_held": 0.1,
-      "exit_reason": "Stop ATR -11.1% <= -10.0%",
-      "valeur_usd": 29.19,
-      "outcome": "loss",
-      "exit_quality": null,
-      "timestamp": "2026-09-09T04:01:50.578620+00:00"
+      "ticker": "PROS",
+      "pnl_pct": 13.15,
+      "days_held": 0.9,
+      "exit_reason": "Signal retourné en zone de profit : score +0.29 < 1.0 | P&L +13.2% 📉",
+      "valeur_usd": 79.35,
+      "outcome": "win",
+      "exit_quality": 557.3,
+      "timestamp": "2026-09-09T04:14:18.355314+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.25
     }
   ],
   "entries": [
@@ -3095,9 +3098,21 @@
       "pnl_pct": -9.436834094368338,
       "type": "trade_reflection",
       "timestamp": "2026-09-06T04:14:16.726217+00:00"
+    },
+    {
+      "lecon_principale": "Sortie précoce profitable sur retournement signal (+13.2% en 0.9j)",
+      "signal_fiable": "Score composite > 1.0 à l'entrée en régime bull (1.25 très solide)",
+      "signal_trompeur": "Retournement rapide du score (1.25 → 0.29) suggère volatilité intra-signal",
+      "regime_optimal": "bull avec volatilité normale - conditions idéales respectées",
+      "recommandation": "hold_longer",
+      "confiance": 0.72,
+      "ticker": "PROS",
+      "pnl_pct": 13.153070577451881,
+      "type": "trade_reflection",
+      "timestamp": "2026-09-09T04:14:28.298200+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.777528541071718,
+  "_sd_prev_usdt_d": 6.763489344974352,
   "shadow_portfolio": [
     {
       "ticker": "JUP",
@@ -4548,6 +4563,10 @@
     {
       "date": "2026-09-09T00:11",
       "equity": 353.82
+    },
+    {
+      "date": "2026-09-09T04:14",
+      "equity": 357.64
     }
   ],
   "health_last_warn": 1788812448.16511,
