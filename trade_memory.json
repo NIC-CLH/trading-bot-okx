@@ -2870,6 +2870,32 @@
       "score_tech_adj_raw": 1.25,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "DASH",
+      "score": 2.23,
+      "score_tech": 2.23,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 70.15,
+      "prix": 59.14,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-10T00:14:29.636642+00:00",
+      "score_tech_raw": 2.23,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.23,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -3126,17 +3152,8 @@
       "timestamp": "2026-09-09T04:14:28.298200+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.82152347558362,
+  "_sd_prev_usdt_d": 6.82799585694208,
   "shadow_portfolio": [
-    {
-      "ticker": "ENS",
-      "score": 1.02,
-      "prix_ref": 6.114,
-      "type": "swing",
-      "timestamp": "2026-09-06T08:19:24.136699+00:00",
-      "outcome": "correct",
-      "pnl_pct": 0.69
-    },
     {
       "ticker": "ALGO",
       "score": 1.01,
@@ -3260,6 +3277,15 @@
       "prix_ref": 0.00442,
       "type": "swing",
       "timestamp": "2026-09-09T20:14:52.873431+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "KAITO",
+      "score": -1.16,
+      "prix_ref": 0.3103,
+      "type": "swing",
+      "timestamp": "2026-09-10T00:21:13.505327+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4597,6 +4623,10 @@
     {
       "date": "2026-09-09T20:12",
       "equity": 356.53
+    },
+    {
+      "date": "2026-09-10T00:14",
+      "equity": 355.6
     }
   ],
   "health_last_warn": 1788812448.16511,
