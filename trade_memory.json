@@ -1049,6 +1049,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.42
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "XTZ",
+      "pnl_pct": 3.92,
+      "days_held": 0.8,
+      "exit_reason": "Signal retourné en zone de profit : score +0.94 < 1.0 | P&L +3.9% 📉",
+      "valeur_usd": 73.1,
+      "outcome": "win",
+      "exit_quality": 117.5,
+      "timestamp": "2026-09-10T20:16:29.922881+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.12
     }
   ],
   "entries": [
@@ -3216,9 +3230,21 @@
       "pnl_pct": 13.153070577451881,
       "type": "trade_reflection",
       "timestamp": "2026-09-09T04:14:28.298200+00:00"
+    },
+    {
+      "lecon_principale": "Signal composite fort (2.12) en régime bull = entrée optimale, sortie rapide disciplinée",
+      "signal_fiable": "Score composite >2.0 en régime bull avec volatilité normale : excellent prédicteur d'entrée",
+      "signal_trompeur": "Retournement du score à +0.94 trop rapide pour capturer le mouvement complet : sortie peut-être prématurée",
+      "regime_optimal": "Bull sur XTZ avec score composite fort et vol normale",
+      "recommandation": "hold_longer",
+      "confiance": 0.72,
+      "ticker": "XTZ",
+      "pnl_pct": 3.9246467817896202,
+      "type": "trade_reflection",
+      "timestamp": "2026-09-10T20:16:39.499954+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.943793986321115,
+  "_sd_prev_usdt_d": 6.913723467243341,
   "shadow_portfolio": [
     {
       "ticker": "ALGO",
@@ -3348,10 +3374,10 @@
     },
     {
       "ticker": "SOL",
-      "score": 1.32,
-      "prix_ref": 99.25,
+      "score": 1.06,
+      "prix_ref": 100.08,
       "type": "swing",
-      "timestamp": "2026-09-10T16:19:13.198637+00:00",
+      "timestamp": "2026-09-10T20:19:17.946573+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4710,6 +4736,10 @@
     {
       "date": "2026-09-10T16:17",
       "equity": 342.31
+    },
+    {
+      "date": "2026-09-10T20:17",
+      "equity": 344.57
     }
   ],
   "health_last_warn": 1788812448.16511,
