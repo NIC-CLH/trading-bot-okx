@@ -1035,6 +1035,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.46
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "IOST",
+      "pnl_pct": -11.42,
+      "days_held": 0.1,
+      "exit_reason": "Stop ATR -11.4% <= -10.0%",
+      "valeur_usd": 29.68,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-09-10T07:32:00.031415+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.42
     }
   ],
   "entries": [
