@@ -3218,7 +3218,7 @@
       "timestamp": "2026-09-09T04:14:28.298200+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.876078569940745,
+  "_sd_prev_usdt_d": 6.943793986321115,
   "shadow_portfolio": [
     {
       "ticker": "ALGO",
@@ -3262,8 +3262,8 @@
       "prix_ref": 1153.78,
       "type": "swing",
       "timestamp": "2026-09-08T12:12:07.890423+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 0.08
     },
     {
       "ticker": "INJ",
@@ -3271,8 +3271,8 @@
       "prix_ref": 6.272,
       "type": "swing",
       "timestamp": "2026-09-08T12:13:10.563406+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -7.68
     },
     {
       "ticker": "ASTER",
@@ -3280,8 +3280,8 @@
       "prix_ref": 0.7556,
       "type": "swing",
       "timestamp": "2026-09-08T12:15:14.147232+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -7.33
     },
     {
       "ticker": "CRO",
@@ -3289,8 +3289,8 @@
       "prix_ref": 0.06142,
       "type": "swing",
       "timestamp": "2026-09-08T12:15:28.183799+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -7.86
     },
     {
       "ticker": "CRV",
@@ -3298,8 +3298,8 @@
       "prix_ref": 0.3594,
       "type": "swing",
       "timestamp": "2026-09-08T12:16:58.936186+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -4.17
     },
     {
       "ticker": "AVNT",
@@ -3307,17 +3307,8 @@
       "prix_ref": 0.10941,
       "type": "swing",
       "timestamp": "2026-09-08T12:17:30.120250+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "SOL",
-      "score": 1.05,
-      "prix_ref": 104.8,
-      "type": "swing",
-      "timestamp": "2026-09-09T08:16:34.135183+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -9.07
     },
     {
       "ticker": "XRP",
@@ -3352,6 +3343,15 @@
       "prix_ref": 0.3103,
       "type": "swing",
       "timestamp": "2026-09-10T00:21:13.505327+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.32,
+      "prix_ref": 99.25,
+      "type": "swing",
+      "timestamp": "2026-09-10T16:19:13.198637+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4706,6 +4706,10 @@
     {
       "date": "2026-09-10T12:11",
       "equity": 344.17
+    },
+    {
+      "date": "2026-09-10T16:17",
+      "equity": 342.31
     }
   ],
   "health_last_warn": 1788812448.16511,
