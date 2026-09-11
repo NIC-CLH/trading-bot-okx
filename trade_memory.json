@@ -3244,7 +3244,7 @@
       "timestamp": "2026-09-10T20:16:39.499954+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.925494495375109,
+  "_sd_prev_usdt_d": 6.9504767778821535,
   "shadow_portfolio": [
     {
       "ticker": "ALGO",
@@ -3342,8 +3342,8 @@
       "prix_ref": 1.4401,
       "type": "swing",
       "timestamp": "2026-09-09T08:16:44.703576+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -7.84
     },
     {
       "ticker": "SUSHI",
@@ -3374,10 +3374,10 @@
     },
     {
       "ticker": "SOL",
-      "score": 1.22,
-      "prix_ref": 99.56,
+      "score": 1.36,
+      "prix_ref": 99.33,
       "type": "swing",
-      "timestamp": "2026-09-11T08:16:59.442010+00:00",
+      "timestamp": "2026-09-11T12:16:50.070115+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4752,6 +4752,10 @@
     {
       "date": "2026-09-11T08:15",
       "equity": 348.29
+    },
+    {
+      "date": "2026-09-11T12:15",
+      "equity": 345.78
     }
   ],
   "health_last_warn": 1788812448.16511,
