@@ -2976,6 +2976,58 @@
       "score_tech_adj_raw": 2.42,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "BLUR",
+      "score": 2.02,
+      "score_tech": 2.02,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 66.66,
+      "prix": 0.02064,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-11T16:15:58.585588+00:00",
+      "score_tech_raw": 2.02,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.02,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "THETA",
+      "score": 2.75,
+      "score_tech": 2.75,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 32.61,
+      "prix": 0.1934,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-11T16:16:03.259627+00:00",
+      "score_tech_raw": 2.75,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.75,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -3244,7 +3296,7 @@
       "timestamp": "2026-09-10T20:16:39.499954+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.9504767778821535,
+  "_sd_prev_usdt_d": 6.8309049410850555,
   "shadow_portfolio": [
     {
       "ticker": "ALGO",
@@ -3374,10 +3426,10 @@
     },
     {
       "ticker": "SOL",
-      "score": 1.36,
-      "prix_ref": 99.33,
+      "score": 1.0,
+      "prix_ref": 101.96,
       "type": "swing",
-      "timestamp": "2026-09-11T12:16:50.070115+00:00",
+      "timestamp": "2026-09-11T16:18:38.743711+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4757,6 +4809,10 @@
     {
       "date": "2026-09-11T12:15",
       "equity": 345.78
+    },
+    {
+      "date": "2026-09-11T16:16",
+      "equity": 345.27
     }
   ],
   "health_last_warn": 1788812448.16511,
