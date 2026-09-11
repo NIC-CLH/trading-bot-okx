@@ -3463,7 +3463,8 @@
     "PROS": 9.4,
     "DASH": 0.14,
     "XTZ": 3.34,
-    "BLUR": 0.63
+    "BLUR": 0.63,
+    "THETA": 0.78
   },
   "equity_history": [
     {
