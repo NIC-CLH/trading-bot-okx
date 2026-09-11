@@ -3310,7 +3310,7 @@
       "timestamp": "2026-09-10T20:16:39.499954+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.8309049410850555,
+  "_sd_prev_usdt_d": 6.86643865348924,
   "shadow_portfolio": [
     {
       "ticker": "ALGO",
@@ -3417,8 +3417,8 @@
       "prix_ref": 0.2301,
       "type": "swing",
       "timestamp": "2026-09-09T16:19:40.035735+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -6.65
     },
     {
       "ticker": "PUMP",
@@ -3440,10 +3440,10 @@
     },
     {
       "ticker": "SOL",
-      "score": 1.0,
-      "prix_ref": 101.96,
+      "score": 1.1,
+      "prix_ref": 102.62,
       "type": "swing",
-      "timestamp": "2026-09-11T16:18:38.743711+00:00",
+      "timestamp": "2026-09-11T20:13:18.430448+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4827,6 +4827,10 @@
     {
       "date": "2026-09-11T16:16",
       "equity": 345.27
+    },
+    {
+      "date": "2026-09-11T20:11",
+      "equity": 339.97
     }
   ],
   "health_last_warn": 1788812448.16511,
