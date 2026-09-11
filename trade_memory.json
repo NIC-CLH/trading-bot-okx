@@ -1063,6 +1063,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.12
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "BLUR",
+      "pnl_pct": -11.24,
+      "days_held": 0.1,
+      "exit_reason": "Stop ATR -11.2% <= -10.0%",
+      "valeur_usd": 62.11,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-09-11T19:01:54.629122+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.02
     }
   ],
   "entries": [
@@ -3463,7 +3477,6 @@
     "PROS": 9.4,
     "DASH": 0.14,
     "XTZ": 3.34,
-    "BLUR": 0.63,
     "THETA": 1.65
   },
   "equity_history": [
