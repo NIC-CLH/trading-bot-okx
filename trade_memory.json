@@ -3310,7 +3310,7 @@
       "timestamp": "2026-09-10T20:16:39.499954+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.888326241099025,
+  "_sd_prev_usdt_d": 6.886819768567875,
   "shadow_portfolio": [
     {
       "ticker": "ALGO",
@@ -3435,15 +3435,15 @@
       "prix_ref": 0.3103,
       "type": "swing",
       "timestamp": "2026-09-10T00:21:13.505327+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 1.39
     },
     {
       "ticker": "SOL",
-      "score": 1.25,
-      "prix_ref": 102.28,
+      "score": 1.23,
+      "prix_ref": 101.64,
       "type": "swing",
-      "timestamp": "2026-09-12T00:17:53.125348+00:00",
+      "timestamp": "2026-09-12T04:18:57.035844+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4835,6 +4835,10 @@
     {
       "date": "2026-09-12T00:15",
       "equity": 339.07
+    },
+    {
+      "date": "2026-09-12T04:17",
+      "equity": 342.26
     }
   ],
   "health_last_warn": 1788812448.16511,
