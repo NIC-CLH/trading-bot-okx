@@ -3042,6 +3042,32 @@
       "score_tech_adj_raw": 2.75,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "BERA",
+      "score": 1.87,
+      "score_tech": 1.87,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 61.11,
+      "prix": 0.1924,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-12T20:12:21.914912+00:00",
+      "score_tech_raw": 1.87,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 1.87,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -3310,7 +3336,7 @@
       "timestamp": "2026-09-10T20:16:39.499954+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.867172525353675,
+  "_sd_prev_usdt_d": 6.893805330701189,
   "shadow_portfolio": [
     {
       "ticker": "STX",
@@ -4852,6 +4878,10 @@
     {
       "date": "2026-09-12T16:16",
       "equity": 343.29
+    },
+    {
+      "date": "2026-09-12T20:12",
+      "equity": 340.8
     }
   ],
   "health_last_warn": 1788812448.16511,
