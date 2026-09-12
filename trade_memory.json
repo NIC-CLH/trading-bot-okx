@@ -3310,7 +3310,7 @@
       "timestamp": "2026-09-10T20:16:39.499954+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.86643865348924,
+  "_sd_prev_usdt_d": 6.888326241099025,
   "shadow_portfolio": [
     {
       "ticker": "ALGO",
@@ -3426,8 +3426,8 @@
       "prix_ref": 0.00442,
       "type": "swing",
       "timestamp": "2026-09-09T20:14:52.873431+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -19.05
     },
     {
       "ticker": "KAITO",
@@ -3440,10 +3440,10 @@
     },
     {
       "ticker": "SOL",
-      "score": 1.1,
-      "prix_ref": 102.62,
+      "score": 1.25,
+      "prix_ref": 102.28,
       "type": "swing",
-      "timestamp": "2026-09-11T20:13:18.430448+00:00",
+      "timestamp": "2026-09-12T00:17:53.125348+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4831,6 +4831,10 @@
     {
       "date": "2026-09-11T20:11",
       "equity": 339.97
+    },
+    {
+      "date": "2026-09-12T00:15",
+      "equity": 339.07
     }
   ],
   "health_last_warn": 1788812448.16511,
