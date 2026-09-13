@@ -3336,7 +3336,7 @@
       "timestamp": "2026-09-10T20:16:39.499954+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.893805330701189,
+  "_sd_prev_usdt_d": 6.884518867105443,
   "shadow_portfolio": [
     {
       "ticker": "STX",
@@ -3456,20 +3456,20 @@
       "pnl_pct": 1.39
     },
     {
-      "ticker": "SOL",
-      "score": 1.25,
-      "prix_ref": 102.16,
-      "type": "swing",
-      "timestamp": "2026-09-12T12:17:19.448784+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ONDO",
       "score": -1.02,
       "prix_ref": 0.3523,
       "type": "swing",
       "timestamp": "2026-09-12T12:19:02.839002+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.08,
+      "prix_ref": 101.74,
+      "type": "swing",
+      "timestamp": "2026-09-13T00:12:41.373253+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -4882,6 +4882,10 @@
     {
       "date": "2026-09-12T20:12",
       "equity": 340.8
+    },
+    {
+      "date": "2026-09-13T00:10",
+      "equity": 342.67
     }
   ],
   "health_last_warn": 1788812448.16511,
