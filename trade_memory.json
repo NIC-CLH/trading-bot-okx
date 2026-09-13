@@ -3161,6 +3161,32 @@
       "score_tech_adj_raw": 2.24,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "BAT",
+      "score": 1.67,
+      "score_tech": 1.67,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 72.57,
+      "prix": 0.08281,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-13T16:15:35.089755+00:00",
+      "score_tech_raw": 1.67,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 1.67,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -3441,7 +3467,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.00481747309233,
+  "_sd_prev_usdt_d": 6.970331905098803,
   "shadow_portfolio": [
     {
       "ticker": "STX",
@@ -5001,6 +5027,10 @@
     {
       "date": "2026-09-13T12:15",
       "equity": 363.31
+    },
+    {
+      "date": "2026-09-13T16:16",
+      "equity": 364.42
     }
   ],
   "health_last_warn": 1788812448.16511,
