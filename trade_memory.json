@@ -1116,6 +1116,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.39
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "CVC",
+      "pnl_pct": 21.25,
+      "days_held": 0.1,
+      "exit_reason": "Target étendu +20% atteint (+21.3%) — signal +2.24 🚀",
+      "valeur_usd": 84.25,
+      "outcome": "win",
+      "exit_quality": 19319.5,
+      "timestamp": "2026-09-13T12:15:17.727050+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.24
     }
   ],
   "entries": [
@@ -3107,6 +3121,32 @@
       "score_tech_adj_raw": 1.87,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "CVC",
+      "score": 2.24,
+      "score_tech": 2.24,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 84.25,
+      "prix": 0.026209999999999997,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-13T12:15:10.889009+00:00",
+      "score_tech_raw": 2.24,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.24,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -3373,9 +3413,21 @@
       "pnl_pct": 3.9246467817896202,
       "type": "trade_reflection",
       "timestamp": "2026-09-10T20:16:39.499954+00:00"
+    },
+    {
+      "lecon_principale": "Entrée en régime bull + signal fort = exécution rapide et profitable",
+      "signal_fiable": "Score composite +2.24 en régime bull : signal d'entrée très fiable pour CVC",
+      "signal_trompeur": "Aucun signal trompeur identifié - la sortie à +20% a capturé le mouvement attendu",
+      "regime_optimal": "Bull avec volatilité normale : CVC se comporte bien en momentum ascendant régulier",
+      "recommandation": "increase_size",
+      "confiance": 0.88,
+      "ticker": "CVC",
+      "pnl_pct": 21.25143075162154,
+      "type": "trade_reflection",
+      "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.961696863439137,
+  "_sd_prev_usdt_d": 7.00481747309233,
   "shadow_portfolio": [
     {
       "ticker": "STX",
@@ -4932,6 +4984,10 @@
     {
       "date": "2026-09-13T08:14",
       "equity": 345.76
+    },
+    {
+      "date": "2026-09-13T12:15",
+      "equity": 363.31
     }
   ],
   "health_last_warn": 1788812448.16511,
