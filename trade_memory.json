@@ -1077,6 +1077,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.02
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "BERA",
+      "pnl_pct": 0.05,
+      "days_held": 0.4,
+      "exit_reason": "Trailing stop : pic +7.6% → plancher +3.8% | actuel +0.1%",
+      "valeur_usd": 60.14,
+      "outcome": "win",
+      "exit_quality": 0.7,
+      "timestamp": "2026-09-13T03:31:56.003972+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.87
     }
   ],
   "entries": [
@@ -3503,8 +3517,7 @@
     "PROS": 9.4,
     "DASH": 0.14,
     "XTZ": 3.34,
-    "THETA": 1.96,
-    "BERA": 7.64
+    "THETA": 2.79
   },
   "equity_history": [
     {
