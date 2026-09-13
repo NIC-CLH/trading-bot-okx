@@ -1130,6 +1130,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.24
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "THETA",
+      "pnl_pct": 4.4,
+      "days_held": 1.9,
+      "exit_reason": "Trailing stop : pic +10.4% → plancher +5.2% | actuel +4.4%",
+      "valeur_usd": 33.78,
+      "outcome": "win",
+      "exit_quality": 42.3,
+      "timestamp": "2026-09-13T13:01:51.724996+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.75
     }
   ],
   "entries": [
@@ -3593,7 +3607,6 @@
     "PROS": 9.4,
     "DASH": 0.14,
     "XTZ": 3.34,
-    "THETA": 10.39,
     "CVC": 6.83
   },
   "equity_history": [
