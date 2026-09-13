@@ -1144,6 +1144,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.75
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "DASH",
+      "pnl_pct": -11.02,
+      "days_held": 0,
+      "exit_reason": "Stop ATR -11.0% <= -10.0%",
+      "valeur_usd": 63.25,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-09-13T22:31:57.648189+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.23
     }
   ],
   "entries": [
@@ -3631,7 +3645,6 @@
     "SUSHI": 2.32,
     "PI": 2.96,
     "PROS": 9.4,
-    "DASH": 0.14,
     "XTZ": 3.34,
     "CVC": 6.83
   },
