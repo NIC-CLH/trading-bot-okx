@@ -1102,6 +1102,20 @@
       "outcome": "loss",
       "exit_quality": null,
       "timestamp": "2026-09-13T07:01:54.025207+00:00"
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "CATI",
+      "pnl_pct": 12.58,
+      "days_held": 0,
+      "exit_reason": "Take profit +12% atteint (+12.6%) — capté en 30min 🎯",
+      "valeur_usd": 79.5,
+      "outcome": "win",
+      "exit_quality": 100.0,
+      "timestamp": "2026-09-13T10:02:01.772607+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.39
     }
   ],
   "entries": [
@@ -3523,12 +3537,11 @@
     "ALGO": 5.0,
     "SNT": 2.23,
     "SUSHI": 2.32,
-    "CATI": 10.48,
     "PI": 2.96,
     "PROS": 9.4,
     "DASH": 0.14,
     "XTZ": 3.34,
-    "THETA": 3.77
+    "THETA": 6.2
   },
   "equity_history": [
     {
