@@ -1091,6 +1091,17 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 1.87
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ILV",
+      "pnl_pct": -1.81,
+      "days_held": 0.1,
+      "exit_reason": "Trailing stop : pic +7.7% → plancher +3.9% | actuel -1.8%",
+      "valeur_usd": 58.26,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-09-13T07:01:54.025207+00:00"
     }
   ],
   "entries": [
@@ -3512,13 +3523,12 @@
     "ALGO": 5.0,
     "SNT": 2.23,
     "SUSHI": 2.32,
-    "CATI": 6.69,
+    "CATI": 7.39,
     "PI": 2.96,
     "PROS": 9.4,
     "DASH": 0.14,
     "XTZ": 3.34,
-    "THETA": 3.77,
-    "ILV": 7.7
+    "THETA": 3.77
   },
   "equity_history": [
     {
