@@ -3509,7 +3509,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.930195464476754,
+  "_sd_prev_usdt_d": 6.911487147360177,
   "shadow_portfolio": [
     {
       "ticker": "STX",
@@ -3639,10 +3639,10 @@
     },
     {
       "ticker": "SOL",
-      "score": 1.14,
-      "prix_ref": 101.04,
+      "score": 1.1,
+      "prix_ref": 101.52,
       "type": "swing",
-      "timestamp": "2026-09-13T20:14:06.421800+00:00",
+      "timestamp": "2026-09-14T08:16:21.869438+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5083,6 +5083,10 @@
     {
       "date": "2026-09-14T04:13",
       "equity": 359.65
+    },
+    {
+      "date": "2026-09-14T08:14",
+      "equity": 354.06
     }
   ],
   "health_last_warn": 1788812448.16511,
