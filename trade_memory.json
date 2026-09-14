@@ -3229,6 +3229,32 @@
       "score_tech_adj_raw": 1.67,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "API3",
+      "score": 2.12,
+      "score_tech": 2.12,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 70.39,
+      "prix": 0.24939999999999998,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-14T12:16:18.330857+00:00",
+      "score_tech_raw": 2.12,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.12,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -3509,7 +3535,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.911487147360177,
+  "_sd_prev_usdt_d": 6.852891914810384,
   "shadow_portfolio": [
     {
       "ticker": "STX",
@@ -3639,10 +3665,10 @@
     },
     {
       "ticker": "SOL",
-      "score": 1.1,
-      "prix_ref": 101.52,
+      "score": 1.04,
+      "prix_ref": 101.57,
       "type": "swing",
-      "timestamp": "2026-09-14T08:16:21.869438+00:00",
+      "timestamp": "2026-09-14T12:19:12.456360+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5088,6 +5114,10 @@
     {
       "date": "2026-09-14T08:14",
       "equity": 354.06
+    },
+    {
+      "date": "2026-09-14T12:16",
+      "equity": 353.6
     }
   ],
   "health_last_warn": 1788812448.16511,
