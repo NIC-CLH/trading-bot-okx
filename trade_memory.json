@@ -3601,7 +3601,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.939765984597281,
+  "_sd_prev_usdt_d": 6.980648281803793,
   "shadow_portfolio": [
     {
       "ticker": "INJ",
@@ -3721,20 +3721,20 @@
       "pnl_pct": null
     },
     {
-      "ticker": "SOL",
-      "score": 1.29,
-      "prix_ref": 100.93,
-      "type": "swing",
-      "timestamp": "2026-09-15T12:15:57.257109+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ZEC",
       "score": 1.15,
       "prix_ref": 1134.73,
       "type": "swing",
       "timestamp": "2026-09-15T12:16:09.892181+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.08,
+      "prix_ref": 98.91,
+      "type": "swing",
+      "timestamp": "2026-09-15T16:17:26.712224+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5209,6 +5209,10 @@
     {
       "date": "2026-09-15T12:14",
       "equity": 353.95
+    },
+    {
+      "date": "2026-09-15T16:15",
+      "equity": 352.31
     }
   ],
   "health_last_warn": 1789445945.227389,
