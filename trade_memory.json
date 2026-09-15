@@ -3295,6 +3295,32 @@
       "score_tech_adj_raw": 1.51,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ASTR",
+      "score": 1.91,
+      "score_tech": 1.91,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 71.55,
+      "prix": 0.007257000000000001,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-15T08:16:24.812097+00:00",
+      "score_tech_raw": 1.91,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 1.91,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -3575,7 +3601,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.862753737984321,
+  "_sd_prev_usdt_d": 6.939765984597281,
   "shadow_portfolio": [
     {
       "ticker": "INJ",
@@ -5175,6 +5201,10 @@
     {
       "date": "2026-09-15T04:11",
       "equity": 360.02
+    },
+    {
+      "date": "2026-09-15T08:16",
+      "equity": 357.6
     }
   ],
   "health_last_warn": 1789445945.227389,
