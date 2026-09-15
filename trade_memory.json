@@ -3575,17 +3575,8 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.826703138442269,
+  "_sd_prev_usdt_d": 6.862753737984321,
   "shadow_portfolio": [
-    {
-      "ticker": "TOSHI",
-      "score": 1.13,
-      "prix_ref": 0.000131,
-      "type": "swing",
-      "timestamp": "2026-09-07T16:19:28.529441+00:00",
-      "outcome": "correct",
-      "pnl_pct": -10.35
-    },
     {
       "ticker": "INJ",
       "score": 1.06,
@@ -3695,20 +3686,29 @@
       "pnl_pct": null
     },
     {
-      "ticker": "SOL",
-      "score": 1.16,
-      "prix_ref": 102.49,
+      "ticker": "ETH",
+      "score": 1.05,
+      "prix_ref": 2499.6,
       "type": "swing",
-      "timestamp": "2026-09-15T00:19:39.017079+00:00",
+      "timestamp": "2026-09-15T04:13:14.747683+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.23,
+      "prix_ref": 101.5,
+      "type": "swing",
+      "timestamp": "2026-09-15T04:13:35.518491+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "ZEC",
       "score": 1.0,
-      "prix_ref": 1164.6,
+      "prix_ref": 1145.98,
       "type": "swing",
-      "timestamp": "2026-09-15T00:19:50.595510+00:00",
+      "timestamp": "2026-09-15T04:13:46.303778+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5170,9 +5170,13 @@
     {
       "date": "2026-09-15T00:17",
       "equity": 358.18
+    },
+    {
+      "date": "2026-09-15T04:11",
+      "equity": 360.02
     }
   ],
-  "health_last_warn": 1788812448.16511,
+  "health_last_warn": 1789445945.227389,
   "eea_blacklist": {
     "BNB": {
       "reason": "All operations failed (code 1) - constate 18/07/2026",
