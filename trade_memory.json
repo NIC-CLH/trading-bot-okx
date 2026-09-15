@@ -1186,6 +1186,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 1.67
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "T",
+      "pnl_pct": 14.0,
+      "days_held": 0.2,
+      "exit_reason": "Take profit +12% atteint (+14.0%) — capté en 30min 🎯",
+      "valeur_usd": 80.31,
+      "outcome": "win",
+      "exit_quality": 100.0,
+      "timestamp": "2026-09-15T01:02:02.036168+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.51
     }
   ],
   "entries": [
@@ -3726,8 +3740,7 @@
     "PROS": 9.4,
     "XTZ": 3.34,
     "CVC": 6.83,
-    "API3": 0.0,
-    "T": 10.8
+    "API3": 0.0
   },
   "equity_history": [
     {
