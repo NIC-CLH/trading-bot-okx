@@ -1200,6 +1200,34 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 1.51
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "PI",
+      "pnl_pct": -6.01,
+      "days_held": 0,
+      "exit_reason": "Stop ATR -6.0% <= -5.4%",
+      "valeur_usd": 66.15,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-09-15T20:31:48.244727+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.64
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "API3",
+      "pnl_pct": -9.78,
+      "days_held": 1.4,
+      "exit_reason": "Stop ATR -9.8% <= -9.2%",
+      "valeur_usd": 63.51,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-09-15T20:31:58.165933+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.12
     }
   ],
   "entries": [
@@ -3762,11 +3790,9 @@
     "MON": 10.93,
     "ALGO": 5.0,
     "SUSHI": 2.32,
-    "PI": 2.96,
     "PROS": 9.4,
     "XTZ": 3.34,
     "CVC": 6.83,
-    "API3": 0.0,
     "ASTR": 2.16
   },
   "equity_history": [
