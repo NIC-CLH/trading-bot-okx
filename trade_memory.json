@@ -3722,19 +3722,19 @@
     },
     {
       "ticker": "SOL",
-      "score": 1.23,
-      "prix_ref": 101.5,
+      "score": 1.29,
+      "prix_ref": 100.93,
       "type": "swing",
-      "timestamp": "2026-09-15T04:13:35.518491+00:00",
+      "timestamp": "2026-09-15T12:15:57.257109+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "ZEC",
-      "score": 1.0,
-      "prix_ref": 1145.98,
+      "score": 1.15,
+      "prix_ref": 1134.73,
       "type": "swing",
-      "timestamp": "2026-09-15T04:13:46.303778+00:00",
+      "timestamp": "2026-09-15T12:16:09.892181+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5205,6 +5205,10 @@
     {
       "date": "2026-09-15T08:16",
       "equity": 357.6
+    },
+    {
+      "date": "2026-09-15T12:14",
+      "equity": 353.95
     }
   ],
   "health_last_warn": 1789445945.227389,
