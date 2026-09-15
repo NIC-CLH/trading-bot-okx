@@ -3255,6 +3255,32 @@
       "score_tech_adj_raw": 2.12,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "T",
+      "score": 1.51,
+      "score_tech": 1.51,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 76.76,
+      "prix": 0.0048509930480410135,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-15T00:17:04.502956+00:00",
+      "score_tech_raw": 1.51,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 1.51,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -3535,7 +3561,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.756632367892103,
+  "_sd_prev_usdt_d": 6.826703138442269,
   "shadow_portfolio": [
     {
       "ticker": "TOSHI",
@@ -3637,24 +3663,6 @@
       "pnl_pct": -0.09
     },
     {
-      "ticker": "SOL",
-      "score": 1.25,
-      "prix_ref": 104.34,
-      "type": "swing",
-      "timestamp": "2026-09-14T20:19:15.530199+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ZEC",
-      "score": 1.15,
-      "prix_ref": 1207.6,
-      "type": "swing",
-      "timestamp": "2026-09-14T20:19:26.318495+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "UNI",
       "score": 1.13,
       "prix_ref": 6.737,
@@ -3669,6 +3677,24 @@
       "prix_ref": 11.895,
       "type": "swing",
       "timestamp": "2026-09-14T20:20:21.936660+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.16,
+      "prix_ref": 102.49,
+      "type": "swing",
+      "timestamp": "2026-09-15T00:19:39.017079+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.0,
+      "prix_ref": 1164.6,
+      "type": "swing",
+      "timestamp": "2026-09-15T00:19:50.595510+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5127,6 +5153,10 @@
     {
       "date": "2026-09-14T20:17",
       "equity": 354.48
+    },
+    {
+      "date": "2026-09-15T00:17",
+      "equity": 358.18
     }
   ],
   "health_last_warn": 1788812448.16511,
