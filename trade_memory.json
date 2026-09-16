@@ -5419,6 +5419,10 @@
     "CORE": {
       "reason": "OKX API error : All operations failed (code 1)",
       "since": "2026-09-14T09:34"
+    },
+    "CHIP": {
+      "reason": "OKX API error : All operations failed (code 1)",
+      "since": "2026-09-16T08:35"
     }
   },
   "alert_cooldowns": {
