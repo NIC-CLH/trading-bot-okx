@@ -3629,7 +3629,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.028181289810504,
+  "_sd_prev_usdt_d": 7.053179065314236,
   "shadow_portfolio": [
     {
       "ticker": "INJ",
@@ -3759,10 +3759,10 @@
     },
     {
       "ticker": "SOL",
-      "score": 1.19,
-      "prix_ref": 97.35,
+      "score": 1.27,
+      "prix_ref": 96.9,
       "type": "swing",
-      "timestamp": "2026-09-15T20:16:09.711418+00:00",
+      "timestamp": "2026-09-16T00:17:54.958622+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5243,6 +5243,10 @@
     {
       "date": "2026-09-15T20:14",
       "equity": 347.81
+    },
+    {
+      "date": "2026-09-16T00:16",
+      "equity": 345.94
     }
   ],
   "health_last_warn": 1789445945.227389,
