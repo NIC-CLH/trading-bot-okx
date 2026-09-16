@@ -3643,17 +3643,8 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.057492834695007,
+  "_sd_prev_usdt_d": 7.019992373486847,
   "shadow_portfolio": [
-    {
-      "ticker": "INJ",
-      "score": 1.06,
-      "prix_ref": 6.272,
-      "type": "swing",
-      "timestamp": "2026-09-08T12:13:10.563406+00:00",
-      "outcome": "correct",
-      "pnl_pct": -7.68
-    },
     {
       "ticker": "ASTER",
       "score": 1.08,
@@ -3773,10 +3764,19 @@
     },
     {
       "ticker": "SOL",
-      "score": 1.38,
-      "prix_ref": 96.59,
+      "score": 1.44,
+      "prix_ref": 97.78,
       "type": "swing",
-      "timestamp": "2026-09-16T08:14:15.050500+00:00",
+      "timestamp": "2026-09-16T12:18:29.461779+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "NEAR",
+      "score": 1.04,
+      "prix_ref": 2.465,
+      "type": "swing",
+      "timestamp": "2026-09-16T12:19:07.256295+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5267,6 +5267,10 @@
     },
     {
       "date": "2026-09-16T08:12",
+      "equity": 342.69
+    },
+    {
+      "date": "2026-09-16T12:16",
       "equity": 342.69
     }
   ],
