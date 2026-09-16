@@ -3363,6 +3363,32 @@
       "score_tech_adj_raw": 1.91,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "MINA",
+      "score": 2.29,
+      "score_tech": 2.29,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 66.01,
+      "prix": 0.08595,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-16T20:15:57.850185+00:00",
+      "score_tech_raw": 2.29,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.29,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -3643,7 +3669,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.050804343980857,
+  "_sd_prev_usdt_d": 7.006353836181364,
   "shadow_portfolio": [
     {
       "ticker": "ASTER",
@@ -5277,6 +5303,10 @@
     {
       "date": "2026-09-16T16:15",
       "equity": 342.69
+    },
+    {
+      "date": "2026-09-16T20:16",
+      "equity": 340.36
     }
   ],
   "health_last_warn": 1789445945.227389,
