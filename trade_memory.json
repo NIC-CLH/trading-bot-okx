@@ -1228,6 +1228,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.12
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ASTR",
+      "pnl_pct": -10.49,
+      "days_held": 0.8,
+      "exit_reason": "Stop ATR -10.5% <= -9.4%",
+      "valeur_usd": 64.17,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-09-16T00:31:44.132421+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.91
     }
   ],
   "entries": [
@@ -3792,8 +3806,7 @@
     "SUSHI": 2.32,
     "PROS": 9.4,
     "XTZ": 3.34,
-    "CVC": 6.83,
-    "ASTR": 2.16
+    "CVC": 6.83
   },
   "equity_history": [
     {
