@@ -3669,7 +3669,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 7.006353836181364,
+  "_sd_prev_usdt_d": 6.994614700785684,
   "shadow_portfolio": [
     {
       "ticker": "ASTER",
@@ -3758,8 +3758,8 @@
       "prix_ref": 6.737,
       "type": "swing",
       "timestamp": "2026-09-14T20:19:46.544258+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -0.68
     },
     {
       "ticker": "LINK",
@@ -3767,8 +3767,8 @@
       "prix_ref": 11.895,
       "type": "swing",
       "timestamp": "2026-09-14T20:20:21.936660+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -6.87
     },
     {
       "ticker": "ETH",
@@ -5307,6 +5307,10 @@
     {
       "date": "2026-09-16T20:16",
       "equity": 340.36
+    },
+    {
+      "date": "2026-09-17T00:15",
+      "equity": 343.1
     }
   ],
   "health_last_warn": 1789445945.227389,
