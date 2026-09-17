@@ -3669,7 +3669,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.994614700785684,
+  "_sd_prev_usdt_d": 6.981853990886055,
   "shadow_portfolio": [
     {
       "ticker": "ASTER",
@@ -3776,8 +3776,8 @@
       "prix_ref": 2499.6,
       "type": "swing",
       "timestamp": "2026-09-15T04:13:14.747683+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -2.82
     },
     {
       "ticker": "ZEC",
@@ -5311,6 +5311,10 @@
     {
       "date": "2026-09-17T00:15",
       "equity": 343.1
+    },
+    {
+      "date": "2026-09-17T04:16",
+      "equity": 344.45
     }
   ],
   "health_last_warn": 1789445945.227389,
