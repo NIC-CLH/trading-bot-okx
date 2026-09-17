@@ -1242,6 +1242,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 1.91
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "MINA",
+      "pnl_pct": 12.91,
+      "days_held": 1.0,
+      "exit_reason": "Take profit +12% atteint (+12.9%) — capté en 30min 🎯",
+      "valeur_usd": 76.9,
+      "outcome": "win",
+      "exit_quality": 100.0,
+      "timestamp": "2026-09-17T15:31:45.423255+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.29
     }
   ],
   "entries": [
@@ -3832,8 +3846,7 @@
     "SUSHI": 2.32,
     "PROS": 9.4,
     "XTZ": 3.34,
-    "CVC": 6.83,
-    "MINA": 11.74
+    "CVC": 6.83
   },
   "equity_history": [
     {
