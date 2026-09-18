@@ -3683,17 +3683,8 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.8565017129210135,
+  "_sd_prev_usdt_d": 6.8165209332937735,
   "shadow_portfolio": [
-    {
-      "ticker": "ASTER",
-      "score": 1.08,
-      "prix_ref": 0.7556,
-      "type": "swing",
-      "timestamp": "2026-09-08T12:15:14.147232+00:00",
-      "outcome": "correct",
-      "pnl_pct": -7.33
-    },
     {
       "ticker": "CRO",
       "score": 1.03,
@@ -3817,6 +3808,15 @@
       "prix_ref": 2.465,
       "type": "swing",
       "timestamp": "2026-09-16T12:19:07.256295+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AR",
+      "score": 1.1,
+      "prix_ref": 2.883,
+      "type": "swing",
+      "timestamp": "2026-09-18T08:15:51.375422+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5351,6 +5351,10 @@
     },
     {
       "date": "2026-09-18T04:12",
+      "equity": 351.01
+    },
+    {
+      "date": "2026-09-18T08:09",
       "equity": 351.01
     }
   ],
