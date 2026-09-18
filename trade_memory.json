@@ -3683,7 +3683,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.805291173561634,
+  "_sd_prev_usdt_d": 6.610496046157579,
   "shadow_portfolio": [
     {
       "ticker": "CRO",
@@ -3785,22 +3785,13 @@
       "pnl_pct": -2.82
     },
     {
-      "ticker": "ZEC",
-      "score": 1.15,
-      "prix_ref": 1134.73,
-      "type": "swing",
-      "timestamp": "2026-09-15T12:16:09.892181+00:00",
-      "outcome": "missed",
-      "pnl_pct": 30.43
-    },
-    {
       "ticker": "SOL",
       "score": 1.44,
       "prix_ref": 97.78,
       "type": "swing",
       "timestamp": "2026-09-16T12:18:29.461779+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 13.96
     },
     {
       "ticker": "NEAR",
@@ -3808,8 +3799,8 @@
       "prix_ref": 2.465,
       "type": "swing",
       "timestamp": "2026-09-16T12:19:07.256295+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 46.41
     },
     {
       "ticker": "AR",
@@ -3817,6 +3808,15 @@
       "prix_ref": 2.883,
       "type": "swing",
       "timestamp": "2026-09-18T08:15:51.375422+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.13,
+      "prix_ref": 1479.76,
+      "type": "swing",
+      "timestamp": "2026-09-18T16:17:21.241923+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5359,6 +5359,10 @@
     },
     {
       "date": "2026-09-18T12:17",
+      "equity": 351.01
+    },
+    {
+      "date": "2026-09-18T16:15",
       "equity": 351.01
     }
   ],
