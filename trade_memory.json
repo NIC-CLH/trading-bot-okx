@@ -3403,6 +3403,32 @@
       "score_tech_adj_raw": 2.29,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "MEGA",
+      "score": 2.93,
+      "score_tech": 2.93,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 70.72,
+      "prix": 0.0411,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-19T16:13:52.026368+00:00",
+      "score_tech_raw": 2.93,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.93,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -3683,7 +3709,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.540419951164308,
+  "_sd_prev_usdt_d": 6.520564400441691,
   "shadow_portfolio": [
     {
       "ticker": "SUSHI",
@@ -5385,6 +5411,10 @@
     {
       "date": "2026-09-19T12:13",
       "equity": 351.02
+    },
+    {
+      "date": "2026-09-19T16:14",
+      "equity": 351.74
     }
   ],
   "health_last_warn": 1789445945.227389,
