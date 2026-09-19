@@ -3709,7 +3709,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.520564400441691,
+  "_sd_prev_usdt_d": 6.545654185802888,
   "shadow_portfolio": [
     {
       "ticker": "SUSHI",
@@ -3839,10 +3839,10 @@
     },
     {
       "ticker": "ZEC",
-      "score": 1.05,
-      "prix_ref": 1568.0,
+      "score": 1.06,
+      "prix_ref": 1475.0,
       "type": "swing",
-      "timestamp": "2026-09-19T08:18:07.119987+00:00",
+      "timestamp": "2026-09-19T20:17:57.126516+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5415,6 +5415,10 @@
     {
       "date": "2026-09-19T16:14",
       "equity": 351.74
+    },
+    {
+      "date": "2026-09-19T20:16",
+      "equity": 351.06
     }
   ],
   "health_last_warn": 1789445945.227389,
