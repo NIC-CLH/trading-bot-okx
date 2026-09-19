@@ -3683,44 +3683,8 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.588603451151553,
+  "_sd_prev_usdt_d": 6.556687486918404,
   "shadow_portfolio": [
-    {
-      "ticker": "CRO",
-      "score": 1.03,
-      "prix_ref": 0.06142,
-      "type": "swing",
-      "timestamp": "2026-09-08T12:15:28.183799+00:00",
-      "outcome": "correct",
-      "pnl_pct": -7.86
-    },
-    {
-      "ticker": "CRV",
-      "score": 1.03,
-      "prix_ref": 0.3594,
-      "type": "swing",
-      "timestamp": "2026-09-08T12:16:58.936186+00:00",
-      "outcome": "correct",
-      "pnl_pct": -4.17
-    },
-    {
-      "ticker": "AVNT",
-      "score": 1.08,
-      "prix_ref": 0.10941,
-      "type": "swing",
-      "timestamp": "2026-09-08T12:17:30.120250+00:00",
-      "outcome": "correct",
-      "pnl_pct": -9.07
-    },
-    {
-      "ticker": "XRP",
-      "score": 1.0,
-      "prix_ref": 1.4401,
-      "type": "swing",
-      "timestamp": "2026-09-09T08:16:44.703576+00:00",
-      "outcome": "correct",
-      "pnl_pct": -7.84
-    },
     {
       "ticker": "SUSHI",
       "score": 1.07,
@@ -3803,20 +3767,56 @@
       "pnl_pct": 46.41
     },
     {
-      "ticker": "AR",
-      "score": 1.1,
-      "prix_ref": 2.883,
+      "ticker": "ZEC",
+      "score": 1.19,
+      "prix_ref": 1533.67,
       "type": "swing",
-      "timestamp": "2026-09-18T08:15:51.375422+00:00",
+      "timestamp": "2026-09-19T04:13:25.646954+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
-      "ticker": "ZEC",
-      "score": 1.06,
-      "prix_ref": 1551.74,
+      "ticker": "LTC",
+      "score": 1.08,
+      "prix_ref": 59.08,
       "type": "swing",
-      "timestamp": "2026-09-19T00:13:28.909797+00:00",
+      "timestamp": "2026-09-19T04:14:12.359720+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AR",
+      "score": 1.08,
+      "prix_ref": 3.632,
+      "type": "swing",
+      "timestamp": "2026-09-19T04:14:56.206333+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "INJ",
+      "score": 1.04,
+      "prix_ref": 6.847,
+      "type": "swing",
+      "timestamp": "2026-09-19T04:15:35.669986+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "MORPHO",
+      "score": 1.04,
+      "prix_ref": 2.736,
+      "type": "swing",
+      "timestamp": "2026-09-19T04:16:54.401669+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "A",
+      "score": 1.02,
+      "prix_ref": 0.09154,
+      "type": "swing",
+      "timestamp": "2026-09-19T04:18:31.827427+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5371,6 +5371,10 @@
     },
     {
       "date": "2026-09-19T00:11",
+      "equity": 351.02
+    },
+    {
+      "date": "2026-09-19T04:11",
       "equity": 351.02
     }
   ],
