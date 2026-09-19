@@ -3683,7 +3683,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.572730791630818,
+  "_sd_prev_usdt_d": 6.588603451151553,
   "shadow_portfolio": [
     {
       "ticker": "CRO",
@@ -3813,10 +3813,10 @@
     },
     {
       "ticker": "ZEC",
-      "score": 1.13,
-      "prix_ref": 1479.76,
+      "score": 1.06,
+      "prix_ref": 1551.74,
       "type": "swing",
-      "timestamp": "2026-09-18T16:17:21.241923+00:00",
+      "timestamp": "2026-09-19T00:13:28.909797+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5368,6 +5368,10 @@
     {
       "date": "2026-09-18T20:15",
       "equity": 351.01
+    },
+    {
+      "date": "2026-09-19T00:11",
+      "equity": 351.02
     }
   ],
   "health_last_warn": 1789445945.227389,
