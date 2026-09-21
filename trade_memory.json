@@ -3723,7 +3723,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.5319900688377395,
+  "_sd_prev_usdt_d": 6.490981302593619,
   "shadow_portfolio": [
     {
       "ticker": "KAITO",
@@ -3794,8 +3794,8 @@
       "prix_ref": 3.632,
       "type": "swing",
       "timestamp": "2026-09-19T04:14:56.206333+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 40.06
     },
     {
       "ticker": "INJ",
@@ -3803,8 +3803,8 @@
       "prix_ref": 6.847,
       "type": "swing",
       "timestamp": "2026-09-19T04:15:35.669986+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "missed",
+      "pnl_pct": 12.2
     },
     {
       "ticker": "MORPHO",
@@ -3812,8 +3812,8 @@
       "prix_ref": 2.736,
       "type": "swing",
       "timestamp": "2026-09-19T04:16:54.401669+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 1.75
     },
     {
       "ticker": "A",
@@ -3821,8 +3821,8 @@
       "prix_ref": 0.09154,
       "type": "swing",
       "timestamp": "2026-09-19T04:18:31.827427+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -3.08
     },
     {
       "ticker": "SOL",
@@ -3853,10 +3853,10 @@
     },
     {
       "ticker": "ZEC",
-      "score": 1.09,
-      "prix_ref": 1513.45,
+      "score": 1.0,
+      "prix_ref": 1504.56,
       "type": "swing",
-      "timestamp": "2026-09-21T04:18:35.980459+00:00",
+      "timestamp": "2026-09-21T08:20:46.268680+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5463,6 +5463,10 @@
     },
     {
       "date": "2026-09-21T04:16",
+      "equity": 352.69
+    },
+    {
+      "date": "2026-09-21T08:18",
       "equity": 352.69
     }
   ],
