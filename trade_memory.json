@@ -3723,17 +3723,8 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.503000450030625,
+  "_sd_prev_usdt_d": 6.5319900688377395,
   "shadow_portfolio": [
-    {
-      "ticker": "PUMP",
-      "score": 1.03,
-      "prix_ref": 0.00442,
-      "type": "swing",
-      "timestamp": "2026-09-09T20:14:52.873431+00:00",
-      "outcome": "correct",
-      "pnl_pct": -19.05
-    },
     {
       "ticker": "KAITO",
       "score": -1.16,
@@ -3794,8 +3785,8 @@
       "prix_ref": 59.08,
       "type": "swing",
       "timestamp": "2026-09-19T04:14:12.359720+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -0.76
     },
     {
       "ticker": "AR",
@@ -3843,20 +3834,29 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ZEC",
-      "score": 1.25,
-      "prix_ref": 1532.0,
-      "type": "swing",
-      "timestamp": "2026-09-21T00:18:03.072291+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ETHFI",
       "score": 1.08,
       "prix_ref": 0.725,
       "type": "swing",
       "timestamp": "2026-09-21T00:21:25.631220+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BTC",
+      "score": 1.08,
+      "prix_ref": 81313.1,
+      "type": "swing",
+      "timestamp": "2026-09-21T04:18:15.335732+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.09,
+      "prix_ref": 1513.45,
+      "type": "swing",
+      "timestamp": "2026-09-21T04:18:35.980459+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5459,6 +5459,10 @@
     },
     {
       "date": "2026-09-21T00:16",
+      "equity": 352.69
+    },
+    {
+      "date": "2026-09-21T04:16",
       "equity": 352.69
     }
   ],
