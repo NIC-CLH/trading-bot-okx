@@ -3723,7 +3723,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.490981302593619,
+  "_sd_prev_usdt_d": 6.356741318736864,
   "shadow_portfolio": [
     {
       "ticker": "KAITO",
@@ -3825,15 +3825,6 @@
       "pnl_pct": -3.08
     },
     {
-      "ticker": "SOL",
-      "score": 1.13,
-      "prix_ref": 108.56,
-      "type": "swing",
-      "timestamp": "2026-09-20T12:18:44.584764+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ETHFI",
       "score": 1.08,
       "prix_ref": 0.725,
@@ -3857,6 +3848,15 @@
       "prix_ref": 1504.56,
       "type": "swing",
       "timestamp": "2026-09-21T08:20:46.268680+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.05,
+      "prix_ref": 116.79,
+      "type": "swing",
+      "timestamp": "2026-09-21T12:18:37.632124+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5467,6 +5467,10 @@
     },
     {
       "date": "2026-09-21T08:18",
+      "equity": 352.69
+    },
+    {
+      "date": "2026-09-21T12:16",
       "equity": 352.69
     }
   ],
