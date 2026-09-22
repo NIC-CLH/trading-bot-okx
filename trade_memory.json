@@ -3723,7 +3723,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.263098230069028,
+  "_sd_prev_usdt_d": 6.282146732656023,
   "shadow_portfolio": [
     {
       "ticker": "KAITO",
@@ -3834,15 +3834,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "BTC",
-      "score": 1.08,
-      "prix_ref": 81313.1,
-      "type": "swing",
-      "timestamp": "2026-09-21T04:18:15.335732+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ZEC",
       "score": 1.0,
       "prix_ref": 1504.56,
@@ -3857,6 +3848,15 @@
       "prix_ref": 116.79,
       "type": "swing",
       "timestamp": "2026-09-21T12:18:37.632124+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BTC",
+      "score": 1.07,
+      "prix_ref": 85419.1,
+      "type": "swing",
+      "timestamp": "2026-09-22T08:18:12.343220+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5487,6 +5487,10 @@
     },
     {
       "date": "2026-09-22T04:16",
+      "equity": 352.69
+    },
+    {
+      "date": "2026-09-22T08:16",
       "equity": 352.69
     }
   ],
