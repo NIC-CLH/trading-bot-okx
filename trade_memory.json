@@ -3749,35 +3749,8 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.368560240619692,
+  "_sd_prev_usdt_d": 6.361751537618926,
   "shadow_portfolio": [
-    {
-      "ticker": "MORPHO",
-      "score": 1.04,
-      "prix_ref": 2.736,
-      "type": "swing",
-      "timestamp": "2026-09-19T04:16:54.401669+00:00",
-      "outcome": "correct",
-      "pnl_pct": 1.75
-    },
-    {
-      "ticker": "A",
-      "score": 1.02,
-      "prix_ref": 0.09154,
-      "type": "swing",
-      "timestamp": "2026-09-19T04:18:31.827427+00:00",
-      "outcome": "correct",
-      "pnl_pct": -3.08
-    },
-    {
-      "ticker": "SOL",
-      "score": 1.05,
-      "prix_ref": 116.79,
-      "type": "swing",
-      "timestamp": "2026-09-21T12:18:37.632124+00:00",
-      "outcome": "correct",
-      "pnl_pct": -1.5
-    },
     {
       "ticker": "BTC",
       "score": 1.07,
@@ -3824,15 +3797,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ENA",
-      "score": 1.4,
-      "prix_ref": 0.21171,
-      "type": "swing",
-      "timestamp": "2026-09-23T12:19:11.171608+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "AAVE",
       "score": 1.42,
       "prix_ref": 148.08,
@@ -3842,29 +3806,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ZAMA",
-      "score": 1.4,
-      "prix_ref": 0.09911,
-      "type": "swing",
-      "timestamp": "2026-09-23T12:20:58.073094+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "INJ",
       "score": 1.4,
       "prix_ref": 8.105,
       "type": "swing",
       "timestamp": "2026-09-23T12:21:12.933607+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ZEC",
-      "score": 1.4,
-      "prix_ref": 1561.22,
-      "type": "swing",
-      "timestamp": "2026-09-23T16:17:31.797677+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -3883,6 +3829,60 @@
       "prix_ref": 0.4159,
       "type": "swing",
       "timestamp": "2026-09-23T16:18:55.639315+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.4,
+      "prix_ref": 1510.58,
+      "type": "swing",
+      "timestamp": "2026-09-23T20:15:57.092515+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.4,
+      "prix_ref": 0.20711,
+      "type": "swing",
+      "timestamp": "2026-09-23T20:17:38.441102+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ICP",
+      "score": 1.33,
+      "prix_ref": 2.901,
+      "type": "swing",
+      "timestamp": "2026-09-23T20:18:38.376671+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STRK",
+      "score": 1.4,
+      "prix_ref": 0.03877,
+      "type": "swing",
+      "timestamp": "2026-09-23T20:18:52.698821+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZAMA",
+      "score": 1.4,
+      "prix_ref": 0.0904,
+      "type": "swing",
+      "timestamp": "2026-09-23T20:19:07.006471+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "RAY",
+      "score": 1.4,
+      "prix_ref": 2.0965,
+      "type": "swing",
+      "timestamp": "2026-09-23T20:19:21.097265+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5550,6 +5550,10 @@
     {
       "date": "2026-09-23T16:14",
       "equity": 350.07
+    },
+    {
+      "date": "2026-09-23T20:12",
+      "equity": 349.66
     }
   ],
   "health_last_warn": 1790151679.7883637,
