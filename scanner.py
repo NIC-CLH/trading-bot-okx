@@ -127,6 +127,34 @@ def is_observation_mode() -> bool:
         return False
 
 
+# Amplitudes maximales d'ajustement par dimension (en points de score).
+# Proportionnelles aux anciens poids relatifs a la technique, pour conserver
+# l'importance relative validee (news >> microstructure > on-chain = coinglass > macro).
+AJUST_MAX = {
+    "news":  0.50,
+    "ms":    0.20,
+    "oc":    0.14,
+    "cg":    0.14,
+    "macro": 0.12,
+}
+
+# Amplitude naturelle de chaque dimension, utilisee pour la normaliser en [-1, 1]
+ECHELLE = {
+    "news":  2.0,
+    "ms":    1.0,
+    "oc":    1.0,
+    "cg":    1.5,
+    "macro": 1.0,
+}
+
+
+def _ajustement(valeur: float, dim: str) -> float:
+    """Normalise une dimension en [-1, 1] puis l'applique a son amplitude max."""
+    echelle = ECHELLE[dim]
+    normalise = max(-1.0, min(1.0, (valeur or 0.0) / echelle))
+    return normalise * AJUST_MAX[dim]
+
+
 def compute_final_score(
     score_tech: float,
     score_news: float,
@@ -136,21 +164,30 @@ def compute_final_score(
     score_macro: float = 0.0,
 ) -> float:
     """
-    Score composite final pondéré — 6 dimensions.
-    Technique (35%) + News (30%) + Microstructure (12%) + On-Chain (8%)
-    + Coinglass/Liquidations (8%) + Macro DXY/DVOL (7%)
-    Résultat clampé à [-3.0, +3.0]
+    Score final : la technique sert de BASE, les autres dimensions l'ajustent.
+
+    Pourquoi ce changement (23/09/2026) : l'ancienne moyenne ponderee ecrasait
+    l'echelle. La technique ne pesait que 35%, donc un signal technique PARFAIT
+    (3.00) avec le reste neutre produisait un composite de 1.10. Le seuil
+    d'execution du cycle 4h etant a 2.0, ce scanner ne pouvait mathematiquement
+    JAMAIS declencher un achat : 100% des trades venaient du cycle 30min, qui
+    lui utilise le score technique brut.
+
+    Nouvelle logique : score = technique + somme des ajustements bornes.
+    - L'echelle est preservee (un bon technique reste un bon score)
+    - Les deux scanners parlent enfin la meme langue
+    - La bande 2.0-2.8 validee au backtest (sur score technique) reste valide
+    - Une dimension muette n'enleve plus rien (ajustement nul, pas de dilution)
+
+    Amplitude totale des ajustements : +/- 1.10 point.
+    Resultat borne a [-3.0, +3.0].
     """
-    # Poids révisés — score_news doublé (pattern wins = tokens à narrative forte)
-    # tech 0.40→0.35 | news 0.15→0.30 | ms 0.15→0.12 | oc 0.10→0.08 | cg 0.10→0.08 | macro 0.10→0.07
-    score = (
-        score_tech  * 0.35
-        + score_news  * 0.30
-        + score_ms    * 0.12
-        + score_oc    * 0.08
-        + score_cg    * 0.08
-        + score_macro * 0.07
-    )
+    score = float(score_tech or 0.0)
+    score += _ajustement(score_news,  "news")
+    score += _ajustement(score_ms,    "ms")
+    score += _ajustement(score_oc,    "oc")
+    score += _ajustement(score_cg,    "cg")
+    score += _ajustement(score_macro, "macro")
     return round(max(-3.0, min(3.0, score)), 2)
 
 

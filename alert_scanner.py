@@ -28,7 +28,12 @@ import execution
 logger = logging.getLogger(__name__)
 
 # ── Seuils ────────────────────────────────────────────────────────────────────
-SIGNAL_ALERT_THRESHOLD = 2.5      # Score très fort → alerte tous tickers
+# Abaisse 2.5 -> 2.0 le 23/09/2026. Ce scanner ne traitait que la bande
+# 2.5-2.8 (8 trades, EV +0.23% au backtest) en ignorant la bande 2.0-2.5
+# qui est la meilleure du systeme (21 trades, WR 57.1%, EV +1.40%).
+# Aligne sur AUTO_EXECUTE_THRESHOLD du cycle 4h : les deux scanners couvrent
+# desormais la meme bande validee 2.0-2.8.
+SIGNAL_ALERT_THRESHOLD = 2.0
 SCORE_MAX_EXEC         = 2.8      # Plafond : au-delà = sommet probable (backtest 400j)
 ALERT_MAX_UNIVERSE     = 65       # Élargi de 40 le 28/07 (cf. scanner.MAX_UNIVERSE=80)
 NEWS_VOTES_THRESHOLD   = 20       # Votes CryptoPanic minimum
