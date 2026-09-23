@@ -139,14 +139,17 @@ def get_long_short_ratio(ticker: str) -> dict:
     "When everyone is long, who's left to buy?" — adage pro
     """
     try:
+        # OKX rubik attend "ccy" (pas "instId" -> HTTP 400) et renvoie des
+        # TABLEAUX [timestamp, ratio], pas des objets. Les deux erreurs
+        # rendaient cette dimension muette depuis le debut.
         data = _get_public(
             "/api/v5/rubik/stat/contracts/long-short-account-ratio",
-            {"instId": f"{ticker.upper()}-USDT", "period": "5m"}
+            {"ccy": ticker.upper(), "period": "5m"}
         )
         if not data:
             return {"ratio": None, "score": 0.0, "signal": "N/A"}
 
-        ratio = float(data[0].get("longShortRatio", 1.0))
+        ratio = float(data[0][1])
 
         if ratio > 2.5:
             score = -1.0
@@ -182,15 +185,16 @@ def get_taker_volume(ticker: str) -> dict:
     Ratio < 0.67 : vendeurs agressifs dominent → pression baissière
     """
     try:
+        # Meme correction : "ccy" et reponse en tableau [ts, sellVol, buyVol]
         data = _get_public(
             "/api/v5/rubik/stat/taker-volume",
-            {"instId": f"{ticker.upper()}-USDT", "instType": "SPOT", "period": "5m"}
+            {"ccy": ticker.upper(), "instType": "SPOT", "period": "5m"}
         )
         if not data:
             return {"ratio": None, "score": 0.0, "signal": "N/A"}
 
-        buy_vol = float(data[0].get("buyVol", 0))
-        sell_vol = float(data[0].get("sellVol", 1))
+        sell_vol = float(data[0][1])
+        buy_vol  = float(data[0][2])
         ratio = buy_vol / sell_vol if sell_vol > 0 else 1.0
 
         if ratio > 1.8:

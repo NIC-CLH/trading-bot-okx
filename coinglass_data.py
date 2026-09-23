@@ -17,9 +17,13 @@ import requests
 
 logger = logging.getLogger(__name__)
 
-COINGLASS_BASE = "https://open-api.coinglass.com/public/v2"
-COINGLASS_BASE_V3 = "https://open-api-v3.coinglass.com"
-API_KEY = os.getenv("COINGLASS_API_KEY", "")
+# Coinglass abandonne le 23/09/2026 : endpoints fapi en 404, API v3 payante.
+# Les memes donnees (L/S, OI, flux taker) sont gratuites chez OKX.
+
+# Seuils de desequilibre du ratio long/short (comptes, pas volume).
+# Au-dela : positionnement extreme -> risque de squeeze dans le sens inverse.
+LS_LONG_HEAVY  = 1.30   # trop de longs -> risque de liquidation baissiere
+LS_SHORT_HEAVY = 0.77   # trop de shorts -> risque de short squeeze haussier
 
 # Correspondance ticker → symbol Coinglass
 SYMBOL_MAP = {
@@ -31,119 +35,75 @@ SYMBOL_MAP = {
 }
 
 
-def _get(endpoint: str, params: dict = None) -> dict:
-    headers = {"coinglassSecret": API_KEY} if API_KEY else {}
+def _okx_stat(endpoint: str, params: dict) -> list:
+    """Statistiques publiques OKX (rubik). Retourne [] en cas d'echec."""
     try:
-        resp = requests.get(
-            f"{COINGLASS_BASE_V3}{endpoint}",
-            params=params or {},
-            headers=headers,
-            timeout=10,
-        )
-        if resp.status_code == 200:
-            data = resp.json()
-            if data.get("code") == "0" or data.get("success"):
-                return data.get("data", {})
+        import okx_client as _okx
+        return _okx._get(endpoint, params) or []
     except Exception as e:
-        logger.debug(f"Coinglass {endpoint} : {e}")
-    return {}
-
-
-def get_liquidations_24h(ticker: str) -> dict:
-    """
-    Liquidations des dernières 24h pour un actif.
-    Retourne le montant total liquidé en longs et en shorts.
-    Signal : pic de liquidations longs = potentiel bottom / shorts = potentiel top
-    """
-    symbol = SYMBOL_MAP.get(ticker.upper(), ticker.upper())
-    try:
-        # Endpoint public (sans API key)
-        resp = requests.get(
-            "https://fapi.coinglass.com/api/futures/liquidation/detail/chart",
-            params={"symbol": symbol, "timeType": "1", "exchangeName": ""},
-            timeout=10,
-        )
-        if resp.status_code == 200:
-            data = resp.json()
-            if data.get("success") and data.get("data"):
-                d = data["data"]
-                # Dernière bougie 24h
-                longs_list = d.get("longLiquidationList", [])
-                shorts_list = d.get("shortLiquidationList", [])
-                total_long = sum(longs_list[-24:]) if longs_list else 0
-                total_short = sum(abs(x) for x in shorts_list[-24:]) if shorts_list else 0
-                return {
-                    "long_liq_24h": total_long,
-                    "short_liq_24h": total_short,
-                    "ratio_ls": total_long / total_short if total_short > 0 else 1.0,
-                }
-    except Exception as e:
-        logger.debug(f"Liquidations {ticker} : {e}")
-    return {"long_liq_24h": 0, "short_liq_24h": 0, "ratio_ls": 1.0}
-
-
-def get_open_interest(ticker: str) -> dict:
-    """
-    Open Interest total sur tous les exchanges futures.
-    OI croissant + prix montant = tendance forte (bullish)
-    OI croissant + prix baissant = distribution (bearish)
-    OI décroissant = débouclage de positions = volatilité probable
-    """
-    symbol = SYMBOL_MAP.get(ticker.upper(), ticker.upper())
-    try:
-        resp = requests.get(
-            "https://fapi.coinglass.com/api/futures/openInterest/chart",
-            params={"symbol": symbol, "timeType": "h1", "exchangeName": ""},
-            timeout=10,
-        )
-        if resp.status_code == 200:
-            data = resp.json()
-            if data.get("success") and data.get("data"):
-                oi_list = data["data"].get("dataMap", {})
-                # Total OI toutes exchanges
-                all_oi = []
-                for exchange_data in oi_list.values():
-                    if isinstance(exchange_data, list) and exchange_data:
-                        all_oi.append(exchange_data[-1] if exchange_data else 0)
-
-                if all_oi:
-                    oi_current = sum(all_oi)
-                    # Variation OI sur 4h
-                    oi_4h_ago = sum(
-                        (exchange_data[-4] if len(exchange_data) >= 4 else exchange_data[0])
-                        for exchange_data in oi_list.values()
-                        if isinstance(exchange_data, list) and exchange_data
-                    )
-                    oi_change_pct = ((oi_current - oi_4h_ago) / oi_4h_ago * 100) if oi_4h_ago else 0
-                    return {"oi_current": oi_current, "oi_change_4h_pct": oi_change_pct}
-    except Exception as e:
-        logger.debug(f"Open Interest {ticker} : {e}")
-    return {"oi_current": 0, "oi_change_4h_pct": 0}
+        logger.debug(f"OKX stat {endpoint} : {e}")
+        return []
 
 
 def get_long_short_ratio(ticker: str) -> dict:
     """
-    Ratio Long/Short sur les comptes des traders (Binance, OKX, Bybit).
-    > 1.5 = trop de longs = danger de squeeze baissier
-    < 0.7 = trop de shorts = danger de short squeeze haussier
+    Ratio comptes long/short via OKX (gratuit).
+    Remplace Coinglass : leurs endpoints fapi renvoient 404 depuis 2026 et
+    l'API v3 exige une cle payante.
     """
-    symbol = SYMBOL_MAP.get(ticker.upper(), ticker.upper())
+    data = _okx_stat("/api/v5/rubik/stat/contracts/long-short-account-ratio",
+                     {"ccy": ticker.upper(), "period": "1H"})
+    if not data:
+        return {"ls_ratio": 1.0, "ls_bias": "balanced", "disponible": False}
     try:
-        resp = requests.get(
-            "https://fapi.coinglass.com/api/futures/globalLongShortAccountRatio/chart",
-            params={"symbol": symbol, "timeType": "h1"},
-            timeout=10,
-        )
-        if resp.status_code == 200:
-            data = resp.json()
-            if data.get("success") and data.get("data"):
-                ratios = data["data"].get("longShortRatioList", [])
-                if ratios:
-                    ratio = float(ratios[-1])
-                    return {"ls_ratio": ratio, "ls_bias": "long_heavy" if ratio > 1.5 else "short_heavy" if ratio < 0.7 else "balanced"}
-    except Exception as e:
-        logger.debug(f"L/S ratio {ticker} : {e}")
-    return {"ls_ratio": 1.0, "ls_bias": "balanced"}
+        ratio = float(data[0][1])
+    except (IndexError, ValueError, TypeError):
+        return {"ls_ratio": 1.0, "ls_bias": "balanced", "disponible": False}
+
+    bias = ("long_heavy" if ratio >= LS_LONG_HEAVY
+            else "short_heavy" if ratio <= LS_SHORT_HEAVY
+            else "balanced")
+    return {"ls_ratio": round(ratio, 3), "ls_bias": bias, "disponible": True}
+
+
+def get_open_interest(ticker: str) -> dict:
+    """Variation d'open interest sur 4h via OKX (gratuit)."""
+    data = _okx_stat("/api/v5/rubik/stat/contracts/open-interest-volume",
+                     {"ccy": ticker.upper(), "period": "1H"})
+    if len(data) < 5:
+        return {"oi_change_4h_pct": 0.0, "disponible": False}
+    try:
+        # OKX renvoie du plus recent au plus ancien : [ts, oi, volume]
+        oi_now = float(data[0][1])
+        oi_4h  = float(data[4][1])
+        if oi_4h <= 0:
+            return {"oi_change_4h_pct": 0.0, "disponible": False}
+        return {
+            "oi_change_4h_pct": round((oi_now - oi_4h) / oi_4h * 100, 2),
+            "disponible": True,
+        }
+    except (IndexError, ValueError, TypeError):
+        return {"oi_change_4h_pct": 0.0, "disponible": False}
+
+
+def get_liquidations_24h(ticker: str) -> dict:
+    """
+    Proxy de pression acheteur/vendeur via le volume taker OKX (gratuit).
+    Les vraies donnees de liquidation ne sont plus accessibles sans abonnement ;
+    le desequilibre taker capte le meme phenomene (qui subit la pression).
+    """
+    data = _okx_stat("/api/v5/rubik/stat/taker-volume",
+                     {"ccy": ticker.upper(), "instType": "CONTRACTS", "period": "1H"})
+    if len(data) < 24:
+        return {"long_liq_24h": 0.0, "short_liq_24h": 0.0, "disponible": False}
+    try:
+        # [ts, sellVol, buyVol] sur les 24 dernieres heures
+        sell = sum(float(r[1]) for r in data[:24])
+        buy  = sum(float(r[2]) for r in data[:24])
+        # On mappe sur la semantique d'origine : pression vendeuse -> longs liquides
+        return {"long_liq_24h": sell, "short_liq_24h": buy, "disponible": True}
+    except (IndexError, ValueError, TypeError):
+        return {"long_liq_24h": 0.0, "short_liq_24h": 0.0, "disponible": False}
 
 
 def analyze(ticker: str) -> dict:
@@ -208,6 +168,9 @@ def analyze(ticker: str) -> dict:
 
     return {
         "score": score,
+        "disponible": bool(
+            ls.get("disponible") or oi.get("disponible") or liq.get("disponible")
+        ),
         "verdict": verdict,
         "signals": signals,
         "ls_ratio": ls_ratio,
