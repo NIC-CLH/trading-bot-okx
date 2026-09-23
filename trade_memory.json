@@ -3723,7 +3723,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.177196216390937,
+  "_sd_prev_usdt_d": 6.2179915033328115,
   "shadow_portfolio": [
     {
       "ticker": "KAITO",
@@ -3853,10 +3853,10 @@
     },
     {
       "ticker": "ZEC",
-      "score": 1.08,
-      "prix_ref": 1600.53,
+      "score": 1.13,
+      "prix_ref": 1620.12,
       "type": "swing",
-      "timestamp": "2026-09-23T04:19:36.605277+00:00",
+      "timestamp": "2026-09-23T08:12:19.978736+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5512,9 +5512,13 @@
     {
       "date": "2026-09-23T04:17",
       "equity": 352.7
+    },
+    {
+      "date": "2026-09-23T08:09",
+      "equity": 352.69
     }
   ],
-  "health_last_warn": 1789445945.227389,
+  "health_last_warn": 1790151679.7883637,
   "eea_blacklist": {
     "BNB": {
       "reason": "All operations failed (code 1) - constate 18/07/2026",
