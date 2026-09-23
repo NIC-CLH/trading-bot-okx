@@ -3723,7 +3723,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.21875372460036,
+  "_sd_prev_usdt_d": 6.177196216390937,
   "shadow_portfolio": [
     {
       "ticker": "KAITO",
@@ -3843,20 +3843,20 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ZEC",
-      "score": 1.08,
-      "prix_ref": 1619.08,
-      "type": "swing",
-      "timestamp": "2026-09-23T00:17:41.810525+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ETHFI",
       "score": 1.02,
       "prix_ref": 0.7142,
       "type": "swing",
       "timestamp": "2026-09-23T00:21:09.064897+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.08,
+      "prix_ref": 1600.53,
+      "type": "swing",
+      "timestamp": "2026-09-23T04:19:36.605277+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5507,6 +5507,10 @@
     },
     {
       "date": "2026-09-23T00:15",
+      "equity": 352.7
+    },
+    {
+      "date": "2026-09-23T04:17",
       "equity": 352.7
     }
   ],
