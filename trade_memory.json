@@ -3723,7 +3723,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.222962258044824,
+  "_sd_prev_usdt_d": 6.21875372460036,
   "shadow_portfolio": [
     {
       "ticker": "KAITO",
@@ -3825,24 +3825,6 @@
       "pnl_pct": -3.08
     },
     {
-      "ticker": "ETHFI",
-      "score": 1.08,
-      "prix_ref": 0.725,
-      "type": "swing",
-      "timestamp": "2026-09-21T00:21:25.631220+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ZEC",
-      "score": 1.0,
-      "prix_ref": 1504.56,
-      "type": "swing",
-      "timestamp": "2026-09-21T08:20:46.268680+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "SOL",
       "score": 1.05,
       "prix_ref": 116.79,
@@ -3857,6 +3839,24 @@
       "prix_ref": 85419.1,
       "type": "swing",
       "timestamp": "2026-09-22T08:18:12.343220+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.08,
+      "prix_ref": 1619.08,
+      "type": "swing",
+      "timestamp": "2026-09-23T00:17:41.810525+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ETHFI",
+      "score": 1.02,
+      "prix_ref": 0.7142,
+      "type": "swing",
+      "timestamp": "2026-09-23T00:21:09.064897+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5504,6 +5504,10 @@
     {
       "date": "2026-09-22T20:14",
       "equity": 352.69
+    },
+    {
+      "date": "2026-09-23T00:15",
+      "equity": 352.7
     }
   ],
   "health_last_warn": 1789445945.227389,
