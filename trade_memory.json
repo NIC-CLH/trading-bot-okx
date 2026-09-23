@@ -3443,6 +3443,32 @@
       "score_tech_adj_raw": 2.93,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "EIGEN",
+      "score": 0.66,
+      "score_tech": 0.66,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 67.91,
+      "prix": 0.2435,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-23T16:13:42.548710+00:00",
+      "score_tech_raw": 0.66,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 0.66,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -3723,17 +3749,8 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.263662508565844,
+  "_sd_prev_usdt_d": 6.368560240619692,
   "shadow_portfolio": [
-    {
-      "ticker": "AR",
-      "score": 1.08,
-      "prix_ref": 3.632,
-      "type": "swing",
-      "timestamp": "2026-09-19T04:14:56.206333+00:00",
-      "outcome": "missed",
-      "pnl_pct": 40.06
-    },
     {
       "ticker": "MORPHO",
       "score": 1.04,
@@ -3758,8 +3775,8 @@
       "prix_ref": 116.79,
       "type": "swing",
       "timestamp": "2026-09-21T12:18:37.632124+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -1.5
     },
     {
       "ticker": "BTC",
@@ -3785,24 +3802,6 @@
       "prix_ref": 9.758,
       "type": "swing",
       "timestamp": "2026-09-23T12:16:27.754518+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ZEC",
-      "score": 1.4,
-      "prix_ref": 1628.25,
-      "type": "swing",
-      "timestamp": "2026-09-23T12:16:52.182568+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "NEAR",
-      "score": 1.4,
-      "prix_ref": 4.753,
-      "type": "swing",
-      "timestamp": "2026-09-23T12:17:06.488463+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -3857,6 +3856,33 @@
       "prix_ref": 8.105,
       "type": "swing",
       "timestamp": "2026-09-23T12:21:12.933607+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.4,
+      "prix_ref": 1561.22,
+      "type": "swing",
+      "timestamp": "2026-09-23T16:17:31.797677+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "NEAR",
+      "score": 1.4,
+      "prix_ref": 4.256,
+      "type": "swing",
+      "timestamp": "2026-09-23T16:17:55.092803+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "WLD",
+      "score": 1.24,
+      "prix_ref": 0.4159,
+      "type": "swing",
+      "timestamp": "2026-09-23T16:18:55.639315+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5520,6 +5546,10 @@
     {
       "date": "2026-09-23T12:14",
       "equity": 352.69
+    },
+    {
+      "date": "2026-09-23T16:14",
+      "equity": 350.07
     }
   ],
   "health_last_warn": 1790151679.7883637,
