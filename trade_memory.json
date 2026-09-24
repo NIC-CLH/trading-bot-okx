@@ -3749,17 +3749,8 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.394102523476214,
+  "_sd_prev_usdt_d": 6.351419111552832,
   "shadow_portfolio": [
-    {
-      "ticker": "BTC",
-      "score": 1.07,
-      "prix_ref": 85419.1,
-      "type": "swing",
-      "timestamp": "2026-09-22T08:18:12.343220+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "ETHFI",
       "score": 1.02,
@@ -3815,24 +3806,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "NEAR",
-      "score": 1.4,
-      "prix_ref": 4.256,
-      "type": "swing",
-      "timestamp": "2026-09-23T16:17:55.092803+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "WLD",
-      "score": 1.24,
-      "prix_ref": 0.4159,
-      "type": "swing",
-      "timestamp": "2026-09-23T16:18:55.639315+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ICP",
       "score": 1.33,
       "prix_ref": 2.901,
@@ -3883,6 +3856,33 @@
       "prix_ref": 0.20482,
       "type": "swing",
       "timestamp": "2026-09-24T04:20:41.105160+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "NEAR",
+      "score": 1.4,
+      "prix_ref": 4.307,
+      "type": "swing",
+      "timestamp": "2026-09-24T08:20:30.368575+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "LTC",
+      "score": 1.4,
+      "prix_ref": 69.19,
+      "type": "swing",
+      "timestamp": "2026-09-24T08:20:50.087998+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "WLD",
+      "score": 1.17,
+      "prix_ref": 0.414,
+      "type": "swing",
+      "timestamp": "2026-09-24T08:21:24.785269+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5563,6 +5563,10 @@
     {
       "date": "2026-09-24T04:16",
       "equity": 351.25
+    },
+    {
+      "date": "2026-09-24T08:17",
+      "equity": 352.44
     }
   ],
   "health_last_warn": 1790151679.7883637,
