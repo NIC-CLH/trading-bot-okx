@@ -3749,7 +3749,7 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.365974947659771,
+  "_sd_prev_usdt_d": 6.394102523476214,
   "shadow_portfolio": [
     {
       "ticker": "BTC",
@@ -3833,24 +3833,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ZEC",
-      "score": 1.4,
-      "prix_ref": 1510.58,
-      "type": "swing",
-      "timestamp": "2026-09-23T20:15:57.092515+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ENA",
-      "score": 1.4,
-      "prix_ref": 0.20711,
-      "type": "swing",
-      "timestamp": "2026-09-23T20:17:38.441102+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ICP",
       "score": 1.33,
       "prix_ref": 2.901,
@@ -3883,6 +3865,24 @@
       "prix_ref": 2.0965,
       "type": "swing",
       "timestamp": "2026-09-23T20:19:21.097265+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.4,
+      "prix_ref": 1501.57,
+      "type": "swing",
+      "timestamp": "2026-09-24T04:19:07.107998+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.4,
+      "prix_ref": 0.20482,
+      "type": "swing",
+      "timestamp": "2026-09-24T04:20:41.105160+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5558,6 +5558,10 @@
     {
       "date": "2026-09-24T00:18",
       "equity": 349.46
+    },
+    {
+      "date": "2026-09-24T04:16",
+      "equity": 351.25
     }
   ],
   "health_last_warn": 1790151679.7883637,
