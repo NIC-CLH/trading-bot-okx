@@ -3749,17 +3749,8 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.351419111552832,
+  "_sd_prev_usdt_d": 6.4331721184084065,
   "shadow_portfolio": [
-    {
-      "ticker": "ETHFI",
-      "score": 1.02,
-      "prix_ref": 0.7142,
-      "type": "swing",
-      "timestamp": "2026-09-23T00:21:09.064897+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "UNI",
       "score": 1.4,
@@ -3842,15 +3833,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ZEC",
-      "score": 1.4,
-      "prix_ref": 1501.57,
-      "type": "swing",
-      "timestamp": "2026-09-24T04:19:07.107998+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ENA",
       "score": 1.4,
       "prix_ref": 0.20482,
@@ -3883,6 +3865,24 @@
       "prix_ref": 0.414,
       "type": "swing",
       "timestamp": "2026-09-24T08:21:24.785269+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.4,
+      "prix_ref": 1488.75,
+      "type": "swing",
+      "timestamp": "2026-09-24T12:13:03.523012+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ETC",
+      "score": 1.4,
+      "prix_ref": 9.4,
+      "type": "swing",
+      "timestamp": "2026-09-24T12:15:37.598728+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5567,6 +5567,10 @@
     {
       "date": "2026-09-24T08:17",
       "equity": 352.44
+    },
+    {
+      "date": "2026-09-24T12:10",
+      "equity": 349.86
     }
   ],
   "health_last_warn": 1790151679.7883637,
