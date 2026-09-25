@@ -1284,6 +1284,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 1.03
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "EIGEN",
+      "pnl_pct": 9.12,
+      "days_held": 2.2,
+      "exit_reason": "Signal retourné en zone de profit : score +0.89 < 1.0 | P&L +9.1% 📉",
+      "valeur_usd": 76.82,
+      "outcome": "win",
+      "exit_quality": 156.4,
+      "timestamp": "2026-09-25T20:17:53.835115+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 0.66
     }
   ],
   "entries": [
@@ -3813,9 +3827,21 @@
       "pnl_pct": 21.25143075162154,
       "type": "trade_reflection",
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
+    },
+    {
+      "lecon_principale": "Signal composite fiable pour exits rapides en bull regime",
+      "signal_fiable": "Score composite retournement (0.89→baisse) - Sortie anticipée rentable",
+      "signal_trompeur": "Score d'entrée 0.66 - Faible signal mais trade profitable malgré tout",
+      "regime_optimal": "bull avec volatilité normal - Conditions idéales pour scalp court terme",
+      "recommandation": "hold_longer",
+      "confiance": 0.72,
+      "ticker": "EIGEN",
+      "pnl_pct": 9.117043121149896,
+      "type": "trade_reflection",
+      "timestamp": "2026-09-25T20:18:06.962770+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.343533657396295,
+  "_sd_prev_usdt_d": 6.343579868064321,
   "shadow_portfolio": [
     {
       "ticker": "ZAMA",
@@ -3935,20 +3961,20 @@
       "pnl_pct": null
     },
     {
-      "ticker": "SOL",
-      "score": 1.4,
-      "prix_ref": 121.16,
-      "type": "swing",
-      "timestamp": "2026-09-25T16:19:48.145082+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "NEAR",
       "score": 1.4,
       "prix_ref": 5.157,
       "type": "swing",
       "timestamp": "2026-09-25T16:21:11.540431+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.4,
+      "prix_ref": 121.76,
+      "type": "swing",
+      "timestamp": "2026-09-25T20:20:31.038821+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5666,6 +5692,10 @@
     {
       "date": "2026-09-25T16:17",
       "equity": 361.12
+    },
+    {
+      "date": "2026-09-25T20:18",
+      "equity": 367.84
     }
   ],
   "health_last_warn": 1790151679.7883637,
