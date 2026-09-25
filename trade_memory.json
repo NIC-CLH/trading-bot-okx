@@ -3815,32 +3815,14 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.313802196879757,
+  "_sd_prev_usdt_d": 6.343533657396295,
   "shadow_portfolio": [
-    {
-      "ticker": "STRK",
-      "score": 1.4,
-      "prix_ref": 0.03877,
-      "type": "swing",
-      "timestamp": "2026-09-23T20:18:52.698821+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "ZAMA",
       "score": 1.4,
       "prix_ref": 0.0904,
       "type": "swing",
       "timestamp": "2026-09-23T20:19:07.006471+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "NEAR",
-      "score": 1.4,
-      "prix_ref": 4.307,
-      "type": "swing",
-      "timestamp": "2026-09-24T08:20:30.368575+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -3949,6 +3931,24 @@
       "prix_ref": 0.2219,
       "type": "swing",
       "timestamp": "2026-09-25T04:21:22.175634+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.4,
+      "prix_ref": 121.16,
+      "type": "swing",
+      "timestamp": "2026-09-25T16:19:48.145082+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "NEAR",
+      "score": 1.4,
+      "prix_ref": 5.157,
+      "type": "swing",
+      "timestamp": "2026-09-25T16:21:11.540431+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5661,6 +5661,10 @@
     {
       "date": "2026-09-25T12:18",
       "equity": 358.65
+    },
+    {
+      "date": "2026-09-25T16:17",
+      "equity": 361.12
     }
   ],
   "health_last_warn": 1790151679.7883637,
