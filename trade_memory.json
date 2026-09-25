@@ -3775,26 +3775,8 @@
       "timestamp": "2026-09-13T12:15:26.717783+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.340544364984166,
+  "_sd_prev_usdt_d": 6.34569857653215,
   "shadow_portfolio": [
-    {
-      "ticker": "AAVE",
-      "score": 1.42,
-      "prix_ref": 148.08,
-      "type": "swing",
-      "timestamp": "2026-09-23T12:19:23.445770+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "INJ",
-      "score": 1.4,
-      "prix_ref": 8.105,
-      "type": "swing",
-      "timestamp": "2026-09-23T12:21:12.933607+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "STRK",
       "score": 1.4,
@@ -3810,15 +3792,6 @@
       "prix_ref": 0.0904,
       "type": "swing",
       "timestamp": "2026-09-23T20:19:07.006471+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ENA",
-      "score": 1.4,
-      "prix_ref": 0.20482,
-      "type": "swing",
-      "timestamp": "2026-09-24T04:20:41.105160+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -3886,15 +3859,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "PENGU",
-      "score": 1.4,
-      "prix_ref": 0.009945,
-      "type": "swing",
-      "timestamp": "2026-09-24T20:20:19.518720+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "RAY",
       "score": 1.38,
       "prix_ref": 2.1537,
@@ -3909,6 +3873,42 @@
       "prix_ref": 3.102,
       "type": "swing",
       "timestamp": "2026-09-24T20:21:36.313555+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.4,
+      "prix_ref": 0.22722,
+      "type": "swing",
+      "timestamp": "2026-09-25T00:19:11.297821+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "TRX",
+      "score": 1.41,
+      "prix_ref": 0.34008,
+      "type": "swing",
+      "timestamp": "2026-09-25T00:19:47.996281+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PENGU",
+      "score": 1.4,
+      "prix_ref": 0.009796,
+      "type": "swing",
+      "timestamp": "2026-09-25T00:20:01.109694+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AAVE",
+      "score": 1.44,
+      "prix_ref": 147.73,
+      "type": "swing",
+      "timestamp": "2026-09-25T00:20:15.487766+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5606,6 +5606,10 @@
     {
       "date": "2026-09-24T20:14",
       "equity": 353.93
+    },
+    {
+      "date": "2026-09-25T00:14",
+      "equity": 351.9
     }
   ],
   "health_last_warn": 1790151679.7883637,
