@@ -1270,6 +1270,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.93
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "GRASS",
+      "pnl_pct": 13.24,
+      "days_held": 0.7,
+      "exit_reason": "Take profit +12% atteint (+13.2%) — capté en 30min 🎯",
+      "valeur_usd": 79.67,
+      "outcome": "win",
+      "exit_quality": 100.0,
+      "timestamp": "2026-09-25T10:32:01.428216+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.03
     }
   ],
   "entries": [
@@ -3965,8 +3979,7 @@
     "PROS": 9.4,
     "XTZ": 3.34,
     "CVC": 6.83,
-    "EIGEN": 4.6,
-    "GRASS": 11.13
+    "EIGEN": 4.6
   },
   "equity_history": [
     {
