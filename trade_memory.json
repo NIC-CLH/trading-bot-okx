@@ -3867,26 +3867,8 @@
       "timestamp": "2026-09-25T20:18:06.962770+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.333437892464717,
+  "_sd_prev_usdt_d": 6.330235244029961,
   "shadow_portfolio": [
-    {
-      "ticker": "ZEC",
-      "score": 1.4,
-      "prix_ref": 1488.75,
-      "type": "swing",
-      "timestamp": "2026-09-24T12:13:03.523012+00:00",
-      "outcome": "correct",
-      "pnl_pct": 3.95
-    },
-    {
-      "ticker": "ETC",
-      "score": 1.4,
-      "prix_ref": 9.4,
-      "type": "swing",
-      "timestamp": "2026-09-24T12:15:37.598728+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "ONDO",
       "score": 1.4,
@@ -3942,29 +3924,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "NEAR",
-      "score": 1.4,
-      "prix_ref": 5.157,
-      "type": "swing",
-      "timestamp": "2026-09-25T16:21:11.540431+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ENA",
       "score": 1.4,
       "prix_ref": 0.27134,
       "type": "swing",
       "timestamp": "2026-09-26T00:18:46.357381+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "AAVE",
-      "score": 1.4,
-      "prix_ref": 154.06,
-      "type": "swing",
-      "timestamp": "2026-09-26T00:19:39.140709+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -3978,29 +3942,65 @@
       "pnl_pct": null
     },
     {
-      "ticker": "LINK",
-      "score": 1.4,
-      "prix_ref": 14.12,
-      "type": "swing",
-      "timestamp": "2026-09-26T04:20:07.309400+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "LTC",
-      "score": 1.29,
-      "prix_ref": 71.88,
-      "type": "swing",
-      "timestamp": "2026-09-26T04:20:17.944197+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "SOL",
       "score": 1.4,
       "prix_ref": 121.5,
       "type": "swing",
       "timestamp": "2026-09-26T12:20:51.146075+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "NEAR",
+      "score": 1.4,
+      "prix_ref": 4.82,
+      "type": "swing",
+      "timestamp": "2026-09-26T16:19:14.361194+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "UNI",
+      "score": 1.4,
+      "prix_ref": 9.661,
+      "type": "swing",
+      "timestamp": "2026-09-26T16:19:33.923630+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "LTC",
+      "score": 1.33,
+      "prix_ref": 72.68,
+      "type": "swing",
+      "timestamp": "2026-09-26T16:19:47.351747+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "LINK",
+      "score": 1.4,
+      "prix_ref": 14.247,
+      "type": "swing",
+      "timestamp": "2026-09-26T16:20:02.801770+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PUMP",
+      "score": 1.4,
+      "prix_ref": 0.004465,
+      "type": "swing",
+      "timestamp": "2026-09-26T16:20:15.564293+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AAVE",
+      "score": 1.4,
+      "prix_ref": 154.69,
+      "type": "swing",
+      "timestamp": "2026-09-26T16:21:23.217368+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5739,6 +5739,10 @@
     {
       "date": "2026-09-26T12:18",
       "equity": 365.65
+    },
+    {
+      "date": "2026-09-26T16:15",
+      "equity": 369.95
     }
   ],
   "health_last_warn": 1790151679.7883637,
