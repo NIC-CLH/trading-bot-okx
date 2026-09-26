@@ -3549,6 +3549,32 @@
       "score_tech_adj_raw": 3.0,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "SENT",
+      "score": 1.67,
+      "score_tech": 1.67,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 73.33,
+      "prix": 0.02409,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-26T00:15:30.101206+00:00",
+      "score_tech_raw": 1.67,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 1.67,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -3841,26 +3867,8 @@
       "timestamp": "2026-09-25T20:18:06.962770+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.343579868064321,
+  "_sd_prev_usdt_d": 6.338330271454999,
   "shadow_portfolio": [
-    {
-      "ticker": "ZAMA",
-      "score": 1.4,
-      "prix_ref": 0.0904,
-      "type": "swing",
-      "timestamp": "2026-09-23T20:19:07.006471+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "LTC",
-      "score": 1.4,
-      "prix_ref": 69.19,
-      "type": "swing",
-      "timestamp": "2026-09-24T08:20:50.087998+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "ZEC",
       "score": 1.4,
@@ -3885,15 +3893,6 @@
       "prix_ref": 0.5166,
       "type": "swing",
       "timestamp": "2026-09-24T16:19:09.478419+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ONE",
-      "score": 1.34,
-      "prix_ref": 0.001905,
-      "type": "swing",
-      "timestamp": "2026-09-24T16:20:57.075612+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -3934,29 +3933,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "AAVE",
-      "score": 1.44,
-      "prix_ref": 147.73,
-      "type": "swing",
-      "timestamp": "2026-09-25T00:20:15.487766+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "WLD",
       "score": 1.45,
       "prix_ref": 0.4332,
       "type": "swing",
       "timestamp": "2026-09-25T04:20:39.693031+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ENA",
-      "score": 1.4,
-      "prix_ref": 0.2219,
-      "type": "swing",
-      "timestamp": "2026-09-25T04:21:22.175634+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -3972,9 +3953,54 @@
     {
       "ticker": "SOL",
       "score": 1.4,
-      "prix_ref": 121.76,
+      "prix_ref": 122.02,
       "type": "swing",
-      "timestamp": "2026-09-25T20:20:31.038821+00:00",
+      "timestamp": "2026-09-26T00:17:38.910151+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.4,
+      "prix_ref": 0.27134,
+      "type": "swing",
+      "timestamp": "2026-09-26T00:18:46.357381+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "LINK",
+      "score": 1.4,
+      "prix_ref": 13.982,
+      "type": "swing",
+      "timestamp": "2026-09-26T00:18:56.878682+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "LTC",
+      "score": 1.4,
+      "prix_ref": 72.24,
+      "type": "swing",
+      "timestamp": "2026-09-26T00:19:07.226389+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AAVE",
+      "score": 1.4,
+      "prix_ref": 154.06,
+      "type": "swing",
+      "timestamp": "2026-09-26T00:19:39.140709+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ONE",
+      "score": 1.4,
+      "prix_ref": 0.002608,
+      "type": "swing",
+      "timestamp": "2026-09-26T00:20:27.397045+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5697,6 +5723,10 @@
     {
       "date": "2026-09-25T20:18",
       "equity": 367.84
+    },
+    {
+      "date": "2026-09-26T00:15",
+      "equity": 368.37
     }
   ],
   "health_last_warn": 1790151679.7883637,
