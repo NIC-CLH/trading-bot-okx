@@ -3867,7 +3867,7 @@
       "timestamp": "2026-09-25T20:18:06.962770+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.330235244029961,
+  "_sd_prev_usdt_d": 6.348629328118148,
   "shadow_portfolio": [
     {
       "ticker": "ONDO",
@@ -3875,8 +3875,8 @@
       "prix_ref": 0.5166,
       "type": "swing",
       "timestamp": "2026-09-24T16:19:09.478419+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 3.79
     },
     {
       "ticker": "RAY",
@@ -5743,6 +5743,10 @@
     {
       "date": "2026-09-26T16:15",
       "equity": 369.95
+    },
+    {
+      "date": "2026-09-26T20:19",
+      "equity": 366.43
     }
   ],
   "health_last_warn": 1790151679.7883637,
