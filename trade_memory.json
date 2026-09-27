@@ -3575,6 +3575,32 @@
       "score_tech_adj_raw": 1.67,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "HUMA",
+      "score": 2.25,
+      "score_tech": 2.25,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 71.78,
+      "prix": 0.0289461819060273,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-27T16:11:33.368202+00:00",
+      "score_tech_raw": 2.25,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.25,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -3867,140 +3893,140 @@
       "timestamp": "2026-09-25T20:18:06.962770+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.326923254487557,
+  "_sd_prev_usdt_d": 6.363717096033225,
   "shadow_portfolio": [
     {
-      "ticker": "ICP",
+      "ticker": "PUMP",
       "score": 1.4,
-      "prix_ref": 3.242,
+      "prix_ref": 0.004849,
       "type": "swing",
-      "timestamp": "2026-09-27T08:16:57.786508+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "STRK",
-      "score": 1.4,
-      "prix_ref": 0.0414,
-      "type": "swing",
-      "timestamp": "2026-09-27T08:17:09.784130+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "RAY",
-      "score": 1.4,
-      "prix_ref": 2.2249,
-      "type": "swing",
-      "timestamp": "2026-09-27T08:17:24.031447+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "SEI",
-      "score": 1.4,
-      "prix_ref": 0.07507,
-      "type": "swing",
-      "timestamp": "2026-09-27T08:17:36.931871+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "AR",
-      "score": 1.4,
-      "prix_ref": 4.833,
-      "type": "swing",
-      "timestamp": "2026-09-27T08:18:36.259279+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "VIRTUAL",
-      "score": 1.4,
-      "prix_ref": 0.816,
-      "type": "swing",
-      "timestamp": "2026-09-27T08:19:02.504360+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "KITE",
-      "score": 1.4,
-      "prix_ref": 0.15452,
-      "type": "swing",
-      "timestamp": "2026-09-27T08:19:17.453092+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ZAMA",
-      "score": 1.4,
-      "prix_ref": 0.08925,
-      "type": "swing",
-      "timestamp": "2026-09-27T08:20:22.335212+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "LDO",
-      "score": 1.4,
-      "prix_ref": 0.49,
-      "type": "swing",
-      "timestamp": "2026-09-27T08:20:35.378715+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ZEN",
-      "score": 1.4,
-      "prix_ref": 7.96,
-      "type": "swing",
-      "timestamp": "2026-09-27T08:20:48.164865+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ZEC",
-      "score": 1.4,
-      "prix_ref": 1658.28,
-      "type": "swing",
-      "timestamp": "2026-09-27T12:18:42.397483+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "WLD",
-      "score": 1.4,
-      "prix_ref": 0.574,
-      "type": "swing",
-      "timestamp": "2026-09-27T12:19:07.779111+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "TAO",
-      "score": 1.4,
-      "prix_ref": 334.6,
-      "type": "swing",
-      "timestamp": "2026-09-27T12:19:59.595236+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ENA",
-      "score": 1.4,
-      "prix_ref": 0.27578,
-      "type": "swing",
-      "timestamp": "2026-09-27T12:20:12.290245+00:00",
+      "timestamp": "2026-09-27T16:15:42.365983+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "LTC",
       "score": 1.4,
-      "prix_ref": 71.72,
+      "prix_ref": 71.25,
       "type": "swing",
-      "timestamp": "2026-09-27T12:20:26.331987+00:00",
+      "timestamp": "2026-09-27T16:15:56.642325+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "LINK",
+      "score": 1.4,
+      "prix_ref": 14.144,
+      "type": "swing",
+      "timestamp": "2026-09-27T16:16:13.244390+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "TAO",
+      "score": 1.4,
+      "prix_ref": 323.4,
+      "type": "swing",
+      "timestamp": "2026-09-27T16:16:27.696879+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "DASH",
+      "score": 1.4,
+      "prix_ref": 67.78,
+      "type": "swing",
+      "timestamp": "2026-09-27T16:17:18.011259+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PENGU",
+      "score": 1.4,
+      "prix_ref": 0.010121,
+      "type": "swing",
+      "timestamp": "2026-09-27T16:17:32.818632+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AAVE",
+      "score": 1.39,
+      "prix_ref": 154.24,
+      "type": "swing",
+      "timestamp": "2026-09-27T16:17:47.485538+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ORDI",
+      "score": 1.4,
+      "prix_ref": 4.825,
+      "type": "swing",
+      "timestamp": "2026-09-27T16:18:09.325827+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ICP",
+      "score": 1.34,
+      "prix_ref": 3.183,
+      "type": "swing",
+      "timestamp": "2026-09-27T16:18:23.373360+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZAMA",
+      "score": 1.4,
+      "prix_ref": 0.08218,
+      "type": "swing",
+      "timestamp": "2026-09-27T16:19:21.341118+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "INJ",
+      "score": 1.4,
+      "prix_ref": 7.845,
+      "type": "swing",
+      "timestamp": "2026-09-27T16:19:38.901595+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "CRO",
+      "score": 1.4,
+      "prix_ref": 0.06729,
+      "type": "swing",
+      "timestamp": "2026-09-27T16:19:54.065446+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ETC",
+      "score": 1.4,
+      "prix_ref": 9.465,
+      "type": "swing",
+      "timestamp": "2026-09-27T16:20:07.206382+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "KMNO",
+      "score": 1.4,
+      "prix_ref": 0.04527,
+      "type": "swing",
+      "timestamp": "2026-09-27T16:20:21.399226+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "LDO",
+      "score": 1.4,
+      "prix_ref": 0.4866,
+      "type": "swing",
+      "timestamp": "2026-09-27T16:21:31.587112+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5763,6 +5789,10 @@
     {
       "date": "2026-09-27T12:16",
       "equity": 364.23
+    },
+    {
+      "date": "2026-09-27T16:12",
+      "equity": 360.04
     }
   ],
   "health_last_warn": 1790151679.7883637,
