@@ -3867,53 +3867,8 @@
       "timestamp": "2026-09-25T20:18:06.962770+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.330218424156148,
+  "_sd_prev_usdt_d": 6.326923254487557,
   "shadow_portfolio": [
-    {
-      "ticker": "NEAR",
-      "score": 1.4,
-      "prix_ref": 5.38,
-      "type": "swing",
-      "timestamp": "2026-09-27T08:14:16.363554+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "LTC",
-      "score": 1.4,
-      "prix_ref": 71.95,
-      "type": "swing",
-      "timestamp": "2026-09-27T08:14:42.133609+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "LINK",
-      "score": 1.4,
-      "prix_ref": 14.375,
-      "type": "swing",
-      "timestamp": "2026-09-27T08:14:56.509805+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "TAO",
-      "score": 1.4,
-      "prix_ref": 334.1,
-      "type": "swing",
-      "timestamp": "2026-09-27T08:15:10.423090+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "DOT",
-      "score": 1.4,
-      "prix_ref": 1.272,
-      "type": "swing",
-      "timestamp": "2026-09-27T08:15:22.449659+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "ICP",
       "score": 1.4,
@@ -4001,6 +3956,51 @@
       "prix_ref": 7.96,
       "type": "swing",
       "timestamp": "2026-09-27T08:20:48.164865+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.4,
+      "prix_ref": 1658.28,
+      "type": "swing",
+      "timestamp": "2026-09-27T12:18:42.397483+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "WLD",
+      "score": 1.4,
+      "prix_ref": 0.574,
+      "type": "swing",
+      "timestamp": "2026-09-27T12:19:07.779111+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "TAO",
+      "score": 1.4,
+      "prix_ref": 334.6,
+      "type": "swing",
+      "timestamp": "2026-09-27T12:19:59.595236+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.4,
+      "prix_ref": 0.27578,
+      "type": "swing",
+      "timestamp": "2026-09-27T12:20:12.290245+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "LTC",
+      "score": 1.4,
+      "prix_ref": 71.72,
+      "type": "swing",
+      "timestamp": "2026-09-27T12:20:26.331987+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5759,6 +5759,10 @@
     {
       "date": "2026-09-27T08:11",
       "equity": 365.21
+    },
+    {
+      "date": "2026-09-27T12:16",
+      "equity": 364.23
     }
   ],
   "health_last_warn": 1790151679.7883637,
