@@ -3867,95 +3867,14 @@
       "timestamp": "2026-09-25T20:18:06.962770+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.322281952610101,
+  "_sd_prev_usdt_d": 6.321580373445062,
   "shadow_portfolio": [
-    {
-      "ticker": "TRX",
-      "score": 1.41,
-      "prix_ref": 0.34008,
-      "type": "swing",
-      "timestamp": "2026-09-25T00:19:47.996281+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ENA",
-      "score": 1.4,
-      "prix_ref": 0.27134,
-      "type": "swing",
-      "timestamp": "2026-09-26T00:18:46.357381+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ONE",
-      "score": 1.4,
-      "prix_ref": 0.002608,
-      "type": "swing",
-      "timestamp": "2026-09-26T00:20:27.397045+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "SOL",
-      "score": 1.4,
-      "prix_ref": 121.5,
-      "type": "swing",
-      "timestamp": "2026-09-26T12:20:51.146075+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "NEAR",
-      "score": 1.4,
-      "prix_ref": 4.82,
-      "type": "swing",
-      "timestamp": "2026-09-26T16:19:14.361194+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "LTC",
-      "score": 1.33,
-      "prix_ref": 72.68,
-      "type": "swing",
-      "timestamp": "2026-09-26T16:19:47.351747+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "PUMP",
-      "score": 1.4,
-      "prix_ref": 0.004465,
-      "type": "swing",
-      "timestamp": "2026-09-26T16:20:15.564293+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "AAVE",
-      "score": 1.4,
-      "prix_ref": 154.69,
-      "type": "swing",
-      "timestamp": "2026-09-26T16:21:23.217368+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "ZEC",
       "score": 1.4,
       "prix_ref": 1644.93,
       "type": "swing",
       "timestamp": "2026-09-27T00:14:14.762162+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "WLD",
-      "score": 1.4,
-      "prix_ref": 0.5215,
-      "type": "swing",
-      "timestamp": "2026-09-27T00:15:08.568505+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -3969,15 +3888,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "LINK",
-      "score": 1.4,
-      "prix_ref": 14.096,
-      "type": "swing",
-      "timestamp": "2026-09-27T00:16:00.270633+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "JUP",
       "score": 1.4,
       "prix_ref": 0.3388,
@@ -3987,20 +3897,110 @@
       "pnl_pct": null
     },
     {
+      "ticker": "WLD",
+      "score": 1.4,
+      "prix_ref": 0.5216,
+      "type": "swing",
+      "timestamp": "2026-09-27T04:13:06.770592+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "LTC",
+      "score": 1.4,
+      "prix_ref": 71.18,
+      "type": "swing",
+      "timestamp": "2026-09-27T04:13:41.856678+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "LINK",
+      "score": 1.4,
+      "prix_ref": 14.07,
+      "type": "swing",
+      "timestamp": "2026-09-27T04:14:03.125778+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ORDI",
+      "score": 1.4,
+      "prix_ref": 4.76,
+      "type": "swing",
+      "timestamp": "2026-09-27T04:15:47.301096+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "KMNO",
+      "score": 1.13,
+      "prix_ref": 0.04664,
+      "type": "swing",
+      "timestamp": "2026-09-27T04:16:01.958899+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ICP",
+      "score": 1.24,
+      "prix_ref": 3.167,
+      "type": "swing",
+      "timestamp": "2026-09-27T04:16:16.191026+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STRK",
+      "score": 1.4,
+      "prix_ref": 0.0401,
+      "type": "swing",
+      "timestamp": "2026-09-27T04:16:28.348204+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "INJ",
+      "score": 1.4,
+      "prix_ref": 7.796,
+      "type": "swing",
+      "timestamp": "2026-09-27T04:17:28.516646+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
       "ticker": "PENGU",
       "score": 1.4,
-      "prix_ref": 0.009903,
+      "prix_ref": 0.00978,
       "type": "swing",
-      "timestamp": "2026-09-27T00:19:17.730762+00:00",
+      "timestamp": "2026-09-27T04:17:40.975761+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "LDO",
+      "score": 1.4,
+      "prix_ref": 0.4777,
+      "type": "swing",
+      "timestamp": "2026-09-27T04:19:56.251595+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZAMA",
+      "score": 1.4,
+      "prix_ref": 0.08836,
+      "type": "swing",
+      "timestamp": "2026-09-27T04:20:07.999435+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "AVNT",
       "score": 1.4,
-      "prix_ref": 0.13073,
+      "prix_ref": 0.12673,
       "type": "swing",
-      "timestamp": "2026-09-27T00:21:09.999462+00:00",
+      "timestamp": "2026-09-27T04:20:21.272236+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5751,6 +5751,10 @@
     {
       "date": "2026-09-27T00:12",
       "equity": 365.38
+    },
+    {
+      "date": "2026-09-27T04:10",
+      "equity": 364.89
     }
   ],
   "health_last_warn": 1790151679.7883637,
