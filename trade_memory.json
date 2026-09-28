@@ -4127,7 +4127,7 @@
     "MOODENG": 3.77,
     "HUMA": 1.02,
     "APE": 1.53,
-    "IOTA": 4.25
+    "IOTA": 6.56
   },
   "equity_history": [
     {
@@ -6039,6 +6039,6 @@
     }
   },
   "alert_cooldowns": {
-    "xrp_buy": 1790555717.3077664
+    "xrp_buy": 1790589942.2748027
   }
 }
