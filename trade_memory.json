@@ -1326,6 +1326,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.06
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "IOTA",
+      "pnl_pct": 12.33,
+      "days_held": 0.5,
+      "exit_reason": "Take profit +12% atteint (+12.3%) — capté en 30min 🎯",
+      "valeur_usd": 77.83,
+      "outcome": "win",
+      "exit_quality": 100.0,
+      "timestamp": "2026-09-28T18:02:24.142575+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.7
     }
   ],
   "entries": [
@@ -4139,8 +4153,7 @@
     "CVC": 6.83,
     "EIGEN": 8.01,
     "MOODENG": 3.77,
-    "HUMA": 1.02,
-    "IOTA": 9.39
+    "HUMA": 1.02
   },
   "equity_history": [
     {
@@ -6056,6 +6069,6 @@
     }
   },
   "alert_cooldowns": {
-    "xrp_buy": 1790589942.2748027
+    "xrp_buy": 1790618772.2656245
   }
 }
