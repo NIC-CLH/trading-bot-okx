@@ -1298,6 +1298,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 0.66
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "SENT",
+      "pnl_pct": -10.13,
+      "days_held": 2.1,
+      "exit_reason": "Stop ATR -10.1% <= -10.0%",
+      "valeur_usd": 65.87,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-09-28T02:02:09.455451+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.67
     }
   ],
   "entries": [
@@ -4085,7 +4099,6 @@
     "CVC": 6.83,
     "EIGEN": 8.01,
     "MOODENG": 3.77,
-    "SENT": 2.28,
     "HUMA": 1.02,
     "APE": 1.53
   },
