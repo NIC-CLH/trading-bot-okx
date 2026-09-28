@@ -3987,17 +3987,8 @@
       "timestamp": "2026-09-25T20:18:06.962770+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.425541657920656,
+  "_sd_prev_usdt_d": 6.381263628849659,
   "shadow_portfolio": [
-    {
-      "ticker": "PROS",
-      "score": 1.4,
-      "prix_ref": 0.6365,
-      "type": "swing",
-      "timestamp": "2026-09-28T08:20:09.120309+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "RAY",
       "score": 1.4,
@@ -4026,47 +4017,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "SOL",
-      "score": 1.4,
-      "prix_ref": 119.37,
-      "type": "swing",
-      "timestamp": "2026-09-28T12:17:46.922042+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "NEAR",
       "score": 1.4,
       "prix_ref": 5.199,
       "type": "swing",
       "timestamp": "2026-09-28T12:18:27.837753+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ONDO",
-      "score": 1.4,
-      "prix_ref": 0.538,
-      "type": "swing",
-      "timestamp": "2026-09-28T12:18:52.479602+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "WLD",
-      "score": 1.4,
-      "prix_ref": 0.5187,
-      "type": "swing",
-      "timestamp": "2026-09-28T12:19:05.821887+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "PUMP",
-      "score": 1.4,
-      "prix_ref": 0.005103,
-      "type": "swing",
-      "timestamp": "2026-09-28T12:19:20.033241+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -4121,6 +4076,51 @@
       "prix_ref": 0.3445,
       "type": "swing",
       "timestamp": "2026-09-28T12:21:14.594108+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.4,
+      "prix_ref": 118.72,
+      "type": "swing",
+      "timestamp": "2026-09-28T20:19:28.008105+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.4,
+      "prix_ref": 1468.59,
+      "type": "swing",
+      "timestamp": "2026-09-28T20:19:53.233045+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "WLD",
+      "score": 1.4,
+      "prix_ref": 0.486,
+      "type": "swing",
+      "timestamp": "2026-09-28T20:20:39.952425+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ONDO",
+      "score": 1.4,
+      "prix_ref": 0.5127,
+      "type": "swing",
+      "timestamp": "2026-09-28T20:20:52.801884+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PUMP",
+      "score": 1.4,
+      "prix_ref": 0.005166,
+      "type": "swing",
+      "timestamp": "2026-09-28T20:21:08.384312+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5907,6 +5907,10 @@
     {
       "date": "2026-09-28T12:15",
       "equity": 346.81
+    },
+    {
+      "date": "2026-09-28T20:17",
+      "equity": 353.37
     }
   ],
   "health_last_warn": 1790151679.7883637,
