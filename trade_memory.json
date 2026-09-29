@@ -4027,7 +4027,7 @@
       "timestamp": "2026-09-25T20:18:06.962770+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.42353641262671,
+  "_sd_prev_usdt_d": 6.350429674257538,
   "shadow_portfolio": [
     {
       "ticker": "AR",
@@ -4062,15 +4062,6 @@
       "prix_ref": 1383.28,
       "type": "swing",
       "timestamp": "2026-09-29T04:17:11.815398+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "SOL",
-      "score": 1.4,
-      "prix_ref": 117.76,
-      "type": "swing",
-      "timestamp": "2026-09-29T04:17:26.172731+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -4161,6 +4152,15 @@
       "prix_ref": 14.021,
       "type": "swing",
       "timestamp": "2026-09-29T04:21:24.660925+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.4,
+      "prix_ref": 119.47,
+      "type": "swing",
+      "timestamp": "2026-09-29T08:20:10.931310+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -5959,6 +5959,10 @@
     {
       "date": "2026-09-29T04:15",
       "equity": 349.1
+    },
+    {
+      "date": "2026-09-29T08:18",
+      "equity": 344.13
     }
   ],
   "health_last_warn": 1790151679.7883637,
