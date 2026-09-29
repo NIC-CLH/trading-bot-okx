@@ -1340,6 +1340,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.7
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "NMR",
+      "pnl_pct": -13.04,
+      "days_held": 0.3,
+      "exit_reason": "Stop ATR -13.0% <= -8.2%",
+      "valeur_usd": 61.39,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-09-29T06:32:06.846201+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.76
     }
   ],
   "entries": [
@@ -4179,8 +4193,7 @@
     "CVC": 6.83,
     "EIGEN": 8.01,
     "MOODENG": 3.77,
-    "HUMA": 1.02,
-    "NMR": 0.38
+    "HUMA": 1.02
   },
   "equity_history": [
     {
