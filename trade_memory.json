@@ -3775,6 +3775,32 @@
       "score_tech_adj_raw": 2.53,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ZBCN",
+      "score": 2.07,
+      "score_tech": 2.07,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 68.82,
+      "prix": 0.0023875,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-09-29T20:17:36.152429+00:00",
+      "score_tech_raw": 2.07,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.07,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -4079,17 +4105,8 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.418834982097647,
+  "_sd_prev_usdt_d": 6.391874698821759,
   "shadow_portfolio": [
-    {
-      "ticker": "LTC",
-      "score": 1.4,
-      "prix_ref": 67.91,
-      "type": "swing",
-      "timestamp": "2026-09-29T04:19:00.226747+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "DOT",
       "score": 1.44,
@@ -4210,9 +4227,18 @@
     {
       "ticker": "SOL",
       "score": 1.4,
-      "prix_ref": 118.27,
+      "prix_ref": 118.99,
       "type": "swing",
-      "timestamp": "2026-09-29T16:21:01.211060+00:00",
+      "timestamp": "2026-09-29T20:20:57.946180+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "NEAR",
+      "score": 1.4,
+      "prix_ref": 4.965,
+      "type": "swing",
+      "timestamp": "2026-09-29T20:21:10.669781+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6029,6 +6055,10 @@
     {
       "date": "2026-09-29T16:18",
       "equity": 339.71
+    },
+    {
+      "date": "2026-09-29T20:18",
+      "equity": 341.78
     }
   ],
   "health_last_warn": 1790151679.7883637,
