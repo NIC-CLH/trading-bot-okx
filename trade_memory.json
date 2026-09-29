@@ -1354,6 +1354,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 1.76
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "CELO",
+      "pnl_pct": -11.15,
+      "days_held": 0.2,
+      "exit_reason": "Stop ATR déclenché (-11.1% < -9.5%)",
+      "valeur_usd": 60.83,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-09-29T16:17:24.487944+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.53
     }
   ],
   "entries": [
@@ -4051,9 +4065,21 @@
       "pnl_pct": 9.117043121149896,
       "type": "trade_reflection",
       "timestamp": "2026-09-25T20:18:06.962770+00:00"
+    },
+    {
+      "lecon_principale": "Score composite 2.53 insuffisant en régime bull - ATR stop a bien fonctionné",
+      "signal_fiable": "ATR stop loss a déclenché correctement et limité les dégâts à -11.1% vs risque théorique",
+      "signal_trompeur": "Régime 'bull' classé à l'entrée mais volatilité 'normal' masquait l'instabilité de CELO",
+      "regime_optimal": "Attendre score composite > 3.5 minimum en bull, ou éviter CELO en volatilité basse trrompeuse",
+      "recommandation": "avoid_regime",
+      "confiance": 0.78,
+      "ticker": "CELO",
+      "pnl_pct": -11.14646942461512,
+      "type": "trade_reflection",
+      "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.320288357175927,
+  "_sd_prev_usdt_d": 6.418834982097647,
   "shadow_portfolio": [
     {
       "ticker": "LTC",
@@ -4088,15 +4114,6 @@
       "prix_ref": 14.021,
       "type": "swing",
       "timestamp": "2026-09-29T04:21:24.660925+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "SOL",
-      "score": 1.4,
-      "prix_ref": 120.08,
-      "type": "swing",
-      "timestamp": "2026-09-29T12:16:15.780643+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -4189,6 +4206,15 @@
       "timestamp": "2026-09-29T12:21:01.712125+00:00",
       "outcome": null,
       "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.4,
+      "prix_ref": 118.27,
+      "type": "swing",
+      "timestamp": "2026-09-29T16:21:01.211060+00:00",
+      "outcome": null,
+      "pnl_pct": null
     }
   ],
   "pending_signals": [],
@@ -4207,6 +4233,11 @@
       "threshold": 1.9,
       "expires": 1788682452.4598413,
       "loss_pct": -9.44
+    },
+    "CELO": {
+      "threshold": 2.2,
+      "expires": 1790713052.5197873,
+      "loss_pct": -11.15
     }
   },
   "peaks": {
@@ -5993,6 +6024,10 @@
     {
       "date": "2026-09-29T12:14",
       "equity": 345.5
+    },
+    {
+      "date": "2026-09-29T16:18",
+      "equity": 339.71
     }
   ],
   "health_last_warn": 1790151679.7883637,
