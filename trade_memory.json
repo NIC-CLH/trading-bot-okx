@@ -4145,7 +4145,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.407683845463382,
+  "_sd_prev_usdt_d": 6.363805922256069,
   "shadow_portfolio": [
     {
       "ticker": "CRO",
@@ -4166,47 +4166,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "UNI",
-      "score": 1.4,
-      "prix_ref": 8.841,
-      "type": "swing",
-      "timestamp": "2026-09-30T04:17:35.614319+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ALGO",
       "score": 1.4,
       "prix_ref": 0.1248,
       "type": "swing",
       "timestamp": "2026-09-30T04:20:44.760198+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "SOL",
-      "score": 1.4,
-      "prix_ref": 117.95,
-      "type": "swing",
-      "timestamp": "2026-09-30T08:17:07.217580+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "NEAR",
-      "score": 1.4,
-      "prix_ref": 5.0,
-      "type": "swing",
-      "timestamp": "2026-09-30T08:17:32.256415+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "WLD",
-      "score": 1.4,
-      "prix_ref": 0.5018,
-      "type": "swing",
-      "timestamp": "2026-09-30T08:17:54.730681+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -4279,6 +4243,42 @@
       "prix_ref": 0.000548,
       "type": "swing",
       "timestamp": "2026-09-30T08:21:00.912364+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.4,
+      "prix_ref": 119.57,
+      "type": "swing",
+      "timestamp": "2026-09-30T12:20:09.766413+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "NEAR",
+      "score": 1.4,
+      "prix_ref": 5.293,
+      "type": "swing",
+      "timestamp": "2026-09-30T12:20:46.926681+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "WLD",
+      "score": 1.4,
+      "prix_ref": 0.5334,
+      "type": "swing",
+      "timestamp": "2026-09-30T12:20:59.151012+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "UNI",
+      "score": 1.4,
+      "prix_ref": 8.887,
+      "type": "swing",
+      "timestamp": "2026-09-30T12:21:20.672027+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6110,6 +6110,10 @@
     {
       "date": "2026-09-30T08:15",
       "equity": 349.43
+    },
+    {
+      "date": "2026-09-30T12:17",
+      "equity": 350.74
     }
   ],
   "health_last_warn": 1790151679.7883637,
