@@ -1382,6 +1382,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.07
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "MEW",
+      "pnl_pct": -8.59,
+      "days_held": 0.5,
+      "exit_reason": "Stop ATR -8.6% <= -6.8%",
+      "valeur_usd": 63.09,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-09-30T14:32:02.565587+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.07
     }
   ],
   "entries": [
@@ -4316,7 +4330,7 @@
     "CVC": 6.83,
     "EIGEN": 8.01,
     "MOODENG": 3.77,
-    "HUMA": 6.27
+    "HUMA": 7.13
   },
   "equity_history": [
     {
