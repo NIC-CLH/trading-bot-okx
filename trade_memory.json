@@ -1396,6 +1396,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.07
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "HUMA",
+      "pnl_pct": 12.23,
+      "days_held": 0,
+      "exit_reason": "Take profit +12% atteint (+12.2%) — capté en 30min 🎯",
+      "valeur_usd": 80.68,
+      "outcome": "win",
+      "exit_quality": 100.0,
+      "timestamp": "2026-09-30T17:31:56.900801+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.25
     }
   ],
   "entries": [
@@ -4329,8 +4343,7 @@
     "XTZ": 3.34,
     "CVC": 6.83,
     "EIGEN": 8.01,
-    "MOODENG": 3.77,
-    "HUMA": 10.88
+    "MOODENG": 3.77
   },
   "equity_history": [
     {
