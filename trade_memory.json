@@ -1368,6 +1368,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.53
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ZBCN",
+      "pnl_pct": 13.5,
+      "days_held": 0.4,
+      "exit_reason": "Take profit +12% atteint (+13.5%) — capté en 30min 🎯",
+      "valeur_usd": 77.41,
+      "outcome": "win",
+      "exit_quality": 100.0,
+      "timestamp": "2026-09-30T04:02:02.307659+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.07
     }
   ],
   "entries": [
@@ -4276,8 +4290,7 @@
     "CVC": 6.83,
     "EIGEN": 8.01,
     "MOODENG": 3.77,
-    "HUMA": 3.19,
-    "ZBCN": 9.32
+    "HUMA": 3.74
   },
   "equity_history": [
     {
