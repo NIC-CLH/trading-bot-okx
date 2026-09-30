@@ -4105,17 +4105,8 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.391874698821759,
+  "_sd_prev_usdt_d": 6.39622031388338,
   "shadow_portfolio": [
-    {
-      "ticker": "DOT",
-      "score": 1.44,
-      "prix_ref": 1.1623,
-      "type": "swing",
-      "timestamp": "2026-09-29T04:20:20.049986+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "STRK",
       "score": 1.4,
@@ -4140,24 +4131,6 @@
       "prix_ref": 0.5043,
       "type": "swing",
       "timestamp": "2026-09-29T12:17:25.752414+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "PUMP",
-      "score": 1.4,
-      "prix_ref": 0.00557,
-      "type": "swing",
-      "timestamp": "2026-09-29T12:17:38.370748+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ONDO",
-      "score": 1.4,
-      "prix_ref": 0.5235,
-      "type": "swing",
-      "timestamp": "2026-09-29T12:17:50.255371+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -4227,18 +4200,45 @@
     {
       "ticker": "SOL",
       "score": 1.4,
-      "prix_ref": 118.99,
+      "prix_ref": 118.81,
       "type": "swing",
-      "timestamp": "2026-09-29T20:20:57.946180+00:00",
+      "timestamp": "2026-09-30T00:19:49.694318+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "NEAR",
       "score": 1.4,
-      "prix_ref": 4.965,
+      "prix_ref": 4.935,
       "type": "swing",
-      "timestamp": "2026-09-29T20:21:10.669781+00:00",
+      "timestamp": "2026-09-30T00:20:02.401960+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "UNI",
+      "score": 1.4,
+      "prix_ref": 8.863,
+      "type": "swing",
+      "timestamp": "2026-09-30T00:20:13.147363+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PUMP",
+      "score": 1.4,
+      "prix_ref": 0.005856,
+      "type": "swing",
+      "timestamp": "2026-09-30T00:20:24.539826+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ONDO",
+      "score": 1.4,
+      "prix_ref": 0.4996,
+      "type": "swing",
+      "timestamp": "2026-09-30T00:21:28.111351+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6059,6 +6059,10 @@
     {
       "date": "2026-09-29T20:18",
       "equity": 341.78
+    },
+    {
+      "date": "2026-09-30T00:17",
+      "equity": 344.83
     }
   ],
   "health_last_warn": 1790151679.7883637,
