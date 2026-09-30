@@ -4145,35 +4145,8 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.395785880549379,
+  "_sd_prev_usdt_d": 6.407683845463382,
   "shadow_portfolio": [
-    {
-      "ticker": "ICP",
-      "score": 1.4,
-      "prix_ref": 3.32,
-      "type": "swing",
-      "timestamp": "2026-09-29T12:20:22.240481+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "JUP",
-      "score": 1.4,
-      "prix_ref": 0.3317,
-      "type": "swing",
-      "timestamp": "2026-09-29T12:20:36.032717+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "SEI",
-      "score": 1.27,
-      "prix_ref": 0.07539,
-      "type": "swing",
-      "timestamp": "2026-09-29T12:20:49.148744+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "CRO",
       "score": 1.4,
@@ -4193,74 +4166,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "SOL",
-      "score": 1.4,
-      "prix_ref": 119.37,
-      "type": "swing",
-      "timestamp": "2026-09-30T04:17:13.929369+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "NEAR",
-      "score": 1.4,
-      "prix_ref": 4.964,
-      "type": "swing",
-      "timestamp": "2026-09-30T04:17:25.095084+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "UNI",
       "score": 1.4,
       "prix_ref": 8.841,
       "type": "swing",
       "timestamp": "2026-09-30T04:17:35.614319+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ONDO",
-      "score": 1.4,
-      "prix_ref": 0.4986,
-      "type": "swing",
-      "timestamp": "2026-09-30T04:18:11.789932+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "LTC",
-      "score": 1.4,
-      "prix_ref": 67.14,
-      "type": "swing",
-      "timestamp": "2026-09-30T04:18:44.172436+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ENA",
-      "score": 1.4,
-      "prix_ref": 0.24661,
-      "type": "swing",
-      "timestamp": "2026-09-30T04:20:06.579282+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "DOT",
-      "score": 1.4,
-      "prix_ref": 1.21,
-      "type": "swing",
-      "timestamp": "2026-09-30T04:20:21.244445+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "MON",
-      "score": 1.4,
-      "prix_ref": 0.02666,
-      "type": "swing",
-      "timestamp": "2026-09-30T04:20:34.370139+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -4274,11 +4184,101 @@
       "pnl_pct": null
     },
     {
+      "ticker": "SOL",
+      "score": 1.4,
+      "prix_ref": 117.95,
+      "type": "swing",
+      "timestamp": "2026-09-30T08:17:07.217580+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "NEAR",
+      "score": 1.4,
+      "prix_ref": 5.0,
+      "type": "swing",
+      "timestamp": "2026-09-30T08:17:32.256415+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "WLD",
+      "score": 1.4,
+      "prix_ref": 0.5018,
+      "type": "swing",
+      "timestamp": "2026-09-30T08:17:54.730681+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ONDO",
+      "score": 1.4,
+      "prix_ref": 0.4963,
+      "type": "swing",
+      "timestamp": "2026-09-30T08:18:20.752913+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "LTC",
+      "score": 1.4,
+      "prix_ref": 66.72,
+      "type": "swing",
+      "timestamp": "2026-09-30T08:18:53.994689+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.4,
+      "prix_ref": 0.24763,
+      "type": "swing",
+      "timestamp": "2026-09-30T08:20:03.448744+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ETHFI",
+      "score": 1.4,
+      "prix_ref": 0.7549,
+      "type": "swing",
+      "timestamp": "2026-09-30T08:20:14.943982+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "DOT",
+      "score": 1.4,
+      "prix_ref": 1.1986,
+      "type": "swing",
+      "timestamp": "2026-09-30T08:20:25.650958+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "MON",
+      "score": 1.4,
+      "prix_ref": 0.02699,
+      "type": "swing",
+      "timestamp": "2026-09-30T08:20:35.965854+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
       "ticker": "VIRTUAL",
       "score": 1.4,
-      "prix_ref": 0.7815,
+      "prix_ref": 0.7775,
       "type": "swing",
-      "timestamp": "2026-09-30T04:20:57.133661+00:00",
+      "timestamp": "2026-09-30T08:20:48.501583+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "MEW",
+      "score": 1.4,
+      "prix_ref": 0.000548,
+      "type": "swing",
+      "timestamp": "2026-09-30T08:21:00.912364+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6106,6 +6106,10 @@
     {
       "date": "2026-09-30T04:15",
       "equity": 351.92
+    },
+    {
+      "date": "2026-09-30T08:15",
+      "equity": 349.43
     }
   ],
   "health_last_warn": 1790151679.7883637,
