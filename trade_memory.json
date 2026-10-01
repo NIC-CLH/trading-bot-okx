@@ -4173,7 +4173,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.360852875398486,
+  "_sd_prev_usdt_d": 6.364603162745763,
   "shadow_portfolio": [
     {
       "ticker": "WLD",
@@ -4199,15 +4199,6 @@
       "prix_ref": 0.009602,
       "type": "swing",
       "timestamp": "2026-10-01T08:21:19.639697+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "SOL",
-      "score": 1.4,
-      "prix_ref": 117.84,
-      "type": "swing",
-      "timestamp": "2026-10-01T12:15:46.623966+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -4307,6 +4298,15 @@
       "prix_ref": 0.7464,
       "type": "swing",
       "timestamp": "2026-10-01T12:21:30.229501+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.4,
+      "prix_ref": 117.43,
+      "type": "swing",
+      "timestamp": "2026-10-01T16:20:08.116722+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6165,6 +6165,10 @@
     {
       "date": "2026-10-01T12:13",
       "equity": 351.98
+    },
+    {
+      "date": "2026-10-01T16:18",
+      "equity": 349.92
     }
   ],
   "health_last_warn": 1790151679.7883637,
