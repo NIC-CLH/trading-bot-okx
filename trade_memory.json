@@ -1410,6 +1410,17 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.25
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "SCR",
+      "pnl_pct": -10.46,
+      "days_held": 0.0,
+      "exit_reason": "Stop ATR -10.5% <= -10.0%",
+      "valeur_usd": 63.3,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-02T07:31:53.861270+00:00"
     }
   ],
   "entries": [
