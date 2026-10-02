@@ -1421,6 +1421,20 @@
       "outcome": "loss",
       "exit_quality": null,
       "timestamp": "2026-10-02T07:31:53.861270+00:00"
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "SAND",
+      "pnl_pct": 22.22,
+      "days_held": 0.2,
+      "exit_reason": "Take profit +12% atteint (+22.2%) — capté en 30min 🎯",
+      "valeur_usd": 84.12,
+      "outcome": "win",
+      "exit_quality": 100.0,
+      "timestamp": "2026-10-02T12:02:26.510566+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 1.85
     }
   ],
   "entries": [
@@ -4408,7 +4422,7 @@
     "EIGEN": 8.01,
     "MOODENG": 3.77,
     "MOVE": 1.47,
-    "SAND": 11.99
+    "MANA": 5.78
   },
   "equity_history": [
     {
