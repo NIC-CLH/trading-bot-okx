@@ -1435,6 +1435,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 1.85
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "MANA",
+      "pnl_pct": 1.84,
+      "days_held": 0.1,
+      "exit_reason": "Trailing stop : pic +5.8% → plancher +2.9% | actuel +1.8%",
+      "valeur_usd": 71.27,
+      "outcome": "win",
+      "exit_quality": 31.9,
+      "timestamp": "2026-10-02T12:32:09.718004+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.53
     }
   ],
   "entries": [
@@ -4447,8 +4461,7 @@
     "CVC": 6.83,
     "EIGEN": 8.01,
     "MOODENG": 3.77,
-    "MOVE": 1.47,
-    "MANA": 5.78
+    "MOVE": 1.47
   },
   "equity_history": [
     {
