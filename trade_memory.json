@@ -4038,6 +4038,32 @@
       "score_tech_adj_raw": 2.28,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ENJ",
+      "score": 2.14,
+      "score_tech": 2.14,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 68.15,
+      "prix": 0.03315140878267547,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-10-02T20:17:38.865577+00:00",
+      "score_tech_raw": 2.14,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.14,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -4342,7 +4368,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.308875088298711,
+  "_sd_prev_usdt_d": 6.378757208441112,
   "shadow_portfolio": [
     {
       "ticker": "GRASS",
@@ -4417,33 +4443,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "WLD",
-      "score": 1.4,
-      "prix_ref": 0.5536,
-      "type": "swing",
-      "timestamp": "2026-10-02T12:21:06.242779+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "SOL",
-      "score": 1.4,
-      "prix_ref": 120.22,
-      "type": "swing",
-      "timestamp": "2026-10-02T16:19:03.272544+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "XRP",
-      "score": 1.4,
-      "prix_ref": 1.508,
-      "type": "swing",
-      "timestamp": "2026-10-02T16:19:16.442537+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "PUMP",
       "score": 1.4,
       "prix_ref": 0.006093,
@@ -4476,6 +4475,33 @@
       "prix_ref": 0.2537,
       "type": "swing",
       "timestamp": "2026-10-02T16:21:22.365475+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.4,
+      "prix_ref": 117.97,
+      "type": "swing",
+      "timestamp": "2026-10-02T20:20:19.968648+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "XRP",
+      "score": 1.4,
+      "prix_ref": 1.472,
+      "type": "swing",
+      "timestamp": "2026-10-02T20:20:32.732553+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "WLD",
+      "score": 1.4,
+      "prix_ref": 0.537,
+      "type": "swing",
+      "timestamp": "2026-10-02T20:20:46.642066+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6365,6 +6391,10 @@
     {
       "date": "2026-10-02T16:17",
       "equity": 358.22
+    },
+    {
+      "date": "2026-10-02T20:18",
+      "equity": 342.77
     }
   ],
   "health_last_warn": 1790151679.7883637,
