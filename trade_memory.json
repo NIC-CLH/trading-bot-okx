@@ -4408,7 +4408,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.354315563940061,
+  "_sd_prev_usdt_d": 6.34775791233774,
   "shadow_portfolio": [
     {
       "ticker": "STRK",
@@ -4474,74 +4474,74 @@
       "pnl_pct": null
     },
     {
+      "ticker": "MON",
+      "score": 1.4,
+      "prix_ref": 0.03122,
+      "type": "swing",
+      "timestamp": "2026-10-03T08:21:23.024627+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
       "ticker": "SOL",
       "score": 1.4,
-      "prix_ref": 119.36,
+      "prix_ref": 119.32,
       "type": "swing",
-      "timestamp": "2026-10-03T08:18:31.542215+00:00",
+      "timestamp": "2026-10-03T12:18:58.653692+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "XRP",
       "score": 1.4,
-      "prix_ref": 1.4835,
+      "prix_ref": 1.4863,
       "type": "swing",
-      "timestamp": "2026-10-03T08:18:42.765970+00:00",
+      "timestamp": "2026-10-03T12:19:15.364833+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "WLD",
       "score": 1.4,
-      "prix_ref": 0.5607,
+      "prix_ref": 0.5995,
       "type": "swing",
-      "timestamp": "2026-10-03T08:18:56.985224+00:00",
+      "timestamp": "2026-10-03T12:19:29.673781+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "PUMP",
       "score": 1.4,
-      "prix_ref": 0.005507,
+      "prix_ref": 0.005743,
       "type": "swing",
-      "timestamp": "2026-10-03T08:19:50.357603+00:00",
+      "timestamp": "2026-10-03T12:20:12.283255+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "LTC",
       "score": 1.4,
-      "prix_ref": 69.22,
+      "prix_ref": 69.76,
       "type": "swing",
-      "timestamp": "2026-10-03T08:20:06.079583+00:00",
+      "timestamp": "2026-10-03T12:20:25.587352+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "ONDO",
-      "score": 1.18,
-      "prix_ref": 0.482,
+      "score": 1.4,
+      "prix_ref": 0.4867,
       "type": "swing",
-      "timestamp": "2026-10-03T08:20:19.747414+00:00",
+      "timestamp": "2026-10-03T12:20:41.822763+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "LINK",
       "score": 1.4,
-      "prix_ref": 14.006,
+      "prix_ref": 13.903,
       "type": "swing",
-      "timestamp": "2026-10-03T08:20:36.101521+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "MON",
-      "score": 1.4,
-      "prix_ref": 0.03122,
-      "type": "swing",
-      "timestamp": "2026-10-03T08:21:23.024627+00:00",
+      "timestamp": "2026-10-03T12:20:55.833915+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6447,6 +6447,10 @@
     {
       "date": "2026-10-03T08:16",
       "equity": 362.69
+    },
+    {
+      "date": "2026-10-03T12:16",
+      "equity": 366.6
     }
   ],
   "health_last_warn": 1790151679.7883637,
