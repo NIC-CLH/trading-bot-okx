@@ -4382,26 +4382,8 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.3664372657244135,
+  "_sd_prev_usdt_d": 6.354438557774346,
   "shadow_portfolio": [
-    {
-      "ticker": "UNI",
-      "score": 1.4,
-      "prix_ref": 8.982,
-      "type": "swing",
-      "timestamp": "2026-10-03T00:12:56.065271+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "PUMP",
-      "score": 1.4,
-      "prix_ref": 0.005353,
-      "type": "swing",
-      "timestamp": "2026-10-03T00:13:08.713789+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "LTC",
       "score": 1.4,
@@ -4516,6 +4498,24 @@
       "prix_ref": 0.14869,
       "type": "swing",
       "timestamp": "2026-10-03T00:20:40.066187+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.4,
+      "prix_ref": 119.09,
+      "type": "swing",
+      "timestamp": "2026-10-03T04:21:14.642079+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "XRP",
+      "score": 1.4,
+      "prix_ref": 1.4868,
+      "type": "swing",
+      "timestamp": "2026-10-03T04:21:22.105349+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6412,6 +6412,10 @@
     {
       "date": "2026-10-03T00:09",
       "equity": 350.13
+    },
+    {
+      "date": "2026-10-03T04:19",
+      "equity": 365.32
     }
   ],
   "health_last_warn": 1790151679.7883637,
