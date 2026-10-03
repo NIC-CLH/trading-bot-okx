@@ -4368,23 +4368,95 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.378757208441112,
+  "_sd_prev_usdt_d": 6.3664372657244135,
   "shadow_portfolio": [
     {
-      "ticker": "GRASS",
+      "ticker": "UNI",
       "score": 1.4,
-      "prix_ref": 0.6836,
+      "prix_ref": 8.982,
       "type": "swing",
-      "timestamp": "2026-10-01T12:20:09.069853+00:00",
+      "timestamp": "2026-10-03T00:12:56.065271+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
-      "ticker": "RAY",
+      "ticker": "PUMP",
       "score": 1.4,
-      "prix_ref": 1.9281,
+      "prix_ref": 0.005353,
       "type": "swing",
-      "timestamp": "2026-10-01T12:20:21.022666+00:00",
+      "timestamp": "2026-10-03T00:13:08.713789+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "LTC",
+      "score": 1.4,
+      "prix_ref": 70.22,
+      "type": "swing",
+      "timestamp": "2026-10-03T00:13:38.419144+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ONDO",
+      "score": 1.4,
+      "prix_ref": 0.492,
+      "type": "swing",
+      "timestamp": "2026-10-03T00:13:50.384828+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ADA",
+      "score": 1.4,
+      "prix_ref": 0.2444,
+      "type": "swing",
+      "timestamp": "2026-10-03T00:14:02.043879+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "LINK",
+      "score": 1.4,
+      "prix_ref": 13.801,
+      "type": "swing",
+      "timestamp": "2026-10-03T00:14:16.875325+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SAND",
+      "score": 1.4,
+      "prix_ref": 0.06843,
+      "type": "swing",
+      "timestamp": "2026-10-03T00:14:58.933283+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "TAO",
+      "score": 1.4,
+      "prix_ref": 291.3,
+      "type": "swing",
+      "timestamp": "2026-10-03T00:15:15.011791+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STRK",
+      "score": 1.4,
+      "prix_ref": 0.04275,
+      "type": "swing",
+      "timestamp": "2026-10-03T00:15:30.133951+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "APE",
+      "score": 1.4,
+      "prix_ref": 0.16558,
+      "type": "swing",
+      "timestamp": "2026-10-03T00:15:45.436550+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -4393,115 +4465,43 @@
       "score": 1.4,
       "prix_ref": 3.308,
       "type": "swing",
-      "timestamp": "2026-10-01T12:20:31.989614+00:00",
+      "timestamp": "2026-10-03T00:18:19.943266+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
-      "ticker": "VIRTUAL",
+      "ticker": "MAGIC",
       "score": 1.4,
-      "prix_ref": 0.8013,
+      "prix_ref": 0.05889,
       "type": "swing",
-      "timestamp": "2026-10-01T12:20:42.624631+00:00",
+      "timestamp": "2026-10-03T00:19:56.599020+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
-      "ticker": "ETHFI",
+      "ticker": "MINA",
       "score": 1.4,
-      "prix_ref": 0.7464,
+      "prix_ref": 0.16313,
       "type": "swing",
-      "timestamp": "2026-10-01T12:21:30.229501+00:00",
+      "timestamp": "2026-10-03T00:20:10.155282+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
-      "ticker": "AAVE",
+      "ticker": "SPK",
       "score": 1.4,
-      "prix_ref": 183.02,
+      "prix_ref": 0.026,
       "type": "swing",
-      "timestamp": "2026-10-02T08:19:45.075751+00:00",
+      "timestamp": "2026-10-03T00:20:23.933531+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
-      "ticker": "MON",
+      "ticker": "DYDX",
       "score": 1.4,
-      "prix_ref": 0.03366,
+      "prix_ref": 0.14869,
       "type": "swing",
-      "timestamp": "2026-10-02T08:19:57.959494+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "LINK",
-      "score": 1.4,
-      "prix_ref": 14.367,
-      "type": "swing",
-      "timestamp": "2026-10-02T08:21:21.263214+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "PUMP",
-      "score": 1.4,
-      "prix_ref": 0.006093,
-      "type": "swing",
-      "timestamp": "2026-10-02T16:20:44.375487+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "LTC",
-      "score": 1.4,
-      "prix_ref": 70.39,
-      "type": "swing",
-      "timestamp": "2026-10-02T16:20:57.401845+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ONDO",
-      "score": 1.4,
-      "prix_ref": 0.5127,
-      "type": "swing",
-      "timestamp": "2026-10-02T16:21:10.426767+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ADA",
-      "score": 1.4,
-      "prix_ref": 0.2537,
-      "type": "swing",
-      "timestamp": "2026-10-02T16:21:22.365475+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "SOL",
-      "score": 1.4,
-      "prix_ref": 117.97,
-      "type": "swing",
-      "timestamp": "2026-10-02T20:20:19.968648+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "XRP",
-      "score": 1.4,
-      "prix_ref": 1.472,
-      "type": "swing",
-      "timestamp": "2026-10-02T20:20:32.732553+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "WLD",
-      "score": 1.4,
-      "prix_ref": 0.537,
-      "type": "swing",
-      "timestamp": "2026-10-02T20:20:46.642066+00:00",
+      "timestamp": "2026-10-03T00:20:40.066187+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6395,6 +6395,10 @@
     {
       "date": "2026-10-02T20:18",
       "equity": 342.77
+    },
+    {
+      "date": "2026-10-03T00:09",
+      "equity": 350.13
     }
   ],
   "health_last_warn": 1790151679.7883637,
