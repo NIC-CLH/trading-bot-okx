@@ -1449,6 +1449,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.53
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ENJ",
+      "pnl_pct": 12.15,
+      "days_held": 0.4,
+      "exit_reason": "Take profit +12% atteint (+12.2%) — capté en 30min 🎯",
+      "valeur_usd": 79.63,
+      "outcome": "win",
+      "exit_quality": 100.0,
+      "timestamp": "2026-10-03T03:02:07.061942+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.14
     }
   ],
   "entries": [
@@ -4540,8 +4554,7 @@
     "EIGEN": 8.01,
     "MOODENG": 3.77,
     "MOVE": 2.39,
-    "AXS": 0.56,
-    "ENJ": 7.75
+    "AXS": 0.56
   },
   "equity_history": [
     {
