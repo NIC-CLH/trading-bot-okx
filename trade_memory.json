@@ -4408,7 +4408,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.34775791233774,
+  "_sd_prev_usdt_d": 6.341568781202847,
   "shadow_portfolio": [
     {
       "ticker": "STRK",
@@ -4483,33 +4483,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "SOL",
-      "score": 1.4,
-      "prix_ref": 119.32,
-      "type": "swing",
-      "timestamp": "2026-10-03T12:18:58.653692+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "XRP",
-      "score": 1.4,
-      "prix_ref": 1.4863,
-      "type": "swing",
-      "timestamp": "2026-10-03T12:19:15.364833+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "WLD",
-      "score": 1.4,
-      "prix_ref": 0.5995,
-      "type": "swing",
-      "timestamp": "2026-10-03T12:19:29.673781+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "PUMP",
       "score": 1.4,
       "prix_ref": 0.005743,
@@ -4542,6 +4515,33 @@
       "prix_ref": 13.903,
       "type": "swing",
       "timestamp": "2026-10-03T12:20:55.833915+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SOL",
+      "score": 1.4,
+      "prix_ref": 119.56,
+      "type": "swing",
+      "timestamp": "2026-10-03T16:20:50.171502+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "XRP",
+      "score": 1.34,
+      "prix_ref": 1.4865,
+      "type": "swing",
+      "timestamp": "2026-10-03T16:20:59.226283+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "WLD",
+      "score": 1.4,
+      "prix_ref": 0.5941,
+      "type": "swing",
+      "timestamp": "2026-10-03T16:21:10.110851+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6451,6 +6451,10 @@
     {
       "date": "2026-10-03T12:16",
       "equity": 366.6
+    },
+    {
+      "date": "2026-10-03T16:18",
+      "equity": 367.75
     }
   ],
   "health_last_warn": 1790151679.7883637,
