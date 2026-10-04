@@ -4436,17 +4436,8 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.354922380542233,
+  "_sd_prev_usdt_d": 6.357404913196088,
   "shadow_portfolio": [
-    {
-      "ticker": "MON",
-      "score": 1.4,
-      "prix_ref": 0.03436,
-      "type": "swing",
-      "timestamp": "2026-10-04T08:18:29.156771+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "TAO",
       "score": 1.4,
@@ -4511,38 +4502,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "WLD",
-      "score": 1.4,
-      "prix_ref": 0.5813,
-      "type": "swing",
-      "timestamp": "2026-10-04T12:10:41.015260+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "PUMP",
-      "score": 1.27,
-      "prix_ref": 0.006271,
-      "type": "swing",
-      "timestamp": "2026-10-04T12:10:55.081996+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ATH",
       "score": 1.4,
       "prix_ref": 0.007608,
       "type": "swing",
       "timestamp": "2026-10-04T12:12:16.575104+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "LINK",
-      "score": 1.4,
-      "prix_ref": 14.108,
-      "type": "swing",
-      "timestamp": "2026-10-04T12:12:55.157500+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -4570,6 +4534,42 @@
       "prix_ref": 0.10831,
       "type": "swing",
       "timestamp": "2026-10-04T12:18:03.652455+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PUMP",
+      "score": 1.4,
+      "prix_ref": 0.006702,
+      "type": "swing",
+      "timestamp": "2026-10-04T16:20:13.279306+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "WLD",
+      "score": 1.4,
+      "prix_ref": 0.584,
+      "type": "swing",
+      "timestamp": "2026-10-04T16:20:25.579224+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "MON",
+      "score": 1.4,
+      "prix_ref": 0.03356,
+      "type": "swing",
+      "timestamp": "2026-10-04T16:20:59.208443+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "LINK",
+      "score": 1.4,
+      "prix_ref": 14.131,
+      "type": "swing",
+      "timestamp": "2026-10-04T16:21:41.191596+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6502,6 +6502,10 @@
     {
       "date": "2026-10-04T12:07",
       "equity": 390.09
+    },
+    {
+      "date": "2026-10-04T16:17",
+      "equity": 388.61
     }
   ],
   "health_last_warn": 1790151679.7883637,
