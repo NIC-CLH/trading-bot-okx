@@ -4408,140 +4408,140 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.331215896722704,
+  "_sd_prev_usdt_d": 6.325668823353032,
   "shadow_portfolio": [
-    {
-      "ticker": "DYDX",
-      "score": 1.4,
-      "prix_ref": 0.14869,
-      "type": "swing",
-      "timestamp": "2026-10-03T00:20:40.066187+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ONDO",
-      "score": 1.4,
-      "prix_ref": 0.4867,
-      "type": "swing",
-      "timestamp": "2026-10-03T12:20:41.822763+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "PENGU",
-      "score": 1.14,
-      "prix_ref": 0.009198,
-      "type": "swing",
-      "timestamp": "2026-10-03T20:21:22.359029+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "SOL",
-      "score": 1.4,
-      "prix_ref": 119.76,
-      "type": "swing",
-      "timestamp": "2026-10-04T00:18:04.102081+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "WLD",
-      "score": 1.4,
-      "prix_ref": 0.595,
-      "type": "swing",
-      "timestamp": "2026-10-04T00:18:15.155705+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "XRP",
-      "score": 1.27,
-      "prix_ref": 1.4864,
-      "type": "swing",
-      "timestamp": "2026-10-04T00:18:23.951557+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "STRK",
-      "score": 1.4,
-      "prix_ref": 0.05511,
-      "type": "swing",
-      "timestamp": "2026-10-04T00:18:37.001401+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "UNI",
-      "score": 1.4,
-      "prix_ref": 9.049,
-      "type": "swing",
-      "timestamp": "2026-10-04T00:18:48.300796+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "PUMP",
-      "score": 1.4,
-      "prix_ref": 0.006262,
-      "type": "swing",
-      "timestamp": "2026-10-04T00:19:11.518161+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "LTC",
       "score": 1.4,
-      "prix_ref": 70.11,
+      "prix_ref": 70.33,
       "type": "swing",
-      "timestamp": "2026-10-04T00:19:22.446243+00:00",
+      "timestamp": "2026-10-04T04:17:02.294368+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "MON",
       "score": 1.4,
-      "prix_ref": 0.03411,
+      "prix_ref": 0.03507,
       "type": "swing",
-      "timestamp": "2026-10-04T00:19:49.479524+00:00",
+      "timestamp": "2026-10-04T04:17:14.836540+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "LINK",
       "score": 1.4,
-      "prix_ref": 14.123,
+      "prix_ref": 14.027,
       "type": "swing",
-      "timestamp": "2026-10-04T00:19:59.453254+00:00",
+      "timestamp": "2026-10-04T04:17:43.149806+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STX",
+      "score": 1.4,
+      "prix_ref": 0.3739,
+      "type": "swing",
+      "timestamp": "2026-10-04T04:17:58.393080+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "TAO",
+      "score": 1.4,
+      "prix_ref": 306.3,
+      "type": "swing",
+      "timestamp": "2026-10-04T04:18:11.329400+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "ADA",
-      "score": 1.4,
-      "prix_ref": 0.2441,
+      "score": 1.34,
+      "prix_ref": 0.2425,
       "type": "swing",
-      "timestamp": "2026-10-04T00:20:48.333844+00:00",
+      "timestamp": "2026-10-04T04:18:38.069156+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "KITE",
+      "score": 1.4,
+      "prix_ref": 0.15218,
+      "type": "swing",
+      "timestamp": "2026-10-04T04:19:05.172797+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "MANA",
-      "score": 1.22,
-      "prix_ref": 0.10465,
+      "score": 1.4,
+      "prix_ref": 0.10314,
       "type": "swing",
-      "timestamp": "2026-10-04T00:20:59.996432+00:00",
+      "timestamp": "2026-10-04T04:19:31.491864+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
-      "ticker": "ENA",
+      "ticker": "ATH",
       "score": 1.4,
-      "prix_ref": 0.23927,
+      "prix_ref": 0.007192,
       "type": "swing",
-      "timestamp": "2026-10-04T00:21:15.704192+00:00",
+      "timestamp": "2026-10-04T04:19:45.012201+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "RAY",
+      "score": 1.4,
+      "prix_ref": 2.045,
+      "type": "swing",
+      "timestamp": "2026-10-04T04:19:59.895074+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZAMA",
+      "score": 1.4,
+      "prix_ref": 0.0891,
+      "type": "swing",
+      "timestamp": "2026-10-04T04:20:38.879128+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ONE",
+      "score": 1.33,
+      "prix_ref": 0.002026,
+      "type": "swing",
+      "timestamp": "2026-10-04T04:20:47.839450+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AXS",
+      "score": 1.4,
+      "prix_ref": 1.3695,
+      "type": "swing",
+      "timestamp": "2026-10-04T04:21:01.566944+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "MORPHO",
+      "score": 1.4,
+      "prix_ref": 2.7399,
+      "type": "swing",
+      "timestamp": "2026-10-04T04:21:15.577999+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "VIRTUAL",
+      "score": 1.4,
+      "prix_ref": 0.7896,
+      "type": "swing",
+      "timestamp": "2026-10-04T04:21:23.787180+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6464,6 +6464,10 @@
     {
       "date": "2026-10-04T00:16",
       "equity": 372.21
+    },
+    {
+      "date": "2026-10-04T04:13",
+      "equity": 381.18
     }
   ],
   "health_last_warn": 1790151679.7883637,
