@@ -1477,6 +1477,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.1
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "AXS",
+      "pnl_pct": 14.21,
+      "days_held": 1.7,
+      "exit_reason": "Take profit +12% atteint (+14.2%) — capté en 30min 🎯",
+      "valeur_usd": 82.0,
+      "outcome": "win",
+      "exit_quality": 100.0,
+      "timestamp": "2026-10-04T06:31:55.433458+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.28
     }
   ],
   "entries": [
@@ -4594,7 +4608,6 @@
     "EIGEN": 8.01,
     "MOODENG": 3.77,
     "MOVE": 2.39,
-    "AXS": 11.9,
     "ZK": 2.07
   },
   "equity_history": [
