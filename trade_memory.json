@@ -1463,6 +1463,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.14
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ATH",
+      "pnl_pct": 16.75,
+      "days_held": 1.1,
+      "exit_reason": "Take profit +12% atteint (+16.7%) — capté en 30min 🎯",
+      "valeur_usd": 84.6,
+      "outcome": "win",
+      "exit_quality": 100.0,
+      "timestamp": "2026-10-04T06:02:16.663412+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.1
     }
   ],
   "entries": [
@@ -4581,7 +4595,6 @@
     "MOODENG": 3.77,
     "MOVE": 2.39,
     "AXS": 11.9,
-    "ATH": 10.56,
     "ZK": 2.07
   },
   "equity_history": [
@@ -6627,6 +6640,10 @@
     "FOGO": {
       "reason": "OKX API error : All operations failed (code 1)",
       "since": "2026-09-27T23:04"
+    },
+    "2Z": {
+      "reason": "OKX API error : All operations failed (code 1)",
+      "since": "2026-10-04T06:05"
     }
   },
   "alert_cooldowns": {
