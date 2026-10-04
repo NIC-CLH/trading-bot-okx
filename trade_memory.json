@@ -4198,6 +4198,32 @@
       "score_tech_adj_raw": 2.67,
       "score_rs_raw": -1.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "XRP",
+      "score": 2.05,
+      "score_tech": 0.0,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bear",
+      "vol_regime": "normal",
+      "taille_usd": 65.9,
+      "prix": 1.5043,
+      "stop": 1.459171,
+      "btc_uptrend": true,
+      "late_entry": false,
+      "timestamp": "2026-10-04T20:33:30.547925+00:00",
+      "score_tech_raw": 0.0,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 0.0,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -6767,6 +6793,7 @@
   },
   "ev_history": [
     3.21,
-    3.21
+    3.21,
+    2.47
   ]
 }
