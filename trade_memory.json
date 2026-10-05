@@ -4554,7 +4554,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.277885919755794,
+  "_sd_prev_usdt_d": 6.3009538270552055,
   "shadow_portfolio": [
     {
       "ticker": "RAY",
@@ -4562,15 +4562,6 @@
       "prix_ref": 2.0975,
       "type": "swing",
       "timestamp": "2026-10-05T00:20:53.261274+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "STRK",
-      "score": 1.4,
-      "prix_ref": 0.05909,
-      "type": "swing",
-      "timestamp": "2026-10-05T04:17:05.089497+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -4656,15 +4647,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "SENT",
-      "score": 1.4,
-      "prix_ref": 0.02335,
-      "type": "swing",
-      "timestamp": "2026-10-05T04:20:27.818988+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "PUMP",
       "score": 1.38,
       "prix_ref": 0.006464,
@@ -4674,20 +4656,38 @@
       "pnl_pct": null
     },
     {
-      "ticker": "WLD",
-      "score": 1.4,
-      "prix_ref": 0.5833,
-      "type": "swing",
-      "timestamp": "2026-10-05T08:20:21.866637+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "LTC",
       "score": 1.4,
       "prix_ref": 70.37,
       "type": "swing",
       "timestamp": "2026-10-05T08:21:00.019086+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STRK",
+      "score": 1.4,
+      "prix_ref": 0.0559,
+      "type": "swing",
+      "timestamp": "2026-10-05T12:16:27.270200+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "WLD",
+      "score": 1.4,
+      "prix_ref": 0.5725,
+      "type": "swing",
+      "timestamp": "2026-10-05T12:16:40.149999+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SENT",
+      "score": 1.4,
+      "prix_ref": 0.02359,
+      "type": "swing",
+      "timestamp": "2026-10-05T12:19:31.642324+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6642,6 +6642,10 @@
     {
       "date": "2026-10-05T08:16",
       "equity": 287.81
+    },
+    {
+      "date": "2026-10-05T12:13",
+      "equity": 286.65
     }
   ],
   "health_last_warn": 1790151679.7883637,
