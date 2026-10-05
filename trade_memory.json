@@ -4692,28 +4692,7 @@
       "pnl_pct": null
     }
   ],
-  "pending_signals": [
-    {
-      "ticker": "SOL",
-      "score": 2.11,
-      "prix_ref": 120.75,
-      "vol_regime": "calm",
-      "regime": "bear",
-      "timestamp": "2026-10-04T20:20:24.799645+00:00",
-      "ttl": 14400,
-      "stop_atr": 117.12
-    },
-    {
-      "ticker": "XRP",
-      "score": 2.05,
-      "prix_ref": 1.5056,
-      "vol_regime": "normal",
-      "regime": "bear",
-      "timestamp": "2026-10-04T20:20:24.799660+00:00",
-      "ttl": 14400,
-      "stop_atr": 1.3362
-    }
-  ],
+  "pending_signals": [],
   "reentry_thresholds": {
     "ASTER": {
       "threshold": 1.9,
