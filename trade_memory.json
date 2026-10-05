@@ -4554,17 +4554,8 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.3009538270552055,
+  "_sd_prev_usdt_d": 6.300778883682382,
   "shadow_portfolio": [
-    {
-      "ticker": "RAY",
-      "score": 1.4,
-      "prix_ref": 2.0975,
-      "type": "swing",
-      "timestamp": "2026-10-05T00:20:53.261274+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "ADA",
       "score": 1.4,
@@ -4688,6 +4679,15 @@
       "prix_ref": 0.02359,
       "type": "swing",
       "timestamp": "2026-10-05T12:19:31.642324+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ETH",
+      "score": 1.37,
+      "prix_ref": 2684.55,
+      "type": "swing",
+      "timestamp": "2026-10-05T16:20:03.173855+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6646,6 +6646,10 @@
     {
       "date": "2026-10-05T12:13",
       "equity": 286.65
+    },
+    {
+      "date": "2026-10-05T16:18",
+      "equity": 281.9
     }
   ],
   "health_last_warn": 1790151679.7883637,
