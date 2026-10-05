@@ -4554,35 +4554,8 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.311037532385809,
+  "_sd_prev_usdt_d": 6.277885919755794,
   "shadow_portfolio": [
-    {
-      "ticker": "STX",
-      "score": 1.4,
-      "prix_ref": 0.39,
-      "type": "swing",
-      "timestamp": "2026-10-05T00:20:03.366490+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "TAO",
-      "score": 1.4,
-      "prix_ref": 303.7,
-      "type": "swing",
-      "timestamp": "2026-10-05T00:20:14.555872+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "KITE",
-      "score": 1.4,
-      "prix_ref": 0.14599,
-      "type": "swing",
-      "timestamp": "2026-10-05T00:20:41.471371+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "RAY",
       "score": 1.4,
@@ -4688,6 +4661,33 @@
       "prix_ref": 0.02335,
       "type": "swing",
       "timestamp": "2026-10-05T04:20:27.818988+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PUMP",
+      "score": 1.38,
+      "prix_ref": 0.006464,
+      "type": "swing",
+      "timestamp": "2026-10-05T08:20:10.277855+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "WLD",
+      "score": 1.4,
+      "prix_ref": 0.5833,
+      "type": "swing",
+      "timestamp": "2026-10-05T08:20:21.866637+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "LTC",
+      "score": 1.4,
+      "prix_ref": 70.37,
+      "type": "swing",
+      "timestamp": "2026-10-05T08:21:00.019086+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6638,6 +6638,10 @@
     {
       "date": "2026-10-05T04:14",
       "equity": 286.83
+    },
+    {
+      "date": "2026-10-05T08:16",
+      "equity": 287.81
     }
   ],
   "health_last_warn": 1790151679.7883637,
