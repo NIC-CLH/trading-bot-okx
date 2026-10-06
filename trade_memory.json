@@ -4554,26 +4554,8 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.284102935972408,
+  "_sd_prev_usdt_d": 6.3189316686283306,
   "shadow_portfolio": [
-    {
-      "ticker": "ADA",
-      "score": 1.4,
-      "prix_ref": 0.2675,
-      "type": "swing",
-      "timestamp": "2026-10-05T04:17:18.813485+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "LINK",
-      "score": 1.4,
-      "prix_ref": 14.14,
-      "type": "swing",
-      "timestamp": "2026-10-05T04:18:54.987877+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "VIRTUAL",
       "score": 1.4,
@@ -4607,15 +4589,6 @@
       "prix_ref": 0.006464,
       "type": "swing",
       "timestamp": "2026-10-05T08:20:10.277855+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "WLD",
-      "score": 1.4,
-      "prix_ref": 0.5725,
-      "type": "swing",
-      "timestamp": "2026-10-05T12:16:40.149999+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -4683,11 +4656,38 @@
       "pnl_pct": null
     },
     {
+      "ticker": "ADA",
+      "score": 1.4,
+      "prix_ref": 0.2729,
+      "type": "swing",
+      "timestamp": "2026-10-06T08:20:22.602490+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "WLD",
+      "score": 1.4,
+      "prix_ref": 0.5649,
+      "type": "swing",
+      "timestamp": "2026-10-06T08:20:34.990516+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
       "ticker": "ENA",
       "score": 1.4,
-      "prix_ref": 0.24516,
+      "prix_ref": 0.245,
       "type": "swing",
-      "timestamp": "2026-10-06T04:21:14.449701+00:00",
+      "timestamp": "2026-10-06T08:20:54.633854+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AAVE",
+      "score": 1.4,
+      "prix_ref": 180.92,
+      "type": "swing",
+      "timestamp": "2026-10-06T08:21:12.973611+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6658,6 +6658,10 @@
     {
       "date": "2026-10-06T04:18",
       "equity": 282.45
+    },
+    {
+      "date": "2026-10-06T08:17",
+      "equity": 284.45
     }
   ],
   "health_last_warn": 1790151679.7883637,
