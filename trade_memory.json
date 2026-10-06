@@ -4554,7 +4554,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.261183293017049,
+  "_sd_prev_usdt_d": 6.284102935972408,
   "shadow_portfolio": [
     {
       "ticker": "ADA",
@@ -4638,15 +4638,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ENA",
-      "score": 1.4,
-      "prix_ref": 0.25169,
-      "type": "swing",
-      "timestamp": "2026-10-06T00:19:39.225582+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "STRK",
       "score": 1.4,
       "prix_ref": 0.05319,
@@ -4688,6 +4679,15 @@
       "prix_ref": 0.03146,
       "type": "swing",
       "timestamp": "2026-10-06T00:21:35.258391+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.4,
+      "prix_ref": 0.24516,
+      "type": "swing",
+      "timestamp": "2026-10-06T04:21:14.449701+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6654,6 +6654,10 @@
     {
       "date": "2026-10-06T00:15",
       "equity": 286.04
+    },
+    {
+      "date": "2026-10-06T04:18",
+      "equity": 282.45
     }
   ],
   "health_last_warn": 1790151679.7883637,
