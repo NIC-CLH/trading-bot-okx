@@ -4554,7 +4554,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.300778883682382,
+  "_sd_prev_usdt_d": 6.261183293017049,
   "shadow_portfolio": [
     {
       "ticker": "ADA",
@@ -4566,47 +4566,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "MON",
-      "score": 1.4,
-      "prix_ref": 0.03254,
-      "type": "swing",
-      "timestamp": "2026-10-05T04:18:32.414298+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ONDO",
-      "score": 1.39,
-      "prix_ref": 0.4984,
-      "type": "swing",
-      "timestamp": "2026-10-05T04:18:43.052419+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "LINK",
       "score": 1.4,
       "prix_ref": 14.14,
       "type": "swing",
       "timestamp": "2026-10-05T04:18:54.987877+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ENA",
-      "score": 1.4,
-      "prix_ref": 0.23963,
-      "type": "swing",
-      "timestamp": "2026-10-05T04:19:22.135845+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "PENGU",
-      "score": 1.4,
-      "prix_ref": 0.00992,
-      "type": "swing",
-      "timestamp": "2026-10-05T04:19:44.693160+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -4647,24 +4611,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "LTC",
-      "score": 1.4,
-      "prix_ref": 70.37,
-      "type": "swing",
-      "timestamp": "2026-10-05T08:21:00.019086+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "STRK",
-      "score": 1.4,
-      "prix_ref": 0.0559,
-      "type": "swing",
-      "timestamp": "2026-10-05T12:16:27.270200+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "WLD",
       "score": 1.4,
       "prix_ref": 0.5725,
@@ -4688,6 +4634,60 @@
       "prix_ref": 2684.55,
       "type": "swing",
       "timestamp": "2026-10-05T16:20:03.173855+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ENA",
+      "score": 1.4,
+      "prix_ref": 0.25169,
+      "type": "swing",
+      "timestamp": "2026-10-06T00:19:39.225582+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STRK",
+      "score": 1.4,
+      "prix_ref": 0.05319,
+      "type": "swing",
+      "timestamp": "2026-10-06T00:19:53.144461+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ONDO",
+      "score": 1.4,
+      "prix_ref": 0.4999,
+      "type": "swing",
+      "timestamp": "2026-10-06T00:20:08.085598+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "LTC",
+      "score": 1.4,
+      "prix_ref": 69.98,
+      "type": "swing",
+      "timestamp": "2026-10-06T00:20:19.767295+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "PENGU",
+      "score": 1.4,
+      "prix_ref": 0.009668,
+      "type": "swing",
+      "timestamp": "2026-10-06T00:20:48.899431+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "MON",
+      "score": 1.4,
+      "prix_ref": 0.03146,
+      "type": "swing",
+      "timestamp": "2026-10-06T00:21:35.258391+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6650,6 +6650,10 @@
     {
       "date": "2026-10-05T16:18",
       "equity": 281.9
+    },
+    {
+      "date": "2026-10-06T00:15",
+      "equity": 286.04
     }
   ],
   "health_last_warn": 1790151679.7883637,
