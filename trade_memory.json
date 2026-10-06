@@ -4554,35 +4554,8 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.3189316686283306,
+  "_sd_prev_usdt_d": 6.292130773835984,
   "shadow_portfolio": [
-    {
-      "ticker": "VIRTUAL",
-      "score": 1.4,
-      "prix_ref": 0.869,
-      "type": "swing",
-      "timestamp": "2026-10-05T04:19:53.782614+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "IOTA",
-      "score": 1.4,
-      "prix_ref": 0.05808,
-      "type": "swing",
-      "timestamp": "2026-10-05T04:20:05.726232+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "PROS",
-      "score": 1.4,
-      "prix_ref": 0.787,
-      "type": "swing",
-      "timestamp": "2026-10-05T04:20:16.733553+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "PUMP",
       "score": 1.38,
@@ -4593,38 +4566,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "SENT",
-      "score": 1.4,
-      "prix_ref": 0.02359,
-      "type": "swing",
-      "timestamp": "2026-10-05T12:19:31.642324+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ETH",
       "score": 1.37,
       "prix_ref": 2684.55,
       "type": "swing",
       "timestamp": "2026-10-05T16:20:03.173855+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "STRK",
-      "score": 1.4,
-      "prix_ref": 0.05319,
-      "type": "swing",
-      "timestamp": "2026-10-06T00:19:53.144461+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ONDO",
-      "score": 1.4,
-      "prix_ref": 0.4999,
-      "type": "swing",
-      "timestamp": "2026-10-06T00:20:08.085598+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -4656,38 +4602,92 @@
       "pnl_pct": null
     },
     {
+      "ticker": "AAVE",
+      "score": 1.4,
+      "prix_ref": 180.92,
+      "type": "swing",
+      "timestamp": "2026-10-06T08:21:12.973611+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZEC",
+      "score": 1.29,
+      "prix_ref": 1373.52,
+      "type": "swing",
+      "timestamp": "2026-10-06T12:16:50.430179+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
       "ticker": "ADA",
       "score": 1.4,
-      "prix_ref": 0.2729,
+      "prix_ref": 0.278,
       "type": "swing",
-      "timestamp": "2026-10-06T08:20:22.602490+00:00",
+      "timestamp": "2026-10-06T12:17:54.837158+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "WLD",
       "score": 1.4,
-      "prix_ref": 0.5649,
+      "prix_ref": 0.5636,
       "type": "swing",
-      "timestamp": "2026-10-06T08:20:34.990516+00:00",
+      "timestamp": "2026-10-06T12:18:06.700295+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "ENA",
       "score": 1.4,
-      "prix_ref": 0.245,
+      "prix_ref": 0.24133,
       "type": "swing",
-      "timestamp": "2026-10-06T08:20:54.633854+00:00",
+      "timestamp": "2026-10-06T12:18:20.573611+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
-      "ticker": "AAVE",
+      "ticker": "STRK",
       "score": 1.4,
-      "prix_ref": 180.92,
+      "prix_ref": 0.05202,
       "type": "swing",
-      "timestamp": "2026-10-06T08:21:12.973611+00:00",
+      "timestamp": "2026-10-06T12:18:33.134855+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ONDO",
+      "score": 1.4,
+      "prix_ref": 0.5004,
+      "type": "swing",
+      "timestamp": "2026-10-06T12:18:46.628136+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "API3",
+      "score": 1.4,
+      "prix_ref": 0.3574,
+      "type": "swing",
+      "timestamp": "2026-10-06T12:19:53.122792+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ICP",
+      "score": 1.4,
+      "prix_ref": 3.449,
+      "type": "swing",
+      "timestamp": "2026-10-06T12:20:08.457671+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SENT",
+      "score": 1.4,
+      "prix_ref": 0.02555,
+      "type": "swing",
+      "timestamp": "2026-10-06T12:20:37.095472+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6662,6 +6662,10 @@
     {
       "date": "2026-10-06T08:17",
       "equity": 284.45
+    },
+    {
+      "date": "2026-10-06T12:14",
+      "equity": 289.09
     }
   ],
   "health_last_warn": 1790151679.7883637,
