@@ -666,7 +666,45 @@ def scan_xrp_binance():
 #
 # P3 — Stop ATR          : comportement existant, inchangé.
 
-TP_PCT         = 12.0  # Take profit — vente complète
+TP_PCT          = 12.0  # Take profit de base
+TP_EXTENDED_PCT = 20.0  # Cible etendue si le signal tient (cf. P1)
+
+
+def _score_technique(ticker: str) -> float | None:
+    """
+    Score technique courant d'un ticker, pour decider d'etendre un take profit.
+    Retourne None si indisponible : dans ce cas on prend le profit a +12%,
+    comportement prudent par defaut.
+    """
+    try:
+        data = okx.get_all_ohlcv([ticker], days=60)
+        tech = ts.run(data).get(ticker, {})
+        if "erreur" in tech:
+            return None
+        return tech.get("signal", {}).get("score")
+    except Exception as e:
+        logger.debug(f"_score_technique({ticker}) : {e}")
+        return None
+
+
+def _plus_bas_recent(ticker: str, heures: int = 1) -> float | None:
+    """
+    Plus bas atteint sur la derniere heure (bougies 15min).
+    Sert a detecter un stop franchi entre deux cycles de 30min.
+    Retourne None si indisponible : on retombe alors sur le prix courant.
+    """
+    try:
+        data = okx._get("/api/v5/market/candles", {
+            "instId": f"{ticker.upper()}-{okx.QUOTE_CCY}",
+            "bar": "15m",
+            "limit": str(max(2, heures * 4)),
+        })
+        if not data:
+            return None
+        return min(float(c[3]) for c in data)   # index 3 = low
+    except Exception as e:
+        logger.debug(f"_plus_bas_recent({ticker}) : {e}")
+        return None
 TRAIL_ACTIVATE = 5.0   # Trailing stop actif dès +5% de gain peak
 TRAIL_RATIO    = 0.50  # Protéger 50% du gain peak (peak +8% → floor +4%)
 
@@ -707,16 +745,42 @@ def emergency_stop_check() -> list[str]:
             sell_reason = None
             sell_emoji  = "🚨"
 
-            # P1 : Take profit +12% capté en 30min
+            # P1 : Take profit — etendu a +20% si le signal tient encore
+            #
+            # Avant le 07/10/2026, ce TP etait fixe a +12% sans regarder le
+            # score. Comme ce cycle tourne 8x plus souvent que le 4h, il
+            # gagnait toujours la course et la regle d'extension du
+            # position_manager (score >= 2.0 -> viser +20%) n'a jamais pu
+            # s'appliquer. Mesure sur les sorties du 23/09 au 07/10 : apres
+            # une sortie a +12%, IOTA a continue de +18.7%, HUMA de +7.8%,
+            # ENJ de +3.8%.
             if pnl_pct >= TP_PCT:
-                sell_reason = (
-                    f"Take profit +{TP_PCT:.0f}% atteint ({pnl_pct:+.1f}%) "
-                    f"— capté en 30min 🎯"
+                score_actuel = _score_technique(ticker)
+                etendu = (
+                    score_actuel is not None
+                    and score_actuel >= pm.STRONG_SCORE_MIN
+                    and pnl_pct < TP_EXTENDED_PCT
                 )
-                sell_emoji = "🎯"
+                if etendu:
+                    logger.info(
+                        f"[TP etendu] {ticker} : {pnl_pct:+.1f}% mais score "
+                        f"{score_actuel:+.2f} >= {pm.STRONG_SCORE_MIN} "
+                        f"-> on laisse courir jusqu'a +{TP_EXTENDED_PCT:.0f}%"
+                    )
+                    # Pas de vente ce cycle : le trailing stop prend le relais
+                    # comme filet si le prix se retourne.
+                else:
+                    seuil = TP_EXTENDED_PCT if pnl_pct >= TP_EXTENDED_PCT else TP_PCT
+                    sell_reason = (
+                        f"Take profit +{seuil:.0f}% atteint ({pnl_pct:+.1f}%) "
+                        f"— capté en 30min 🎯"
+                    )
+                    sell_emoji = "🎯"
 
             # P2 : Trailing stop — peak atteint +5% et on revient sous 50% du pic
-            elif peak_pnl >= TRAIL_ACTIVATE:
+            # `if` et non `elif` : une position en TP etendu doit rester
+            # protegee par le trailing si le prix se retourne.
+            if sell_reason is None and peak_pnl >= TRAIL_ACTIVATE:
                 trail_floor = round(peak_pnl * TRAIL_RATIO, 2)
                 if pnl_pct < trail_floor:
                     sell_reason = (
@@ -731,14 +795,28 @@ def emergency_stop_check() -> list[str]:
                     )
 
             # P3 : Stop ATR — prix figé à l'entrée (pas de drift)
-            else:
+            if sell_reason is None and peak_pnl < TRAIL_ACTIVATE:
                 # Priorité : stop stocké au moment de l'achat (évite le drift ATR).
                 # Fallback live si l'entrée est manquante (positions antérieures).
                 stop_price = rm.get_entry_stop(ticker) or pm.get_atr_stop(ticker, entree)
                 stop_pct   = (stop_price - entree) / entree * 100
-                if pnl_pct <= stop_pct:
+
+                # On regarde aussi le PLUS BAS depuis la derniere verification,
+                # pas seulement le prix courant. Entre deux cycles de 30min le
+                # prix peut traverser le stop puis remonter : le bot ne voyait
+                # rien et sortait beaucoup plus bas au cycle suivant.
+                # Sur la periode 23/09-07/10, 4 stops sur 7 ont depasse la
+                # limite de -10% : -13.0%, -11.2%, -10.5%, -10.1%.
+                touche_bas = _plus_bas_recent(ticker)
+                stop_franchi = pnl_pct <= stop_pct or (
+                    touche_bas is not None and touche_bas <= stop_price
+                )
+
+                if stop_franchi:
+                    via_meche = touche_bas is not None and touche_bas <= stop_price < prix
                     sell_reason = (
                         f"Stop ATR {pnl_pct:.1f}% <= {stop_pct:.1f}%"
+                        + (" (franchi en intraseance)" if via_meche else "")
                     )
                     sell_emoji = "🚨"
 
