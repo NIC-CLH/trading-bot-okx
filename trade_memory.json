@@ -6897,6 +6897,10 @@
     "XMRVL": {
       "reason": "OKX API error : All operations failed (code 1)",
       "since": "2026-10-06T21:35"
+    },
+    "XSPCX": {
+      "reason": "OKX API error : All operations failed (code 1)",
+      "since": "2026-10-07T04:05"
     }
   },
   "alert_cooldowns": {
