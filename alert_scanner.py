@@ -335,6 +335,14 @@ def scan_and_execute_signals() -> list[dict]:
             f"{ticker} score={score:+.2f} prix={prix:.4f}"
         )
 
+        # Enregistrer le signal pour l'entrainement ML. Ce chemin ne le faisait
+        # pas, alors qu'il a produit 100% des trades jusqu'au 23/09.
+        try:
+            import ml_scorer as _ml
+            _ml.save_signal_for_training(signal)
+        except Exception as _e:
+            logger.debug(f"[ML] Signal non enregistre pour {ticker} : {_e}")
+
         success = execution.execute_signal(signal, pv)
         if success:
             executed.append({"ticker": ticker, "score": score, "prix": prix, "rotation": rotation_faite})

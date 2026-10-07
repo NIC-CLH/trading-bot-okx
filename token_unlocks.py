@@ -1,12 +1,25 @@
 from __future__ import annotations
 
+import logging
 from datetime import datetime, timezone
+
 import requests
+
+logger = logging.getLogger(__name__)
 
 # Fallback statique — format : {ticker: [{date: "YYYY-MM-DD", amount_pct: float}]}
 # À mettre à jour manuellement si un unlock majeur est connu à l'avance.
 # Source : tokenunlocks.app, cryptorank.io/unlocks, vestlab.io
 KNOWN_UNLOCKS: dict = {}
+
+# AUCUNE SOURCE DE DONNEES ACTIVE au 07/10/2026.
+# - api.unlocks.app et vestlab.io : morts
+# - DefiLlama /emissions : HTTP 402, endpoint devenu payant
+# - KNOWN_UNLOCKS : jamais peuple
+#
+# Ce filtre ne bloque donc aucune entree. Il est inoffensif (il ne dilue aucun
+# score, contrairement a une dimension morte) mais il ne protege rien non plus.
+# Le warning ci-dessous evite de le croire actif en lisant le code.
 
 # API publique — retourne JSON avec champ "unlocks" ou liste directe
 # Alternative gratuite : https://vestlab.io/api  (même format)
@@ -74,9 +87,24 @@ def _check_from_list(
     return True, days, amount, score, signals
 
 
+_warned = False
+
+
+def _avertir_une_fois():
+    global _warned
+    if not _warned:
+        _warned = True
+        if not KNOWN_UNLOCKS:
+            logger.warning(
+                "token_unlocks : aucune source active (APIs mortes, "
+                "KNOWN_UNLOCKS vide) - ce filtre ne bloque aucune entree"
+            )
+
+
 def check_unlock(ticker: str) -> dict:
     """Vérifie si un unlock de tokens est prévu dans les 7 prochains jours.
     Retourne : has_unlock, days_until, amount_pct, verdict, score (-1.0→0.0), signals."""
+    _avertir_une_fois()
     ticker_up = ticker.upper()
 
     # Tentative sur plusieurs endpoints publics (le premier qui répond gagne)

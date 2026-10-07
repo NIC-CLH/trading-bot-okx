@@ -746,6 +746,15 @@ def store_trade_outcome(decision: dict):
     pnl    = decision.get("pnl_pct", 0)
     ticker = decision["ticker"]
 
+    # Etiqueter le signal ML correspondant. Sans cet appel, les signaux
+    # s'accumulaient sans jamais recevoir leur label : 0 echantillon
+    # exploitable malgre 115 trades clotures (constate le 07/10/2026).
+    try:
+        import ml_scorer as _ml
+        _ml.update_trade_label(ticker, pnl)
+    except Exception as _e:
+        logger.debug(f"[ML] Label non pose pour {ticker} : {_e}")
+
     # Exit quality : % du pic capturé
     try:
         peak_pnl = get_peak_pnl(ticker)

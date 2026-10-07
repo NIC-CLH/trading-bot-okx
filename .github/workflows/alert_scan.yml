@@ -56,7 +56,8 @@ jobs:
         run: |
           git config user.name "Alert Scanner"
           git config user.email "alert-scanner@github-actions"
-          git add trade_memory.json
+          # ml_model.json : sans ca, un modele entraine serait perdu au run suivant
+          git add trade_memory.json ml_model.json 2>/dev/null || git add trade_memory.json
           if git diff --staged --quiet; then exit 0; fi
           git commit -m "chore: update peaks [skip ci]"
           for i in 1 2 3; do

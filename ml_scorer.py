@@ -15,7 +15,6 @@ Pendant la phase de collecte (< 50 trades) : utilise le scoring classique pondé
 import json
 import logging
 import os
-import sqlite3
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -26,7 +25,8 @@ import config
 logger = logging.getLogger(__name__)
 
 MODEL_PATH = "ml_model.json"
-FEATURES_DB = config.DB_PATH
+# Stockage migre vers trade_memory.json le 07/10/2026 : les fichiers .db
+# sont dans .gitignore donc detruits a chaque run GitHub Actions.
 MIN_SAMPLES_TO_TRAIN = 50   # Minimum de trades pour entraîner le modèle
 RETRAIN_EVERY = 10          # Réentraîner tous les N nouveaux trades
 
@@ -84,96 +84,75 @@ def build_feature_vector(signal: dict, regime: dict = None, vp: dict = None) -> 
     ]
 
 
+MAX_ML_SIGNALS = 500   # borne la croissance du fichier memoire
+
+
 def save_signal_for_training(signal: dict, regime: dict = None, vp: dict = None):
     """
-    Enregistre un signal avec ses features pour l'entraînement futur.
-    Le label (gain/perte) sera mis à jour lors de la fermeture de position.
+    Enregistre un signal avec ses features pour l'entrainement futur.
+    Le label (gain/perte) sera pose a la fermeture de la position.
+
+    Stocke dans trade_memory.json et non en SQLite : les fichiers .db sont
+    dans .gitignore, donc detruits a chaque run GitHub Actions. Resultat
+    constate le 07/10/2026 : 0 echantillon labellise malgre 115 trades
+    clotures, le modele ne pouvait jamais atteindre ses 50 samples.
     """
     try:
-        conn = sqlite3.connect(FEATURES_DB)
-        cursor = conn.cursor()
-
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS ml_signals (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                timestamp TEXT,
-                ticker TEXT,
-                features TEXT,
-                score_manual REAL,
-                label REAL DEFAULT NULL,
-                pnl_pct REAL DEFAULT NULL
-            )
-        """)
-
-        features = build_feature_vector(signal, regime, vp)
-
-        cursor.execute("""
-            INSERT INTO ml_signals (timestamp, ticker, features, score_manual)
-            VALUES (?, ?, ?, ?)
-        """, (
-            datetime.now(timezone.utc).isoformat(),
-            signal.get("ticker", ""),
-            json.dumps(features),
-            signal.get("score", 0),
-        ))
-
-        conn.commit()
-        conn.close()
-        logger.debug(f"Signal ML enregistré pour {signal.get('ticker')}")
-
+        import ruflo_memory as rm
+        data = rm._load_json()
+        signaux = data.setdefault("ml_signals", [])
+        signaux.append({
+            "timestamp":    datetime.now(timezone.utc).isoformat(),
+            "ticker":       signal.get("ticker", ""),
+            "features":     [float(x) for x in build_feature_vector(signal, regime, vp)],
+            "score_manual": float(signal.get("score", 0)),
+            "label":        None,
+            "pnl_pct":      None,
+        })
+        if len(signaux) > MAX_ML_SIGNALS:
+            data["ml_signals"] = signaux[-MAX_ML_SIGNALS:]
+        rm._save_json(data)
+        logger.debug(f"Signal ML enregistre pour {signal.get('ticker')}")
     except Exception as e:
         logger.warning(f"Erreur save_signal_for_training : {e}")
 
 
 def update_trade_label(ticker: str, pnl_pct: float):
     """
-    Met à jour le label d'un signal après fermeture de la position.
-    Label : 1 si trade profitable, 0 sinon (classification binaire)
+    Pose le label apres fermeture : 1 si le trade est profitable, 0 sinon.
+    Cible le signal non labellise le plus recent pour ce ticker.
     """
     try:
-        conn = sqlite3.connect(FEATURES_DB)
-        cursor = conn.cursor()
-
-        label = 1 if pnl_pct > 0 else 0
-
-        cursor.execute("""
-            UPDATE ml_signals
-            SET label = ?, pnl_pct = ?
-            WHERE id = (
-                SELECT id FROM ml_signals
-                WHERE ticker = ? AND label IS NULL
-                ORDER BY id DESC LIMIT 1
-            )
-        """, (label, pnl_pct, ticker))
-
-        conn.commit()
-        conn.close()
-        logger.info(f"Label ML mis à jour : {ticker} P&L={pnl_pct:+.1f}% label={label}")
-
+        import ruflo_memory as rm
+        data = rm._load_json()
+        signaux = data.get("ml_signals", [])
+        for sig in reversed(signaux):
+            if sig.get("ticker") == ticker and sig.get("label") is None:
+                sig["label"]   = 1 if pnl_pct > 0 else 0
+                sig["pnl_pct"] = round(float(pnl_pct), 2)
+                rm._save_json(data)
+                logger.info(
+                    f"Label ML pose : {ticker} P&L={pnl_pct:+.1f}% label={sig['label']}"
+                )
+                return
+        logger.debug(f"Aucun signal ML non labellise pour {ticker}")
     except Exception as e:
         logger.warning(f"Erreur update_trade_label : {e}")
 
 
 def get_training_data() -> tuple:
-    """Récupère les données d'entraînement depuis SQLite."""
+    """Jeu d'entrainement : features + labels des signaux clotures."""
     try:
-        conn = sqlite3.connect(FEATURES_DB)
-        cursor = conn.cursor()
-
-        cursor.execute("""
-            SELECT features, label FROM ml_signals
-            WHERE label IS NOT NULL
-        """)
-        rows = cursor.fetchall()
-        conn.close()
-
-        if not rows:
+        import ruflo_memory as rm
+        signaux = [
+            s for s in rm._load_json().get("ml_signals", [])
+            if s.get("label") is not None and s.get("features")
+        ]
+        if not signaux:
             return None, None
-
-        X = np.array([json.loads(r[0]) for r in rows])
-        y = np.array([r[1] for r in rows])
+        X = np.array([s["features"] for s in signaux])
+        y = np.array([s["label"] for s in signaux])
         return X, y
-
     except Exception as e:
         logger.warning(f"Erreur get_training_data : {e}")
         return None, None

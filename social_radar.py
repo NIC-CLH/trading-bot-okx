@@ -59,9 +59,57 @@ _TICKER_TO_ID: dict[str, str] = {
 }
 
 
+# Resolution dynamique des ids CoinGecko.
+# La table codee en dur ne couvrait que 52 tickers, soit 30% de l'univers
+# scanne (constate le 07/10/2026) : le module etait aveugle sur 70% des
+# tokens. On complete avec le classement par capitalisation, ce qui tranche
+# aussi les collisions de symboles (le plus gros gagne).
+_ID_CACHE_TTL = 86400 * 7   # une semaine
+
+
+def _charger_table_ids() -> dict:
+    """Table symbole -> id CoinGecko, mise en cache dans trade_memory.json."""
+    try:
+        import ruflo_memory as rm
+        data = rm._load_json()
+        cache = data.get("coingecko_ids", {})
+        if cache.get("ts", 0) > time.time() - _ID_CACHE_TTL and cache.get("map"):
+            return cache["map"]
+
+        table = {}
+        for page in (1, 2):
+            resp = requests.get(
+                f"{BASE_URL}/coins/markets",
+                params={"vs_currency": "usd", "order": "market_cap_desc",
+                        "per_page": 250, "page": page},
+                timeout=TIMEOUT,
+            )
+            if resp.status_code != 200:
+                break
+            for c in resp.json():
+                sym = (c.get("symbol") or "").upper()
+                # Premier vu = plus grosse capitalisation : on ne l'ecrase pas
+                if sym and sym not in table:
+                    table[sym] = c.get("id")
+            time.sleep(1.5)   # rate limit CoinGecko gratuit
+
+        if table:
+            data["coingecko_ids"] = {"ts": time.time(), "map": table}
+            rm._save_json(data)
+            logger.info(f"[SocialRadar] Table ids CoinGecko : {len(table)} symboles")
+        return table
+    except Exception as e:
+        logger.debug(f"_charger_table_ids : {e}")
+        return {}
+
+
 def _get_coingecko_id(ticker: str) -> str | None:
-    """Retourne l'id CoinGecko pour un ticker OKX."""
-    return _TICKER_TO_ID.get(ticker.upper())
+    """Id CoinGecko pour un ticker OKX : table statique puis table dynamique."""
+    t = ticker.upper()
+    fixe = _TICKER_TO_ID.get(t)
+    if fixe:
+        return fixe
+    return _charger_table_ids().get(t)
 
 
 def _get_trending() -> list[str]:
@@ -116,14 +164,21 @@ def _get_community_data(ticker: str) -> dict:
         )
         resp.raise_for_status()
         raw  = resp.json()
+        # CoinGecko a supprime community_data et community_score (constate le
+        # 07/10/2026 : tous None, le module renvoyait 0 sur chaque token).
+        # Deux champs restent exploitables et sont conserves ici.
         data = {
-            "community":   raw.get("community_data", {}),
+            "community":   raw.get("community_data") or {},
             "market_data": raw.get("market_data", {}),
             "scores": {
                 "community_score":  raw.get("community_score"),
                 "liquidity_score":  raw.get("liquidity_score"),
                 "public_interest_score": raw.get("public_interest_score"),
             },
+            # Sentiment communautaire : % de votes positifs (0-100)
+            "sentiment_up_pct": raw.get("sentiment_votes_up_percentage"),
+            # Popularite : nombre d'utilisateurs ayant le token en watchlist
+            "watchlist_users":  raw.get("watchlist_portfolio_users"),
         }
         _cache[ticker] = (now, data)
         return data
@@ -154,17 +209,32 @@ def _compute_score(ticker: str, community_data: dict, trending: list[str]) -> fl
     scores    = community_data.get("scores", {})
     mkt       = community_data.get("market_data", {})
 
-    # 2. Community score CoinGecko (0-100)
-    cs = scores.get("community_score")
-    if cs is not None:
-        score += (cs - 50) / 200.0   # ±0.25
+    # 2. Sentiment communautaire : % de votes positifs (0-100, neutre a 50).
+    #    Remplace community_score, supprime par CoinGecko. Amplitude identique.
+    sent = community_data.get("sentiment_up_pct")
+    if sent is not None:
+        score += (float(sent) - 50) / 200.0   # ±0.25
+    else:
+        cs = scores.get("community_score")
+        if cs is not None:
+            score += (cs - 50) / 200.0
 
-    # 3. Reddit actifs 48h (proxy de l'engagement récent)
-    reddit_active = community.get("reddit_accounts_active_48h") or 0
-    if reddit_active > 5000:
+    # 3. Popularite : utilisateurs ayant le token en watchlist.
+    #    Remplace les comptes Reddit actifs, plus fournis par CoinGecko.
+    watchlist = community_data.get("watchlist_users") or 0
+    # Seuils cales sur l univers reel du bot : DYDX plafonne a 60k
+    # watchlists, les anciens paliers (500k/100k) ne discriminaient que
+    # les majors et renvoyaient 0 sur tout le reste.
+    if watchlist > 200_000:
         score += 0.10
-    elif reddit_active > 1000:
+    elif watchlist > 40_000:
         score += 0.05
+    else:
+        reddit_active = community.get("reddit_accounts_active_48h") or 0
+        if reddit_active > 5000:
+            score += 0.10
+        elif reddit_active > 1000:
+            score += 0.05
 
     # 4. Momentum prix 7j (le social et le prix se confirment mutuellement)
     chg_7d = mkt.get("price_change_percentage_7d")
