@@ -84,7 +84,13 @@ def get_universe() -> list[str]:
     """
     try:
         import ruflo_memory as rm_bl
-        blocked = EXCLUDE | rm_bl.get_eea_blacklist()  # statique + appris en live
+        from position_manager import WATCH_ONLY_TICKERS
+        # Watch-only exclus de l'univers d'ACHAT : ce sont des holdings perso.
+        # Ce trou existait depuis toujours mais etait inoffensif tant que ce
+        # scanner ne pouvait pas executer (cf. compute_final_score). En le
+        # reparant le 23/09 j'ai ouvert la porte : le bot a achete $100 de XRP
+        # le 04/10, capital sorti de sa comptabilite puisque XRP en est exclu.
+        blocked = EXCLUDE | rm_bl.get_eea_blacklist() | set(WATCH_ONLY_TICKERS)
         pairs = okx.get_available_pairs(min_volume_usdc=MIN_VOLUME_USDC)
         universe = [t for t in pairs if t not in blocked][:MAX_UNIVERSE]
         logger.info(f"Univers OKX EEA : {len(universe)} actifs (volume > ${MIN_VOLUME_USDC/1e6:.1f}M/j, cap={MAX_UNIVERSE})")

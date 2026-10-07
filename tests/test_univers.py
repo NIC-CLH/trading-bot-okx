@@ -35,3 +35,24 @@ def test_univers_exclut_toujours_stables_et_blacklist():
     assert "WBTC" not in universe
     assert "DYDX" not in universe, "blacklist EEA ignorée après élargissement"
     assert "SOL" in universe
+
+
+def test_watch_only_exclus_de_l_univers_d_achat():
+    """Les holdings perso ne doivent jamais apparaitre comme opportunite d'achat.
+    Le 04/10/2026 le scanner 4h a achete $100 de XRP faute de ce filtre."""
+    from unittest.mock import patch
+    import position_manager as pm
+    faux = ["SOL", "XRP", "DYDX"] + [f"TOK{i}" for i in range(50)]
+    with patch.object(scanner.okx, "get_available_pairs", return_value=faux), \
+         patch("ruflo_memory.get_eea_blacklist", return_value=set()):
+        universe = scanner.get_universe()
+    for t in pm.WATCH_ONLY_TICKERS:
+        assert t not in universe, f"{t} est watch-only mais reste achetable"
+    assert "SOL" in universe
+
+
+def test_les_deux_scanners_excluent_les_watch_only():
+    import inspect
+    import alert_scanner
+    assert "WATCH_ONLY" in inspect.getsource(scanner.get_universe)
+    assert "WATCH_ONLY_TICKERS" in inspect.getsource(alert_scanner.scan_and_execute_signals)
