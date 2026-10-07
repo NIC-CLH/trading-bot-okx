@@ -4608,26 +4608,8 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.398434359728969,
+  "_sd_prev_usdt_d": 6.450224858034878,
   "shadow_portfolio": [
-    {
-      "ticker": "ICP",
-      "score": 1.4,
-      "prix_ref": 3.449,
-      "type": "swing",
-      "timestamp": "2026-10-06T12:20:08.457671+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "OKB",
-      "score": 1.4,
-      "prix_ref": 136.42,
-      "type": "swing",
-      "timestamp": "2026-10-06T20:20:14.189667+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "ONDO",
       "score": 1.4,
@@ -4665,38 +4647,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "TRB",
-      "score": 1.4,
-      "prix_ref": 22.69,
-      "type": "swing",
-      "timestamp": "2026-10-07T00:19:07.741987+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "API3",
-      "score": 1.4,
-      "prix_ref": 0.345,
-      "type": "swing",
-      "timestamp": "2026-10-07T00:19:35.111415+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "STRK",
       "score": 1.4,
       "prix_ref": 0.05205,
       "type": "swing",
       "timestamp": "2026-10-07T00:19:46.223999+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "WLD",
-      "score": 1.4,
-      "prix_ref": 0.5176,
-      "type": "swing",
-      "timestamp": "2026-10-07T04:19:28.209693+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -4719,29 +4674,74 @@
       "pnl_pct": null
     },
     {
-      "ticker": "SENT",
+      "ticker": "WLD",
       "score": 1.4,
-      "prix_ref": 0.02561,
+      "prix_ref": 0.5266,
       "type": "swing",
-      "timestamp": "2026-10-07T04:21:02.575374+00:00",
+      "timestamp": "2026-10-07T08:19:12.780861+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
-      "ticker": "NMR",
-      "score": 1.4,
-      "prix_ref": 16.88,
+      "ticker": "ENA",
+      "score": 1.36,
+      "prix_ref": 0.2385,
       "type": "swing",
-      "timestamp": "2026-10-07T04:21:16.681396+00:00",
+      "timestamp": "2026-10-07T08:19:27.248114+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "TRB",
+      "score": 1.4,
+      "prix_ref": 20.45,
+      "type": "swing",
+      "timestamp": "2026-10-07T08:19:39.751550+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "SAND",
       "score": 1.4,
-      "prix_ref": 0.06927,
+      "prix_ref": 0.07299,
       "type": "swing",
-      "timestamp": "2026-10-07T04:21:30.608641+00:00",
+      "timestamp": "2026-10-07T08:20:24.098874+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "API3",
+      "score": 1.4,
+      "prix_ref": 0.3248,
+      "type": "swing",
+      "timestamp": "2026-10-07T08:20:37.475680+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "NMR",
+      "score": 1.4,
+      "prix_ref": 16.827,
+      "type": "swing",
+      "timestamp": "2026-10-07T08:20:49.428186+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SENT",
+      "score": 1.4,
+      "prix_ref": 0.02477,
+      "type": "swing",
+      "timestamp": "2026-10-07T08:21:03.115659+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STX",
+      "score": 1.4,
+      "prix_ref": 0.4005,
+      "type": "swing",
+      "timestamp": "2026-10-07T08:21:15.329638+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6734,6 +6734,10 @@
     {
       "date": "2026-10-07T04:16",
       "equity": 281.64
+    },
+    {
+      "date": "2026-10-07T08:16",
+      "equity": 279.8
     }
   ],
   "health_last_warn": 1790151679.7883637,
