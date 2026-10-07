@@ -16,6 +16,8 @@ import pandas as pd
 import requests
 from dotenv import load_dotenv
 
+import config  # NEVER_SELL : module sans dependance, pas de cycle
+
 load_dotenv()
 logger = logging.getLogger(__name__)
 
@@ -471,6 +473,18 @@ def place_order(
     Puis place les ordres algo TP/SL séparément (OKX spot ne supporte pas l'inline).
     """
     inst_id = f"{ticker.upper()}-{QUOTE_CCY}"  # USDC sur compte EEA
+
+    # ── VERROU DE VENTE ABSOLU ───────────────────────────────────────────────
+    # Pose au point de passage obligatoire de TOUT ordre. Les protections
+    # metier (execute_decision, emergency_stop_check) couvraient certains
+    # chemins mais pas la rotation ni les ventes d'urgence. Ici, aucune logique
+    # ne peut contourner l'interdiction, meme par erreur de refactoring.
+    if side == "sell" and ticker.upper() in config.NEVER_SELL:
+        logger.warning(f"VENTE REFUSEE : {ticker} est en interdiction absolue de vente")
+        raise PermissionError(
+            f"{ticker} fait partie de NEVER_SELL — vente interdite, "
+            f"ordre non envoye a OKX"
+        )
 
     # ── Vérifier qu'il n'y a pas déjà un ordre ouvert pour ce ticker ─────────
     # Évite le "All operations failed" quand on essaie de vendre une position

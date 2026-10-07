@@ -11,6 +11,15 @@ PORTFOLIO_CSV = "portfolio.csv"
 RAPPORTS_DIR = "rapports"
 DB_PATH = "portfolio_history.db"
 
+# ── Interdiction absolue de vente ─────────────────────────────────────────────
+# Holdings personnels : le bot peut en acheter, il ne doit JAMAIS en vendre.
+# Decide par Nico le 07/10/2026.
+#
+# Defini ici (module sans dependance) pour que okx_client puisse l'importer
+# sans cycle. Le verrou est pose dans place_order, point de passage obligatoire
+# de tout ordre : aucune logique metier ne peut le contourner, meme par erreur.
+NEVER_SELL = {"XRP"}
+
 # Paramètres de risque
 MAX_POSITION_PCT = 0.20       # alerte si > 20% du portefeuille
 MIN_STABLECOIN_PCT = 0.15     # réserve liquidité minimale recommandée

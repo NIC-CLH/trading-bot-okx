@@ -100,8 +100,9 @@ def scan_and_execute_signals() -> list[dict]:
     # Top N OKX EEA par volume — cap pour tenir dans le timeout (20min).
     # Élargi 40 → 65 le 28/07/2026 : reste sous le cap du scanner 4h (80) car ce
     # cycle a moins de temps, mais couvre la majorité des tokens validés au backtest.
-    # blocked = stables + blacklist EEA apprise en live + holdings watch-only
-    blocked = STABLES_EXCLUDE | rm.get_eea_blacklist() | set(pm.WATCH_ONLY_TICKERS)
+    # Watch-only achetables (decision Nico 07/10) ; la vente est verrouillee
+    # dans okx_client.place_order via config.NEVER_SELL.
+    blocked = STABLES_EXCLUDE | rm.get_eea_blacklist()
     universe = [t for t in okx.get_available_pairs(min_volume_usdc=500_000)
                 if t not in blocked][:ALERT_MAX_UNIVERSE]
     logger.info(f"Alert scanner — univers : {len(universe)} actifs (cap={ALERT_MAX_UNIVERSE})")
