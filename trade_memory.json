@@ -1547,6 +1547,20 @@
       "regime": "bear",
       "vol_regime": "calm",
       "score_entry": 2.11
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ZK",
+      "pnl_pct": -10.81,
+      "days_held": 0,
+      "exit_reason": "Stop ATR -10.8% <= -10.0%",
+      "valeur_usd": 63.99,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-07T15:02:40.179484+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.94
     }
   ],
   "entries": [
@@ -4784,8 +4798,7 @@
     }
   },
   "peaks": {
-    "XRP": 180.18,
-    "ZK": 3.06
+    "XRP": 180.18
   },
   "equity_history": [
     {
