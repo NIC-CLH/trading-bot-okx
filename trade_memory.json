@@ -4622,17 +4622,8 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.48620438997262,
+  "_sd_prev_usdt_d": 6.491680603745323,
   "shadow_portfolio": [
-    {
-      "ticker": "ONDO",
-      "score": 1.4,
-      "prix_ref": 0.4997,
-      "type": "swing",
-      "timestamp": "2026-10-06T20:21:45.985013+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "ETH",
       "score": 1.34,
@@ -4684,15 +4675,6 @@
       "prix_ref": 173.5,
       "type": "swing",
       "timestamp": "2026-10-07T04:19:57.953146+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "WLD",
-      "score": 1.4,
-      "prix_ref": 0.5266,
-      "type": "swing",
-      "timestamp": "2026-10-07T08:19:12.780861+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -4756,6 +4738,24 @@
       "prix_ref": 0.4005,
       "type": "swing",
       "timestamp": "2026-10-07T08:21:15.329638+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "NEAR",
+      "score": 1.4,
+      "prix_ref": 5.043,
+      "type": "swing",
+      "timestamp": "2026-10-07T12:21:20.849475+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "WLD",
+      "score": 1.4,
+      "prix_ref": 0.5145,
+      "type": "swing",
+      "timestamp": "2026-10-07T12:21:33.599593+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6743,6 +6743,10 @@
     {
       "date": "2026-10-07T08:16",
       "equity": 279.8
+    },
+    {
+      "date": "2026-10-07T12:19",
+      "equity": 279.92
     }
   ],
   "health_last_warn": 1790151679.7883637,
@@ -7429,5 +7433,36 @@
       "RAVE": "ravedao",
       "NEX": "nexus-4"
     }
-  }
+  },
+  "ml_signals": [
+    {
+      "timestamp": "2026-10-07T12:21:08.116144+00:00",
+      "ticker": "OKB",
+      "features": [
+        2.79,
+        0.03,
+        -0.19,
+        0.0,
+        -0.6,
+        -0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.7,
+        0.5710000000000001,
+        0.0,
+        0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.36200000000000004,
+        1.69,
+        0.0
+      ],
+      "score_manual": 2.18,
+      "label": null,
+      "pnl_pct": null
+    }
+  ]
 }
