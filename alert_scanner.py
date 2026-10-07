@@ -721,6 +721,14 @@ def emergency_stop_check() -> list[str]:
         import ruflo_memory as rm
 
         positions = pm.get_open_positions()
+
+        # Purge des peaks orphelins AVANT toute decision : un rachat qui herite
+        # du pic d'une position fermee serait vendu des le premier cycle.
+        try:
+            rm.purge_peaks_orphelins({p["ticker"] for p in positions})
+        except Exception as e:
+            logger.debug(f"purge peaks : {e}")
+
         if not positions:
             return []
 

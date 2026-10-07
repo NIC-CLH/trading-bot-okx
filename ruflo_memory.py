@@ -162,6 +162,35 @@ def update_peak_pnl(ticker: str, pnl_pct: float) -> bool:
     return False
 
 
+def purge_peaks_orphelins(tickers_ouverts: set) -> list:
+    """
+    Supprime les peaks des positions fermees.
+
+    Sans ca, un rachat herite du pic de l'ancienne position : le trailing stop
+    calcule son plancher dessus et vend immediatement, alors que la nouvelle
+    position demarre a 0%. Constate le 07/10/2026 : 8 peaks orphelins dont
+    MON +10.9% (plancher +5.5%), EIGEN +8.0%, PROS +9.4%.
+
+    clear_peak_pnl() existe mais n'est appelee que sur certains chemins de
+    sortie. Cette purge tourne a chaque cycle et rattrape tous les cas.
+    """
+    try:
+        data = _load_json()
+        peaks = data.get("peaks", {})
+        ouverts = {t.upper() for t in tickers_ouverts}
+        orphelins = [t for t in peaks if t.upper() not in ouverts]
+        if not orphelins:
+            return []
+        for t in orphelins:
+            del peaks[t]
+        _save_json(data)
+        logger.info(f"[Peaks] {len(orphelins)} peak(s) orphelin(s) purge(s) : {orphelins}")
+        return orphelins
+    except Exception as e:
+        logger.error(f"purge_peaks_orphelins : {e}")
+        return []
+
+
 def clear_peak_pnl(ticker: str):
     """Supprime le peak d'une position après fermeture."""
     data = _load_json()
