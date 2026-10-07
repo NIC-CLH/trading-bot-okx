@@ -1519,6 +1519,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.52
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "MOVE",
+      "pnl_pct": -8.61,
+      "days_held": 0,
+      "exit_reason": "Stop ATR -8.6% <= -8.1%",
+      "valeur_usd": 64.13,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-07T02:02:08.834863+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.28
     }
   ],
   "entries": [
@@ -4765,7 +4779,6 @@
     "CVC": 6.83,
     "EIGEN": 8.01,
     "MOODENG": 3.77,
-    "MOVE": 2.39,
     "ZK": 3.06,
     "SOL": 0.74
   },
