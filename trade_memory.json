@@ -4742,7 +4742,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.499500706364579,
+  "_sd_prev_usdt_d": 6.487235355670828,
   "shadow_portfolio": [
     {
       "ticker": "AAVE",
@@ -4772,15 +4772,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "SAND",
-      "score": 1.4,
-      "prix_ref": 0.07299,
-      "type": "swing",
-      "timestamp": "2026-10-07T08:20:24.098874+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "NMR",
       "score": 1.4,
       "prix_ref": 16.827,
@@ -4795,24 +4786,6 @@
       "prix_ref": 0.4005,
       "type": "swing",
       "timestamp": "2026-10-07T08:21:15.329638+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "NEAR",
-      "score": 1.4,
-      "prix_ref": 5.08,
-      "type": "swing",
-      "timestamp": "2026-10-07T16:20:23.031697+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "WLD",
-      "score": 1.4,
-      "prix_ref": 0.522,
-      "type": "swing",
-      "timestamp": "2026-10-07T16:20:44.111419+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -4876,6 +4849,33 @@
       "prix_ref": 0.06408,
       "type": "swing",
       "timestamp": "2026-10-08T04:19:55.925817+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "NEAR",
+      "score": 1.4,
+      "prix_ref": 5.373,
+      "type": "swing",
+      "timestamp": "2026-10-08T08:20:21.731176+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "WLD",
+      "score": 1.4,
+      "prix_ref": 0.5285,
+      "type": "swing",
+      "timestamp": "2026-10-08T08:21:08.452002+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SAND",
+      "score": 1.4,
+      "prix_ref": 0.07354,
+      "type": "swing",
+      "timestamp": "2026-10-08T08:21:21.910191+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6914,6 +6914,10 @@
     {
       "date": "2026-10-08T04:12",
       "equity": 277.41
+    },
+    {
+      "date": "2026-10-08T08:18",
+      "equity": 273.21
     }
   ],
   "health_last_warn": 1790151679.7883637,
