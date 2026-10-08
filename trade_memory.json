@@ -1575,6 +1575,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.79
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "BASED",
+      "pnl_pct": -3.7,
+      "days_held": 0.1,
+      "exit_reason": "Stop ATR -3.7% <= -3.3%",
+      "valeur_usd": 49.3,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-08T08:02:27.062998+00:00",
+      "regime": "sideways",
+      "vol_regime": "normal",
+      "score_entry": 2.42
     }
   ],
   "entries": [
@@ -7821,8 +7835,8 @@
         0.0
       ],
       "score_manual": 2.42,
-      "label": null,
-      "pnl_pct": null
+      "label": 0,
+      "pnl_pct": -3.7
     },
     {
       "timestamp": "2026-10-08T04:19:16.721788+00:00",
