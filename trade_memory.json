@@ -4880,38 +4880,7 @@
       "pnl_pct": null
     }
   ],
-  "pending_signals": [
-    {
-      "ticker": "STRK",
-      "score": 2.69,
-      "prix_ref": 0.04939,
-      "vol_regime": "extreme",
-      "regime": "sideways",
-      "timestamp": "2026-10-08T04:19:55.931046+00:00",
-      "ttl": 14400,
-      "stop_atr": 0.0433
-    },
-    {
-      "ticker": "AXS",
-      "score": 2.44,
-      "prix_ref": 1.245,
-      "vol_regime": "elevated",
-      "regime": "bull",
-      "timestamp": "2026-10-08T04:19:55.931055+00:00",
-      "ttl": 14400,
-      "stop_atr": 0.9001
-    },
-    {
-      "ticker": "BASED",
-      "score": 2.42,
-      "prix_ref": 0.06871,
-      "vol_regime": "normal",
-      "regime": "sideways",
-      "timestamp": "2026-10-08T04:19:55.931058+00:00",
-      "ttl": 14400,
-      "stop_atr": 0.0666
-    }
-  ],
+  "pending_signals": [],
   "reentry_thresholds": {
     "ASTER": {
       "threshold": 1.9,
