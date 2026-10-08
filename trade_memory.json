@@ -1589,6 +1589,20 @@
       "regime": "sideways",
       "vol_regime": "normal",
       "score_entry": 2.42
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "STRK",
+      "pnl_pct": 21.19,
+      "days_held": 0.3,
+      "exit_reason": "Take profit +20% atteint (+21.2%) — capté en 30min 🎯",
+      "valeur_usd": 32.38,
+      "outcome": "win",
+      "exit_quality": 100.0,
+      "timestamp": "2026-10-08T11:32:00.693267+00:00",
+      "regime": "sideways",
+      "vol_regime": "extreme",
+      "score_entry": 2.69
     }
   ],
   "entries": [
@@ -4905,7 +4919,6 @@
   },
   "peaks": {
     "XRP": 180.18,
-    "STRK": 13.66,
     "AXS": 1.85
   },
   "equity_history": [
@@ -7722,8 +7735,8 @@
         0.0
       ],
       "score_manual": 2.69,
-      "label": null,
-      "pnl_pct": null
+      "label": 1,
+      "pnl_pct": 21.19
     },
     {
       "timestamp": "2026-10-08T04:16:37.022408+00:00",
