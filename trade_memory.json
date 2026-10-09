@@ -4808,26 +4808,8 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.614580178360249,
+  "_sd_prev_usdt_d": 6.569505724358455,
   "shadow_portfolio": [
-    {
-      "ticker": "API3",
-      "score": 1.4,
-      "prix_ref": 0.3071,
-      "type": "swing",
-      "timestamp": "2026-10-08T04:18:50.154989+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "MAGIC",
-      "score": 1.4,
-      "prix_ref": 0.06408,
-      "type": "swing",
-      "timestamp": "2026-10-08T04:19:55.925817+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "PUMP",
       "score": 1.4,
@@ -4892,56 +4874,74 @@
       "pnl_pct": null
     },
     {
-      "ticker": "SAND",
-      "score": 1.4,
-      "prix_ref": 0.06715,
-      "type": "swing",
-      "timestamp": "2026-10-08T20:16:27.377417+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "GRASS",
-      "score": 1.4,
-      "prix_ref": 0.5952,
-      "type": "swing",
-      "timestamp": "2026-10-08T20:17:20.970526+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "NMR",
-      "score": 1.4,
-      "prix_ref": 13.91,
-      "type": "swing",
-      "timestamp": "2026-10-08T20:17:50.167995+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "STRK",
       "score": 1.4,
-      "prix_ref": 0.05554,
+      "prix_ref": 0.06753,
       "type": "swing",
-      "timestamp": "2026-10-09T00:20:29.868178+00:00",
+      "timestamp": "2026-10-09T04:17:44.597040+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "JUP",
       "score": 1.4,
-      "prix_ref": 0.3395,
+      "prix_ref": 0.3504,
       "type": "swing",
-      "timestamp": "2026-10-09T00:20:42.199998+00:00",
+      "timestamp": "2026-10-09T04:18:26.147782+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "RAY",
       "score": 1.4,
-      "prix_ref": 2.325,
+      "prix_ref": 2.4909,
       "type": "swing",
-      "timestamp": "2026-10-09T00:21:08.424148+00:00",
+      "timestamp": "2026-10-09T04:18:53.190725+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SAND",
+      "score": 1.4,
+      "prix_ref": 0.07156,
+      "type": "swing",
+      "timestamp": "2026-10-09T04:19:07.916931+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "GRASS",
+      "score": 1.4,
+      "prix_ref": 0.619,
+      "type": "swing",
+      "timestamp": "2026-10-09T04:19:47.279508+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "GRVT",
+      "score": 1.4,
+      "prix_ref": 0.22882,
+      "type": "swing",
+      "timestamp": "2026-10-09T04:20:43.791535+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "NMR",
+      "score": 1.4,
+      "prix_ref": 14.18,
+      "type": "swing",
+      "timestamp": "2026-10-09T04:20:56.646771+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "API3",
+      "score": 1.4,
+      "prix_ref": 0.3057,
+      "type": "swing",
+      "timestamp": "2026-10-09T04:21:11.549696+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6971,6 +6971,10 @@
     {
       "date": "2026-10-09T00:18",
       "equity": 277.28
+    },
+    {
+      "date": "2026-10-09T04:16",
+      "equity": 279.29
     }
   ],
   "health_last_warn": 1790151679.7883637,
@@ -8211,6 +8215,180 @@
         0.0
       ],
       "score_manual": -1.72,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-09T04:17:58.207866+00:00",
+      "ticker": "OKB",
+      "features": [
+        2.84,
+        0.0,
+        0.06,
+        0.0,
+        -0.6,
+        0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.7,
+        0.767,
+        0.0,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.36229999999999996,
+        2.22,
+        0.0
+      ],
+      "score_manual": 2.56,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-09T04:18:13.032880+00:00",
+      "ticker": "DOT",
+      "features": [
+        1.54,
+        0.0,
+        0.0,
+        0.2,
+        -0.2,
+        0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.996,
+        1.23,
+        0.0,
+        -0.2,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.36229999999999996,
+        1.48,
+        0.0
+      ],
+      "score_manual": 1.55,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-09T04:18:39.342270+00:00",
+      "ticker": "ALGO",
+      "features": [
+        2.78,
+        0.1,
+        0.26,
+        0.0,
+        -0.6,
+        0.1,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.956,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.36229999999999996,
+        1.83,
+        0.0
+      ],
+      "score_manual": 2.67,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-09T04:19:20.341288+00:00",
+      "ticker": "PI",
+      "features": [
+        -1.57,
+        0.0,
+        -0.35,
+        0.0,
+        -0.6,
+        0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.542,
+        0.541,
+        1.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.36229999999999996,
+        2.96,
+        0.0
+      ],
+      "score_manual": -1.51,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-09T04:20:00.528593+00:00",
+      "ticker": "STX",
+      "features": [
+        2.31,
+        0.1,
+        -0.19,
+        -0.15,
+        1.0,
+        -0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.583,
+        1.645,
+        0.0,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.36229999999999996,
+        0.66,
+        0.0
+      ],
+      "score_manual": 2.12,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-09T04:20:13.939785+00:00",
+      "ticker": "XNBIS",
+      "features": [
+        -3.0,
+        0.1,
+        0.19,
+        0.0,
+        0.0,
+        0.1,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.644,
+        0.0,
+        -0.4,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.36229999999999996,
+        1.0,
+        0.0
+      ],
+      "score_manual": -2.72,
       "label": null,
       "pnl_pct": null
     }
