@@ -4808,7 +4808,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.621502366570738,
+  "_sd_prev_usdt_d": 6.614580178360249,
   "shadow_portfolio": [
     {
       "ticker": "API3",
@@ -4874,15 +4874,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "STRK",
-      "score": 1.4,
-      "prix_ref": 0.05832,
-      "type": "swing",
-      "timestamp": "2026-10-08T16:19:07.155820+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "AAVE",
       "score": 1.4,
       "prix_ref": 165.93,
@@ -4897,24 +4888,6 @@
       "prix_ref": 0.3612,
       "type": "swing",
       "timestamp": "2026-10-08T16:20:55.092572+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "JUP",
-      "score": 1.4,
-      "prix_ref": 0.3404,
-      "type": "swing",
-      "timestamp": "2026-10-08T20:15:48.808327+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "RAY",
-      "score": 1.4,
-      "prix_ref": 2.276,
-      "type": "swing",
-      "timestamp": "2026-10-08T20:16:14.044324+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -4942,6 +4915,33 @@
       "prix_ref": 13.91,
       "type": "swing",
       "timestamp": "2026-10-08T20:17:50.167995+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STRK",
+      "score": 1.4,
+      "prix_ref": 0.05554,
+      "type": "swing",
+      "timestamp": "2026-10-09T00:20:29.868178+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "JUP",
+      "score": 1.4,
+      "prix_ref": 0.3395,
+      "type": "swing",
+      "timestamp": "2026-10-09T00:20:42.199998+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "RAY",
+      "score": 1.4,
+      "prix_ref": 2.325,
+      "type": "swing",
+      "timestamp": "2026-10-09T00:21:08.424148+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6988,6 +6988,10 @@
     {
       "date": "2026-10-08T20:13",
       "equity": 277.61
+    },
+    {
+      "date": "2026-10-09T00:18",
+      "equity": 277.28
     }
   ],
   "health_last_warn": 1790151679.7883637,
@@ -8141,6 +8145,93 @@
         0.0
       ],
       "score_manual": -2.75,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-09T00:20:15.270176+00:00",
+      "ticker": "OKB",
+      "features": [
+        2.84,
+        0.0,
+        0.06,
+        0.0,
+        -0.6,
+        -0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.7,
+        0.755,
+        0.0,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.37579999999999997,
+        2.16,
+        0.0
+      ],
+      "score_manual": 2.29,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-09T00:20:54.991292+00:00",
+      "ticker": "ALGO",
+      "features": [
+        2.34,
+        0.1,
+        -0.19,
+        0.0,
+        -0.6,
+        0.1,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.958,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.37579999999999997,
+        1.63,
+        0.0
+      ],
+      "score_manual": 1.97,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-09T00:21:21.404793+00:00",
+      "ticker": "PI",
+      "features": [
+        -1.98,
+        0.1,
+        -0.44,
+        0.0,
+        -0.6,
+        0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.535,
+        0.535,
+        1.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.37579999999999997,
+        3.06,
+        0.0
+      ],
+      "score_manual": -1.72,
       "label": null,
       "pnl_pct": null
     }
