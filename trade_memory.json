@@ -1603,6 +1603,20 @@
       "regime": "sideways",
       "vol_regime": "extreme",
       "score_entry": 2.69
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "STX",
+      "pnl_pct": 3.32,
+      "days_held": 0.4,
+      "exit_reason": "Trailing stop : pic +6.7% → plancher +3.4% | actuel +3.3%",
+      "valeur_usd": 34.73,
+      "outcome": "win",
+      "exit_quality": 49.7,
+      "timestamp": "2026-10-09T07:02:15.240164+00:00",
+      "regime": "bull",
+      "vol_regime": "elevated",
+      "score_entry": 2.18
     }
   ],
   "entries": [
@@ -4972,8 +4986,7 @@
   "peaks": {
     "XRP": 180.18,
     "AXS": 1.85,
-    "ALGO": 0.09,
-    "STX": 6.69
+    "ALGO": 0.09
   },
   "equity_history": [
     {
@@ -8360,8 +8373,8 @@
         0.0
       ],
       "score_manual": 2.12,
-      "label": null,
-      "pnl_pct": null
+      "label": 1,
+      "pnl_pct": 3.32
     },
     {
       "timestamp": "2026-10-09T04:20:13.939785+00:00",
