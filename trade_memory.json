@@ -4822,7 +4822,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.569505724358455,
+  "_sd_prev_usdt_d": 6.549836554595415,
   "shadow_portfolio": [
     {
       "ticker": "PUMP",
@@ -4870,29 +4870,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "AAVE",
-      "score": 1.4,
-      "prix_ref": 165.93,
-      "type": "swing",
-      "timestamp": "2026-10-08T16:19:21.018502+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "STX",
       "score": 1.43,
       "prix_ref": 0.3612,
       "type": "swing",
       "timestamp": "2026-10-08T16:20:55.092572+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "STRK",
-      "score": 1.4,
-      "prix_ref": 0.06753,
-      "type": "swing",
-      "timestamp": "2026-10-09T04:17:44.597040+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -4956,6 +4938,24 @@
       "prix_ref": 0.3057,
       "type": "swing",
       "timestamp": "2026-10-09T04:21:11.549696+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STRK",
+      "score": 1.4,
+      "prix_ref": 0.07173,
+      "type": "swing",
+      "timestamp": "2026-10-09T08:20:07.582493+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "AAVE",
+      "score": 1.33,
+      "prix_ref": 167.82,
+      "type": "swing",
+      "timestamp": "2026-10-09T08:21:09.757278+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6988,6 +6988,10 @@
     {
       "date": "2026-10-09T04:16",
       "equity": 279.29
+    },
+    {
+      "date": "2026-10-09T08:18",
+      "equity": 279.27
     }
   ],
   "health_last_warn": 1790151679.7883637,
@@ -8402,6 +8406,64 @@
         0.0
       ],
       "score_manual": -2.72,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-09T08:20:34.574401+00:00",
+      "ticker": "OKB",
+      "features": [
+        2.84,
+        0.0,
+        0.06,
+        0.0,
+        -0.6,
+        0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.7,
+        0.779,
+        0.0,
+        0.3,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.3629,
+        2.21,
+        0.0
+      ],
+      "score_manual": 2.56,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-09T08:20:50.688941+00:00",
+      "ticker": "DOT",
+      "features": [
+        1.65,
+        0.1,
+        0.1,
+        -0.15,
+        -0.6,
+        0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.689,
+        1.504,
+        0.0,
+        0.3,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.3629,
+        1.37,
+        0.0
+      ],
+      "score_manual": 1.61,
       "label": null,
       "pnl_pct": null
     }
