@@ -4926,17 +4926,8 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.5670455426282155,
+  "_sd_prev_usdt_d": 6.55345182730546,
   "shadow_portfolio": [
-    {
-      "ticker": "STRK",
-      "score": 1.4,
-      "prix_ref": 0.07057,
-      "type": "swing",
-      "timestamp": "2026-10-09T20:13:21.739704+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "RAY",
       "score": 1.4,
@@ -4979,33 +4970,6 @@
       "prix_ref": 1105.68,
       "type": "swing",
       "timestamp": "2026-10-09T20:18:08.286123+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "NEAR",
-      "score": 1.4,
-      "prix_ref": 4.911,
-      "type": "swing",
-      "timestamp": "2026-10-10T00:15:13.872422+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "KAIA",
-      "score": 1.4,
-      "prix_ref": 0.06045,
-      "type": "swing",
-      "timestamp": "2026-10-10T00:15:37.599221+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ZK",
-      "score": 1.4,
-      "prix_ref": 0.014159,
-      "type": "swing",
-      "timestamp": "2026-10-10T00:16:05.884170+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -5060,6 +5024,42 @@
       "prix_ref": 0.00525,
       "type": "swing",
       "timestamp": "2026-10-10T00:19:41.765674+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "NEAR",
+      "score": 1.4,
+      "prix_ref": 5.014,
+      "type": "swing",
+      "timestamp": "2026-10-10T04:19:22.420701+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "KAIA",
+      "score": 1.4,
+      "prix_ref": 0.05703,
+      "type": "swing",
+      "timestamp": "2026-10-10T04:19:47.883820+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "WLD",
+      "score": 1.4,
+      "prix_ref": 0.5258,
+      "type": "swing",
+      "timestamp": "2026-10-10T04:20:08.807058+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZK",
+      "score": 1.4,
+      "prix_ref": 0.013966,
+      "type": "swing",
+      "timestamp": "2026-10-10T04:20:57.085946+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -7135,6 +7135,10 @@
     {
       "date": "2026-10-10T00:13",
       "equity": 277.82
+    },
+    {
+      "date": "2026-10-10T04:17",
+      "equity": 279.42
     }
   ],
   "health_last_warn": 1790151679.7883637,
@@ -9187,6 +9191,64 @@
         0.0
       ],
       "score_manual": -1.74,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-10T04:19:57.986080+00:00",
+      "ticker": "OKB",
+      "features": [
+        2.27,
+        0.03,
+        -0.31,
+        0.0,
+        -0.6,
+        0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.7,
+        0.608,
+        0.0,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.3664,
+        2.22,
+        0.0
+      ],
+      "score_manual": 1.94,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-10T04:20:21.102969+00:00",
+      "ticker": "ADA",
+      "features": [
+        3.0,
+        0.03,
+        0.06,
+        0.0,
+        -0.6,
+        0.1,
+        0.0,
+        0.0,
+        1.0,
+        0.595,
+        0.882,
+        0.0,
+        0.3,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.3664,
+        1.87,
+        0.0
+      ],
+      "score_manual": 2.81,
       "label": null,
       "pnl_pct": null
     }
