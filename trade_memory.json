@@ -4570,6 +4570,32 @@
       "score_tech_adj_raw": 2.29,
       "score_rs_raw": -1.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "RAY",
+      "score": 2.03,
+      "score_tech": 2.22,
+      "score_news": 0.03,
+      "score_ms": 0.19,
+      "score_macro": 0.1,
+      "regime": "bear",
+      "vol_regime": "extreme",
+      "taille_usd": 20.78,
+      "prix": 2.2733,
+      "stop": 1.8829,
+      "btc_uptrend": true,
+      "late_entry": false,
+      "timestamp": "2026-10-10T00:21:04.223658+00:00",
+      "score_tech_raw": 2.22,
+      "score_news_raw": 0.03,
+      "score_ms_raw": 0.19,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.1,
+      "score_tech_adj_raw": 2.22,
+      "score_rs_raw": -1.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -4874,17 +4900,8 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.591262027912101,
+  "_sd_prev_usdt_d": 6.5670455426282155,
   "shadow_portfolio": [
-    {
-      "ticker": "XNBIS",
-      "score": -1.27,
-      "prix_ref": 220.49,
-      "type": "swing",
-      "timestamp": "2026-10-09T16:20:49.387857+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "STRK",
       "score": 1.4,
@@ -4895,47 +4912,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "KAIA",
-      "score": 1.4,
-      "prix_ref": 0.05361,
-      "type": "swing",
-      "timestamp": "2026-10-09T20:13:46.079613+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "JUP",
-      "score": 1.4,
-      "prix_ref": 0.3683,
-      "type": "swing",
-      "timestamp": "2026-10-09T20:14:11.664551+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ZK",
-      "score": 1.4,
-      "prix_ref": 0.014303,
-      "type": "swing",
-      "timestamp": "2026-10-09T20:14:37.192825+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "RAY",
       "score": 1.4,
       "prix_ref": 2.3077,
       "type": "swing",
       "timestamp": "2026-10-09T20:14:49.911040+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "SAND",
-      "score": 1.4,
-      "prix_ref": 0.06702,
-      "type": "swing",
-      "timestamp": "2026-10-09T20:15:04.047891+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -4958,47 +4939,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "XSNDK",
-      "score": -1.46,
-      "prix_ref": 1582.7,
-      "type": "swing",
-      "timestamp": "2026-10-09T20:15:39.800535+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "API3",
-      "score": 1.4,
-      "prix_ref": 0.3171,
-      "type": "swing",
-      "timestamp": "2026-10-09T20:16:06.380541+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "STX",
       "score": 1.4,
       "prix_ref": 0.375,
       "type": "swing",
       "timestamp": "2026-10-09T20:16:48.908096+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "SKL",
-      "score": 1.4,
-      "prix_ref": 0.005145,
-      "type": "swing",
-      "timestamp": "2026-10-09T20:17:16.785177+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "NMR",
-      "score": 1.4,
-      "prix_ref": 13.4,
-      "type": "swing",
-      "timestamp": "2026-10-09T20:17:44.734125+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -5010,28 +4955,109 @@
       "timestamp": "2026-10-09T20:18:08.286123+00:00",
       "outcome": null,
       "pnl_pct": null
+    },
+    {
+      "ticker": "NEAR",
+      "score": 1.4,
+      "prix_ref": 4.911,
+      "type": "swing",
+      "timestamp": "2026-10-10T00:15:13.872422+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "KAIA",
+      "score": 1.4,
+      "prix_ref": 0.06045,
+      "type": "swing",
+      "timestamp": "2026-10-10T00:15:37.599221+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZK",
+      "score": 1.4,
+      "prix_ref": 0.014159,
+      "type": "swing",
+      "timestamp": "2026-10-10T00:16:05.884170+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "JUP",
+      "score": 1.4,
+      "prix_ref": 0.376,
+      "type": "swing",
+      "timestamp": "2026-10-10T00:16:21.336838+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "XSNDK",
+      "score": -1.49,
+      "prix_ref": 1590.3,
+      "type": "swing",
+      "timestamp": "2026-10-10T00:17:32.021046+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SAND",
+      "score": 1.4,
+      "prix_ref": 0.06858,
+      "type": "swing",
+      "timestamp": "2026-10-10T00:17:44.680220+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "API3",
+      "score": 1.4,
+      "prix_ref": 0.3203,
+      "type": "swing",
+      "timestamp": "2026-10-10T00:18:12.386077+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "NMR",
+      "score": 1.4,
+      "prix_ref": 13.428,
+      "type": "swing",
+      "timestamp": "2026-10-10T00:19:29.021937+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "SKL",
+      "score": 1.4,
+      "prix_ref": 0.00525,
+      "type": "swing",
+      "timestamp": "2026-10-10T00:19:41.765674+00:00",
+      "outcome": null,
+      "pnl_pct": null
     }
   ],
   "pending_signals": [
     {
-      "ticker": "ALGO",
-      "score": 2.07,
-      "prix_ref": 0.11186,
-      "vol_regime": "elevated",
-      "regime": "sideways",
-      "timestamp": "2026-10-09T20:18:08.292252+00:00",
+      "ticker": "RAY",
+      "score": 2.03,
+      "prix_ref": 2.2733,
+      "vol_regime": "extreme",
+      "regime": "bear",
+      "timestamp": "2026-10-10T00:20:23.336624+00:00",
       "ttl": 14400,
-      "stop_atr": 0.0858
+      "stop_atr": 1.8829
     },
     {
-      "ticker": "MERL",
-      "score": 2.01,
-      "prix_ref": 0.03127,
+      "ticker": "DYDX",
+      "score": 2.03,
+      "prix_ref": 0.13843,
       "vol_regime": "elevated",
-      "regime": "sideways",
-      "timestamp": "2026-10-09T20:18:08.292263+00:00",
+      "regime": "bull",
+      "timestamp": "2026-10-10T00:20:23.336638+00:00",
       "ttl": 14400,
-      "stop_atr": 0.0281
+      "stop_atr": 0.1201
     }
   ],
   "reentry_thresholds": {
@@ -7077,6 +7103,10 @@
     {
       "date": "2026-10-09T20:12",
       "equity": 276.06
+    },
+    {
+      "date": "2026-10-10T00:13",
+      "equity": 277.82
     }
   ],
   "health_last_warn": 1790151679.7883637,
@@ -7259,11 +7289,11 @@
   },
   "ev_history": [
     2.47,
-    2.47,
     3.51,
     3.18,
     3.18,
     3.18,
+    3.56,
     3.56,
     3.56,
     3.56,
@@ -8984,6 +9014,151 @@
         0.0
       ],
       "score_manual": -1.67,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-10T00:17:19.239869+00:00",
+      "ticker": "RAY",
+      "features": [
+        2.22,
+        0.03,
+        0.19,
+        0.0,
+        0.0,
+        0.1,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        2.147,
+        0.0,
+        0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.3643,
+        0.86,
+        0.0
+      ],
+      "score_manual": 2.03,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-10T00:17:58.749424+00:00",
+      "ticker": "PI",
+      "features": [
+        -2.07,
+        0.03,
+        -0.15,
+        0.0,
+        -0.6,
+        0.1,
+        0.0,
+        0.0,
+        1.0,
+        0.572,
+        0.634,
+        1.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.3643,
+        2.97,
+        0.0
+      ],
+      "score_manual": -1.97,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-10T00:18:40.028063+00:00",
+      "ticker": "S",
+      "features": [
+        2.04,
+        0.37,
+        -0.1,
+        0.0,
+        0.0,
+        0.1,
+        0.0,
+        0.0,
+        1.0,
+        0.947,
+        1.485,
+        0.0,
+        0.3,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.3643,
+        0.86,
+        0.0
+      ],
+      "score_manual": 1.92,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-10T00:19:12.465629+00:00",
+      "ticker": "DYDX",
+      "features": [
+        2.25,
+        0.03,
+        0.19,
+        -0.15,
+        -0.6,
+        -0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.898,
+        1.003,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.3643,
+        1.59,
+        0.0
+      ],
+      "score_manual": 2.03,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-10T00:19:53.901670+00:00",
+      "ticker": "XEWY",
+      "features": [
+        -1.86,
+        0.03,
+        -0.19,
+        0.0,
+        0.0,
+        -0.1,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.36700000000000005,
+        0.0,
+        -0.2,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.3643,
+        1.0,
+        0.0
+      ],
+      "score_manual": -1.74,
       "label": null,
       "pnl_pct": null
     }
