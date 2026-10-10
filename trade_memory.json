@@ -5164,26 +5164,8 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.596734557164358,
+  "_sd_prev_usdt_d": 6.525673009877826,
   "shadow_portfolio": [
-    {
-      "ticker": "BAT",
-      "score": 1.4,
-      "prix_ref": 0.13568,
-      "type": "swing",
-      "timestamp": "2026-10-10T08:11:30.351394+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "JUP",
-      "score": 1.4,
-      "prix_ref": 0.3744,
-      "type": "swing",
-      "timestamp": "2026-10-10T08:11:43.972382+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "LPT",
       "score": 1.48,
@@ -5208,15 +5190,6 @@
       "prix_ref": 13.1,
       "type": "swing",
       "timestamp": "2026-10-10T08:15:29.217552+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "NEAR",
-      "score": 1.4,
-      "prix_ref": 5.296,
-      "type": "swing",
-      "timestamp": "2026-10-10T12:11:08.413626+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -5298,6 +5271,33 @@
       "prix_ref": 0.05229,
       "type": "swing",
       "timestamp": "2026-10-10T12:16:40.268175+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "NEAR",
+      "score": 1.4,
+      "prix_ref": 5.372,
+      "type": "swing",
+      "timestamp": "2026-10-10T16:19:45.892336+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BAT",
+      "score": 1.4,
+      "prix_ref": 0.13182,
+      "type": "swing",
+      "timestamp": "2026-10-10T16:20:49.861083+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ATOM",
+      "score": 1.42,
+      "prix_ref": 1.987,
+      "type": "swing",
+      "timestamp": "2026-10-10T16:21:01.833394+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -7396,6 +7396,10 @@
     {
       "date": "2026-10-10T12:09",
       "equity": 278.22
+    },
+    {
+      "date": "2026-10-10T16:18",
+      "equity": 276.91
     }
   ],
   "health_last_warn": 1790151679.7883637,
@@ -9854,6 +9858,93 @@
         0.0
       ],
       "score_manual": 1.93,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-10T16:20:11.487750+00:00",
+      "ticker": "ADA",
+      "features": [
+        2.23,
+        0.03,
+        -0.19,
+        0.0,
+        -0.6,
+        0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.7,
+        0.878,
+        0.0,
+        0.3,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.3675,
+        1.69,
+        0.0
+      ],
+      "score_manual": 1.86,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-10T16:20:25.088328+00:00",
+      "ticker": "CFX",
+      "features": [
+        2.6,
+        0.03,
+        0.0,
+        0.0,
+        -0.2,
+        0.1,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.857,
+        0.0,
+        0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.3675,
+        1.39,
+        0.0
+      ],
+      "score_manual": 2.26,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-10T16:20:36.655160+00:00",
+      "ticker": "OKB",
+      "features": [
+        2.88,
+        0.03,
+        -0.02,
+        0.0,
+        -0.6,
+        0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.7,
+        0.606,
+        0.0,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.3675,
+        2.25,
+        0.0
+      ],
+      "score_manual": 2.48,
       "label": null,
       "pnl_pct": null
     }
