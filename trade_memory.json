@@ -5032,6 +5032,32 @@
       "score_tech_adj_raw": 2.18,
       "score_rs_raw": -1.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "OKB",
+      "score": 2.65,
+      "score_tech": 0.0,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 29.26,
+      "prix": 126.11,
+      "stop": 122.3267,
+      "btc_uptrend": true,
+      "late_entry": false,
+      "timestamp": "2026-10-11T00:33:42.849061+00:00",
+      "score_tech_raw": 0.0,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 0.0,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -5553,8 +5579,9 @@
     "AXS": 5.63,
     "RAY": 4.65,
     "SKL": 3.17,
-    "ADA": 0.55,
-    "GMT": 1.21
+    "GMT": 1.21,
+    "LPT": 0.0,
+    "ATOM": 0.05
   },
   "equity_history": [
     {
@@ -7783,13 +7810,13 @@
   "ev_history": [
     2.24,
     2.24,
-    2.24,
     3.46,
     3.46,
     2.27,
     1.48,
     0.04,
     0.04,
+    0.16,
     0.16
   ],
   "coingecko_ids": {
