@@ -1715,6 +1715,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.65
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "AXS",
+      "pnl_pct": 2.77,
+      "days_held": 0,
+      "exit_reason": "Trailing stop : pic +5.6% → plancher +2.8% | actuel +2.8%",
+      "valeur_usd": 31.9,
+      "outcome": "win",
+      "exit_quality": 49.2,
+      "timestamp": "2026-10-11T06:02:14.605394+00:00",
+      "regime": "bull",
+      "vol_regime": "elevated",
+      "score_entry": 2.44
     }
   ],
   "entries": [
@@ -5525,7 +5539,6 @@
   },
   "peaks": {
     "XRP": 180.18,
-    "AXS": 5.63,
     "RAY": 4.65,
     "SKL": 3.17,
     "GMT": 1.21,
@@ -8531,8 +8544,8 @@
         0.0
       ],
       "score_manual": 2.44,
-      "label": null,
-      "pnl_pct": null
+      "label": 1,
+      "pnl_pct": 2.77
     },
     {
       "timestamp": "2026-10-08T12:19:42.723610+00:00",
@@ -10677,6 +10690,35 @@
         0.0
       ],
       "score_manual": 1.97,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-11T06:05:17.489241+00:00",
+      "ticker": "NEO",
+      "features": [
+        2.32,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.5,
+        0.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.4,
+        0.65,
+        1.0,
+        0.0
+      ],
+      "score_manual": 2.32,
       "label": null,
       "pnl_pct": null
     }
