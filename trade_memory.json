@@ -1771,6 +1771,20 @@
       "regime": "bear",
       "vol_regime": "elevated",
       "score_entry": 2.05
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "NEO",
+      "pnl_pct": 2.64,
+      "days_held": 0.0,
+      "exit_reason": "Trailing stop : pic +6.7% → plancher +3.4% | actuel +2.6%",
+      "valeur_usd": 57.58,
+      "outcome": "win",
+      "exit_quality": 39.5,
+      "timestamp": "2026-10-11T20:32:15.265322+00:00",
+      "regime": "bear",
+      "vol_regime": "elevated",
+      "score_entry": 2.46
     }
   ],
   "entries": [
@@ -5218,6 +5232,58 @@
       "score_tech_adj_raw": 2.39,
       "score_rs_raw": 1.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "NEO",
+      "score": 2.46,
+      "score_tech": 0.0,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bear",
+      "vol_regime": "elevated",
+      "taille_usd": 37.31,
+      "prix": 2.637,
+      "stop": 2.55789,
+      "btc_uptrend": true,
+      "late_entry": false,
+      "timestamp": "2026-10-11T20:33:57.599521+00:00",
+      "score_tech_raw": 0.0,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 0.0,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ATOM",
+      "score": 2.41,
+      "score_tech": 0.0,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bear",
+      "vol_regime": "elevated",
+      "taille_usd": 37.31,
+      "prix": 1.925,
+      "stop": 1.86725,
+      "btc_uptrend": true,
+      "late_entry": false,
+      "timestamp": "2026-10-11T20:35:07.853941+00:00",
+      "score_tech_raw": 0.0,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 0.0,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -5758,11 +5824,8 @@
     "XRP": 180.18,
     "RAY": 7.98,
     "SKL": 3.17,
-    "GMT": 1.21,
     "LPT": 2.17,
-    "ATOM": 3.89,
     "AR": 4.97,
-    "NEO": 6.7,
     "ALGO": 9.88
   },
   "equity_history": [
@@ -8010,16 +8073,16 @@
     "xrp_buy": 1791282893.9939225
   },
   "ev_history": [
-    -0.88,
-    -0.88,
-    -0.88,
-    -0.88,
-    -0.88,
     -0.71,
     -0.71,
     -0.71,
     -0.71,
-    -0.71
+    -0.35,
+    -0.35,
+    -0.35,
+    -0.35,
+    -0.35,
+    -0.35
   ],
   "coingecko_ids": {
     "ts": 1791373861.1570103,
@@ -11969,8 +12032,8 @@
         0.0
       ],
       "score_manual": 2.46,
-      "label": null,
-      "pnl_pct": null
+      "label": 1,
+      "pnl_pct": 2.64
     },
     {
       "timestamp": "2026-10-11T20:16:04.844896+00:00",
