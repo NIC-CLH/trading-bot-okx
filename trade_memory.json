@@ -5112,6 +5112,32 @@
       "score_tech_adj_raw": 2.65,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ALGO",
+      "score": 2.45,
+      "score_tech": 0.0,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bear",
+      "vol_regime": "elevated",
+      "taille_usd": 28.78,
+      "prix": 0.11774,
+      "stop": 0.114208,
+      "btc_uptrend": true,
+      "late_entry": false,
+      "timestamp": "2026-10-11T12:33:52.726846+00:00",
+      "score_tech_raw": 0.0,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 0.0,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -7853,7 +7879,7 @@
     -1.74,
     -1.74,
     -1.74,
-    -1.74,
+    -0.88,
     -0.88
   ],
   "coingecko_ids": {
