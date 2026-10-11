@@ -1785,6 +1785,20 @@
       "regime": "bear",
       "vol_regime": "elevated",
       "score_entry": 2.46
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "RAY",
+      "pnl_pct": 3.68,
+      "days_held": 1.9,
+      "exit_reason": "Trailing stop : pic +8.0% → plancher +4.0% | actuel +3.7%",
+      "valeur_usd": 21.44,
+      "outcome": "win",
+      "exit_quality": 46.2,
+      "timestamp": "2026-10-11T21:31:57.529369+00:00",
+      "regime": "bear",
+      "vol_regime": "extreme",
+      "score_entry": 2.03
     }
   ],
   "entries": [
@@ -5822,7 +5836,6 @@
   },
   "peaks": {
     "XRP": 180.18,
-    "RAY": 7.98,
     "SKL": 3.17,
     "LPT": 2.17,
     "AR": 4.97,
@@ -8082,8 +8095,8 @@
     -0.35,
     -0.35,
     -0.35,
-    -0.35,
-    -0.35
+    -0.02,
+    -0.02
   ],
   "coingecko_ids": {
     "ts": 1791373861.1570103,
@@ -11627,8 +11640,8 @@
         0.0
       ],
       "score_manual": 2.25,
-      "label": null,
-      "pnl_pct": null
+      "label": 1,
+      "pnl_pct": 3.68
     },
     {
       "timestamp": "2026-10-11T16:20:37.278088+00:00",
