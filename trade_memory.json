@@ -5362,7 +5362,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.52724767019806,
+  "_sd_prev_usdt_d": 6.541990327285017,
   "shadow_portfolio": [
     {
       "ticker": "RAY",
@@ -5410,15 +5410,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "WLD",
-      "score": 1.4,
-      "prix_ref": 0.5556,
-      "type": "swing",
-      "timestamp": "2026-10-11T00:09:45.230765+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "CFX",
       "score": 1.4,
       "prix_ref": 0.06197,
@@ -5433,24 +5424,6 @@
       "prix_ref": 0.2481,
       "type": "swing",
       "timestamp": "2026-10-11T00:10:06.542266+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "BAT",
-      "score": 1.4,
-      "prix_ref": 0.13983,
-      "type": "swing",
-      "timestamp": "2026-10-11T00:10:28.769656+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "STX",
-      "score": 1.4,
-      "prix_ref": 0.4026,
-      "type": "swing",
-      "timestamp": "2026-10-11T00:10:40.058936+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -5496,6 +5469,33 @@
       "prix_ref": 0.23334,
       "type": "swing",
       "timestamp": "2026-10-11T00:14:33.850864+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "WLD",
+      "score": 1.4,
+      "prix_ref": 0.5463,
+      "type": "swing",
+      "timestamp": "2026-10-11T04:20:17.110673+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BAT",
+      "score": 1.4,
+      "prix_ref": 0.13853,
+      "type": "swing",
+      "timestamp": "2026-10-11T04:20:48.460610+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STX",
+      "score": 1.4,
+      "prix_ref": 0.3993,
+      "type": "swing",
+      "timestamp": "2026-10-11T04:21:00.820041+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -7628,6 +7628,10 @@
     {
       "date": "2026-10-11T00:08",
       "equity": 276.18
+    },
+    {
+      "date": "2026-10-11T04:18",
+      "equity": 268.98
     }
   ],
   "health_last_warn": 1790151679.7883637,
@@ -10637,6 +10641,93 @@
         0.0
       ],
       "score_manual": -1.7,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-11T04:20:05.725476+00:00",
+      "ticker": "NEAR",
+      "features": [
+        2.29,
+        0.83,
+        0.19,
+        0.2,
+        0.6,
+        -0.1,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        1.297,
+        0.0,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.3705,
+        0.6,
+        0.0
+      ],
+      "score_manual": 2.52,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-11T04:20:27.688855+00:00",
+      "ticker": "CFX",
+      "features": [
+        3.0,
+        0.03,
+        0.19,
+        0.0,
+        0.0,
+        0.1,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.8590000000000001,
+        0.0,
+        0.3,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.3705,
+        1.26,
+        0.0
+      ],
+      "score_manual": 2.9,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-11T04:20:37.594941+00:00",
+      "ticker": "OKB",
+      "features": [
+        2.2,
+        0.03,
+        -0.23,
+        0.0,
+        -0.6,
+        -0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.944,
+        0.607,
+        0.0,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.3705,
+        2.28,
+        0.0
+      ],
+      "score_manual": 1.97,
       "label": null,
       "pnl_pct": null
     }
