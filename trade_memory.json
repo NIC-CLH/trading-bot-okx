@@ -1841,6 +1841,20 @@
       "regime": "bear",
       "vol_regime": "elevated",
       "score_entry": 2.45
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ENA",
+      "pnl_pct": -9.17,
+      "days_held": 0.8,
+      "exit_reason": "Stop ATR -9.2% <= -10.0% (franchi en intraseance)",
+      "valeur_usd": 21.91,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-12T19:32:12.726792+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.02
     }
   ],
   "entries": [
@@ -5861,7 +5875,6 @@
     "XRP": 180.18,
     "LPT": 2.17,
     "NEO": 2.21,
-    "ENA": 3.02,
     "JUP": 1.23,
     "ICP": 0.52
   },
@@ -12760,8 +12773,8 @@
         0.0
       ],
       "score_manual": 2.06,
-      "label": null,
-      "pnl_pct": null
+      "label": 0,
+      "pnl_pct": -9.17
     },
     {
       "timestamp": "2026-10-12T08:21:10.490880+00:00",
