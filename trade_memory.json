@@ -5682,7 +5682,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.496629875480969,
+  "_sd_prev_usdt_d": 6.526450014518083,
   "shadow_portfolio": [
     {
       "ticker": "NEAR",
@@ -5735,15 +5735,6 @@
       "prix_ref": 0.06425,
       "type": "swing",
       "timestamp": "2026-10-12T04:10:14.011419+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "GRASS",
-      "score": 1.4,
-      "prix_ref": 0.848,
-      "type": "swing",
-      "timestamp": "2026-10-12T04:11:29.833464+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -5816,6 +5807,15 @@
       "prix_ref": 0.5482,
       "type": "swing",
       "timestamp": "2026-10-12T08:20:05.092486+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "GRASS",
+      "score": 1.4,
+      "prix_ref": 0.749,
+      "type": "swing",
+      "timestamp": "2026-10-12T16:21:17.527709+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -7928,6 +7928,10 @@
     {
       "date": "2026-10-12T12:19",
       "equity": 271.7
+    },
+    {
+      "date": "2026-10-12T16:19",
+      "equity": 262.16
     }
   ],
   "health_last_warn": 1790151679.7883637,
@@ -12917,6 +12921,35 @@
         0.0
       ],
       "score_manual": -2.28,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-12T16:21:04.292116+00:00",
+      "ticker": "OKB",
+      "features": [
+        2.29,
+        0.03,
+        0.06,
+        0.0,
+        -0.6,
+        -0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.999,
+        0.38799999999999996,
+        0.0,
+        0.3,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.3754,
+        2.29,
+        0.0
+      ],
+      "score_manual": 2.12,
       "label": null,
       "pnl_pct": null
     }
