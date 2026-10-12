@@ -5338,6 +5338,32 @@
       "score_tech_adj_raw": 2.62,
       "score_rs_raw": 1.0,
       "score_social_raw": 0.4
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "RSR",
+      "score": 3.0,
+      "score_tech": 3.0,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 57.72,
+      "prix": 0.0023896401771360807,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-10-12T12:18:57.917137+00:00",
+      "score_tech_raw": 3.0,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 3.0,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -5642,7 +5668,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.510092446891015,
+  "_sd_prev_usdt_d": 6.496629875480969,
   "shadow_portfolio": [
     {
       "ticker": "NEAR",
@@ -7885,6 +7911,10 @@
     {
       "date": "2026-10-12T08:18",
       "equity": 272.2
+    },
+    {
+      "date": "2026-10-12T12:19",
+      "equity": 271.7
     }
   ],
   "health_last_warn": 1790151679.7883637,
@@ -12779,6 +12809,35 @@
         0.0
       ],
       "score_manual": 2.76,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-12T12:21:24.344745+00:00",
+      "ticker": "NEAR",
+      "features": [
+        1.89,
+        0.08,
+        0.19,
+        -0.15,
+        0.0,
+        -0.1,
+        0.0,
+        1.0,
+        0.0,
+        0.965,
+        1.31,
+        0.0,
+        0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.3774,
+        0.81,
+        0.0
+      ],
+      "score_manual": 2.03,
       "label": null,
       "pnl_pct": null
     }
