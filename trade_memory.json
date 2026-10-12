@@ -1813,6 +1813,20 @@
       "regime": "bear",
       "vol_regime": "elevated",
       "score_entry": 2.1
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "RSR",
+      "pnl_pct": 0.22,
+      "days_held": 0.1,
+      "exit_reason": "Trailing stop : pic +5.2% → plancher +2.6% | actuel +0.2%",
+      "valeur_usd": 53.16,
+      "outcome": "win",
+      "exit_quality": 4.3,
+      "timestamp": "2026-10-12T13:02:41.938150+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 3.0
     }
   ],
   "entries": [
@@ -5836,8 +5850,7 @@
     "NEO": 2.21,
     "ENA": 3.02,
     "JUP": 1.23,
-    "ICP": 0.52,
-    "RSR": 5.16
+    "ICP": 0.52
   },
   "equity_history": [
     {
@@ -8090,6 +8103,10 @@
     "XTSLA": {
       "reason": "OKX API error : All operations failed (code 1)",
       "since": "2026-10-07T14:06"
+    },
+    "XSOXL": {
+      "reason": "OKX API error : All operations failed (code 1)",
+      "since": "2026-10-12T13:06"
     }
   },
   "alert_cooldowns": {
@@ -12809,8 +12826,8 @@
         0.0
       ],
       "score_manual": 2.76,
-      "label": null,
-      "pnl_pct": null
+      "label": 1,
+      "pnl_pct": 0.22
     },
     {
       "timestamp": "2026-10-12T12:21:24.344745+00:00",
@@ -12838,6 +12855,35 @@
         0.0
       ],
       "score_manual": 2.03,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-12T13:06:39.670687+00:00",
+      "ticker": "XSOXL",
+      "features": [
+        -2.2,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.5,
+        0.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.4,
+        0.65,
+        1.0,
+        0.0
+      ],
+      "score_manual": -2.2,
       "label": null,
       "pnl_pct": null
     }
