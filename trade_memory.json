@@ -8107,6 +8107,10 @@
     "XSOXL": {
       "reason": "OKX API error : All operations failed (code 1)",
       "since": "2026-10-12T13:06"
+    },
+    "XSNDK": {
+      "reason": "OKX API error : All operations failed (code 1)",
+      "since": "2026-10-12T13:35"
     }
   },
   "alert_cooldowns": {
@@ -12884,6 +12888,35 @@
         0.0
       ],
       "score_manual": -2.2,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-12T13:35:23.728057+00:00",
+      "ticker": "XSNDK",
+      "features": [
+        -2.28,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.5,
+        0.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.4,
+        0.65,
+        1.0,
+        0.0
+      ],
+      "score_manual": -2.28,
       "label": null,
       "pnl_pct": null
     }
