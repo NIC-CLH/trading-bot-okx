@@ -1799,6 +1799,20 @@
       "regime": "bear",
       "vol_regime": "extreme",
       "score_entry": 2.03
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "AR",
+      "pnl_pct": 2.06,
+      "days_held": 1.4,
+      "exit_reason": "Trailing stop : pic +5.1% → plancher +2.5% | actuel +2.1%",
+      "valeur_usd": 31.0,
+      "outcome": "win",
+      "exit_quality": 40.5,
+      "timestamp": "2026-10-12T10:02:18.956478+00:00",
+      "regime": "bear",
+      "vol_regime": "elevated",
+      "score_entry": 2.1
     }
   ],
   "entries": [
@@ -5792,7 +5806,6 @@
   "peaks": {
     "XRP": 180.18,
     "LPT": 2.17,
-    "AR": 5.09,
     "ALGO": 15.89,
     "NEO": 2.21,
     "ENA": 3.02,
@@ -10822,8 +10835,8 @@
         0.0
       ],
       "score_manual": 2.1,
-      "label": null,
-      "pnl_pct": null
+      "label": 1,
+      "pnl_pct": 2.06
     },
     {
       "timestamp": "2026-10-11T00:14:20.687709+00:00",
