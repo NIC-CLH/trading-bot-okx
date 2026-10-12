@@ -1827,6 +1827,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 3.0
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ALGO",
+      "pnl_pct": 7.65,
+      "days_held": 1.2,
+      "exit_reason": "Trailing stop : pic +15.9% → plancher +8.0% | actuel +7.6%",
+      "valeur_usd": 29.98,
+      "outcome": "win",
+      "exit_quality": 48.1,
+      "timestamp": "2026-10-12T17:02:28.733738+00:00",
+      "regime": "bear",
+      "vol_regime": "elevated",
+      "score_entry": 2.45
     }
   ],
   "entries": [
@@ -5846,7 +5860,6 @@
   "peaks": {
     "XRP": 180.18,
     "LPT": 2.17,
-    "ALGO": 15.89,
     "NEO": 2.21,
     "ENA": 3.02,
     "JUP": 1.23,
@@ -11703,8 +11716,8 @@
         0.0
       ],
       "score_manual": 2.62,
-      "label": null,
-      "pnl_pct": null
+      "label": 1,
+      "pnl_pct": 7.65
     },
     {
       "timestamp": "2026-10-11T16:20:48.070649+00:00",
