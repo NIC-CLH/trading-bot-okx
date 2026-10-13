@@ -5554,6 +5554,32 @@
       "score_tech_adj_raw": 0.0,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "SAFE",
+      "score": 2.25,
+      "score_tech": 0.0,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 34.16,
+      "prix": 0.13026,
+      "stop": 0.126352,
+      "btc_uptrend": true,
+      "late_entry": false,
+      "timestamp": "2026-10-13T10:33:33.664422+00:00",
+      "score_tech_raw": 0.0,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 0.0,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -8352,11 +8378,11 @@
     -0.02,
     -0.02,
     -0.02,
-    -0.02,
     -3.45,
     -3.45,
     -3.45,
-    -3.45
+    -3.45,
+    -3.66
   ],
   "coingecko_ids": {
     "ts": 1791373861.1570103,
