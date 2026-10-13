@@ -1925,6 +1925,34 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.25
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "CFX",
+      "pnl_pct": -2.82,
+      "days_held": 0.1,
+      "exit_reason": "Stop ATR -2.8% <= -3.6% (franchi en intraseance)",
+      "valeur_usd": 43.06,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-13T11:32:03.324261+00:00",
+      "regime": "bear",
+      "vol_regime": "extreme",
+      "score_entry": 2.73
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "SAFE",
+      "pnl_pct": -2.46,
+      "days_held": 0.0,
+      "exit_reason": "Stop ATR -2.5% <= -1.0%",
+      "valeur_usd": 32.44,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-13T11:32:13.350637+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.25
     }
   ],
   "entries": [
@@ -6082,8 +6110,7 @@
     }
   },
   "peaks": {
-    "XRP": 180.18,
-    "SAFE": 2.21
+    "XRP": 180.18
   },
   "equity_history": [
     {
@@ -13754,8 +13781,8 @@
         0.0
       ],
       "score_manual": 2.73,
-      "label": null,
-      "pnl_pct": null
+      "label": 0,
+      "pnl_pct": -2.82
     },
     {
       "timestamp": "2026-10-13T08:18:18.650074+00:00",
