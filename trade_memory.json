@@ -5700,6 +5700,32 @@
       "score_tech_adj_raw": 2.57,
       "score_rs_raw": -1.0,
       "score_social_raw": 0.175
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "CFX",
+      "score": 2.56,
+      "score_tech": 0.0,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "extreme",
+      "taille_usd": 43.79,
+      "prix": 0.05757,
+      "stop": 0.055843,
+      "btc_uptrend": true,
+      "late_entry": false,
+      "timestamp": "2026-10-13T20:33:22.637938+00:00",
+      "score_tech_raw": 0.0,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 0.0,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -6202,7 +6228,8 @@
     }
   },
   "peaks": {
-    "XRP": 180.18
+    "XRP": 180.18,
+    "ALGO": 1.14
   },
   "equity_history": [
     {
@@ -8505,12 +8532,12 @@
     "xrp_buy": 1791282893.9939225
   },
   "ev_history": [
-    -0.02,
     -3.45,
     -3.45,
     -3.45,
     -3.45,
     -3.66,
+    -4.21,
     -4.21,
     -4.21,
     -4.21,
