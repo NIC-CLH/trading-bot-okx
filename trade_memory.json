@@ -1883,6 +1883,20 @@
       "regime": "bull",
       "vol_regime": "elevated",
       "score_entry": 2.71
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "JUP",
+      "pnl_pct": -10.23,
+      "days_held": 1.0,
+      "exit_reason": "Stop ATR -10.2% <= -10.0%",
+      "valeur_usd": 28.04,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-13T00:31:57.653856+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.91
     }
   ],
   "entries": [
@@ -5906,9 +5920,7 @@
   },
   "peaks": {
     "XRP": 180.18,
-    "LPT": 2.17,
-    "JUP": 1.23,
-    "ICP": 0.52
+    "LPT": 2.17
   },
   "equity_history": [
     {
@@ -12407,8 +12419,8 @@
         0.0
       ],
       "score_manual": 2.27,
-      "label": null,
-      "pnl_pct": null
+      "label": 0,
+      "pnl_pct": -10.23
     },
     {
       "timestamp": "2026-10-12T04:14:18.092958+00:00",
