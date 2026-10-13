@@ -5952,7 +5952,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.518700904033093,
+  "_sd_prev_usdt_d": 6.528596449441808,
   "shadow_portfolio": [
     {
       "ticker": "CFX",
@@ -6018,24 +6018,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "STRK",
-      "score": 1.4,
-      "prix_ref": 0.0872,
-      "type": "swing",
-      "timestamp": "2026-10-13T08:16:59.209728+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "STX",
-      "score": 1.4,
-      "prix_ref": 0.4316,
-      "type": "swing",
-      "timestamp": "2026-10-13T08:17:21.866190+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "GRASS",
       "score": 1.4,
       "prix_ref": 0.7496,
@@ -6086,6 +6068,24 @@
       "prix_ref": 0.005565,
       "type": "swing",
       "timestamp": "2026-10-13T08:20:04.281153+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STRK",
+      "score": 1.4,
+      "prix_ref": 0.08874,
+      "type": "swing",
+      "timestamp": "2026-10-13T12:20:40.534021+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STX",
+      "score": 1.4,
+      "prix_ref": 0.4116,
+      "type": "swing",
+      "timestamp": "2026-10-13T12:20:50.251897+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -8244,6 +8244,10 @@
     {
       "date": "2026-10-13T08:15",
       "equity": 252.73
+    },
+    {
+      "date": "2026-10-13T12:18",
+      "equity": 248.34
     }
   ],
   "health_last_warn": 1790151679.7883637,
@@ -14053,6 +14057,93 @@
         0.0
       ],
       "score_manual": -1.83,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-13T12:20:29.291372+00:00",
+      "ticker": "ZEC",
+      "features": [
+        -2.46,
+        0.0,
+        -0.19,
+        0.0,
+        0.2,
+        -0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.955,
+        1.262,
+        0.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.3786,
+        0.7,
+        0.0
+      ],
+      "score_manual": -2.43,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-13T12:21:11.105816+00:00",
+      "ticker": "LINK",
+      "features": [
+        -1.53,
+        0.0,
+        -0.23,
+        -0.15,
+        -0.6,
+        -0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.562,
+        0.57,
+        0.0,
+        -0.2,
+        1.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.3786,
+        2.41,
+        0.0
+      ],
+      "score_manual": -1.59,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-13T12:21:22.025195+00:00",
+      "ticker": "TRX",
+      "features": [
+        -1.99,
+        0.1,
+        0.2,
+        0.0,
+        -0.6,
+        -0.1,
+        0.0,
+        1.0,
+        0.0,
+        0.7,
+        0.136,
+        1.0,
+        -0.7,
+        0.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.3786,
+        1.78,
+        0.0
+      ],
+      "score_manual": -1.92,
       "label": null,
       "pnl_pct": null
     }
