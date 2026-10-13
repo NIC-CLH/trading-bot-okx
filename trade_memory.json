@@ -1897,6 +1897,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.91
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "LPT",
+      "pnl_pct": -9.36,
+      "days_held": 2.0,
+      "exit_reason": "Stop ATR -9.4% <= -8.2%",
+      "valeur_usd": 33.96,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-13T01:02:22.433330+00:00",
+      "regime": "bear",
+      "vol_regime": "normal",
+      "score_entry": 2.14
     }
   ],
   "entries": [
@@ -5919,8 +5933,7 @@
     }
   },
   "peaks": {
-    "XRP": 180.18,
-    "LPT": 2.17
+    "XRP": 180.18
   },
   "equity_history": [
     {
@@ -11520,8 +11533,8 @@
         0.0
       ],
       "score_manual": 1.82,
-      "label": null,
-      "pnl_pct": null
+      "label": 0,
+      "pnl_pct": -9.36
     },
     {
       "timestamp": "2026-10-11T12:17:11.562426+00:00",
