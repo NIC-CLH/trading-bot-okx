@@ -1953,6 +1953,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.25
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "RSR",
+      "pnl_pct": -8.78,
+      "days_held": 0.1,
+      "exit_reason": "Stop ATR -8.8% <= -10.8% (franchi en intraseance)",
+      "valeur_usd": 43.88,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-13T12:02:27.153916+00:00",
+      "regime": "bear",
+      "vol_regime": "extreme",
+      "score_entry": 2.76
     }
   ],
   "entries": [
@@ -5608,6 +5622,32 @@
       "score_tech_adj_raw": 0.0,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "RSR",
+      "score": 2.76,
+      "score_tech": 0.0,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bear",
+      "vol_regime": "extreme",
+      "taille_usd": 43.64,
+      "prix": 0.002023,
+      "stop": 0.001962,
+      "btc_uptrend": true,
+      "late_entry": false,
+      "timestamp": "2026-10-13T12:04:03.912480+00:00",
+      "score_tech_raw": 0.0,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 0.0,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -8405,12 +8445,12 @@
     -0.02,
     -0.02,
     -0.02,
-    -0.02,
     -3.45,
     -3.45,
     -3.45,
     -3.45,
-    -3.66
+    -3.66,
+    -4.21
   ],
   "coingecko_ids": {
     "ts": 1791373861.1570103,
@@ -13810,8 +13850,8 @@
         0.0
       ],
       "score_manual": 2.76,
-      "label": null,
-      "pnl_pct": null
+      "label": 0,
+      "pnl_pct": -8.78
     },
     {
       "timestamp": "2026-10-13T08:18:30.124871+00:00",
