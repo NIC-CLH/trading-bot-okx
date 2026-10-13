@@ -5952,7 +5952,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.528596449441808,
+  "_sd_prev_usdt_d": 6.506600021096578,
   "shadow_portfolio": [
     {
       "ticker": "CFX",
@@ -6074,18 +6074,18 @@
     {
       "ticker": "STRK",
       "score": 1.4,
-      "prix_ref": 0.08874,
+      "prix_ref": 0.086,
       "type": "swing",
-      "timestamp": "2026-10-13T12:20:40.534021+00:00",
+      "timestamp": "2026-10-13T16:20:57.066531+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "STX",
       "score": 1.4,
-      "prix_ref": 0.4116,
+      "prix_ref": 0.4277,
       "type": "swing",
-      "timestamp": "2026-10-13T12:20:50.251897+00:00",
+      "timestamp": "2026-10-13T16:21:13.135820+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -8217,6 +8217,10 @@
     {
       "date": "2026-10-13T12:18",
       "equity": 248.34
+    },
+    {
+      "date": "2026-10-13T16:19",
+      "equity": 248.59
     }
   ],
   "health_last_warn": 1790151679.7883637,
@@ -14113,6 +14117,35 @@
         0.0
       ],
       "score_manual": -1.92,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-13T16:21:24.280885+00:00",
+      "ticker": "TRX",
+      "features": [
+        -1.96,
+        0.1,
+        0.2,
+        0.0,
+        -0.6,
+        0.1,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.138,
+        1.0,
+        -0.7,
+        0.0,
+        0.0,
+        0.0,
+        2.13848,
+        0.37270000000000003,
+        1.77,
+        0.0
+      ],
+      "score_manual": -1.88,
       "label": null,
       "pnl_pct": null
     }
