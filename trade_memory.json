@@ -6148,7 +6148,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.4840735928713364,
+  "_sd_prev_usdt_d": 6.547138051110442,
   "shadow_portfolio": [
     {
       "ticker": "RAY",
@@ -6156,8 +6156,8 @@
       "prix_ref": 2.4631,
       "type": "swing",
       "timestamp": "2026-10-12T04:13:34.069191+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -17.64
     },
     {
       "ticker": "AVNT",
@@ -6165,8 +6165,8 @@
       "prix_ref": 0.13633,
       "type": "swing",
       "timestamp": "2026-10-12T04:15:51.474806+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -3.92
     },
     {
       "ticker": "NMR",
@@ -6174,8 +6174,8 @@
       "prix_ref": 13.497,
       "type": "swing",
       "timestamp": "2026-10-12T04:16:03.483144+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -4.85
     },
     {
       "ticker": "WLD",
@@ -6223,47 +6223,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "RSR",
-      "score": 1.4,
-      "prix_ref": 0.002109,
-      "type": "swing",
-      "timestamp": "2026-10-14T00:17:59.012798+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "BAT",
       "score": 1.4,
       "prix_ref": 0.1928,
       "type": "swing",
       "timestamp": "2026-10-14T04:17:27.671941+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ZK",
-      "score": 1.4,
-      "prix_ref": 0.016,
-      "type": "swing",
-      "timestamp": "2026-10-14T04:17:48.563117+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "GRASS",
-      "score": 1.4,
-      "prix_ref": 0.7318,
-      "type": "swing",
-      "timestamp": "2026-10-14T04:18:08.609077+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "STX",
-      "score": 1.4,
-      "prix_ref": 0.4378,
-      "type": "swing",
-      "timestamp": "2026-10-14T04:18:18.316141+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -6277,35 +6241,61 @@
       "pnl_pct": null
     },
     {
+      "ticker": "ZK",
+      "score": 1.4,
+      "prix_ref": 0.016083,
+      "type": "swing",
+      "timestamp": "2026-10-14T08:13:03.106517+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "GRASS",
+      "score": 1.4,
+      "prix_ref": 0.7499,
+      "type": "swing",
+      "timestamp": "2026-10-14T08:13:16.720328+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STX",
+      "score": 1.4,
+      "prix_ref": 0.4483,
+      "type": "swing",
+      "timestamp": "2026-10-14T08:13:57.950195+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "RSR",
+      "score": 1.4,
+      "prix_ref": 0.002025,
+      "type": "swing",
+      "timestamp": "2026-10-14T08:14:37.468740+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
       "ticker": "KAIA",
       "score": 1.4,
-      "prix_ref": 0.04613,
+      "prix_ref": 0.04586,
       "type": "swing",
-      "timestamp": "2026-10-14T04:19:15.834729+00:00",
+      "timestamp": "2026-10-14T08:15:15.597375+00:00",
       "outcome": null,
       "pnl_pct": null
     }
   ],
   "pending_signals": [
     {
-      "ticker": "XTZ",
-      "score": 2.29,
-      "prix_ref": 0.3174,
-      "vol_regime": "normal",
-      "regime": "bear",
-      "timestamp": "2026-10-14T04:20:00.256433+00:00",
+      "ticker": "ALGO",
+      "score": 3.0,
+      "prix_ref": 0.12204,
+      "vol_regime": "elevated",
+      "regime": "bull",
+      "timestamp": "2026-10-14T08:16:04.052587+00:00",
       "ttl": 14400,
-      "stop_atr": 0.3101
-    },
-    {
-      "ticker": "RAY",
-      "score": 2.02,
-      "prix_ref": 2.03,
-      "vol_regime": "extreme",
-      "regime": "sideways",
-      "timestamp": "2026-10-14T04:20:00.256446+00:00",
-      "ttl": 14400,
-      "stop_atr": 1.936
+      "stop_atr": 0.1161
     }
   ],
   "reentry_thresholds": {
@@ -8452,6 +8442,10 @@
     {
       "date": "2026-10-14T04:15",
       "equity": 244.36
+    },
+    {
+      "date": "2026-10-14T08:10",
+      "equity": 246.26
     }
   ],
   "health_last_warn": 1790151679.7883637,
@@ -15044,6 +15038,180 @@
         0.0
       ],
       "score_manual": 1.89,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-14T08:12:50.090650+00:00",
+      "ticker": "TRX",
+      "features": [
+        -1.73,
+        0.03,
+        -0.31,
+        0.0,
+        -0.6,
+        0.1,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.16899999999999998,
+        1.0,
+        -0.7,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3776,
+        1.85,
+        0.0
+      ],
+      "score_manual": -1.76,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-14T08:13:29.207918+00:00",
+      "ticker": "RAY",
+      "features": [
+        2.02,
+        0.03,
+        0.2,
+        0.0,
+        0.0,
+        0.1,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        2.186,
+        0.0,
+        -0.2,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3778,
+        1.12,
+        0.0
+      ],
+      "score_manual": 1.94,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-14T08:13:40.922763+00:00",
+      "ticker": "BASED",
+      "features": [
+        -2.28,
+        0.32,
+        -0.12,
+        0.0,
+        -0.6,
+        0.1,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        1.022,
+        0.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3778,
+        1.92,
+        0.0
+      ],
+      "score_manual": -2.2,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-14T08:14:26.420051+00:00",
+      "ticker": "PI",
+      "features": [
+        -2.56,
+        0.03,
+        -0.06,
+        0.0,
+        -0.6,
+        0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.691,
+        0.527,
+        0.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.37829999999999997,
+        3.02,
+        0.0
+      ],
+      "score_manual": -2.54,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-14T08:14:48.455945+00:00",
+      "ticker": "KMNO",
+      "features": [
+        1.68,
+        0.03,
+        0.19,
+        0.0,
+        0.0,
+        -0.1,
+        0.0,
+        0.0,
+        1.0,
+        0.927,
+        1.01,
+        0.0,
+        -0.2,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.37829999999999997,
+        1.19,
+        0.0
+      ],
+      "score_manual": 1.79,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-14T08:14:59.961737+00:00",
+      "ticker": "ALGO",
+      "features": [
+        3.0,
+        0.03,
+        0.19,
+        0.0,
+        -0.6,
+        0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.994,
+        0.993,
+        0.0,
+        0.1,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.37829999999999997,
+        1.51,
+        0.0
+      ],
+      "score_manual": 3.0,
       "label": null,
       "pnl_pct": null
     }
