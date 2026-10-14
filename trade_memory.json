@@ -5752,6 +5752,32 @@
       "score_tech_adj_raw": 2.57,
       "score_rs_raw": -1.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "RAY",
+      "score": 2.02,
+      "score_tech": 0.0,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "sideways",
+      "vol_regime": "extreme",
+      "taille_usd": 33.69,
+      "prix": 2.0612,
+      "stop": 1.999364,
+      "btc_uptrend": true,
+      "late_entry": false,
+      "timestamp": "2026-10-14T00:33:46.692483+00:00",
+      "score_tech_raw": 0.0,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 0.0,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -8554,8 +8580,8 @@
   },
   "ev_history": [
     -3.45,
-    -3.45,
     -3.66,
+    -4.21,
     -4.21,
     -4.21,
     -4.21,
