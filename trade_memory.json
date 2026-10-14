@@ -6218,7 +6218,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.649454811744328,
+  "_sd_prev_usdt_d": 6.63882634486984,
   "shadow_portfolio": [
     {
       "ticker": "AVNT",
@@ -6302,29 +6302,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "KAIA",
-      "score": 1.4,
-      "prix_ref": 0.04586,
-      "type": "swing",
-      "timestamp": "2026-10-14T08:15:15.597375+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "BAT",
       "score": 1.4,
       "prix_ref": 0.18788,
       "type": "swing",
       "timestamp": "2026-10-14T12:21:07.889502+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "MAGIC",
-      "score": 1.4,
-      "prix_ref": 0.11116,
-      "type": "swing",
-      "timestamp": "2026-10-14T12:21:18.409368+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -6347,11 +6329,29 @@
       "pnl_pct": null
     },
     {
+      "ticker": "MAGIC",
+      "score": 1.4,
+      "prix_ref": 0.10635,
+      "type": "swing",
+      "timestamp": "2026-10-14T20:16:27.103370+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
       "ticker": "ZK",
       "score": 1.4,
-      "prix_ref": 0.014831,
+      "prix_ref": 0.01492,
       "type": "swing",
-      "timestamp": "2026-10-14T16:20:59.517509+00:00",
+      "timestamp": "2026-10-14T20:17:16.846309+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "KAIA",
+      "score": 1.4,
+      "prix_ref": 0.04426,
+      "type": "swing",
+      "timestamp": "2026-10-14T20:17:48.755071+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -8510,6 +8510,10 @@
     },
     {
       "date": "2026-10-14T16:18",
+      "equity": 237.65
+    },
+    {
+      "date": "2026-10-14T20:14",
       "equity": 237.65
     }
   ],
@@ -15157,6 +15161,64 @@
         0.0
       ],
       "score_manual": -2.38,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-14T20:16:49.082816+00:00",
+      "ticker": "MON",
+      "features": [
+        -1.54,
+        0.03,
+        -0.31,
+        0.0,
+        -0.6,
+        -0.1,
+        0.0,
+        1.0,
+        0.0,
+        0.626,
+        1.258,
+        0.0,
+        -0.4,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3906,
+        2.0,
+        0.0
+      ],
+      "score_manual": -1.59,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-14T20:17:03.268725+00:00",
+      "ticker": "PI",
+      "features": [
+        -2.3,
+        0.03,
+        -0.06,
+        0.0,
+        -0.6,
+        -0.1,
+        0.0,
+        1.0,
+        0.0,
+        0.7,
+        0.523,
+        0.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3906,
+        3.0,
+        0.0
+      ],
+      "score_manual": -2.3,
       "label": null,
       "pnl_pct": null
     }
