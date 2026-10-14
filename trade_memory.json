@@ -2009,6 +2009,34 @@
       "regime": "bear",
       "vol_regime": "extreme",
       "score_entry": 2.76
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "CFX",
+      "pnl_pct": -3.03,
+      "days_held": 0.7,
+      "exit_reason": "Stop ATR -3.0% <= -4.0% (franchi en intraseance)",
+      "valeur_usd": 42.54,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-14T13:32:22.151033+00:00",
+      "regime": "bull",
+      "vol_regime": "extreme",
+      "score_entry": 2.56
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "RAY",
+      "pnl_pct": -3.89,
+      "days_held": 0.3,
+      "exit_reason": "Stop ATR -3.9% <= -4.6% (franchi en intraseance)",
+      "valeur_usd": 32.24,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-14T13:32:32.706177+00:00",
+      "regime": "sideways",
+      "vol_regime": "extreme",
+      "score_entry": 2.02
     }
   ],
   "entries": [
@@ -14478,8 +14506,8 @@
         0.0
       ],
       "score_manual": 2.56,
-      "label": null,
-      "pnl_pct": null
+      "label": 0,
+      "pnl_pct": -3.03
     },
     {
       "timestamp": "2026-10-13T20:16:39.410932+00:00",
@@ -15116,8 +15144,8 @@
         0.0
       ],
       "score_manual": 1.94,
-      "label": null,
-      "pnl_pct": null
+      "label": 0,
+      "pnl_pct": -3.89
     },
     {
       "timestamp": "2026-10-14T08:13:40.922763+00:00",
