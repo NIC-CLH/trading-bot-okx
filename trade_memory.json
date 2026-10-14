@@ -1981,6 +1981,34 @@
       "regime": "sideways",
       "vol_regime": "extreme",
       "score_entry": 2.02
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "XTZ",
+      "pnl_pct": -4.44,
+      "days_held": 0.4,
+      "exit_reason": "Stop ATR -4.4% <= -4.4%",
+      "valeur_usd": 81.68,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-14T13:02:27.793103+00:00",
+      "regime": "bear",
+      "vol_regime": "normal",
+      "score_entry": 2.29
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "RSR",
+      "pnl_pct": -9.04,
+      "days_held": 1.0,
+      "exit_reason": "Stop ATR -9.0% <= -9.0%",
+      "valeur_usd": 42.01,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-14T13:02:38.261025+00:00",
+      "regime": "bear",
+      "vol_regime": "extreme",
+      "score_entry": 2.76
     }
   ],
   "entries": [
@@ -6316,8 +6344,7 @@
   },
   "peaks": {
     "XRP": 180.18,
-    "ALGO": 2.17,
-    "RSR": 0.23
+    "ALGO": 2.17
   },
   "equity_history": [
     {
@@ -14944,8 +14971,8 @@
         0.0
       ],
       "score_manual": 1.99,
-      "label": null,
-      "pnl_pct": null
+      "label": 0,
+      "pnl_pct": -9.04
     },
     {
       "timestamp": "2026-10-14T04:19:25.294066+00:00",
@@ -14973,8 +15000,8 @@
         0.0
       ],
       "score_manual": 2.29,
-      "label": null,
-      "pnl_pct": null
+      "label": 0,
+      "pnl_pct": -4.44
     },
     {
       "timestamp": "2026-10-14T04:19:36.792771+00:00",
