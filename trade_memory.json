@@ -6148,17 +6148,8 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.547138051110442,
+  "_sd_prev_usdt_d": 6.541212959577836,
   "shadow_portfolio": [
-    {
-      "ticker": "RAY",
-      "score": 1.4,
-      "prix_ref": 2.4631,
-      "type": "swing",
-      "timestamp": "2026-10-12T04:13:34.069191+00:00",
-      "outcome": "correct",
-      "pnl_pct": -17.64
-    },
     {
       "ticker": "AVNT",
       "score": 1.4,
@@ -6183,8 +6174,8 @@
       "prix_ref": 0.5482,
       "type": "swing",
       "timestamp": "2026-10-12T08:20:05.092486+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -6.28
     },
     {
       "ticker": "ZEC",
@@ -6223,29 +6214,11 @@
       "pnl_pct": null
     },
     {
-      "ticker": "BAT",
-      "score": 1.4,
-      "prix_ref": 0.1928,
-      "type": "swing",
-      "timestamp": "2026-10-14T04:17:27.671941+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "XAMD",
       "score": 1.4,
       "prix_ref": 611.84,
       "type": "swing",
       "timestamp": "2026-10-14T04:19:07.456241+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ZK",
-      "score": 1.4,
-      "prix_ref": 0.016083,
-      "type": "swing",
-      "timestamp": "2026-10-14T08:13:03.106517+00:00",
       "outcome": null,
       "pnl_pct": null
     },
@@ -6282,6 +6255,33 @@
       "prix_ref": 0.04586,
       "type": "swing",
       "timestamp": "2026-10-14T08:15:15.597375+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BAT",
+      "score": 1.4,
+      "prix_ref": 0.18788,
+      "type": "swing",
+      "timestamp": "2026-10-14T12:21:07.889502+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "MAGIC",
+      "score": 1.4,
+      "prix_ref": 0.11116,
+      "type": "swing",
+      "timestamp": "2026-10-14T12:21:18.409368+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZK",
+      "score": 1.4,
+      "prix_ref": 0.015657,
+      "type": "swing",
+      "timestamp": "2026-10-14T12:21:29.066249+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -8446,6 +8446,10 @@
     {
       "date": "2026-10-14T08:10",
       "equity": 246.26
+    },
+    {
+      "date": "2026-10-14T12:19",
+      "equity": 244.45
     }
   ],
   "health_last_warn": 1790151679.7883637,
