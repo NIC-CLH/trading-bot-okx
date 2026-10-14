@@ -5778,6 +5778,32 @@
       "score_tech_adj_raw": 0.0,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "XTZ",
+      "score": 2.29,
+      "score_tech": 2.42,
+      "score_news": 0.03,
+      "score_ms": 0.0,
+      "score_macro": -0.1,
+      "regime": "bear",
+      "vol_regime": "normal",
+      "taille_usd": 28.25,
+      "prix": 0.3174,
+      "stop": 0.3101,
+      "btc_uptrend": true,
+      "late_entry": false,
+      "timestamp": "2026-10-14T04:20:37.083587+00:00",
+      "score_tech_raw": 2.42,
+      "score_news_raw": 0.03,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": -0.1,
+      "score_tech_adj_raw": 2.42,
+      "score_rs_raw": -1.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -6082,17 +6108,8 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.523221874256935,
+  "_sd_prev_usdt_d": 6.4840735928713364,
   "shadow_portfolio": [
-    {
-      "ticker": "CFX",
-      "score": 1.4,
-      "prix_ref": 0.06425,
-      "type": "swing",
-      "timestamp": "2026-10-12T04:10:14.011419+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
     {
       "ticker": "RAY",
       "score": 1.4,
@@ -6148,15 +6165,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ZK",
-      "score": 1.4,
-      "prix_ref": 0.016627,
-      "type": "swing",
-      "timestamp": "2026-10-13T20:15:59.409152+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "SKL",
       "score": 1.4,
       "prix_ref": 0.005223,
@@ -6175,33 +6183,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "BAT",
-      "score": 1.4,
-      "prix_ref": 0.19695,
-      "type": "swing",
-      "timestamp": "2026-10-14T00:16:10.841154+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "GRASS",
-      "score": 1.3,
-      "prix_ref": 0.7269,
-      "type": "swing",
-      "timestamp": "2026-10-14T00:16:30.047618+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "STX",
-      "score": 1.4,
-      "prix_ref": 0.4349,
-      "type": "swing",
-      "timestamp": "2026-10-14T00:16:54.164725+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "RSR",
       "score": 1.4,
       "prix_ref": 0.002109,
@@ -6211,11 +6192,56 @@
       "pnl_pct": null
     },
     {
+      "ticker": "BAT",
+      "score": 1.4,
+      "prix_ref": 0.1928,
+      "type": "swing",
+      "timestamp": "2026-10-14T04:17:27.671941+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZK",
+      "score": 1.4,
+      "prix_ref": 0.016,
+      "type": "swing",
+      "timestamp": "2026-10-14T04:17:48.563117+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "GRASS",
+      "score": 1.4,
+      "prix_ref": 0.7318,
+      "type": "swing",
+      "timestamp": "2026-10-14T04:18:08.609077+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STX",
+      "score": 1.4,
+      "prix_ref": 0.4378,
+      "type": "swing",
+      "timestamp": "2026-10-14T04:18:18.316141+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "XAMD",
+      "score": 1.4,
+      "prix_ref": 611.84,
+      "type": "swing",
+      "timestamp": "2026-10-14T04:19:07.456241+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
       "ticker": "KAIA",
       "score": 1.4,
-      "prix_ref": 0.04666,
+      "prix_ref": 0.04613,
       "type": "swing",
-      "timestamp": "2026-10-14T00:18:20.504706+00:00",
+      "timestamp": "2026-10-14T04:19:15.834729+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6223,21 +6249,21 @@
   "pending_signals": [
     {
       "ticker": "XTZ",
-      "score": 2.42,
-      "prix_ref": 0.3235,
+      "score": 2.29,
+      "prix_ref": 0.3174,
       "vol_regime": "normal",
       "regime": "bear",
-      "timestamp": "2026-10-14T00:18:45.412820+00:00",
+      "timestamp": "2026-10-14T04:20:00.256433+00:00",
       "ttl": 14400,
       "stop_atr": 0.3101
     },
     {
       "ticker": "RAY",
       "score": 2.02,
-      "prix_ref": 2.0389,
+      "prix_ref": 2.03,
       "vol_regime": "extreme",
       "regime": "sideways",
-      "timestamp": "2026-10-14T00:18:45.412833+00:00",
+      "timestamp": "2026-10-14T04:20:00.256446+00:00",
       "ttl": 14400,
       "stop_atr": 1.936
     }
@@ -8383,6 +8409,10 @@
     {
       "date": "2026-10-14T00:14",
       "equity": 248.79
+    },
+    {
+      "date": "2026-10-14T04:15",
+      "equity": 244.36
     }
   ],
   "health_last_warn": 1790151679.7883637,
@@ -8580,8 +8610,8 @@
     "xrp_buy": 1791282893.9939225
   },
   "ev_history": [
-    -3.45,
-    -3.66,
+    -4.21,
+    -4.21,
     -4.21,
     -4.21,
     -4.21,
@@ -14743,6 +14773,238 @@
         0.0
       ],
       "score_manual": -1.65,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-14T04:17:36.434757+00:00",
+      "ticker": "TRX",
+      "features": [
+        -1.73,
+        0.03,
+        -0.31,
+        0.0,
+        -0.6,
+        0.1,
+        0.0,
+        1.0,
+        0.0,
+        0.7,
+        0.156,
+        1.0,
+        -0.7,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.38189999999999996,
+        1.84,
+        0.0
+      ],
+      "score_manual": -1.76,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-14T04:17:57.478414+00:00",
+      "ticker": "RAY",
+      "features": [
+        2.02,
+        0.03,
+        0.59,
+        0.0,
+        0.0,
+        0.1,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        2.187,
+        0.0,
+        -0.2,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.38189999999999996,
+        1.12,
+        0.0
+      ],
+      "score_manual": 2.02,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-14T04:18:28.174471+00:00",
+      "ticker": "BASED",
+      "features": [
+        -2.19,
+        0.22,
+        -0.31,
+        0.0,
+        -0.6,
+        0.1,
+        0.0,
+        0.0,
+        1.0,
+        0.999,
+        0.924,
+        0.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.38189999999999996,
+        2.03,
+        0.0
+      ],
+      "score_manual": -2.18,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-14T04:18:48.589556+00:00",
+      "ticker": "PI",
+      "features": [
+        -2.3,
+        0.03,
+        -0.06,
+        0.0,
+        -0.6,
+        0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.687,
+        0.527,
+        0.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3818,
+        3.0,
+        0.0
+      ],
+      "score_manual": -2.28,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-14T04:18:57.440569+00:00",
+      "ticker": "RSR",
+      "features": [
+        2.11,
+        0.03,
+        0.25,
+        0.0,
+        -0.6,
+        0.1,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        1.4880000000000002,
+        1.0,
+        0.3,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3818,
+        3.13,
+        0.0
+      ],
+      "score_manual": 1.99,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-14T04:19:25.294066+00:00",
+      "ticker": "XTZ",
+      "features": [
+        2.42,
+        0.03,
+        0.0,
+        0.0,
+        0.0,
+        -0.1,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.684,
+        0.0,
+        -0.4,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3818,
+        1.04,
+        0.0
+      ],
+      "score_manual": 2.29,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-14T04:19:36.792771+00:00",
+      "ticker": "MINA",
+      "features": [
+        -1.7,
+        0.03,
+        0.26,
+        0.0,
+        -0.6,
+        0.1,
+        0.0,
+        0.0,
+        1.0,
+        0.673,
+        1.8880000000000001,
+        0.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3818,
+        1.83,
+        0.0
+      ],
+      "score_manual": -1.62,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-14T04:19:49.124739+00:00",
+      "ticker": "KMNO",
+      "features": [
+        1.76,
+        0.03,
+        0.19,
+        0.0,
+        0.0,
+        0.1,
+        0.0,
+        0.0,
+        1.0,
+        0.907,
+        1.034,
+        0.0,
+        -0.2,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3818,
+        1.2,
+        0.0
+      ],
+      "score_manual": 1.89,
       "label": null,
       "pnl_pct": null
     }
