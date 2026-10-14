@@ -1967,6 +1967,20 @@
       "regime": "bear",
       "vol_regime": "extreme",
       "score_entry": 2.76
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "RAY",
+      "pnl_pct": -2.43,
+      "days_held": 0.2,
+      "exit_reason": "Stop ATR -2.4% <= -3.0% (franchi en intraseance)",
+      "valeur_usd": 32.71,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-14T06:32:00.456290+00:00",
+      "regime": "sideways",
+      "vol_regime": "extreme",
+      "score_entry": 2.02
     }
   ],
   "entries": [
@@ -5804,6 +5818,32 @@
       "score_tech_adj_raw": 2.42,
       "score_rs_raw": -1.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "RAY",
+      "score": 2.02,
+      "score_tech": 0.0,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "sideways",
+      "vol_regime": "extreme",
+      "taille_usd": 33.11,
+      "prix": 2.0001,
+      "stop": 1.940097,
+      "btc_uptrend": true,
+      "late_entry": false,
+      "timestamp": "2026-10-14T06:33:20.091411+00:00",
+      "score_tech_raw": 0.0,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 0.0,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -6298,8 +6338,7 @@
   "peaks": {
     "XRP": 180.18,
     "ALGO": 2.17,
-    "RSR": 0.23,
-    "RAY": 0.78
+    "RSR": 0.23
   },
   "equity_history": [
     {
@@ -14831,8 +14870,8 @@
         0.0
       ],
       "score_manual": 2.02,
-      "label": null,
-      "pnl_pct": null
+      "label": 0,
+      "pnl_pct": -2.43
     },
     {
       "timestamp": "2026-10-14T04:18:28.174471+00:00",
