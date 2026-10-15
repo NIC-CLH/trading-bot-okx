@@ -2051,6 +2051,20 @@
       "regime": "bull",
       "vol_regime": "elevated",
       "score_entry": 2.43
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "A",
+      "pnl_pct": -9.64,
+      "days_held": 0.6,
+      "exit_reason": "Stop ATR -9.6% <= -10.0% (franchi en intraseance)",
+      "valeur_usd": 42.74,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-15T14:02:19.246184+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.75
     }
   ],
   "entries": [
@@ -15290,8 +15304,8 @@
         0.0
       ],
       "score_manual": 2.33,
-      "label": null,
-      "pnl_pct": null
+      "label": 0,
+      "pnl_pct": -9.64
     },
     {
       "timestamp": "2026-10-15T00:13:50.765073+00:00",
