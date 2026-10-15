@@ -6279,8 +6279,8 @@
       "prix_ref": 1230.48,
       "type": "swing",
       "timestamp": "2026-10-13T08:16:48.540129+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -11.29
     },
     {
       "ticker": "SAND",
@@ -6288,8 +6288,8 @@
       "prix_ref": 0.06101,
       "type": "swing",
       "timestamp": "2026-10-13T08:19:30.443055+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -11.31
     },
     {
       "ticker": "SKL",
@@ -8553,6 +8553,10 @@
     {
       "date": "2026-10-15T08:13",
       "equity": 234.4
+    },
+    {
+      "date": "2026-10-15T12:19",
+      "equity": 233.59
     }
   ],
   "health_last_warn": 1790151679.7883637,
