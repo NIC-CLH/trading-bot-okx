@@ -5914,6 +5914,32 @@
       "score_tech_adj_raw": 0.0,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "A",
+      "score": 2.75,
+      "score_tech": 2.75,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 47.28,
+      "prix": 0.10419,
+      "stop": null,
+      "btc_uptrend": true,
+      "late_entry": true,
+      "timestamp": "2026-10-15T00:11:00.456673+00:00",
+      "score_tech_raw": 2.75,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 2.75,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -6218,7 +6244,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.63882634486984,
+  "_sd_prev_usdt_d": 6.643309094356869,
   "shadow_portfolio": [
     {
       "ticker": "AVNT",
@@ -6275,15 +6301,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "STRK",
-      "score": 1.4,
-      "prix_ref": 0.0844,
-      "type": "swing",
-      "timestamp": "2026-10-14T00:15:59.820514+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "XAMD",
       "score": 1.4,
       "prix_ref": 611.84,
@@ -6302,15 +6319,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "BAT",
-      "score": 1.4,
-      "prix_ref": 0.18788,
-      "type": "swing",
-      "timestamp": "2026-10-14T12:21:07.889502+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "GRASS",
       "score": 1.4,
       "prix_ref": 0.6541,
@@ -6320,38 +6328,56 @@
       "pnl_pct": null
     },
     {
+      "ticker": "KAIA",
+      "score": 1.4,
+      "prix_ref": 0.04426,
+      "type": "swing",
+      "timestamp": "2026-10-14T20:17:48.755071+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STRK",
+      "score": 1.4,
+      "prix_ref": 0.07694,
+      "type": "swing",
+      "timestamp": "2026-10-15T00:12:54.712171+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "BAT",
+      "score": 1.4,
+      "prix_ref": 0.17702,
+      "type": "swing",
+      "timestamp": "2026-10-15T00:13:05.752751+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
       "ticker": "STX",
       "score": 1.4,
-      "prix_ref": 0.4118,
+      "prix_ref": 0.4254,
       "type": "swing",
-      "timestamp": "2026-10-14T16:20:15.256589+00:00",
+      "timestamp": "2026-10-15T00:13:18.046046+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "MAGIC",
       "score": 1.4,
-      "prix_ref": 0.10635,
+      "prix_ref": 0.10778,
       "type": "swing",
-      "timestamp": "2026-10-14T20:16:27.103370+00:00",
+      "timestamp": "2026-10-15T00:13:29.011833+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "ZK",
       "score": 1.4,
-      "prix_ref": 0.01492,
+      "prix_ref": 0.015781,
       "type": "swing",
-      "timestamp": "2026-10-14T20:17:16.846309+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "KAIA",
-      "score": 1.4,
-      "prix_ref": 0.04426,
-      "type": "swing",
-      "timestamp": "2026-10-14T20:17:48.755071+00:00",
+      "timestamp": "2026-10-15T00:14:38.822611+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -8515,6 +8541,10 @@
     {
       "date": "2026-10-14T20:14",
       "equity": 237.65
+    },
+    {
+      "date": "2026-10-15T00:11",
+      "equity": 237.54
     }
   ],
   "health_last_warn": 1790151679.7883637,
@@ -15248,6 +15278,151 @@
         0.0
       ],
       "score_manual": 2.33,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-15T00:13:50.765073+00:00",
+      "ticker": "MON",
+      "features": [
+        -1.54,
+        0.1,
+        -0.31,
+        0.0,
+        -0.6,
+        0.1,
+        0.0,
+        0.0,
+        1.0,
+        0.459,
+        1.258,
+        0.0,
+        -0.2,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.391,
+        1.97,
+        0.0
+      ],
+      "score_manual": -1.56,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-15T00:14:02.598589+00:00",
+      "ticker": "XQQQ",
+      "features": [
+        -1.95,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        -0.1,
+        0.0,
+        0.0,
+        1.0,
+        0.876,
+        0.163,
+        0.0,
+        -0.7,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.391,
+        1.0,
+        0.0
+      ],
+      "score_manual": -2.01,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-15T00:14:15.967133+00:00",
+      "ticker": "PI",
+      "features": [
+        -2.45,
+        0.1,
+        -0.06,
+        0.0,
+        -0.6,
+        0.1,
+        0.0,
+        1.0,
+        0.0,
+        0.7,
+        0.523,
+        0.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.391,
+        3.03,
+        0.0
+      ],
+      "score_manual": -2.4,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-15T00:14:49.501597+00:00",
+      "ticker": "ALGO",
+      "features": [
+        1.61,
+        0.0,
+        -0.19,
+        0.0,
+        -0.6,
+        0.1,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.991,
+        0.0,
+        -0.2,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.391,
+        1.53,
+        0.0
+      ],
+      "score_manual": 1.59,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-15T00:15:12.796325+00:00",
+      "ticker": "XCBRS",
+      "features": [
+        -1.62,
+        0.1,
+        -0.19,
+        0.0,
+        0.0,
+        -0.1,
+        0.0,
+        0.0,
+        1.0,
+        0.901,
+        0.66,
+        1.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.391,
+        1.0,
+        0.0
+      ],
+      "score_manual": -1.57,
       "label": null,
       "pnl_pct": null
     }
