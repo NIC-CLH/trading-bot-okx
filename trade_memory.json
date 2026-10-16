@@ -6046,6 +6046,32 @@
       "score_tech_adj_raw": 0.0,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "GRVT",
+      "score": 2.63,
+      "score_tech": 2.71,
+      "score_news": 0.03,
+      "score_ms": 0.19,
+      "score_macro": 0.1,
+      "regime": "bull",
+      "vol_regime": "normal",
+      "taille_usd": 35.21,
+      "prix": 0.23019,
+      "stop": 0.16,
+      "btc_uptrend": true,
+      "late_entry": false,
+      "timestamp": "2026-10-16T00:19:40.497848+00:00",
+      "score_tech_raw": 2.71,
+      "score_news_raw": 0.03,
+      "score_ms_raw": 0.19,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.1,
+      "score_tech_adj_raw": 2.71,
+      "score_rs_raw": -1.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -6350,7 +6376,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.591517260321246,
+  "_sd_prev_usdt_d": 6.585978496532438,
   "shadow_portfolio": [
     {
       "ticker": "AVNT",
@@ -6403,8 +6429,8 @@
       "prix_ref": 0.005223,
       "type": "swing",
       "timestamp": "2026-10-13T20:18:09.651690+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -7.03
     },
     {
       "ticker": "XAMD",
@@ -6452,24 +6478,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ZK",
-      "score": 1.4,
-      "prix_ref": 0.017103,
-      "type": "swing",
-      "timestamp": "2026-10-15T20:15:49.087127+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "MAGIC",
-      "score": 1.4,
-      "prix_ref": 0.10931,
-      "type": "swing",
-      "timestamp": "2026-10-15T20:16:25.996334+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "BAT",
       "score": 1.4,
       "prix_ref": 0.21483,
@@ -6479,11 +6487,29 @@
       "pnl_pct": null
     },
     {
+      "ticker": "ZK",
+      "score": 1.4,
+      "prix_ref": 0.017041,
+      "type": "swing",
+      "timestamp": "2026-10-16T00:16:31.895814+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "MAGIC",
+      "score": 1.4,
+      "prix_ref": 0.10891,
+      "type": "swing",
+      "timestamp": "2026-10-16T00:17:09.838018+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
       "ticker": "STX",
       "score": 1.4,
-      "prix_ref": 0.403,
+      "prix_ref": 0.4307,
       "type": "swing",
-      "timestamp": "2026-10-15T20:17:30.696347+00:00",
+      "timestamp": "2026-10-16T00:17:58.038089+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6491,31 +6517,21 @@
   "pending_signals": [
     {
       "ticker": "ANIME",
-      "score": 2.96,
-      "prix_ref": 0.003319,
+      "score": 3.0,
+      "prix_ref": 0.003202,
       "vol_regime": "elevated",
       "regime": "bull",
-      "timestamp": "2026-10-15T20:18:33.229629+00:00",
+      "timestamp": "2026-10-16T00:19:04.605088+00:00",
       "ttl": 14400,
       "stop_atr": 0.0027
     },
     {
-      "ticker": "NEAR",
-      "score": 2.67,
-      "prix_ref": 5.348,
-      "vol_regime": "extreme",
-      "regime": "bull",
-      "timestamp": "2026-10-15T20:18:33.229661+00:00",
-      "ttl": 14400,
-      "stop_atr": 4.526
-    },
-    {
       "ticker": "GRVT",
-      "score": 2.13,
-      "prix_ref": 0.22804,
+      "score": 2.63,
+      "prix_ref": 0.23019,
       "vol_regime": "normal",
       "regime": "bull",
-      "timestamp": "2026-10-15T20:18:33.229665+00:00",
+      "timestamp": "2026-10-16T00:19:04.605101+00:00",
       "ttl": 14400,
       "stop_atr": 0.16
     }
@@ -8704,6 +8720,10 @@
     {
       "date": "2026-10-15T20:13",
       "equity": 237.54
+    },
+    {
+      "date": "2026-10-16T00:14",
+      "equity": 235.32
     }
   ],
   "health_last_warn": 1790151679.7883637,
@@ -8915,7 +8935,7 @@
     -4.21,
     -4.21,
     -4.21,
-    -4.21,
+    -7.08,
     -7.08,
     -7.08,
     -7.08
@@ -15959,6 +15979,180 @@
         0.0
       ],
       "score_manual": 2.13,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-16T00:16:45.607135+00:00",
+      "ticker": "GRASS",
+      "features": [
+        1.52,
+        0.03,
+        -0.02,
+        0.0,
+        -0.6,
+        0.1,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        1.466,
+        0.0,
+        -0.2,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3874,
+        2.33,
+        0.0
+      ],
+      "score_manual": 1.54,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-16T00:17:21.890626+00:00",
+      "ticker": "ANIME",
+      "features": [
+        3.0,
+        0.03,
+        0.21,
+        0.0,
+        -1.0,
+        0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.731,
+        0.8809999999999999,
+        0.0,
+        -0.2,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3875,
+        1.32,
+        0.0
+      ],
+      "score_manual": 3.0,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-16T00:18:07.325941+00:00",
+      "ticker": "CP",
+      "features": [
+        -1.57,
+        0.03,
+        -0.44,
+        0.0,
+        -0.6,
+        0.1,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.698,
+        0.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3875,
+        2.94,
+        0.0
+      ],
+      "score_manual": -1.63,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-16T00:18:27.810680+00:00",
+      "ticker": "BASED",
+      "features": [
+        -1.9,
+        0.03,
+        -0.19,
+        0.0,
+        -0.6,
+        0.1,
+        0.0,
+        1.0,
+        0.0,
+        0.999,
+        0.8759999999999999,
+        1.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3875,
+        1.7,
+        0.0
+      ],
+      "score_manual": -1.91,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-16T00:18:39.852876+00:00",
+      "ticker": "SLX",
+      "features": [
+        -2.22,
+        0.03,
+        -0.31,
+        0.0,
+        -0.6,
+        0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.873,
+        0.7170000000000001,
+        0.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3875,
+        1.86,
+        0.0
+      ],
+      "score_manual": -2.25,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-16T00:18:51.261373+00:00",
+      "ticker": "GRVT",
+      "features": [
+        2.71,
+        0.03,
+        0.19,
+        0.0,
+        0.0,
+        0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.915,
+        0.6759999999999999,
+        0.0,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3875,
+        1.22,
+        0.0
+      ],
+      "score_manual": 2.63,
       "label": null,
       "pnl_pct": null
     }
