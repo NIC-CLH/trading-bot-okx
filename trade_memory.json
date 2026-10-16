@@ -2107,6 +2107,20 @@
       "regime": "bull",
       "vol_regime": "elevated",
       "score_entry": 3.0
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "GRASS",
+      "pnl_pct": -1.86,
+      "days_held": 0.1,
+      "exit_reason": "Stop ATR -1.9% <= -2.7% (franchi en intraseance)",
+      "valeur_usd": 30.64,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-16T12:02:18.926488+00:00",
+      "regime": "bull",
+      "vol_regime": "extreme",
+      "score_entry": 2.3
     }
   ],
   "entries": [
@@ -16516,8 +16530,8 @@
         0.0
       ],
       "score_manual": 2.3,
-      "label": null,
-      "pnl_pct": null
+      "label": 0,
+      "pnl_pct": -1.86
     },
     {
       "timestamp": "2026-10-16T08:19:27.443741+00:00",
