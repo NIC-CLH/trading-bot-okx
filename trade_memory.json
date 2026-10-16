@@ -2079,6 +2079,34 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 3.0
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "NEAR",
+      "pnl_pct": -2.3,
+      "days_held": 0.3,
+      "exit_reason": "Stop ATR -2.3% <= -2.6% (franchi en intraseance)",
+      "valeur_usd": 41.13,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-16T04:02:18.426400+00:00",
+      "regime": "bull",
+      "vol_regime": "extreme",
+      "score_entry": 2.67
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ANIME",
+      "pnl_pct": -1.44,
+      "days_held": 0.1,
+      "exit_reason": "Stop ATR -1.4% <= -0.8%",
+      "valeur_usd": 38.54,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-16T04:02:28.770362+00:00",
+      "regime": "bull",
+      "vol_regime": "elevated",
+      "score_entry": 3.0
     }
   ],
   "entries": [
@@ -6591,9 +6619,7 @@
   },
   "peaks": {
     "XRP": 180.18,
-    "NEAR": 0.51,
-    "GRVT": 1.48,
-    "ANIME": 2.66
+    "GRVT": 1.48
   },
   "equity_history": [
     {
@@ -15803,8 +15829,8 @@
         0.0
       ],
       "score_manual": 2.67,
-      "label": null,
-      "pnl_pct": null
+      "label": 0,
+      "pnl_pct": -2.3
     },
     {
       "timestamp": "2026-10-15T20:15:59.482840+00:00",
@@ -16064,8 +16090,8 @@
         0.0
       ],
       "score_manual": 3.0,
-      "label": null,
-      "pnl_pct": null
+      "label": 0,
+      "pnl_pct": -1.44
     },
     {
       "timestamp": "2026-10-16T00:18:07.325941+00:00",
