@@ -6522,35 +6522,8 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.578019312665945,
+  "_sd_prev_usdt_d": 6.553833758314149,
   "shadow_portfolio": [
-    {
-      "ticker": "AVNT",
-      "score": 1.4,
-      "prix_ref": 0.13633,
-      "type": "swing",
-      "timestamp": "2026-10-12T04:15:51.474806+00:00",
-      "outcome": "correct",
-      "pnl_pct": -3.92
-    },
-    {
-      "ticker": "NMR",
-      "score": 1.4,
-      "prix_ref": 13.497,
-      "type": "swing",
-      "timestamp": "2026-10-12T04:16:03.483144+00:00",
-      "outcome": "correct",
-      "pnl_pct": -4.85
-    },
-    {
-      "ticker": "WLD",
-      "score": 1.4,
-      "prix_ref": 0.5482,
-      "type": "swing",
-      "timestamp": "2026-10-12T08:20:05.092486+00:00",
-      "outcome": "correct",
-      "pnl_pct": -6.28
-    },
     {
       "ticker": "ZEC",
       "score": -1.41,
@@ -6593,8 +6566,8 @@
       "prix_ref": 0.002025,
       "type": "swing",
       "timestamp": "2026-10-14T08:14:37.468740+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -4.15
     },
     {
       "ticker": "GRASS",
@@ -6624,15 +6597,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "STX",
-      "score": 1.4,
-      "prix_ref": 0.4307,
-      "type": "swing",
-      "timestamp": "2026-10-16T00:17:58.038089+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "MAGIC",
       "score": 1.4,
       "prix_ref": 0.10961,
@@ -6642,20 +6606,56 @@
       "pnl_pct": null
     },
     {
+      "ticker": "AAVE",
+      "score": 1.47,
+      "prix_ref": 163.71,
+      "type": "swing",
+      "timestamp": "2026-10-16T12:12:22.286262+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
       "ticker": "ZK",
       "score": 1.4,
-      "prix_ref": 0.017591,
+      "prix_ref": 0.017485,
       "type": "swing",
-      "timestamp": "2026-10-16T08:17:39.074470+00:00",
+      "timestamp": "2026-10-16T12:12:34.536154+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "BAT",
       "score": 1.4,
-      "prix_ref": 0.19978,
+      "prix_ref": 0.198,
       "type": "swing",
-      "timestamp": "2026-10-16T08:18:02.242111+00:00",
+      "timestamp": "2026-10-16T12:12:59.596280+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "STX",
+      "score": 1.4,
+      "prix_ref": 0.4118,
+      "type": "swing",
+      "timestamp": "2026-10-16T12:13:57.700879+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "KMNO",
+      "score": 1.41,
+      "prix_ref": 0.03854,
+      "type": "swing",
+      "timestamp": "2026-10-16T12:14:08.835476+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "S",
+      "score": 1.4,
+      "prix_ref": 0.05432,
+      "type": "swing",
+      "timestamp": "2026-10-16T12:14:23.081019+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -6663,43 +6663,23 @@
   "pending_signals": [
     {
       "ticker": "ANIME",
-      "score": 2.85,
-      "prix_ref": 0.003047,
+      "score": 3.0,
+      "prix_ref": 0.003076,
       "vol_regime": "elevated",
       "regime": "bull",
-      "timestamp": "2026-10-16T08:21:07.999238+00:00",
+      "timestamp": "2026-10-16T12:15:52.044115+00:00",
       "ttl": 14400,
       "stop_atr": 0.0027
     },
     {
-      "ticker": "SENT",
-      "score": 2.61,
-      "prix_ref": 0.02135,
-      "vol_regime": "elevated",
-      "regime": "bear",
-      "timestamp": "2026-10-16T08:21:07.999248+00:00",
-      "ttl": 14400,
-      "stop_atr": 0.0203
-    },
-    {
-      "ticker": "GRVT",
-      "score": 2.52,
-      "prix_ref": 0.2274,
-      "vol_regime": "normal",
-      "regime": "bull",
-      "timestamp": "2026-10-16T08:21:07.999252+00:00",
-      "ttl": 14400,
-      "stop_atr": 0.16
-    },
-    {
-      "ticker": "GRASS",
-      "score": 2.3,
-      "prix_ref": 0.6917,
+      "ticker": "NEAR",
+      "score": 2.9,
+      "prix_ref": 5.283,
       "vol_regime": "extreme",
       "regime": "bull",
-      "timestamp": "2026-10-16T08:21:07.999255+00:00",
+      "timestamp": "2026-10-16T12:15:52.044148+00:00",
       "ttl": 14400,
-      "stop_atr": 0.59
+      "stop_atr": 4.526
     }
   ],
   "reentry_thresholds": {
@@ -8898,6 +8878,10 @@
     {
       "date": "2026-10-16T08:15",
       "equity": 230.21
+    },
+    {
+      "date": "2026-10-16T12:10",
+      "equity": 227.12
     }
   ],
   "health_last_warn": 1790151679.7883637,
@@ -16646,6 +16630,151 @@
         0.0
       ],
       "score_manual": 2.61,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-16T12:12:08.188354+00:00",
+      "ticker": "NEAR",
+      "features": [
+        2.99,
+        0.53,
+        0.0,
+        -0.15,
+        0.4,
+        0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.99,
+        1.274,
+        0.0,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3714,
+        1.23,
+        0.0
+      ],
+      "score_manual": 2.9,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-16T12:12:48.349012+00:00",
+      "ticker": "ANIME",
+      "features": [
+        3.0,
+        0.03,
+        0.19,
+        0.0,
+        -0.6,
+        -0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.982,
+        0.8440000000000001,
+        0.0,
+        -0.4,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3722,
+        1.36,
+        0.0
+      ],
+      "score_manual": 3.0,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-16T12:14:33.161912+00:00",
+      "ticker": "BASED",
+      "features": [
+        -1.63,
+        0.03,
+        0.19,
+        0.0,
+        -0.6,
+        0.1,
+        0.0,
+        1.0,
+        0.0,
+        0.996,
+        0.924,
+        1.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.37270000000000003,
+        1.67,
+        0.0
+      ],
+      "score_manual": -1.56,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-16T12:14:46.594296+00:00",
+      "ticker": "GRVT",
+      "features": [
+        2.0,
+        0.03,
+        0.19,
+        0.0,
+        0.0,
+        -0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.855,
+        0.5379999999999999,
+        0.0,
+        -0.2,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.373,
+        1.13,
+        0.0
+      ],
+      "score_manual": 1.91,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-16T12:15:51.036015+00:00",
+      "ticker": "SLX",
+      "features": [
+        -1.62,
+        0.03,
+        -0.31,
+        0.0,
+        -0.6,
+        -0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.84,
+        0.629,
+        0.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.37310000000000004,
+        2.01,
+        0.0
+      ],
+      "score_manual": -1.67,
       "label": null,
       "pnl_pct": null
     }
