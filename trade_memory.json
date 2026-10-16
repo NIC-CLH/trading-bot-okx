@@ -6218,6 +6218,32 @@
       "score_tech_adj_raw": 0.0,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "NEAR",
+      "score": 2.9,
+      "score_tech": 0.0,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "extreme",
+      "taille_usd": 40.06,
+      "prix": 5.295,
+      "stop": 5.13615,
+      "btc_uptrend": true,
+      "late_entry": false,
+      "timestamp": "2026-10-16T12:32:59.761379+00:00",
+      "score_tech_raw": 0.0,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 0.0,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -6712,7 +6738,8 @@
   "peaks": {
     "XRP": 180.18,
     "GRVT": 1.48,
-    "ANIME": 1.44
+    "ANIME": 1.44,
+    "SENT": 0.23
   },
   "equity_history": [
     {
@@ -9088,7 +9115,6 @@
   },
   "ev_history": [
     -4.21,
-    -4.21,
     -7.08,
     -7.08,
     -7.08,
@@ -9096,7 +9122,8 @@
     -2.81,
     -2.18,
     -2.18,
-    -2.18
+    -2.18,
+    -1.59
   ],
   "coingecko_ids": {
     "ts": 1791994790.9341538,
