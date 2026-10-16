@@ -2121,6 +2121,20 @@
       "regime": "bull",
       "vol_regime": "extreme",
       "score_entry": 2.3
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ANIME",
+      "pnl_pct": -3.5,
+      "days_held": 0.4,
+      "exit_reason": "Stop ATR -3.5% <= -3.7% (franchi en intraseance)",
+      "valeur_usd": 39.14,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-16T14:02:33.310655+00:00",
+      "regime": "bull",
+      "vol_regime": "elevated",
+      "score_entry": 2.98
     }
   ],
   "entries": [
@@ -6738,7 +6752,6 @@
   "peaks": {
     "XRP": 180.18,
     "GRVT": 1.48,
-    "ANIME": 1.44,
     "SENT": 1.22
   },
   "equity_history": [
@@ -16715,8 +16728,8 @@
         0.0
       ],
       "score_manual": 3.0,
-      "label": null,
-      "pnl_pct": null
+      "label": 0,
+      "pnl_pct": -3.5
     },
     {
       "timestamp": "2026-10-16T12:14:33.161912+00:00",
