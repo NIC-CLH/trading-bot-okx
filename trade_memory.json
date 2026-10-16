@@ -2065,6 +2065,20 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.75
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "ANIME",
+      "pnl_pct": 7.78,
+      "days_held": 0.3,
+      "exit_reason": "Trailing stop : pic +19.0% → plancher +9.5% | actuel +7.8%",
+      "valeur_usd": 50.12,
+      "outcome": "win",
+      "exit_quality": 41.0,
+      "timestamp": "2026-10-16T00:02:24.213460+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 3.0
     }
   ],
   "entries": [
@@ -6535,7 +6549,6 @@
   },
   "peaks": {
     "XRP": 180.18,
-    "ANIME": 18.96,
     "NEAR": 0.51,
     "GRVT": 1.48
   },
@@ -15801,8 +15814,8 @@
         0.0
       ],
       "score_manual": 2.96,
-      "label": null,
-      "pnl_pct": null
+      "label": 1,
+      "pnl_pct": 7.78
     },
     {
       "timestamp": "2026-10-15T20:16:55.134713+00:00",
