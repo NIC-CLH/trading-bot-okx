@@ -6126,6 +6126,32 @@
       "score_tech_adj_raw": 0.0,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "ANIME",
+      "score": 2.98,
+      "score_tech": 0.0,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "elevated",
+      "taille_usd": 40.46,
+      "prix": 0.003112,
+      "stop": 0.003019,
+      "btc_uptrend": true,
+      "late_entry": false,
+      "timestamp": "2026-10-16T04:33:43.722682+00:00",
+      "score_tech_raw": 0.0,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 0.0,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -8980,12 +9006,12 @@
     -4.21,
     -4.21,
     -4.21,
-    -4.21,
     -7.08,
     -7.08,
     -7.08,
     -7.08,
-    -2.81
+    -2.81,
+    -2.18
   ],
   "coingecko_ids": {
     "ts": 1791994790.9341538,
