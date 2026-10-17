@@ -6576,17 +6576,8 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.6435461626315835,
+  "_sd_prev_usdt_d": 6.63405103570774,
   "shadow_portfolio": [
-    {
-      "ticker": "SAND",
-      "score": 1.4,
-      "prix_ref": 0.06101,
-      "type": "swing",
-      "timestamp": "2026-10-13T08:19:30.443055+00:00",
-      "outcome": "correct",
-      "pnl_pct": -11.31
-    },
     {
       "ticker": "SKL",
       "score": 1.4,
@@ -6687,15 +6678,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "ZK",
-      "score": 1.4,
-      "prix_ref": 0.0165,
-      "type": "swing",
-      "timestamp": "2026-10-17T04:19:25.266071+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "STX",
       "score": 1.43,
       "prix_ref": 0.3771,
@@ -6710,6 +6692,24 @@
       "prix_ref": 0.11085,
       "type": "swing",
       "timestamp": "2026-10-17T04:20:53.559997+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "EIGEN",
+      "score": 1.47,
+      "prix_ref": 0.268,
+      "type": "swing",
+      "timestamp": "2026-10-17T08:20:25.934272+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZK",
+      "score": 1.4,
+      "prix_ref": 0.015747,
+      "type": "swing",
+      "timestamp": "2026-10-17T08:20:44.921618+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -8931,6 +8931,10 @@
     {
       "date": "2026-10-17T04:17",
       "equity": 225.03
+    },
+    {
+      "date": "2026-10-17T08:18",
+      "equity": 223.76
     }
   ],
   "health_last_warn": 1790151679.7883637,
@@ -17379,6 +17383,93 @@
         0.0
       ],
       "score_manual": -1.81,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-17T08:19:59.337617+00:00",
+      "ticker": "BASED",
+      "features": [
+        -3.0,
+        0.0,
+        -0.1,
+        0.0,
+        -0.2,
+        0.1,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.815,
+        1.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3732,
+        1.45,
+        0.0
+      ],
+      "score_manual": -2.9,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-17T08:20:56.194682+00:00",
+      "ticker": "PI",
+      "features": [
+        -2.98,
+        0.1,
+        -0.15,
+        0.0,
+        -0.6,
+        0.1,
+        0.0,
+        1.0,
+        0.0,
+        0.7,
+        0.52,
+        0.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3732,
+        2.78,
+        0.0
+      ],
+      "score_manual": -2.9,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-17T08:21:08.095884+00:00",
+      "ticker": "MON",
+      "features": [
+        -1.54,
+        0.1,
+        -0.31,
+        0.0,
+        -0.6,
+        -0.1,
+        0.0,
+        0.0,
+        1.0,
+        0.997,
+        1.246,
+        0.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3732,
+        2.22,
+        0.0
+      ],
+      "score_manual": -1.57,
       "label": null,
       "pnl_pct": null
     }
