@@ -6590,7 +6590,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.645077959571491,
+  "_sd_prev_usdt_d": 6.6502370856132105,
   "shadow_portfolio": [
     {
       "ticker": "XAMD",
@@ -6683,47 +6683,47 @@
       "pnl_pct": null
     },
     {
+      "ticker": "KAIA",
+      "score": 1.4,
+      "prix_ref": 0.04399,
+      "type": "swing",
+      "timestamp": "2026-10-17T12:13:32.435212+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
       "ticker": "SAND",
       "score": 1.4,
-      "prix_ref": 0.06143,
+      "prix_ref": 0.06059,
       "type": "swing",
-      "timestamp": "2026-10-17T12:11:15.262855+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "BAT",
-      "score": 1.4,
-      "prix_ref": 0.19314,
-      "type": "swing",
-      "timestamp": "2026-10-17T12:11:54.750791+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
-      "ticker": "ZK",
-      "score": 1.4,
-      "prix_ref": 0.016083,
-      "type": "swing",
-      "timestamp": "2026-10-17T12:12:05.793382+00:00",
+      "timestamp": "2026-10-17T20:14:51.331550+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
       "ticker": "MAGIC",
       "score": 1.4,
-      "prix_ref": 0.10972,
+      "prix_ref": 0.10877,
       "type": "swing",
-      "timestamp": "2026-10-17T12:12:17.779262+00:00",
+      "timestamp": "2026-10-17T20:15:38.876373+00:00",
       "outcome": null,
       "pnl_pct": null
     },
     {
-      "ticker": "KAIA",
+      "ticker": "BAT",
       "score": 1.4,
-      "prix_ref": 0.04399,
+      "prix_ref": 0.18519,
       "type": "swing",
-      "timestamp": "2026-10-17T12:13:32.435212+00:00",
+      "timestamp": "2026-10-17T20:15:51.332426+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "ZK",
+      "score": 1.4,
+      "prix_ref": 0.015369,
+      "type": "swing",
+      "timestamp": "2026-10-17T20:16:26.342663+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -8956,9 +8956,13 @@
     {
       "date": "2026-10-17T16:12",
       "equity": 222.08
+    },
+    {
+      "date": "2026-10-17T20:13",
+      "equity": 222.81
     }
   ],
-  "health_last_warn": 1790151679.7883637,
+  "health_last_warn": 1792268198.5351596,
   "eea_blacklist": {
     "BNB": {
       "reason": "All operations failed (code 1) - constate 18/07/2026",
@@ -17781,6 +17785,151 @@
         0.0
       ],
       "score_manual": -2.01,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-17T20:15:02.577854+00:00",
+      "ticker": "BASED",
+      "features": [
+        -2.42,
+        0.0,
+        -0.1,
+        0.0,
+        -0.2,
+        0.1,
+        0.0,
+        0.0,
+        1.0,
+        0.998,
+        1.04,
+        1.0,
+        -0.2,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.376,
+        1.53,
+        0.0
+      ],
+      "score_manual": -2.38,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-17T20:15:26.025496+00:00",
+      "ticker": "EIGEN",
+      "features": [
+        1.79,
+        0.0,
+        0.1,
+        0.0,
+        -0.4,
+        -0.1,
+        0.0,
+        0.0,
+        1.0,
+        0.339,
+        0.846,
+        0.0,
+        0.3,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.376,
+        1.01,
+        0.0
+      ],
+      "score_manual": 1.65,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-17T20:16:01.287644+00:00",
+      "ticker": "MON",
+      "features": [
+        -1.94,
+        0.1,
+        0.06,
+        0.0,
+        -0.6,
+        0.1,
+        0.0,
+        0.0,
+        1.0,
+        0.655,
+        1.273,
+        0.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.376,
+        2.55,
+        0.0
+      ],
+      "score_manual": -1.84,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-17T20:16:13.099494+00:00",
+      "ticker": "PI",
+      "features": [
+        -2.98,
+        0.1,
+        -0.15,
+        0.0,
+        -0.6,
+        0.1,
+        0.0,
+        0.0,
+        1.0,
+        0.706,
+        0.48200000000000004,
+        0.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.376,
+        2.79,
+        0.0
+      ],
+      "score_manual": -2.9,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-17T20:16:37.521317+00:00",
+      "ticker": "NMR",
+      "features": [
+        1.9,
+        0.1,
+        0.15,
+        0.0,
+        -0.6,
+        0.1,
+        0.0,
+        0.0,
+        1.0,
+        0.957,
+        1.683,
+        0.0,
+        0.3,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.376,
+        3.18,
+        0.0
+      ],
+      "score_manual": 1.77,
       "label": null,
       "pnl_pct": null
     }
