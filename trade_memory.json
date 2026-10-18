@@ -6590,7 +6590,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.6596654424996125,
+  "_sd_prev_usdt_d": 6.687868569994591,
   "shadow_portfolio": [
     {
       "ticker": "RSR",
@@ -6625,8 +6625,8 @@
       "prix_ref": 163.71,
       "type": "swing",
       "timestamp": "2026-10-16T12:12:22.286262+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -5.94
     },
     {
       "ticker": "KMNO",
@@ -6634,8 +6634,8 @@
       "prix_ref": 0.03854,
       "type": "swing",
       "timestamp": "2026-10-16T12:14:08.835476+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 3.19
     },
     {
       "ticker": "S",
@@ -6643,8 +6643,8 @@
       "prix_ref": 0.05432,
       "type": "swing",
       "timestamp": "2026-10-16T12:14:23.081019+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 2.54
     },
     {
       "ticker": "MON",
@@ -8972,6 +8972,10 @@
     {
       "date": "2026-10-18T08:08",
       "equity": 221.57
+    },
+    {
+      "date": "2026-10-18T12:19",
+      "equity": 222.07
     }
   ],
   "health_last_warn": 1792268198.5351596,
