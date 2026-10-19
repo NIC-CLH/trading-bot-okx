@@ -2163,6 +2163,20 @@
       "regime": "bear",
       "vol_regime": "elevated",
       "score_entry": 2.61
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "SENT",
+      "pnl_pct": 3.68,
+      "days_held": 0.3,
+      "exit_reason": "Trailing stop : pic +7.8% → plancher +3.9% | actuel +3.7%",
+      "valeur_usd": 29.93,
+      "outcome": "win",
+      "exit_quality": 47.3,
+      "timestamp": "2026-10-19T08:02:21.706014+00:00",
+      "regime": "bull",
+      "vol_regime": "elevated",
+      "score_entry": 2.28
     }
   ],
   "entries": [
@@ -6784,8 +6798,7 @@
   },
   "peaks": {
     "XRP": 180.18,
-    "GRVT": 1.48,
-    "SENT": 7.79
+    "GRVT": 1.48
   },
   "equity_history": [
     {
@@ -18403,8 +18416,8 @@
         0.0
       ],
       "score_manual": 2.28,
-      "label": null,
-      "pnl_pct": null
+      "label": 1,
+      "pnl_pct": 3.68
     },
     {
       "timestamp": "2026-10-19T00:18:24.732791+00:00",
