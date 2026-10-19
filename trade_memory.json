@@ -6630,7 +6630,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.652944991495866,
+  "_sd_prev_usdt_d": 6.672249104064656,
   "shadow_portfolio": [
     {
       "ticker": "GRASS",
@@ -6701,8 +6701,8 @@
       "prix_ref": 0.268,
       "type": "swing",
       "timestamp": "2026-10-17T08:20:25.934272+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -11.87
     },
     {
       "ticker": "KAIA",
@@ -6710,8 +6710,8 @@
       "prix_ref": 0.04399,
       "type": "swing",
       "timestamp": "2026-10-17T12:13:32.435212+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -7.46
     },
     {
       "ticker": "PENGU",
@@ -9036,6 +9036,10 @@
     {
       "date": "2026-10-19T08:18",
       "equity": 222.08
+    },
+    {
+      "date": "2026-10-19T12:19",
+      "equity": 223.91
     }
   ],
   "health_last_warn": 1792268198.5351596,
@@ -18826,6 +18830,35 @@
         0.0
       ],
       "score_manual": 3.0,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-19T12:21:08.161667+00:00",
+      "ticker": "BTC",
+      "features": [
+        2.0,
+        1.1,
+        0.19,
+        -0.05,
+        -0.6,
+        -0.1,
+        0.0,
+        0.0,
+        1.0,
+        0.464,
+        0.32899999999999996,
+        0.0,
+        -0.4,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3845,
+        1.49,
+        0.0
+      ],
+      "score_manual": 2.27,
       "label": null,
       "pnl_pct": null
     }
