@@ -6590,7 +6590,7 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.687868569994591,
+  "_sd_prev_usdt_d": 6.685111972716489,
   "shadow_portfolio": [
     {
       "ticker": "RSR",
@@ -6652,8 +6652,8 @@
       "prix_ref": 0.02265,
       "type": "swing",
       "timestamp": "2026-10-16T20:11:47.845904+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -6.4
     },
     {
       "ticker": "STX",
@@ -6710,15 +6710,6 @@
       "pnl_pct": null
     },
     {
-      "ticker": "BAT",
-      "score": 1.4,
-      "prix_ref": 0.17963,
-      "type": "swing",
-      "timestamp": "2026-10-18T08:10:31.817919+00:00",
-      "outcome": null,
-      "pnl_pct": null
-    },
-    {
       "ticker": "ZK",
       "score": 1.4,
       "prix_ref": 0.01475,
@@ -6726,9 +6717,29 @@
       "timestamp": "2026-10-18T08:11:08.511349+00:00",
       "outcome": null,
       "pnl_pct": null
+    },
+    {
+      "ticker": "BAT",
+      "score": 1.4,
+      "prix_ref": 0.1759,
+      "type": "swing",
+      "timestamp": "2026-10-19T00:17:48.475873+00:00",
+      "outcome": null,
+      "pnl_pct": null
     }
   ],
-  "pending_signals": [],
+  "pending_signals": [
+    {
+      "ticker": "SENT",
+      "score": 2.28,
+      "prix_ref": 0.02277,
+      "vol_regime": "elevated",
+      "regime": "bull",
+      "timestamp": "2026-10-19T00:18:57.330678+00:00",
+      "ttl": 14400,
+      "stop_atr": 0.0203
+    }
+  ],
   "reentry_thresholds": {
     "ASTER": {
       "threshold": 1.9,
@@ -8984,6 +8995,10 @@
     {
       "date": "2026-10-18T20:15",
       "equity": 221.36
+    },
+    {
+      "date": "2026-10-19T00:15",
+      "equity": 222.3
     }
   ],
   "health_last_warn": 1792268198.5351596,
@@ -9201,7 +9216,6 @@
     "xrp_buy": 1791282893.9939225
   },
   "ev_history": [
-    -4.21,
     -7.08,
     -7.08,
     -7.08,
@@ -9210,7 +9224,8 @@
     -2.18,
     -2.18,
     -2.18,
-    -1.59
+    -1.59,
+    -2.94
   ],
   "coingecko_ids": {
     "ts": 1791994790.9341538,
@@ -18310,6 +18325,93 @@
         0.0
       ],
       "score_manual": -2.46,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-19T00:17:35.665794+00:00",
+      "ticker": "PI",
+      "features": [
+        -2.98,
+        0.1,
+        -0.44,
+        0.0,
+        -0.6,
+        0.1,
+        0.0,
+        1.0,
+        0.0,
+        0.7,
+        0.466,
+        0.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3892,
+        2.85,
+        0.0
+      ],
+      "score_manual": -2.9,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-19T00:17:59.171513+00:00",
+      "ticker": "SENT",
+      "features": [
+        2.17,
+        0.1,
+        0.1,
+        0.0,
+        0.0,
+        -0.1,
+        1.0,
+        0.0,
+        0.0,
+        0.619,
+        1.149,
+        0.0,
+        0.3,
+        1.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3892,
+        0.98,
+        0.0
+      ],
+      "score_manual": 2.28,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-19T00:18:24.732791+00:00",
+      "ticker": "JTO",
+      "features": [
+        -1.65,
+        0.1,
+        -0.02,
+        -0.15,
+        -0.2,
+        -0.1,
+        0.0,
+        1.0,
+        0.0,
+        0.7,
+        1.131,
+        1.0,
+        -0.5,
+        0.0,
+        0.0,
+        0.0,
+        2.16023,
+        0.3892,
+        1.96,
+        0.0
+      ],
+      "score_manual": -1.6,
       "label": null,
       "pnl_pct": null
     }
