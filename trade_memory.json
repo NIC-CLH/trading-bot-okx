@@ -9332,6 +9332,10 @@
     "XINTC": {
       "reason": "OKX API error : All operations failed (code 1)",
       "since": "2026-10-19T16:35"
+    },
+    "XAMZN": {
+      "reason": "OKX API error : All operations failed (code 1)",
+      "since": "2026-10-19T18:35"
     }
   },
   "alert_cooldowns": {
@@ -19288,6 +19292,35 @@
         0.0
       ],
       "score_manual": -2.03,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-19T18:35:33.618255+00:00",
+      "ticker": "XAMZN",
+      "features": [
+        2.52,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.5,
+        0.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.4,
+        0.65,
+        1.0,
+        0.0
+      ],
+      "score_manual": 2.52,
       "label": null,
       "pnl_pct": null
     }
