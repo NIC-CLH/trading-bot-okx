@@ -2177,6 +2177,20 @@
       "regime": "bull",
       "vol_regime": "elevated",
       "score_entry": 2.28
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "GRVT",
+      "pnl_pct": 6.53,
+      "days_held": 0.7,
+      "exit_reason": "Trailing stop : pic +13.1% → plancher +6.5% | actuel +6.5%",
+      "valeur_usd": 130.66,
+      "outcome": "win",
+      "exit_quality": 50.0,
+      "timestamp": "2026-10-20T13:32:14.094246+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.61
     }
   ],
   "entries": [
@@ -6928,7 +6942,6 @@
   },
   "peaks": {
     "XRP": 180.18,
-    "GRVT": 13.05,
     "SENT": 0.66
   },
   "equity_history": [
@@ -19710,8 +19723,8 @@
         0.0
       ],
       "score_manual": 2.15,
-      "label": null,
-      "pnl_pct": null
+      "label": 1,
+      "pnl_pct": 6.53
     },
     {
       "timestamp": "2026-10-20T00:16:58.518794+00:00",
