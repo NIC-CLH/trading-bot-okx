@@ -2191,6 +2191,17 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.61
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "DOOD",
+      "pnl_pct": 4.38,
+      "days_held": 0.1,
+      "exit_reason": "Trailing stop : pic +12.8% → plancher +6.4% | actuel +4.4%",
+      "valeur_usd": 48.71,
+      "outcome": "win",
+      "exit_quality": 34.4,
+      "timestamp": "2026-10-20T18:02:18.570410+00:00"
     }
   ],
   "entries": [
@@ -6943,8 +6954,7 @@
   "peaks": {
     "XRP": 180.18,
     "SENT": 2.16,
-    "DOOD": 12.75,
-    "CARDS": 0.95
+    "CARDS": 3.79
   },
   "equity_history": [
     {
@@ -20106,8 +20116,8 @@
         0.0
       ],
       "score_manual": 2.03,
-      "label": null,
-      "pnl_pct": null
+      "label": 1,
+      "pnl_pct": 4.38
     },
     {
       "timestamp": "2026-10-20T16:06:01.404207+00:00",
