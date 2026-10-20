@@ -2202,6 +2202,17 @@
       "outcome": "win",
       "exit_quality": 34.4,
       "timestamp": "2026-10-20T18:02:18.570410+00:00"
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "CARDS",
+      "pnl_pct": 3.73,
+      "days_held": 0.2,
+      "exit_reason": "Trailing stop : pic +7.9% → plancher +3.9% | actuel +3.7%",
+      "valeur_usd": 48.39,
+      "outcome": "win",
+      "exit_quality": 47.3,
+      "timestamp": "2026-10-20T21:31:54.276941+00:00"
     }
   ],
   "entries": [
@@ -6953,8 +6964,7 @@
   },
   "peaks": {
     "XRP": 180.18,
-    "SENT": 2.16,
-    "CARDS": 7.89
+    "SENT": 2.16
   },
   "equity_history": [
     {
@@ -20145,8 +20155,8 @@
         0.0
       ],
       "score_manual": 2.23,
-      "label": null,
-      "pnl_pct": null
+      "label": 1,
+      "pnl_pct": 3.73
     }
   ]
 }
