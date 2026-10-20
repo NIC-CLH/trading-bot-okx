@@ -6898,28 +6898,7 @@
       "pnl_pct": null
     }
   ],
-  "pending_signals": [
-    {
-      "ticker": "SENT",
-      "score": 2.44,
-      "prix_ref": 0.02238,
-      "vol_regime": "normal",
-      "regime": "bull",
-      "timestamp": "2026-10-20T00:19:53.243652+00:00",
-      "ttl": 14400,
-      "stop_atr": 0.0185
-    },
-    {
-      "ticker": "GRVT",
-      "score": 2.15,
-      "prix_ref": 0.23301,
-      "vol_regime": "normal",
-      "regime": "bull",
-      "timestamp": "2026-10-20T00:19:53.243666+00:00",
-      "ttl": 14400,
-      "stop_atr": 0.2024
-    }
-  ],
+  "pending_signals": [],
   "reentry_thresholds": {
     "ASTER": {
       "threshold": 1.9,
