@@ -2213,6 +2213,17 @@
       "outcome": "win",
       "exit_quality": 47.3,
       "timestamp": "2026-10-20T21:31:54.276941+00:00"
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "PARTI",
+      "pnl_pct": -12.86,
+      "days_held": 0.1,
+      "exit_reason": "Stop ATR -12.9% <= -10.0%",
+      "valeur_usd": 40.96,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-21T14:02:17.114834+00:00"
     }
   ],
   "entries": [
@@ -6964,8 +6975,7 @@
   },
   "peaks": {
     "XRP": 180.18,
-    "SENT": 2.65,
-    "PARTI": 0.23
+    "SENT": 2.65
   },
   "equity_history": [
     {
@@ -20259,8 +20269,8 @@
         0.0
       ],
       "score_manual": 2.11,
-      "label": null,
-      "pnl_pct": null
+      "label": 0,
+      "pnl_pct": -12.86
     },
     {
       "timestamp": "2026-10-21T13:35:46.865017+00:00",
