@@ -9445,6 +9445,10 @@
     "XCRWV": {
       "reason": "OKX API error : All operations failed (code 1)",
       "since": "2026-10-20T15:06"
+    },
+    "XAAPL": {
+      "reason": "OKX API error : All operations failed (code 1)",
+      "since": "2026-10-21T08:05"
     }
   },
   "alert_cooldowns": {
@@ -20157,6 +20161,35 @@
       "score_manual": 2.23,
       "label": 1,
       "pnl_pct": 3.73
+    },
+    {
+      "timestamp": "2026-10-21T08:05:37.959613+00:00",
+      "ticker": "XAAPL",
+      "features": [
+        -2.52,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.5,
+        0.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.4,
+        0.65,
+        1.0,
+        0.0
+      ],
+      "score_manual": -2.52,
+      "label": null,
+      "pnl_pct": null
     }
   ]
 }
