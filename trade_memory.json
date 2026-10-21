@@ -6964,7 +6964,7 @@
   },
   "peaks": {
     "XRP": 180.18,
-    "SENT": 2.16,
+    "SENT": 2.65,
     "PARTI": 0.23
   },
   "equity_history": [
@@ -9458,6 +9458,10 @@
     "XAMD": {
       "reason": "OKX API error : All operations failed (code 1)",
       "since": "2026-10-21T09:05"
+    },
+    "XGOOGL": {
+      "reason": "OKX API error : All operations failed (code 1)",
+      "since": "2026-10-21T13:35"
     }
   },
   "alert_cooldowns": {
@@ -20255,6 +20259,35 @@
         0.0
       ],
       "score_manual": 2.11,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-21T13:35:46.865017+00:00",
+      "ticker": "XGOOGL",
+      "features": [
+        -2.72,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.5,
+        0.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.4,
+        0.65,
+        1.0,
+        0.0
+      ],
+      "score_manual": -2.72,
       "label": null,
       "pnl_pct": null
     }
