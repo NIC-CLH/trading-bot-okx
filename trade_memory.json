@@ -6796,26 +6796,8 @@
       "timestamp": "2026-09-29T16:17:37.195744+00:00"
     }
   ],
-  "_sd_prev_usdt_d": 6.614805322598208,
+  "_sd_prev_usdt_d": 6.5135782393438,
   "shadow_portfolio": [
-    {
-      "ticker": "MON",
-      "score": -1.46,
-      "prix_ref": 0.02265,
-      "type": "swing",
-      "timestamp": "2026-10-16T20:11:47.845904+00:00",
-      "outcome": "correct",
-      "pnl_pct": -6.4
-    },
-    {
-      "ticker": "STX",
-      "score": 1.43,
-      "prix_ref": 0.3771,
-      "type": "swing",
-      "timestamp": "2026-10-17T04:20:23.413864+00:00",
-      "outcome": "correct",
-      "pnl_pct": -2.68
-    },
     {
       "ticker": "EIGEN",
       "score": 1.47,
@@ -6925,11 +6907,29 @@
       "pnl_pct": null
     },
     {
+      "ticker": "DOOD",
+      "score": 1.4,
+      "prix_ref": 0.002859,
+      "type": "swing",
+      "timestamp": "2026-10-21T08:20:37.218430+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
+      "ticker": "IOST",
+      "score": 1.4,
+      "prix_ref": 0.001235,
+      "type": "swing",
+      "timestamp": "2026-10-21T08:21:02.740826+00:00",
+      "outcome": null,
+      "pnl_pct": null
+    },
+    {
       "ticker": "GRVT",
       "score": 1.4,
-      "prix_ref": 0.25452,
+      "prix_ref": 0.26175,
       "type": "swing",
-      "timestamp": "2026-10-20T04:20:46.185346+00:00",
+      "timestamp": "2026-10-21T08:21:14.022367+00:00",
       "outcome": null,
       "pnl_pct": null
     }
@@ -9222,6 +9222,10 @@
     {
       "date": "2026-10-20T04:19",
       "equity": 237.97
+    },
+    {
+      "date": "2026-10-21T08:18",
+      "equity": 237.73
     }
   ],
   "health_last_warn": 1792268198.5351596,
@@ -20163,31 +20167,31 @@
       "pnl_pct": 3.73
     },
     {
-      "timestamp": "2026-10-21T08:05:37.959613+00:00",
-      "ticker": "XAAPL",
+      "timestamp": "2026-10-21T08:20:47.486546+00:00",
+      "ticker": "COMP",
       "features": [
-        -2.52,
+        2.98,
+        0.03,
         0.0,
         0.0,
         0.0,
-        0.0,
-        0.0,
+        -0.1,
         0.0,
         0.0,
         1.0,
+        1.0,
+        0.835,
+        0.0,
         0.5,
-        0.8,
         0.0,
         0.0,
         0.0,
-        0.0,
-        0.0,
-        0.4,
-        0.65,
-        1.0,
+        2.1404799999999993,
+        0.3703,
+        0.81,
         0.0
       ],
-      "score_manual": -2.52,
+      "score_manual": 3.0,
       "label": null,
       "pnl_pct": null
     }
