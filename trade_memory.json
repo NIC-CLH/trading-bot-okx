@@ -6840,8 +6840,8 @@
       "prix_ref": 0.007489,
       "type": "swing",
       "timestamp": "2026-10-18T04:17:51.209401+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 6.88
     },
     {
       "ticker": "SAND",
@@ -6849,8 +6849,8 @@
       "prix_ref": 0.06331,
       "type": "swing",
       "timestamp": "2026-10-18T08:09:52.245519+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -8.91
     },
     {
       "ticker": "MAGIC",
@@ -6858,8 +6858,8 @@
       "prix_ref": 0.10184,
       "type": "swing",
       "timestamp": "2026-10-18T08:10:19.804640+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": -7.39
     },
     {
       "ticker": "ZK",
@@ -6867,8 +6867,8 @@
       "prix_ref": 0.01475,
       "type": "swing",
       "timestamp": "2026-10-18T08:11:08.511349+00:00",
-      "outcome": null,
-      "pnl_pct": null
+      "outcome": "correct",
+      "pnl_pct": 3.85
     },
     {
       "ticker": "XINTC",
