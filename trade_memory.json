@@ -2252,6 +2252,20 @@
       "regime": "bull",
       "vol_regime": "extreme",
       "score_entry": 2.87
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "CVX",
+      "pnl_pct": -8.01,
+      "days_held": 1.0,
+      "exit_reason": "Stop ATR -8.0% <= -8.7% (franchi en intraseance)",
+      "valeur_usd": 42.84,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-22T16:02:34.438727+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.23
     }
   ],
   "entries": [
@@ -20682,8 +20696,8 @@
         0.0
       ],
       "score_manual": 2.36,
-      "label": null,
-      "pnl_pct": null
+      "label": 0,
+      "pnl_pct": -8.01
     },
     {
       "timestamp": "2026-10-22T08:11:00.350269+00:00",
