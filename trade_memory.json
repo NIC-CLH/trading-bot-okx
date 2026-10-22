@@ -6529,6 +6529,58 @@
       "score_tech_adj_raw": 2.23,
       "score_rs_raw": 0.0,
       "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "PARTI",
+      "score": 3.0,
+      "score_tech": 0.0,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bear",
+      "vol_regime": "elevated",
+      "taille_usd": 40.0,
+      "prix": 0.03268,
+      "stop": 0.0317,
+      "btc_uptrend": true,
+      "late_entry": false,
+      "timestamp": "2026-10-22T08:33:45.326476+00:00",
+      "score_tech_raw": 0.0,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 0.0,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
+    },
+    {
+      "type": "trade_entry",
+      "ticker": "GRVT",
+      "score": 2.87,
+      "score_tech": 0.0,
+      "score_news": 0.0,
+      "score_ms": 0.0,
+      "score_macro": 0.0,
+      "regime": "bull",
+      "vol_regime": "extreme",
+      "taille_usd": 40.0,
+      "prix": 0.24466,
+      "stop": 0.23732,
+      "btc_uptrend": true,
+      "late_entry": false,
+      "timestamp": "2026-10-22T08:34:55.292950+00:00",
+      "score_tech_raw": 0.0,
+      "score_news_raw": 0.0,
+      "score_ms_raw": 0.0,
+      "score_oc_raw": 0.0,
+      "score_cg_raw": 0.0,
+      "score_macro_raw": 0.0,
+      "score_tech_adj_raw": 0.0,
+      "score_rs_raw": 0.0,
+      "score_social_raw": 0.0
     }
   ],
   "reflections": [
@@ -9529,8 +9581,6 @@
     "xrp_buy": 1791282893.9939225
   },
   "ev_history": [
-    -2.18,
-    -1.59,
     -2.94,
     -2.94,
     -2.01,
@@ -9538,7 +9588,9 @@
     -2.01,
     -2.01,
     -2.01,
-    -2.01
+    -2.01,
+    -1.01,
+    -1.01
   ],
   "coingecko_ids": {
     "ts": 1792656701.7123551,
