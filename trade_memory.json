@@ -2238,6 +2238,20 @@
       "regime": "bear",
       "vol_regime": "elevated",
       "score_entry": 3.0
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "GRVT",
+      "pnl_pct": 0.51,
+      "days_held": 0.3,
+      "exit_reason": "Stop ATR 0.5% <= 0.2% (franchi en intraseance)",
+      "valeur_usd": 38.73,
+      "outcome": "win",
+      "exit_quality": 11.4,
+      "timestamp": "2026-10-22T15:32:26.992982+00:00",
+      "regime": "bull",
+      "vol_regime": "extreme",
+      "score_entry": 2.87
     }
   ],
   "entries": [
@@ -7067,8 +7081,7 @@
   },
   "peaks": {
     "XRP": 180.18,
-    "SENT": 4.69,
-    "GRVT": 4.42
+    "SENT": 4.69
   },
   "equity_history": [
     {
@@ -20756,8 +20769,8 @@
         0.0
       ],
       "score_manual": 2.87,
-      "label": null,
-      "pnl_pct": null
+      "label": 1,
+      "pnl_pct": 0.51
     },
     {
       "timestamp": "2026-10-22T08:11:52.481274+00:00",
