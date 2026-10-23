@@ -2266,6 +2266,17 @@
       "regime": "bull",
       "vol_regime": "normal",
       "score_entry": 2.23
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "MASK",
+      "pnl_pct": -10.09,
+      "days_held": 0.6,
+      "exit_reason": "Stop ATR -10.1% <= -9.8%",
+      "valeur_usd": 41.02,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-23T00:02:31.977939+00:00"
     }
   ],
   "entries": [
@@ -21102,8 +21113,8 @@
         0.0
       ],
       "score_manual": 2.65,
-      "label": null,
-      "pnl_pct": null
+      "label": 0,
+      "pnl_pct": -10.09
     },
     {
       "timestamp": "2026-10-22T11:36:37.890333+00:00",
