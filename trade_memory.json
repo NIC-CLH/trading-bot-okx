@@ -9607,6 +9607,18 @@
     "XGOOGL": {
       "reason": "OKX API error : All operations failed (code 1)",
       "since": "2026-10-21T13:35"
+    },
+    "XMU": {
+      "reason": "OKX API error : All operations failed (code 1)",
+      "since": "2026-10-23T03:05"
+    },
+    "XQQQ": {
+      "reason": "OKX API error : All operations failed (code 1)",
+      "since": "2026-10-23T03:05"
+    },
+    "XLITE": {
+      "reason": "OKX API error : All operations failed (code 1)",
+      "since": "2026-10-23T03:05"
     }
   },
   "alert_cooldowns": {
@@ -21142,6 +21154,93 @@
         0.0
       ],
       "score_manual": -2.0,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-23T03:05:30.703298+00:00",
+      "ticker": "XMU",
+      "features": [
+        -2.12,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.5,
+        0.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.4,
+        0.65,
+        1.0,
+        0.0
+      ],
+      "score_manual": -2.12,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-23T03:05:32.467676+00:00",
+      "ticker": "XQQQ",
+      "features": [
+        -2.37,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.5,
+        0.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.4,
+        0.65,
+        1.0,
+        0.0
+      ],
+      "score_manual": -2.37,
+      "label": null,
+      "pnl_pct": null
+    },
+    {
+      "timestamp": "2026-10-23T03:05:33.975813+00:00",
+      "ticker": "XLITE",
+      "features": [
+        -2.04,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.5,
+        0.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.4,
+        0.65,
+        1.0,
+        0.0
+      ],
+      "score_manual": -2.04,
       "label": null,
       "pnl_pct": null
     }
