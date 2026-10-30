@@ -2277,6 +2277,20 @@
       "outcome": "loss",
       "exit_quality": null,
       "timestamp": "2026-10-23T00:02:31.977939+00:00"
+    },
+    {
+      "type": "trade_outcome",
+      "ticker": "SENT",
+      "pnl_pct": -27.53,
+      "days_held": 0,
+      "exit_reason": "Stop ATR -27.5% <= -25.4%",
+      "valeur_usd": 63.85,
+      "outcome": "loss",
+      "exit_quality": null,
+      "timestamp": "2026-10-30T06:32:07.942069+00:00",
+      "regime": "bull",
+      "vol_regime": "normal",
+      "score_entry": 2.44
     }
   ],
   "entries": [
@@ -7105,8 +7119,7 @@
     }
   },
   "peaks": {
-    "XRP": 180.18,
-    "SENT": 4.69
+    "XRP": 180.18
   },
   "equity_history": [
     {
@@ -20372,8 +20385,8 @@
         0.0
       ],
       "score_manual": 2.44,
-      "label": null,
-      "pnl_pct": null
+      "label": 0,
+      "pnl_pct": -27.53
     },
     {
       "timestamp": "2026-10-20T00:19:23.987448+00:00",
