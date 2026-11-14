@@ -7118,7 +7118,9 @@
       "loss_pct": -10.66
     }
   },
-  "peaks": {},
+  "peaks": {
+    "XRP": 52.05
+  },
   "equity_history": [
     {
       "date": "2026-07-17T12:04",
